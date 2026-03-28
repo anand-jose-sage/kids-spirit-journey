@@ -1,0 +1,482 @@
+[
+  {
+    "day": 1,
+    "title": "Love One Another",
+    "theme": "Love",
+    "verse": "John 13:34",
+    "verseText": "Love one another. As I have loved you, so you must love one another.",
+    "description": "Today we discover the most important commandment Jesus gave us — to love! Love is not just a feeling, it's a choice we make every single day.",
+    "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+    "tasks": [
+      { "id": "read", "label": "Read John 13:34 out loud three times", "emoji": "📖" },
+      { "id": "pray", "label": "Say a prayer asking God to fill your heart with love", "emoji": "🙏" },
+      { "id": "act", "label": "Give someone at home a big hug and tell them you love them", "emoji": "🤗" },
+      { "id": "draw", "label": "Draw a heart and write the names of 5 people you love inside", "emoji": "🎨" }
+    ],
+    "reflection": "Who is one person you will love better today, and how will you show them?"
+  },
+  {
+    "day": 2,
+    "title": "Kindness Changes Everything",
+    "theme": "Kindness",
+    "verse": "Ephesians 4:32",
+    "verseText": "Be kind and compassionate to one another, forgiving each other, just as in Christ God forgave you.",
+    "description": "A small act of kindness can make someone's whole day! Today, we explore how kindness can change the world around us.",
+    "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+    "tasks": [
+      { "id": "read", "label": "Read Ephesians 4:32 and think about what it means", "emoji": "📖" },
+      { "id": "act", "label": "Do one surprise kind thing for someone without telling them", "emoji": "🌟" },
+      { "id": "write", "label": "Write a kindness note and give it to a friend or family member", "emoji": "💌" },
+      { "id": "pray", "label": "Pray for someone who needs kindness today", "emoji": "🙏" }
+    ],
+    "reflection": "What kind thing did you do today? How did it make the other person feel?"
+  },
+  {
+    "day": 3,
+    "title": "A Grateful Heart",
+    "theme": "Gratitude",
+    "verse": "1 Thessalonians 5:18",
+    "verseText": "Give thanks in all circumstances; for this is God's will for you in Christ Jesus.",
+    "description": "Gratitude is like magic — when we are thankful, our hearts become happier! Let's count our blessings today.",
+    "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+    "tasks": [
+      { "id": "write", "label": "Write a list of 10 things you are grateful for", "emoji": "📝" },
+      { "id": "pray", "label": "Say a prayer of thanksgiving to God for three specific things", "emoji": "🙏" },
+      { "id": "act", "label": "Say 'thank you' with a big smile to everyone who helps you today", "emoji": "😊" },
+      { "id": "draw", "label": "Draw your favourite blessing — something you are most thankful for", "emoji": "🎨" }
+    ],
+    "reflection": "What is the greatest blessing God has given you? Why are you grateful for it?"
+  },
+  {
+    "day": 4,
+    "title": "Talking to God",
+    "theme": "Prayer",
+    "verse": "Matthew 6:9",
+    "verseText": "Our Father in heaven, hallowed be your name, your kingdom come, your will be done on earth as it is in heaven.",
+    "description": "Prayer is our direct line to God! Just like calling a best friend, we can talk to God anytime, anywhere. Let's learn to pray from our hearts.",
+    "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+    "tasks": [
+      { "id": "pray", "label": "Recite the Our Father slowly, thinking about each word", "emoji": "🙏" },
+      { "id": "write", "label": "Write your own prayer to God in your own words", "emoji": "✍️" },
+      { "id": "act", "label": "Find a quiet place and spend 5 minutes talking to God", "emoji": "🕊️" },
+      { "id": "read", "label": "Read Matthew 6:5-15 — Jesus teaches us how to pray", "emoji": "📖" }
+    ],
+    "reflection": "What did you talk to God about today? How did it feel?"
+  },
+  {
+    "day": 5,
+    "title": "The Gift of Forgiveness",
+    "theme": "Forgiveness",
+    "verse": "Matthew 6:14",
+    "verseText": "For if you forgive other people when they sin against you, your heavenly Father will also forgive you.",
+    "description": "Forgiveness is one of the hardest but most powerful gifts we can give. When we forgive, we free ourselves from sadness and anger.",
+    "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+    "tasks": [
+      { "id": "read", "label": "Read the story of the Prodigal Son (Luke 15:11-32)", "emoji": "📖" },
+      { "id": "pray", "label": "Ask God to help you forgive someone who hurt you", "emoji": "🙏" },
+      { "id": "act", "label": "Say sorry to someone you may have hurt or been unkind to", "emoji": "💛" },
+      { "id": "write", "label": "Write about why forgiveness is important", "emoji": "✍️" }
+    ],
+    "reflection": "Is there someone you need to forgive? What would it feel like to let go of that hurt?"
+  },
+  {
+    "day": 6,
+    "title": "Always Be Honest",
+    "theme": "Honesty",
+    "verse": "Proverbs 12:17",
+    "verseText": "An honest witness tells the truth, but a false witness tells lies.",
+    "description": "Honesty builds trust, and trust builds friendships! God loves a truthful heart. Today we explore why being honest matters so much.",
+    "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+    "tasks": [
+      { "id": "read", "label": "Read Proverbs 12:17-19 about the power of truth", "emoji": "📖" },
+      { "id": "write", "label": "Write about a time being honest was hard but you did it anyway", "emoji": "✍️" },
+      { "id": "act", "label": "Make a promise to tell the truth all day today", "emoji": "🤝" },
+      { "id": "pray", "label": "Ask God to give you a brave and honest heart", "emoji": "🙏" }
+    ],
+    "reflection": "Why is it sometimes hard to tell the truth? What helps you be honest?"
+  },
+  {
+    "day": 7,
+    "title": "The Joy of Sharing",
+    "theme": "Sharing",
+    "verse": "Luke 3:11",
+    "verseText": "Anyone who has two shirts should share with the one who has none, and anyone who has food should do the same.",
+    "description": "When we share, we multiply the joy! Sharing is not just about things — we can share our time, our smiles, and our love too.",
+    "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+    "tasks": [
+      { "id": "act", "label": "Find something you own and give it to someone who needs it", "emoji": "🎁" },
+      { "id": "write", "label": "Write a list of 5 things you can share with others (besides stuff!)", "emoji": "✍️" },
+      { "id": "pray", "label": "Thank God for everything you have and ask Him to make you generous", "emoji": "🙏" },
+      { "id": "draw", "label": "Draw a picture of yourself sharing with a friend", "emoji": "🎨" }
+    ],
+    "reflection": "How did sharing make you feel today? What is the best thing you ever shared?"
+  },
+  {
+    "day": 8,
+    "title": "Carry Each Other's Burdens",
+    "theme": "Helping Others",
+    "verse": "Galatians 6:2",
+    "verseText": "Carry each other's burdens, and in this way you will fulfill the law of Christ.",
+    "description": "Jesus always stopped to help those in need. We are called to be His hands and feet in the world. Let's help someone today!",
+    "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+    "tasks": [
+      { "id": "act", "label": "Help with a household chore without being asked", "emoji": "🏠" },
+      { "id": "act", "label": "Ask someone: 'Is there anything I can do to help you today?'", "emoji": "🤝" },
+      { "id": "pray", "label": "Pray for people around the world who need help", "emoji": "🙏" },
+      { "id": "write", "label": "Write about someone who helps you and why they are special", "emoji": "✍️" }
+    ],
+    "reflection": "Who helped you today? How can you be a helper to someone else tomorrow?"
+  },
+  {
+    "day": 9,
+    "title": "Peace Be With You",
+    "theme": "Peace",
+    "verse": "Philippians 4:7",
+    "verseText": "And the peace of God, which transcends all understanding, will guard your hearts and your minds in Christ Jesus.",
+    "description": "Peace is a special gift from God — it is a calm feeling in your heart even when things around you are noisy or scary. Jesus said 'Peace be with you!'",
+    "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+    "tasks": [
+      { "id": "pray", "label": "Sit quietly for 5 minutes and ask God to give you His peace", "emoji": "🕊️" },
+      { "id": "read", "label": "Read John 14:27 — Jesus promises us His peace", "emoji": "📖" },
+      { "id": "act", "label": "Help resolve a small disagreement or argument between people today", "emoji": "🤝" },
+      { "id": "draw", "label": "Draw what peace looks like to you", "emoji": "🎨" }
+    ],
+    "reflection": "When do you feel most peaceful? What does God's peace feel like in your heart?"
+  },
+  {
+    "day": 10,
+    "title": "Choose Joy!",
+    "theme": "Joy",
+    "verse": "Psalm 30:5",
+    "verseText": "Weeping may stay for the night, but rejoicing comes in the morning.",
+    "description": "Joy is different from happiness! Happiness depends on what happens to us, but joy comes from God and stays in our hearts always. Let's celebrate today!",
+    "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+    "tasks": [
+      { "id": "act", "label": "Sing or hum your favourite praise song today", "emoji": "🎵" },
+      { "id": "write", "label": "Write 5 things that bring you deep joy", "emoji": "✍️" },
+      { "id": "act", "label": "Make someone laugh or smile today", "emoji": "😄" },
+      { "id": "pray", "label": "Thank God for the gift of joy and ask Him to keep it in your heart", "emoji": "🙏" }
+    ],
+    "reflection": "What is the difference between happiness and joy? Where does your joy come from?"
+  },
+  {
+    "day": 11,
+    "title": "Patient and Persistent",
+    "theme": "Patience",
+    "verse": "James 1:4",
+    "verseText": "Let perseverance finish its work so that you may be mature and complete, not lacking anything.",
+    "description": "Waiting is hard! But patience is a superpower. When we are patient, we become stronger and wiser. God is always working, even when we cannot see it.",
+    "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+    "tasks": [
+      { "id": "read", "label": "Read James 1:2-4 about how trials build patience", "emoji": "📖" },
+      { "id": "write", "label": "Write about a time you had to wait for something good", "emoji": "✍️" },
+      { "id": "act", "label": "Practice patience today — count to 10 before reacting when upset", "emoji": "💪" },
+      { "id": "pray", "label": "Ask God to grow patience in your heart like a garden", "emoji": "🙏" }
+    ],
+    "reflection": "What is hardest to wait for? How does God help you be patient?"
+  },
+  {
+    "day": 12,
+    "title": "Be Humble",
+    "theme": "Humility",
+    "verse": "Philippians 2:3",
+    "verseText": "Do nothing out of selfish ambition or vain conceit. Rather, in humility value others above yourselves.",
+    "description": "Humility is not thinking less of yourself — it is thinking of others more! Jesus, the King of kings, washed His disciples' feet. That is real humility!",
+    "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+    "tasks": [
+      { "id": "read", "label": "Read John 13:1-17 — Jesus washes feet", "emoji": "📖" },
+      { "id": "act", "label": "Let someone else go first today — in line, in games, in choice", "emoji": "🤝" },
+      { "id": "write", "label": "Write about someone you admire for being humble", "emoji": "✍️" },
+      { "id": "pray", "label": "Ask Jesus to give you a servant heart like His", "emoji": "🙏" }
+    ],
+    "reflection": "How can you serve others today without expecting anything in return?"
+  },
+  {
+    "day": 13,
+    "title": "Be Courageous!",
+    "theme": "Courage",
+    "verse": "Joshua 1:9",
+    "verseText": "Be strong and courageous. Do not be afraid; do not be discouraged, for the Lord your God will be with you wherever you go.",
+    "description": "Courage is not the absence of fear — it is doing the right thing even when you are scared! God promises to be with us, so we can be brave.",
+    "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+    "tasks": [
+      { "id": "read", "label": "Read the story of David and Goliath (1 Samuel 17:32-50)", "emoji": "📖" },
+      { "id": "write", "label": "Write about a time you were brave or a time you wish you had been", "emoji": "✍️" },
+      { "id": "act", "label": "Do something today that scares you a little (speak up, try something new)", "emoji": "💪" },
+      { "id": "pray", "label": "Ask God to give you His courage today", "emoji": "🙏" }
+    ],
+    "reflection": "What is one thing you have been afraid to do? What would help you be brave?"
+  },
+  {
+    "day": 14,
+    "title": "Faith — Trusting What We Cannot See",
+    "theme": "Faith",
+    "verse": "Hebrews 11:1",
+    "verseText": "Now faith is confidence in what we hope for and assurance about what we do not see.",
+    "description": "Have you ever seen the wind? You cannot see it, but you feel it! Faith is like that — we believe in God even though we cannot see Him, because we feel Him in our hearts.",
+    "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+    "tasks": [
+      { "id": "read", "label": "Read Hebrews 11 — the great heroes of faith", "emoji": "📖" },
+      { "id": "write", "label": "Write about a time God answered a prayer and strengthened your faith", "emoji": "✍️" },
+      { "id": "act", "label": "Share something you believe about God with a friend or family member", "emoji": "💬" },
+      { "id": "pray", "label": "Ask God to grow your faith stronger every day", "emoji": "🙏" }
+    ],
+    "reflection": "How has your faith in God grown? What do you believe that you cannot see?"
+  },
+  {
+    "day": 15,
+    "title": "Hope That Never Fails",
+    "theme": "Hope",
+    "verse": "Romans 15:13",
+    "verseText": "May the God of hope fill you with all joy and peace as you trust in him, so that you may overflow with hope by the power of the Holy Spirit.",
+    "description": "Halfway there! Hope is like a light in the darkness. When we hope in God, we know that no matter what happens, He has a good plan for us.",
+    "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+    "tasks": [
+      { "id": "write", "label": "Write 5 hopes and dreams you have for your future", "emoji": "✍️" },
+      { "id": "pray", "label": "Pray for someone who seems sad or without hope today", "emoji": "🙏" },
+      { "id": "draw", "label": "Draw what your hope for the future looks like", "emoji": "🌈" },
+      { "id": "act", "label": "Share an encouraging word with someone who needs it", "emoji": "💬" }
+    ],
+    "reflection": "What do you hope for most? How does your faith in God give you hope?"
+  },
+  {
+    "day": 16,
+    "title": "A Life of Service",
+    "theme": "Service",
+    "verse": "Mark 10:45",
+    "verseText": "For even the Son of Man did not come to be served, but to serve, and to give his life as a ransom for many.",
+    "description": "Jesus came to serve, not to be served! We are called to live like Jesus — putting others first and giving freely of ourselves.",
+    "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+    "tasks": [
+      { "id": "act", "label": "Serve your family — cook, clean, or do something helpful without being asked", "emoji": "🍽️" },
+      { "id": "write", "label": "Write about how you can serve your school or community", "emoji": "✍️" },
+      { "id": "pray", "label": "Ask God to show you someone who needs your service today", "emoji": "🙏" },
+      { "id": "read", "label": "Read the parable of the talents (Matthew 25:14-30)", "emoji": "📖" }
+    ],
+    "reflection": "How did you serve someone today? How did it feel to give without expecting anything back?"
+  },
+  {
+    "day": 17,
+    "title": "Respect Everyone",
+    "theme": "Respect",
+    "verse": "Ephesians 6:2",
+    "verseText": "Honor your father and mother — which is the first commandment with a promise.",
+    "description": "Respect means treating everyone as valuable because every person is made in God's image. When we respect others, we honor God!",
+    "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+    "tasks": [
+      { "id": "act", "label": "Listen carefully without interrupting when someone speaks to you today", "emoji": "👂" },
+      { "id": "act", "label": "Say 'please' and 'thank you' to everyone all day", "emoji": "😊" },
+      { "id": "write", "label": "Write about someone you deeply respect and why", "emoji": "✍️" },
+      { "id": "pray", "label": "Ask God to help you see the value and beauty in every person", "emoji": "🙏" }
+    ],
+    "reflection": "What does respect look like in your daily life at home and at school?"
+  },
+  {
+    "day": 18,
+    "title": "Show Compassion",
+    "theme": "Compassion",
+    "verse": "Matthew 9:36",
+    "verseText": "When he saw the crowds, he had compassion on them, because they were harassed and helpless, like sheep without a shepherd.",
+    "description": "Compassion means feeling what others feel and then doing something about it. Jesus always had compassion — He never turned anyone away. Let's be like Jesus!",
+    "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+    "tasks": [
+      { "id": "act", "label": "Sit with someone who seems lonely today", "emoji": "🤝" },
+      { "id": "write", "label": "Write a prayer for someone who is suffering", "emoji": "✍️" },
+      { "id": "pray", "label": "Ask Jesus to give you His eyes to see those who are hurting", "emoji": "🙏" },
+      { "id": "draw", "label": "Draw an image of compassion — what does it look like?", "emoji": "🎨" }
+    ],
+    "reflection": "Who did you show compassion to today? How did it reflect Jesus's love?"
+  },
+  {
+    "day": 19,
+    "title": "Be Generous",
+    "theme": "Generosity",
+    "verse": "2 Corinthians 9:7",
+    "verseText": "Each of you should give what you have decided in your heart to give, not reluctantly or under compulsion, for God loves a cheerful giver.",
+    "description": "Generosity is giving cheerfully! When we give freely — our time, love, money, or talents — we become more like God, who gives us everything.",
+    "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+    "tasks": [
+      { "id": "act", "label": "Give away something meaningful to someone who would love it", "emoji": "🎁" },
+      { "id": "act", "label": "Donate or set aside something for those in need", "emoji": "💛" },
+      { "id": "write", "label": "Write about how generosity makes both the giver and receiver happy", "emoji": "✍️" },
+      { "id": "pray", "label": "Ask God to give you a generous and open heart", "emoji": "🙏" }
+    ],
+    "reflection": "What did you give today? How did it feel to be a cheerful giver?"
+  },
+  {
+    "day": 20,
+    "title": "Trust in God",
+    "theme": "Trust",
+    "verse": "Proverbs 3:5",
+    "verseText": "Trust in the Lord with all your heart and lean not on your own understanding.",
+    "description": "Sometimes we don't understand why things happen. But God sees the whole picture! When we trust Him completely, we find peace even in confusion.",
+    "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+    "tasks": [
+      { "id": "read", "label": "Read Proverbs 3:5-6 and think about trusting God's plan", "emoji": "📖" },
+      { "id": "write", "label": "Write about something you are worried about and give it to God", "emoji": "✍️" },
+      { "id": "pray", "label": "Pray: 'God, I trust You with my whole heart. Your plan is better than mine.'", "emoji": "🙏" },
+      { "id": "act", "label": "Talk to a parent or trusted person about something that worries you", "emoji": "💬" }
+    ],
+    "reflection": "What does it mean to trust God when things don't go the way you planned?"
+  },
+  {
+    "day": 21,
+    "title": "The Good Samaritan",
+    "theme": "Neighbour Love",
+    "verse": "Luke 10:27",
+    "verseText": "Love the Lord your God with all your heart and with all your soul and with all your strength and with all your mind; and love your neighbour as yourself.",
+    "description": "Who is my neighbour? Jesus answered this with a beautiful story! The Good Samaritan showed us that our neighbour is anyone who needs our help.",
+    "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+    "tasks": [
+      { "id": "read", "label": "Read the parable of the Good Samaritan (Luke 10:25-37)", "emoji": "📖" },
+      { "id": "write", "label": "Retell the Good Samaritan story in your own words", "emoji": "✍️" },
+      { "id": "act", "label": "Help someone unexpected today — someone outside your usual group", "emoji": "🤝" },
+      { "id": "pray", "label": "Ask God to help you see everyone as your neighbour", "emoji": "🙏" }
+    ],
+    "reflection": "Who is a 'Good Samaritan' in your life? How can you be one for someone else?"
+  },
+  {
+    "day": 22,
+    "title": "Jesus Does Miracles",
+    "theme": "Faith in Miracles",
+    "verse": "John 11:25",
+    "verseText": "Jesus said to her, 'I am the resurrection and the life. The one who believes in me will live, even though they die.'",
+    "description": "Jesus performed many amazing miracles — healing the sick, feeding thousands, raising the dead! These miracles show us that nothing is impossible with God.",
+    "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+    "tasks": [
+      { "id": "read", "label": "Read the miracle of the loaves and fish (John 6:1-14)", "emoji": "📖" },
+      { "id": "write", "label": "Write about your favourite miracle of Jesus and what it means to you", "emoji": "✍️" },
+      { "id": "pray", "label": "Ask Jesus for a miracle for someone who needs healing or help", "emoji": "🙏" },
+      { "id": "draw", "label": "Draw your favourite miracle of Jesus", "emoji": "🎨" }
+    ],
+    "reflection": "Do you believe God still does miracles today? Have you seen or heard of one?"
+  },
+  {
+    "day": 23,
+    "title": "The Lord's Prayer",
+    "theme": "Prayer Life",
+    "verse": "Matthew 6:9",
+    "verseText": "Our Father in heaven, hallowed be your name, your kingdom come, your will be done.",
+    "description": "Jesus gave us the perfect prayer! The Our Father is not just words — it is a conversation with our Heavenly Father. Let's pray it with meaning today.",
+    "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+    "tasks": [
+      { "id": "pray", "label": "Pray the Our Father very slowly, thinking about every single line", "emoji": "🙏" },
+      { "id": "write", "label": "Write what each line of the Our Father means to you personally", "emoji": "✍️" },
+      { "id": "act", "label": "Teach a younger child or sibling the Our Father", "emoji": "👶" },
+      { "id": "read", "label": "Read Matthew 6:5-15 — everything Jesus teaches about prayer", "emoji": "📖" }
+    ],
+    "reflection": "Which part of the Our Father means the most to you today? Why?"
+  },
+  {
+    "day": 24,
+    "title": "The Beatitudes — Blessed Are You!",
+    "theme": "Blessed Life",
+    "verse": "Matthew 5:3",
+    "verseText": "Blessed are the poor in spirit, for theirs is the kingdom of heaven.",
+    "description": "Jesus gave us a map for a truly blessed life — the Beatitudes! These are not the world's idea of success, but God's beautiful upside-down kingdom.",
+    "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+    "tasks": [
+      { "id": "read", "label": "Read all the Beatitudes in Matthew 5:3-12", "emoji": "📖" },
+      { "id": "write", "label": "Write your favourite Beatitude and explain why it speaks to you", "emoji": "✍️" },
+      { "id": "act", "label": "Live one Beatitude fully today (e.g., be a peacemaker)", "emoji": "🕊️" },
+      { "id": "pray", "label": "Ask God to help you live the Beatitudes in your daily life", "emoji": "🙏" }
+    ],
+    "reflection": "Which Beatitude is hardest for you to live? Which comes most naturally?"
+  },
+  {
+    "day": 25,
+    "title": "Mary, Our Mother",
+    "theme": "Mary",
+    "verse": "John 19:27",
+    "verseText": "Then he said to the disciple, 'Here is your mother.' And from that time on, this disciple took her into his own home.",
+    "description": "From the Cross, Jesus gave us Mary as our mother! She is our greatest intercessor — she always brings us to her Son Jesus. Let's honour Mary today.",
+    "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+    "tasks": [
+      { "id": "pray", "label": "Pray the Hail Mary slowly, meditating on each word", "emoji": "🙏" },
+      { "id": "read", "label": "Read Luke 1:26-55 — The Annunciation and the Magnificat", "emoji": "📖" },
+      { "id": "write", "label": "Write a letter to Mary asking for her intercession", "emoji": "✍️" },
+      { "id": "draw", "label": "Draw an image of Mary with Jesus", "emoji": "🎨" }
+    ],
+    "reflection": "How can Mary help you grow closer to Jesus? What do you admire about her?"
+  },
+  {
+    "day": 26,
+    "title": "The Cloud of Witnesses — The Saints",
+    "theme": "Saints",
+    "verse": "Hebrews 12:1",
+    "verseText": "Therefore, since we are surrounded by such a great cloud of witnesses, let us throw off everything that hinders and run with perseverance.",
+    "description": "The saints are our older brothers and sisters in faith who ran the race before us! They cheer us on from heaven. We all have a saint's name — let's find out more about them.",
+    "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+    "tasks": [
+      { "id": "read", "label": "Read about your patron saint or a saint you admire", "emoji": "📖" },
+      { "id": "write", "label": "Write 5 things you learned about your favourite saint", "emoji": "✍️" },
+      { "id": "pray", "label": "Ask your patron saint to pray for you and intercede for your needs", "emoji": "🙏" },
+      { "id": "draw", "label": "Draw or write about what kind of saint you want to be", "emoji": "✨" }
+    ],
+    "reflection": "Which saint inspires you most? How can you live like them in your daily life?"
+  },
+  {
+    "day": 27,
+    "title": "The Holy Spirit — Our Helper",
+    "theme": "Holy Spirit",
+    "verse": "John 14:26",
+    "verseText": "But the Advocate, the Holy Spirit, whom the Father will send in my name, will teach you all things and will remind you of everything I have said to you.",
+    "description": "The Holy Spirit lives inside every baptised Christian! The Spirit is our Guide, our Comforter, our Teacher, and our Best Friend. Let's open our hearts to Him today.",
+    "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+    "tasks": [
+      { "id": "read", "label": "Read about Pentecost (Acts 2:1-13) — the Holy Spirit arrives!", "emoji": "📖" },
+      { "id": "write", "label": "Write about the 7 gifts of the Holy Spirit and which one you need most", "emoji": "✍️" },
+      { "id": "pray", "label": "Pray: 'Come, Holy Spirit, fill my heart with your fire and love'", "emoji": "🔥" },
+      { "id": "act", "label": "Listen to the Spirit's gentle voice today — what is He telling you?", "emoji": "👂" }
+    ],
+    "reflection": "How have you felt the Holy Spirit's presence in your life? What does He say to you?"
+  },
+  {
+    "day": 28,
+    "title": "The Bread of Life — The Eucharist",
+    "theme": "Eucharist",
+    "verse": "John 6:35",
+    "verseText": "Then Jesus declared, 'I am the bread of life. Whoever comes to me will never go hungry, and whoever believes in me will never be thirsty.'",
+    "description": "The Eucharist is the greatest gift Jesus gave us — His Body and Blood! At Mass, He comes to us in the most intimate and beautiful way. Let's treasure this gift.",
+    "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+    "tasks": [
+      { "id": "read", "label": "Read John 6:22-58 — The Bread of Life discourse", "emoji": "📖" },
+      { "id": "write", "label": "Write about what receiving Communion means to you", "emoji": "✍️" },
+      { "id": "pray", "label": "Make a spiritual communion prayer if you cannot receive today", "emoji": "🙏" },
+      { "id": "act", "label": "Plan to attend Mass this week with special attention and gratitude", "emoji": "⛪" }
+    ],
+    "reflection": "How does the Eucharist nourish you? How do you prepare your heart to receive Jesus?"
+  },
+  {
+    "day": 29,
+    "title": "We Are the Church",
+    "theme": "Community",
+    "verse": "Matthew 16:18",
+    "verseText": "And I tell you that you are Peter, and on this rock I will build my church, and the gates of Hades will not overcome it.",
+    "description": "The Church is not just a building — it is us! We are the Body of Christ, all connected to each other and to Jesus our Head. We need each other!",
+    "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+    "tasks": [
+      { "id": "act", "label": "Call or message a friend from your parish to encourage them", "emoji": "📞" },
+      { "id": "write", "label": "Write about what you love most about your parish community", "emoji": "✍️" },
+      { "id": "pray", "label": "Pray for your priest, parish, and the entire Church", "emoji": "🙏" },
+      { "id": "read", "label": "Read 1 Corinthians 12:12-27 — We are one body", "emoji": "📖" }
+    ],
+    "reflection": "How do you contribute to your church community? How can you serve your parish better?"
+  },
+  {
+    "day": 30,
+    "title": "Be a Light to the World!",
+    "theme": "Mission",
+    "verse": "Matthew 5:14",
+    "verseText": "You are the light of the world. A town built on a hill cannot be hidden.",
+    "description": "You did it! 30 days! You are a shining light. Jesus calls you to go out into the world and share His love with everyone around you. Your journey is just beginning!",
+    "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+    "tasks": [
+      { "id": "read", "label": "Read Matthew 5:13-16 — Salt and Light of the World", "emoji": "📖" },
+      { "id": "write", "label": "Write a letter to your future self about how this journey changed you", "emoji": "✍️" },
+      { "id": "act", "label": "Share one thing you learned from this 30-day journey with your family", "emoji": "💬" },
+      { "id": "pray", "label": "Thank God for walking with you on this journey and ask Him what's next", "emoji": "🙏" }
+    ],
+    "reflection": "How have you grown over these 30 days? How will you be a light in your school, home, and world?"
+  }
+]
