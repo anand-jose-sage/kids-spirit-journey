@@ -7,6 +7,7 @@ import { useAuth } from '@/components/AuthProvider';
 import { completeDay, saveDayEntry, getDayEntry } from '@/lib/database';
 import activities from '@/data/activities.json';
 import mlActivities from '@/data/activities.ml.json';
+import { useLang } from '@/contexts/LanguageContext';
 import { ChevronLeft, CheckCircle2, Circle, ExternalLink, BookOpen, Pen } from 'lucide-react';
 import { clsx } from 'clsx';
 
@@ -25,7 +26,7 @@ export default function ActivityPage({ params }: { params: Params }) {
   const [showCelebration, setShowCelebration] = useState(false);
   const [entryLoading, setEntryLoading] = useState(true);
   const [savedIndicator, setSavedIndicator] = useState(false);
-  const [lang, setLang] = useState<'en' | 'ml'>('en');
+  const { lang, setLang } = useLang();
   const reflectionTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   // Malayalam translation helpers — falls back to English if ML string is empty
@@ -107,21 +108,23 @@ export default function ActivityPage({ params }: { params: Params }) {
 
   async function autoSave(tasks: Set<string>, reflectionText: string) {
     if (!user || alreadyDone || !activity) return;
-    const tasksDone = Object.fromEntries(activity.tasks.map((t) => [t.id, tasks.has(t.id)]));
-    await saveDayEntry(user.id, dayNum, { tasksDone, reflection: reflectionText });
-    setSavedIndicator(true);
-    setTimeout(() => setSavedIndicator(false), 2000);
+    try {
+      const tasksDone = Object.fromEntries(activity.tasks.map((t) => [t.id, tasks.has(t.id)]));
+      await saveDayEntry(user.id, dayNum, { tasksDone, reflection: reflectionText });
+      setSavedIndicator(true);
+      setTimeout(() => setSavedIndicator(false), 2000);
+    } catch {
+      // silent — don't crash on save failure
+    }
   }
 
   function toggleTask(id: string) {
     if (alreadyDone) return;
-    setCheckedTasks((prev) => {
-      const next = new Set(prev);
-      if (next.has(id)) next.delete(id);
-      else next.add(id);
-      autoSave(next, reflection);
-      return next;
-    });
+    const next = new Set(checkedTasks);
+    if (next.has(id)) next.delete(id);
+    else next.add(id);
+    setCheckedTasks(next);
+    autoSave(next, reflection);
   }
 
   function handleReflectionChange(value: string) {
@@ -133,7 +136,11 @@ export default function ActivityPage({ params }: { params: Params }) {
   const canComplete = checkedTasks.size > 0 || reflection.trim().length > 0;
 
   async function handleComplete() {
-    if (!user || completing || !activity) return;
+    if (!user || completing || !activity || activity.isTeaser) return;
+    if (reflectionTimer.current) {
+      clearTimeout(reflectionTimer.current);
+      reflectionTimer.current = null;
+    }
     setCompleting(true);
     try {
       const tasksDone = Object.fromEntries(activity.tasks.map((t) => [t.id, checkedTasks.has(t.id)]));
@@ -290,32 +297,42 @@ export default function ActivityPage({ params }: { params: Params }) {
           </div>
         </div>
 
-        {/* Reflection */}
+        {/* Question */}
         <div className="bg-white rounded-3xl p-5 shadow-sm border border-purple-50">
           <div className="flex items-center justify-between mb-3">
             <div className="flex items-center gap-2">
               <Pen size={16} className="text-purple-500" />
               <h2 className="text-sm font-bold text-gray-600 uppercase tracking-wide">
-                {lang === 'ml' ? 'ചിന്തിക്കൂ' : 'Reflection'}
+                {lang === 'ml' ? 'ചോദ്യം' : 'Question'}
               </h2>
             </div>
             {savedIndicator && (
               <span className="text-xs text-green-500 font-semibold">✓ Saved</span>
             )}
           </div>
-          <p className="text-gray-600 text-sm italic mb-3">&ldquo;{t(activity.reflection, ml?.reflection)}&rdquo;</p>
+          <p className="text-gray-600 text-sm italic mb-3">&ldquo;{t(activity.question, ml?.question)}&rdquo;</p>
           <textarea
             value={reflection}
             onChange={(e) => handleReflectionChange(e.target.value)}
-            placeholder={lang === 'ml' ? 'നിങ്ങളുടെ ചിന്തകൾ ഇവിടെ എഴുതുക...' : 'Write your thoughts here...'}
+            placeholder={lang === 'ml' ? 'നിങ്ങളുടെ ഉത്തരം ഇവിടെ എഴുതുക...' : 'Write your answer here...'}
             disabled={alreadyDone}
             rows={4}
             className="w-full bg-purple-50 border border-purple-100 rounded-2xl px-4 py-3 text-gray-700 text-sm focus:border-purple-400 focus:ring-2 focus:ring-purple-100 resize-none transition-all disabled:opacity-60"
           />
         </div>
 
+        {/* Teaser save button */}
+        {activity.isTeaser && (
+          <button
+            onClick={() => autoSave(checkedTasks, reflection)}
+            className="w-full py-4 rounded-2xl font-bold text-base bg-gradient-to-r from-purple-500 to-indigo-500 text-white shadow-lg shadow-purple-200 active:scale-95 transition-all flex items-center justify-center gap-2"
+          >
+            {savedIndicator ? (lang === 'ml' ? '✓ സേവ് ചെയ്തു!' : '✓ Saved!') : (lang === 'ml' ? '💾 പ്രോഗ്രസ് സേവ് ചെയ്യൂ' : '💾 Save Progress')}
+          </button>
+        )}
+
         {/* Complete button */}
-        {!completed && (
+        {!completed && !activity.isTeaser && (
           <button
             onClick={handleComplete}
             disabled={!canComplete || completing}

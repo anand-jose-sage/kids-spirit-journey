@@ -71,7 +71,8 @@ export default function RegisterPage() {
         }
         return;
       }
-      await createUserProfile(data.user!.id, {
+      if (!data.user) { setError('Registration failed. Please try again.'); return; }
+      await createUserProfile(data.user.id, {
         name: form.name.trim(),
         houseName: form.houseName.trim(),
         parish: form.parish.trim(),
@@ -156,7 +157,7 @@ export default function RegisterPage() {
 
           {/* Standard */}
           <div>
-            <label className="block text-sm font-semibold text-gray-700 mb-1.5">Standard (Class) 📚</label>
+            <label className="block text-sm font-semibold text-gray-700 mb-1.5">Meghala 📚</label>
             <select
               value={form.standard}
               onChange={(e) => update('standard', e.target.value)}

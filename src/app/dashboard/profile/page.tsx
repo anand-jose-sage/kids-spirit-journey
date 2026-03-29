@@ -1,10 +1,10 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { supabase } from '@/lib/supabase';
 import { useAuth } from '@/components/AuthProvider';
-import { getAchievements } from '@/lib/database';
+import { getAchievements, getSavedEntries, getMassStreak } from '@/lib/database';
 import BottomNav from '@/components/BottomNav';
 import { LogOut, Star, Flame, Trophy, Calendar, School, Church, Home } from 'lucide-react';
 
@@ -13,16 +13,21 @@ const TOTAL_DAYS = 30;
 export default function ProfilePage() {
   const { user, profile, loading } = useAuth();
   const router = useRouter();
+  const [massStreak, setMassStreak] = useState(0);
 
   useEffect(() => {
     if (!loading && !user) router.replace('/login');
   }, [user, loading, router]);
 
+  useEffect(() => {
+    if (user) getSavedEntries(user.id).then((entries) => setMassStreak(getMassStreak(entries)));
+  }, [user]);
+
   if (loading || !profile) return null;
 
   const completedDays = profile.completedDays || [];
   const progressPct = Math.round((completedDays.length / TOTAL_DAYS) * 100);
-  const achievements = getAchievements(completedDays);
+  const achievements = getAchievements(completedDays, massStreak);
   const unlockedCount = achievements.filter((a) => a.unlocked).length;
 
   async function handleLogout() {
@@ -38,7 +43,7 @@ export default function ProfilePage() {
     'from-green-500 to-teal-500',
     'from-blue-500 to-cyan-500',
   ];
-  const colorIdx = profile.name.charCodeAt(0) % colors.length;
+  const colorIdx = (profile.name?.charCodeAt(0) ?? 0) % colors.length;
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-50 to-indigo-50 pb-nav">
@@ -105,7 +110,7 @@ export default function ProfilePage() {
             {[
               { icon: Home, label: 'House', value: profile.houseName },
               { icon: Church, label: 'Parish', value: profile.parish },
-              { icon: School, label: 'Standard', value: profile.standard },
+              { icon: School, label: 'Meghala', value: profile.standard },
             ].map(({ icon: Icon, label, value }) => (
               <div key={label} className="flex items-center gap-3 py-2 border-b border-gray-50 last:border-0">
                 <div className="w-9 h-9 bg-purple-50 rounded-xl flex items-center justify-center">

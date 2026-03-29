@@ -61,6 +61,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         setProfile(data);
         setLoading(false);
       }
+    }).catch(() => {
+      if (active) setLoading(false);
     });
 
     // Real-time listener: fires when profile is created or updated

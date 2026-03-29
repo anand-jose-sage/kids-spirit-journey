@@ -96,6 +96,25 @@ export async function getSavedDays(uid: string): Promise<number[]> {
   return data?.map((r) => r.day as number) ?? [];
 }
 
+export async function getSavedEntries(uid: string): Promise<{ day: number; tasksDone: Record<string, boolean> }[]> {
+  const { data } = await supabase.from('day_entries').select('day, tasks_done').eq('user_id', uid);
+  return (data ?? []).map((r) => ({ day: r.day as number, tasksDone: (r.tasks_done ?? {}) as Record<string, boolean> }));
+}
+
+export function getMassStreak(entries: { day: number; tasksDone: Record<string, boolean> }[]): number {
+  const massDays = entries
+    .filter((e) => e.tasksDone?.mass === true)
+    .map((e) => e.day)
+    .sort((a, b) => a - b);
+  if (massDays.length === 0) return 0;
+  let max = 1, run = 1;
+  for (let i = 1; i < massDays.length; i++) {
+    run = massDays[i] === massDays[i - 1] + 1 ? run + 1 : 1;
+    max = Math.max(max, run);
+  }
+  return max;
+}
+
 export async function completeDay(uid: string, day: number): Promise<void> {
   const today = new Date().toISOString().split('T')[0];
   const profile = await getUserProfile(uid);
@@ -133,7 +152,7 @@ export interface Achievement {
   unlocked: boolean;
 }
 
-export function getAchievements(completedDays: number[]): Achievement[] {
+export function getAchievements(completedDays: number[], massStreak = 0): Achievement[] {
   const count = completedDays.length;
   const sorted = [...completedDays].sort((a, b) => a - b);
 
@@ -191,6 +210,13 @@ export function getAchievements(completedDays: number[]): Achievement[] {
       emoji: '💛',
       description: 'Complete 20 days',
       unlocked: count >= 20,
+    },
+    {
+      id: 'friend_of_eucharist',
+      title: 'Friend of Eucharist',
+      emoji: '⛪',
+      description: 'Attend Holy Qurbana 7 days in a row',
+      unlocked: massStreak >= 7,
     },
     {
       id: 'journey_complete',

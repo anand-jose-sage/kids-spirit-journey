@@ -50,7 +50,7 @@ export default function LoginPage() {
     <div className="min-h-screen flex flex-col bg-gradient-to-br from-purple-600 via-violet-600 to-indigo-700">
       {/* Top section */}
       <div className="flex flex-col items-center pt-16 pb-8 px-6">
-        <div className="text-6xl mb-4">✨</div>
+        <img src="/images/logo.png" alt="Logo" className="w-24 h-24 mx-auto mb-4 rounded-full object-cover" />
         <h1 className="text-4xl font-bold text-white mb-1">Spirit Journey</h1>
         <p className="text-purple-200 text-base text-center">Your 30-day adventure with God</p>
       </div>

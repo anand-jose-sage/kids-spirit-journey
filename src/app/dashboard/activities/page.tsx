@@ -6,19 +6,16 @@ import Link from 'next/link';
 import { useAuth } from '@/components/AuthProvider';
 import BottomNav from '@/components/BottomNav';
 import activities from '@/data/activities.json';
+import mlActivities from '@/data/activities.ml.json';
+import { useLang } from '@/contexts/LanguageContext';
 import { CheckCircle2, Lock, ChevronRight } from 'lucide-react';
 import { clsx } from 'clsx';
-
-function getTodayDay(completedDays: number[]): number {
-  for (let i = 1; i <= 30; i++) {
-    if (!completedDays.includes(i)) return i;
-  }
-  return 30;
-}
+import { isDayUnlocked, getTodayCalendarDay } from '@/lib/schedule';
 
 export default function ActivitiesPage() {
   const { user, profile, loading } = useAuth();
   const router = useRouter();
+  const { lang } = useLang();
 
   useEffect(() => {
     if (!loading && !user) router.replace('/login');
@@ -27,15 +24,25 @@ export default function ActivitiesPage() {
   if (loading || !profile) return null;
 
   const completedDays = profile.completedDays || [];
-  const todayDay = getTodayDay(completedDays);
+  const todayDay = getTodayCalendarDay();
+
+  function t(enStr: string, dayNum: number, field: 'title' | 'theme') {
+    if (lang !== 'ml') return enStr;
+    const ml = mlActivities[String(dayNum) as keyof typeof mlActivities];
+    return ml?.[field] || enStr;
+  }
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-50 to-indigo-50 pb-nav">
       {/* Header */}
       <div className="bg-gradient-to-br from-purple-600 to-indigo-700 px-5 pt-12 pb-6">
-        <h1 className="text-white text-2xl font-bold">All Activities 📖</h1>
+        <h1 className="text-white text-2xl font-bold">
+          {lang === 'ml' ? 'എല്ലാ പ്രവൃത്തികളും 📖' : 'All Activities 📖'}
+        </h1>
         <p className="text-purple-200 text-sm mt-1">
-          {completedDays.length} of 30 days completed
+          {lang === 'ml'
+            ? `${completedDays.length} / 30 ദിവസം പൂർത്തിയായി`
+            : `${completedDays.length} of 30 days completed`}
         </p>
       </div>
 
@@ -43,7 +50,7 @@ export default function ActivitiesPage() {
         {activities.map((act) => {
           const done = completedDays.includes(act.day);
           const isToday = act.day === todayDay && !done;
-          const locked = !done && act.day > todayDay;
+          const locked = !done && !isDayUnlocked(act.day);
 
           return (
             <Link
@@ -79,22 +86,22 @@ export default function ActivitiesPage() {
                     'font-semibold text-sm truncate',
                     done ? 'text-green-700' : isToday ? 'text-purple-700' : locked ? 'text-gray-400' : 'text-gray-700'
                   )}>
-                    {act.title}
+                    {t(act.title, act.day, 'title')}
                   </p>
                   {isToday && (
                     <span className="bg-purple-100 text-purple-600 text-xs font-bold px-2 py-0.5 rounded-full flex-shrink-0">
-                      Today!
+                      {lang === 'ml' ? 'ഇന്ന്!' : 'Today!'}
                     </span>
                   )}
                 </div>
                 <div className="flex items-center gap-2 mt-0.5">
-                  <span className="text-xs text-gray-400">{act.theme}</span>
+                  <span className="text-xs text-gray-400">{t(act.theme, act.day, 'theme')}</span>
                   <span className="text-gray-300">·</span>
                   <span className="text-xs text-gray-400">{act.verse}</span>
                 </div>
                 <div className="flex gap-1 mt-1.5">
-                  {act.tasks.map((t) => (
-                    <span key={t.id} className="text-base">{t.emoji}</span>
+                  {act.tasks.map((t, i) => (
+                    <span key={i} className="text-base">{t.emoji}</span>
                   ))}
                 </div>
               </div>
