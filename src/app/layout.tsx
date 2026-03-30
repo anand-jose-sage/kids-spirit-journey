@@ -11,6 +11,7 @@ const anekMalayalam = Anek_Malayalam({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://www.shiloha.in'),
   title: 'Shiloha — 30 Days with God',
   description: 'A 30-day spiritual adventure for kids. Grow in faith, love, and courage!',
   manifest: '/manifest.json',
@@ -18,6 +19,27 @@ export const metadata: Metadata = {
     capable: true,
     statusBarStyle: 'default',
     title: 'Shiloha',
+  },
+  openGraph: {
+    title: 'Shiloha — 30 Days with God',
+    description: 'A 30-day spiritual adventure for kids. Grow in faith, love, and courage!',
+    url: 'https://www.shiloha.in',
+    siteName: 'Shiloha',
+    images: [
+      {
+        url: '/images/preview.png',
+        width: 1200,
+        height: 630,
+        alt: 'Shiloha — 30 Days with God',
+      },
+    ],
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Shiloha — 30 Days with God',
+    description: 'A 30-day spiritual adventure for kids. Grow in faith, love, and courage!',
+    images: ['/images/preview.png'],
   },
 };
 
