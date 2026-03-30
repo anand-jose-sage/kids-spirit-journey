@@ -42,7 +42,7 @@ export async function saveDayEntry(uid: string, day: number, entry: Omit<DayEntr
       user_id: uid,
       day,
       tasks_done: entry.tasksDone,
-      reflection: entry.reflection,
+      reflection: entry.reflection.slice(0, 2000),
       saved_at: new Date().toISOString(),
     },
     { onConflict: 'user_id,day' }

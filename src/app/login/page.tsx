@@ -6,10 +6,11 @@ import Link from 'next/link';
 import { supabase } from '@/lib/supabase';
 import { useAuth } from '@/components/AuthProvider';
 import { Eye, EyeOff, Sparkles, X, Volume2, VolumeX } from 'lucide-react';
+import { useLang } from '@/contexts/LanguageContext';
 
 // WebM with alpha channel gives true transparent background (PNG effect)
 // Convert: ffmpeg -i donkey.mp4 -vf "colorkey=white:0.15:0.05" -c:v libvpx-9 -auto-alt-ref 0 -pix_fmt yuva420p donkey.webm
-const INTRO_VIDEO_URL = '/videos/donkey.webm';
+const INTRO_VIDEO_URL = `${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/audio/donkey.webm`;
 
 export default function LoginPage() {
   const { user, loading } = useAuth();
@@ -22,11 +23,23 @@ export default function LoginPage() {
   const [submitting, setSubmitting] = useState(false);
   const [showVideo, setShowVideo] = useState(true);
   const [muted, setMuted] = useState(false);
+  const { lang, setLang } = useLang();
   const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
     const video = videoRef.current;
     if (!video) return;
+
+    // Auto-unmute on first user interaction regardless of how play started
+    const unmuteOnInteraction = () => {
+      if (video.muted) {
+        video.muted = false;
+        setMuted(false);
+      }
+      document.removeEventListener('click', unmuteOnInteraction);
+    };
+    document.addEventListener('click', unmuteOnInteraction);
+
     video.muted = false;
     video.play().catch(() => {
       // Browser blocked unmuted autoplay — mute and retry
@@ -34,9 +47,16 @@ export default function LoginPage() {
       setMuted(true);
       video.play().catch(() => {});
     });
+
+    return () => {
+      document.removeEventListener('click', unmuteOnInteraction);
+      document.removeEventListener('touchstart', unmuteOnInteraction);
+    };
   }, []);
 
-  function toggleMute() {
+  function toggleMute(e: React.MouseEvent | React.TouchEvent) {
+    e.stopPropagation();
+    e.preventDefault();
     const video = videoRef.current;
     if (!video) return;
     video.muted = !video.muted;
@@ -84,16 +104,19 @@ export default function LoginPage() {
               playsInline
               className="w-40 rounded-l-2xl"
               onEnded={() => setShowVideo(false)}
+              style={{ pointerEvents: 'none' }}
             />
             <button
+              onTouchEnd={toggleMute}
               onClick={toggleMute}
-              className="absolute bottom-2 left-2 bg-black/60 hover:bg-black/80 text-white rounded-full p-1 transition-colors"
+              className="absolute bottom-2 left-2 flex items-center gap-1 bg-black/60 hover:bg-black/80 text-white rounded-full pl-1 pr-2 py-1 transition-colors"
               aria-label={muted ? 'Unmute' : 'Mute'}
             >
               {muted ? <VolumeX size={16} /> : <Volume2 size={16} />}
+              {muted && <span className="text-xs leading-none">Tap to unmute</span>}
             </button>
             <button
-              onClick={() => setShowVideo(false)}
+              onClick={(e) => { e.stopPropagation(); setShowVideo(false); }}
               className="absolute top-2 left-2 bg-black/60 hover:bg-black/80 text-white rounded-full p-1 transition-colors"
               aria-label="Close video"
             >
@@ -103,15 +126,28 @@ export default function LoginPage() {
         </div>
       )}
       {/* Top section */}
-      <div className="flex flex-col items-center pt-16 pb-8 px-6">
+      <div className="flex flex-col items-center pt-8 pb-8 px-6">
         <img src="/images/logo.png" alt="Logo" className="w-24 h-24 mx-auto mb-4 rounded-full object-cover" />
         <h1 className="text-4xl font-bold text-white mb-1">ശിലോഹ <span className="text-2xl font-semibold">| Shiloha</span></h1>
-        <p className="text-purple-200 text-base text-center">Your 30-day adventure with God</p>
+        <div className="mt-2 mb-1 px-5 py-2 rounded-full bg-gradient-to-r from-yellow-400 via-red-500 to-yellow-400 border border-yellow-200/50 text-center shadow-lg">
+          <p className="text-white font-bold text-base tracking-wide" style={{textShadow: '2px 2px 6px rgba(0,0,0,0.8), -1px -1px 4px rgba(0,0,0,0.6)'}}>ചെറുപുഷ്‌പ മിഷൻ ലീഗ്</p>
+          <p className="text-yellow-100 text-sm font-semibold" style={{textShadow: '2px 2px 6px rgba(0,0,0,0.8), -1px -1px 4px rgba(0,0,0,0.6)'}}>മാനന്തവാടി രൂപത</p>
+        </div>
+        <p className="text-purple-200 text-base text-center mt-1">Your 30-day adventure with God</p>
       </div>
 
       {/* Card */}
       <div className="flex-1 bg-white rounded-t-4xl px-6 pt-8 pb-12 shadow-2xl">
-        <h2 className="text-2xl font-bold text-gray-800 mb-1">Welcome back! 👋</h2>
+        <div className="flex items-center justify-between mb-1">
+          <h2 className="text-2xl font-bold text-gray-800">Welcome back! 👋</h2>
+          <button
+            type="button"
+            onClick={() => setLang(lang === 'en' ? 'ml' : 'en')}
+            className="text-xs font-bold px-3 py-1 rounded-full border-2 border-purple-400 text-purple-600 hover:bg-purple-50 transition-colors"
+          >
+            {lang === 'en' ? 'മലയാളം' : 'EN'}
+          </button>
+        </div>
         <p className="text-gray-500 text-sm mb-6">Sign in to continue your journey</p>
 
         {error && (
@@ -122,20 +158,22 @@ export default function LoginPage() {
 
         <form onSubmit={handleLogin} className="space-y-4" suppressHydrationWarning>
           <div suppressHydrationWarning>
-            <label className="block text-sm font-semibold text-gray-700 mb-1.5">Mobile Number 📱</label>
+            <label className="block text-sm font-semibold text-gray-700 mb-1.5">{lang === 'en' ? 'Mobile Number 📱' : 'മൊബൈൽ നമ്പർ 📱'}</label>
             <input
               type="tel"
               value={phone}
-              onChange={(e) => setPhone(e.target.value)}
+              onChange={(e) => setPhone(e.target.value.replace(/\D/g, ''))}
               placeholder="10-digit mobile number"
               required
               maxLength={12}
+              inputMode="numeric"
+              pattern="[0-9]{10,12}"
               className="w-full bg-gray-50 border border-gray-200 rounded-2xl px-4 py-3.5 text-gray-800 text-base focus:border-purple-400 focus:bg-white focus:ring-2 focus:ring-purple-100 transition-all"
             />
           </div>
 
           <div suppressHydrationWarning>
-            <label className="block text-sm font-semibold text-gray-700 mb-1.5">Password</label>
+            <label className="block text-sm font-semibold text-gray-700 mb-1.5">{lang === 'en' ? 'Password' : 'പാസ്സ്‌വേഡ്'}</label>
             <div className="relative" suppressHydrationWarning>
               <input
                 type={showPassword ? 'text' : 'password'}
@@ -163,23 +201,23 @@ export default function LoginPage() {
             {submitting ? (
               <>
                 <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
-                Signing in...
+                {lang === 'en' ? 'Signing in...' : 'ലോഗിൻ ചെയ്യുന്നു...'}
               </>
             ) : (
               <>
                 <Sparkles size={18} />
-                Let's Go!
+                {lang === 'en' ? "Let's Go!" : 'ആരംഭിക്കാം!'}
               </>
             )}
           </button>
         </form>
 
-        <p className="mt-6 text-center text-gray-500 text-sm">
-          New here?{' '}
-          <Link href="/register" className="text-purple-600 font-bold hover:text-purple-700">
-            Create an account
+        <div className="mt-6 text-center">
+          <p className="text-gray-500 text-base mb-0.5">{lang === 'en' ? 'New here?' : 'പുതിയ അംഗമോ?'}</p>
+          <Link href="/register" className="inline-block px-8 py-3 rounded-xl bg-gradient-to-r from-pink-500 to-rose-500 text-white font-bold text-lg text-center shadow-md hover:from-pink-600 hover:to-rose-600 active:scale-95 transition-all">
+            {lang === 'en' ? 'Create an account' : 'അക്കൗണ്ട് ഉണ്ടാക്കാം'}
           </Link>
-        </p>
+        </div>
       </div>
     </div>
   );
