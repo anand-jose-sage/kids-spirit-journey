@@ -7,6 +7,7 @@ import { supabase } from '@/lib/supabase';
 import { createUserProfile } from '@/lib/database';
 import { useAuth } from '@/components/AuthProvider';
 import { Eye, EyeOff, ChevronLeft } from 'lucide-react';
+import { useLang } from '@/contexts/LanguageContext';
 
 const STANDARDS = [
   'Bathery', 'Chungakkunnu', 'Dwaraka', 'Kallodi', 'Kalpatta', 'Mananthavady', 'Payyampalli',
@@ -30,6 +31,7 @@ export default function RegisterPage() {
   const [showPassword, setShowPassword] = useState(false);
   const [toast, setToast] = useState('');
   const [submitting, setSubmitting] = useState(false);
+  const { lang, setLang } = useLang();
 
   useEffect(() => {
     if (!loading && user) router.replace('/dashboard');
@@ -52,8 +54,8 @@ export default function RegisterPage() {
       setToast('Passwords do not match!');
       return;
     }
-    if (form.password.length < 6) {
-      setToast('Password must be at least 6 characters.');
+    if (form.password.length < 8) {
+      setToast('Password must be at least 8 characters.');
       return;
     }
 
@@ -102,68 +104,77 @@ export default function RegisterPage() {
           <ChevronLeft size={24} />
         </Link>
         <div className="flex-1 text-center">
-          <div className="text-3xl">🌟</div>
-          <h1 className="text-white font-bold text-lg">Start Your Journey!</h1>
+          <img src="/images/logo.png" alt="Logo" className="w-10 h-10 mx-auto rounded-full object-cover" />
+          <h1 className="text-white font-bold text-lg">{lang === 'en' ? 'Start Your Journey!' : 'യാത്ര തുടങ്ങാം!'}</h1>
         </div>
-        <div className="w-10" />
+        <button
+          type="button"
+          onClick={() => setLang(lang === 'en' ? 'ml' : 'en')}
+          className="text-xs font-bold px-3 py-1 rounded-full border-2 border-white/60 text-white hover:bg-white/10 transition-colors w-10"
+        >
+          {lang === 'en' ? 'മല' : 'EN'}
+        </button>
       </div>
 
       {/* Form card */}
       <div className="bg-white rounded-t-4xl px-6 pt-6 pb-12 min-h-[calc(100vh-8rem)]">
-        <h2 className="text-2xl font-bold text-gray-800 mb-1">Create your account</h2>
-        <p className="text-gray-500 text-sm mb-5">Join the 30-day adventure with God!</p>
+        <h2 className="text-2xl font-bold text-gray-800 mb-1">{lang === 'en' ? 'Create your account' : 'അക്കൗണ്ട് ഉണ്ടാക്കാം'}</h2>
+        <p className="text-gray-500 text-sm mb-5">{lang === 'en' ? 'Join the 30-day adventure with God!' : 'ദൈവവുമൊത്ത് 30 ദിവസത്തെ യാത്രയിൽ ചേരൂ!'}</p>
 
 
         <form onSubmit={handleRegister} className="space-y-4">
           {/* Name */}
           <div>
-            <label className="block text-sm font-semibold text-gray-700 mb-1.5">Your Name ✨</label>
+            <label className="block text-sm font-semibold text-gray-700 mb-1.5">{lang === 'en' ? 'Your Name ✨' : 'നിന്റെ പേര് ✨'}</label>
             <input
               type="text"
               value={form.name}
               onChange={(e) => update('name', e.target.value)}
               placeholder="e.g. Anand Jose"
               required
+              maxLength={100}
               className={inputClass}
             />
           </div>
 
           {/* House Name */}
           <div>
-            <label className="block text-sm font-semibold text-gray-700 mb-1.5">House Name 🏠</label>
+            <label className="block text-sm font-semibold text-gray-700 mb-1.5">{lang === 'en' ? 'House Name 🏠' : 'വീടിന്റെ പേര് 🏠'}</label>
             <input
               type="text"
               value={form.houseName}
               onChange={(e) => update('houseName', e.target.value)}
               placeholder="e.g. Arackal House"
               required
+              maxLength={100}
               className={inputClass}
             />
           </div>
 
           {/* Parish */}
           <div>
-            <label className="block text-sm font-semibold text-gray-700 mb-1.5">Parish ⛪</label>
+            <label className="block text-sm font-semibold text-gray-700 mb-1.5">{lang === 'en' ? 'Parish ⛪' : 'ഇടവക ⛪'}</label>
             <input
               type="text"
               value={form.parish}
               onChange={(e) => update('parish', e.target.value)}
               placeholder="e.g. St. Mary's Vythiri"
               required
+              maxLength={100}
               className={inputClass}
             />
           </div>
 
           {/* Standard */}
           <div>
-            <label className="block text-sm font-semibold text-gray-700 mb-1.5">Meghala 📚</label>
+            <label className="block text-sm font-semibold text-gray-700 mb-1.5">{lang === 'en' ? 'Meghala 📚' : 'മേഖല 📚'}</label>
             <select
               value={form.standard}
               onChange={(e) => update('standard', e.target.value)}
               required
               className={inputClass}
             >
-              <option value="">Select your Meghala</option>
+              <option value="">{lang === 'en' ? 'Select your Meghala' : 'മേഖല തിരഞ്ഞെടുക്കൂ'}</option>
               {STANDARDS.map((s) => (
                 <option key={s} value={s}>{s}</option>
               ))}
@@ -172,7 +183,7 @@ export default function RegisterPage() {
 
           {/* Mobile Number */}
           <div>
-            <label className="block text-sm font-semibold text-gray-700 mb-1.5">Mobile Number 📱</label>
+            <label className="block text-sm font-semibold text-gray-700 mb-1.5">{lang === 'en' ? 'Mobile Number 📱' : 'മൊബൈൽ നമ്പർ 📱'}</label>
             <input
               type="tel"
               value={form.phone}
@@ -188,15 +199,15 @@ export default function RegisterPage() {
 
           {/* Password */}
           <div>
-            <label className="block text-sm font-semibold text-gray-700 mb-1.5">Password 🔒</label>
+            <label className="block text-sm font-semibold text-gray-700 mb-1.5">{lang === 'en' ? 'Password 🔒' : 'പാസ്സ്‌വേഡ് 🔒'}</label>
             <div className="relative">
               <input
                 type={showPassword ? 'text' : 'password'}
                 value={form.password}
                 onChange={(e) => update('password', e.target.value)}
-                placeholder="At least 6 characters"
+                placeholder="At least 8 characters"
                 required
-                minLength={6}
+                minLength={8}
                 className={`${inputClass} pr-12`}
               />
               <button
@@ -211,7 +222,7 @@ export default function RegisterPage() {
 
           {/* Confirm Password */}
           <div>
-            <label className="block text-sm font-semibold text-gray-700 mb-1.5">Confirm Password ✅</label>
+            <label className="block text-sm font-semibold text-gray-700 mb-1.5">{lang === 'en' ? 'Confirm Password ✅' : 'പാസ്സ്‌വേഡ് സ്ഥിരീകരിക്കൂ ✅'}</label>
             <input
               type="password"
               value={form.confirmPassword}
@@ -230,18 +241,18 @@ export default function RegisterPage() {
             {submitting ? (
               <>
                 <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
-                Creating account...
+                {lang === 'en' ? 'Creating account...' : 'അക്കൗണ്ട് ഉണ്ടാക്കുന്നു...'}
               </>
             ) : (
-              '🚀 Start My Journey!'
+              lang === 'en' ? '🚀 Start My Journey!' : '🚀 യാത്ര തുടങ്ങാം!'
             )}
           </button>
         </form>
 
         <p className="mt-6 text-center text-gray-500 text-sm">
-          Already have an account?{' '}
+          {lang === 'en' ? 'Already have an account?' : 'ഇതിനോടകം അക്കൗണ്ട് ഉണ്ടോ?'}{' '}
           <Link href="/login" className="text-purple-600 font-bold">
-            Sign in
+            {lang === 'en' ? 'Sign in' : 'ലോഗിൻ ചെയ്യൂ'}
           </Link>
         </p>
       </div>

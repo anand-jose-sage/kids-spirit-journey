@@ -261,7 +261,9 @@ export default function ActivityPage({ params }: { params: Params }) {
             🎬 {lang === 'ml' ? 'വീഡിയോ കാണുക' : 'Watch Video'}
           </h2>
           <a
-            href={activity.videoUrl.replace('/embed/', '/watch?v=')}
+            href={/^https:\/\/(www\.)?(youtube\.com|youtu\.be)\//.test(activity.videoUrl)
+              ? activity.videoUrl.replace('/embed/', '/watch?v=')
+              : '#'}
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-3 bg-red-50 border border-red-100 rounded-2xl p-4 active:bg-red-100 transition-colors"
@@ -331,6 +333,7 @@ export default function ActivityPage({ params }: { params: Params }) {
             placeholder={lang === 'ml' ? 'നിങ്ങളുടെ ഉത്തരം ഇവിടെ എഴുതുക...' : 'Write your answer here...'}
             disabled={alreadyDone}
             rows={4}
+            maxLength={2000}
             className="w-full bg-purple-50 border border-purple-100 rounded-2xl px-4 py-3 text-gray-700 text-sm focus:border-purple-400 focus:ring-2 focus:ring-purple-100 resize-none transition-all disabled:opacity-60"
           />
         </div>
