@@ -150,6 +150,28 @@ export default function ProfilePage() {
           </div>
         </div>
 
+        {/* Credits */}
+        <div className="bg-gradient-to-br from-violet-100 via-purple-50 to-indigo-100 border border-purple-200 rounded-2xl px-5 py-4 text-center shadow-md">
+          <p className="text-[10px] font-semibold text-purple-400 uppercase tracking-[0.2em] mb-1">
+            ✦ Conceptualized by ✦
+          </p>
+          <p className="text-base font-extrabold text-purple-800 leading-tight tracking-tight">
+            Cherupushpa Mission League
+          </p>
+          <div className="flex items-center justify-center gap-2 my-1.5">
+            <div className="h-px w-8 bg-purple-300 rounded-full" />
+            <span className="text-purple-300 text-xs">✦</span>
+            <div className="h-px w-8 bg-purple-300 rounded-full" />
+          </div>
+          <p className="text-sm font-bold text-indigo-700 leading-tight">
+            Manathvady Diocese
+          </p>
+          <p className="text-xs text-purple-400 leading-none my-0.5">&amp;</p>
+          <p className="text-sm font-bold text-indigo-700 leading-tight">
+            Kalpatta Meghala
+          </p>
+        </div>
+
         {/* Logout */}
         <button
           onClick={handleLogout}

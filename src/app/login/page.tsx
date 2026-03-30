@@ -137,9 +137,10 @@ export default function LoginPage() {
       </div>
 
       {/* Card */}
-      <div className="flex-1 bg-white rounded-t-4xl px-6 pt-8 pb-12 shadow-2xl">
-        <div className="flex items-center justify-between mb-1">
-          <h2 className="text-2xl font-bold text-gray-800">Welcome back! 👋</h2>
+      <div className="flex-1 bg-white rounded-t-4xl px-6 pt-4 pb-12 shadow-2xl">
+        {/* Welcome + Lang */}
+        <div className="flex items-center justify-between mb-3">
+          <h2 className="text-2xl font-bold text-gray-800">Welcome 👋</h2>
           <button
             type="button"
             onClick={() => setLang(lang === 'en' ? 'ml' : 'en')}
@@ -148,7 +149,23 @@ export default function LoginPage() {
             {lang === 'en' ? 'മലയാളം' : 'EN'}
           </button>
         </div>
-        <p className="text-gray-500 text-sm mb-6">Sign in to continue your journey</p>
+
+        {/* Create Account */}
+        <div className="text-center mb-3">
+          <p className="text-purple-600 text-base font-semibold mb-2">{lang === 'en' ? 'New member here?' : 'പുതിയ അംഗമോ?'}</p>
+          <Link href="/register" className="inline-block px-8 py-3 rounded-2xl bg-gradient-to-r from-pink-500 to-rose-500 text-white font-bold text-base text-center shadow-md hover:from-pink-600 hover:to-rose-600 active:scale-95 transition-all">
+            {lang === 'en' ? 'Create an account' : 'അക്കൗണ്ട് ഉണ്ടാക്കാം'}
+          </Link>
+        </div>
+
+        {/* Divider */}
+        <div className="flex items-center gap-3 mb-4">
+          <div className="flex-1 h-px bg-gray-200 rounded-full" />
+          <span className="text-xs font-semibold text-gray-400 uppercase tracking-widest">or sign in</span>
+          <div className="flex-1 h-px bg-gray-200 rounded-full" />
+        </div>
+
+        <p className="text-gray-500 text-sm mb-4">Sign in to continue your journey</p>
 
         {error && (
           <div className="mb-4 bg-red-50 border border-red-200 text-red-700 rounded-2xl px-4 py-3 text-sm font-medium">
@@ -211,13 +228,6 @@ export default function LoginPage() {
             )}
           </button>
         </form>
-
-        <div className="mt-6 text-center">
-          <p className="text-gray-500 text-base mb-0.5">{lang === 'en' ? 'New here?' : 'പുതിയ അംഗമോ?'}</p>
-          <Link href="/register" className="inline-block px-8 py-3 rounded-xl bg-gradient-to-r from-pink-500 to-rose-500 text-white font-bold text-lg text-center shadow-md hover:from-pink-600 hover:to-rose-600 active:scale-95 transition-all">
-            {lang === 'en' ? 'Create an account' : 'അക്കൗണ്ട് ഉണ്ടാക്കാം'}
-          </Link>
-        </div>
       </div>
     </div>
   );
