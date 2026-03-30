@@ -9,14 +9,13 @@ import { useAuth } from '@/components/AuthProvider';
 import { Eye, EyeOff, ChevronLeft } from 'lucide-react';
 
 const STANDARDS = [
-  'Bible kids',
-  'Class 1', 'Class 2', 'Class 3', 'Class 4', 'Class 5', 'Class 6',
-  'Class 7', 'Class 8', 'Class 9', 'Class 10', 'Class 11', 'Class 12',
+  'Bathery', 'Chungakkunnu', 'Dwaraka', 'Kallodi', 'Kalpatta', 'Mananthavady', 'Payyampalli',
+  'Thariode', 'Nadavayal', 'Mullenkolly', 'Neelagiri', 'Manimooly', 'Nilamboor'
 ];
 
 
 export default function RegisterPage() {
-  const { user, loading } = useAuth();
+  const { user, loading, refreshProfile } = useAuth();
   const router = useRouter();
 
   const [form, setForm] = useState({
@@ -29,33 +28,37 @@ export default function RegisterPage() {
     confirmPassword: '',
   });
   const [showPassword, setShowPassword] = useState(false);
-  const [error, setError] = useState('');
+  const [toast, setToast] = useState('');
   const [submitting, setSubmitting] = useState(false);
 
   useEffect(() => {
     if (!loading && user) router.replace('/dashboard');
   }, [user, loading, router]);
 
+  useEffect(() => {
+    if (!toast) return;
+    const t = setTimeout(() => setToast(''), 3500);
+    return () => clearTimeout(t);
+  }, [toast]);
+
   function update(field: keyof typeof form, value: string) {
     setForm((f) => ({ ...f, [field]: value }));
-    setError('');
   }
 
   async function handleRegister(e: React.FormEvent) {
     e.preventDefault();
-    setError('');
 
     if (form.password !== form.confirmPassword) {
-      setError('Passwords do not match!');
+      setToast('Passwords do not match!');
       return;
     }
     if (form.password.length < 6) {
-      setError('Password must be at least 6 characters.');
+      setToast('Password must be at least 6 characters.');
       return;
     }
 
-    if (!/^\d{10}$/.test(form.phone)) {
-      setError('Please enter a valid 10-digit mobile number.');
+    if (!/^\d{10,12}$/.test(form.phone)) {
+      setToast('Please enter a valid 10 to 12-digit mobile number.');
       return;
     }
 
@@ -65,13 +68,13 @@ export default function RegisterPage() {
       const { data, error } = await supabase.auth.signUp({ email: syntheticEmail, password: form.password });
       if (error) {
         if (error.message.toLowerCase().includes('already registered') || error.message.toLowerCase().includes('already in use')) {
-          setError('This mobile number is already registered. Try logging in!');
+          setToast('This mobile number is already registered. Try logging in!');
         } else {
-          setError('Something went wrong. Please try again.');
+          setToast('Something went wrong. Please try again.');
         }
         return;
       }
-      if (!data.user) { setError('Registration failed. Please try again.'); return; }
+      if (!data.user) { setToast('Registration failed. Please try again.'); return; }
       await createUserProfile(data.user.id, {
         name: form.name.trim(),
         houseName: form.houseName.trim(),
@@ -79,9 +82,10 @@ export default function RegisterPage() {
         standard: form.standard,
         phone: form.phone,
       });
+      await refreshProfile(data.user.id);
       router.replace('/dashboard');
     } catch {
-      setError('Something went wrong. Please try again.');
+      setToast('Something went wrong. Please try again.');
     } finally {
       setSubmitting(false);
     }
@@ -109,11 +113,6 @@ export default function RegisterPage() {
         <h2 className="text-2xl font-bold text-gray-800 mb-1">Create your account</h2>
         <p className="text-gray-500 text-sm mb-5">Join the 30-day adventure with God!</p>
 
-        {error && (
-          <div className="mb-4 bg-red-50 border border-red-200 text-red-700 rounded-2xl px-4 py-3 text-sm font-medium">
-            {error}
-          </div>
-        )}
 
         <form onSubmit={handleRegister} className="space-y-4">
           {/* Name */}
@@ -164,7 +163,7 @@ export default function RegisterPage() {
               required
               className={inputClass}
             >
-              <option value="">Select your class</option>
+              <option value="">Select your Meghala</option>
               {STANDARDS.map((s) => (
                 <option key={s} value={s}>{s}</option>
               ))}
@@ -180,8 +179,8 @@ export default function RegisterPage() {
               onChange={(e) => update('phone', e.target.value.replace(/\D/g, ''))}
               placeholder="10-digit mobile number"
               required
-              maxLength={10}
-              pattern="[0-9]{10}"
+              maxLength={12}
+              pattern="[0-9]{10,12}"
               inputMode="numeric"
               className={inputClass}
             />
@@ -246,6 +245,11 @@ export default function RegisterPage() {
           </Link>
         </p>
       </div>
+      {toast && (
+        <div className="fixed bottom-6 left-4 right-4 z-50 bg-gray-900 text-white text-sm font-medium px-4 py-3.5 rounded-2xl shadow-xl text-center animate-fade-in-up">
+          {toast}
+        </div>
+      )}
     </div>
   );
 }

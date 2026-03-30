@@ -1,11 +1,15 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { supabase } from '@/lib/supabase';
 import { useAuth } from '@/components/AuthProvider';
-import { Eye, EyeOff, Sparkles } from 'lucide-react';
+import { Eye, EyeOff, Sparkles, X, Volume2, VolumeX } from 'lucide-react';
+
+// WebM with alpha channel gives true transparent background (PNG effect)
+// Convert: ffmpeg -i donkey.mp4 -vf "colorkey=white:0.15:0.05" -c:v libvpx-9 -auto-alt-ref 0 -pix_fmt yuva420p donkey.webm
+const INTRO_VIDEO_URL = '/videos/donkey.webm';
 
 export default function LoginPage() {
   const { user, loading } = useAuth();
@@ -16,12 +20,34 @@ export default function LoginPage() {
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState('');
   const [submitting, setSubmitting] = useState(false);
+  const [showVideo, setShowVideo] = useState(true);
+  const [muted, setMuted] = useState(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+    video.muted = false;
+    video.play().catch(() => {
+      // Browser blocked unmuted autoplay — mute and retry
+      video.muted = true;
+      setMuted(true);
+      video.play().catch(() => {});
+    });
+  }, []);
+
+  function toggleMute() {
+    const video = videoRef.current;
+    if (!video) return;
+    video.muted = !video.muted;
+    setMuted(video.muted);
+  }
 
   useEffect(() => {
     if (!loading && user) router.replace('/dashboard');
   }, [user, loading, router]);
 
-  async function handleLogin(e: React.FormEvent) {
+  async function handleLogin(e: { preventDefault(): void }) {
     e.preventDefault();
     setError('');
     setSubmitting(true);
@@ -48,10 +74,38 @@ export default function LoginPage() {
 
   return (
     <div className="min-h-screen flex flex-col bg-gradient-to-br from-purple-600 via-violet-600 to-indigo-700">
+      {/* Donkey peeking from right */}
+      {showVideo && (
+        <div className="fixed z-50 right-0" style={{ top: '52%' }}>
+          <div className="relative">
+            <video
+              ref={videoRef}
+              src={INTRO_VIDEO_URL}
+              playsInline
+              className="w-40 rounded-l-2xl"
+              onEnded={() => setShowVideo(false)}
+            />
+            <button
+              onClick={toggleMute}
+              className="absolute bottom-2 left-2 bg-black/60 hover:bg-black/80 text-white rounded-full p-1 transition-colors"
+              aria-label={muted ? 'Unmute' : 'Mute'}
+            >
+              {muted ? <VolumeX size={16} /> : <Volume2 size={16} />}
+            </button>
+            <button
+              onClick={() => setShowVideo(false)}
+              className="absolute top-2 left-2 bg-black/60 hover:bg-black/80 text-white rounded-full p-1 transition-colors"
+              aria-label="Close video"
+            >
+              <X size={16} />
+            </button>
+          </div>
+        </div>
+      )}
       {/* Top section */}
       <div className="flex flex-col items-center pt-16 pb-8 px-6">
         <img src="/images/logo.png" alt="Logo" className="w-24 h-24 mx-auto mb-4 rounded-full object-cover" />
-        <h1 className="text-4xl font-bold text-white mb-1">Spirit Journey</h1>
+        <h1 className="text-4xl font-bold text-white mb-1">ശിലോഹ <span className="text-2xl font-semibold">| Shiloha</span></h1>
         <p className="text-purple-200 text-base text-center">Your 30-day adventure with God</p>
       </div>
 
@@ -66,8 +120,8 @@ export default function LoginPage() {
           </div>
         )}
 
-        <form onSubmit={handleLogin} className="space-y-4">
-          <div>
+        <form onSubmit={handleLogin} className="space-y-4" suppressHydrationWarning>
+          <div suppressHydrationWarning>
             <label className="block text-sm font-semibold text-gray-700 mb-1.5">Mobile Number 📱</label>
             <input
               type="tel"
@@ -75,14 +129,14 @@ export default function LoginPage() {
               onChange={(e) => setPhone(e.target.value)}
               placeholder="10-digit mobile number"
               required
-              maxLength={10}
+              maxLength={12}
               className="w-full bg-gray-50 border border-gray-200 rounded-2xl px-4 py-3.5 text-gray-800 text-base focus:border-purple-400 focus:bg-white focus:ring-2 focus:ring-purple-100 transition-all"
             />
           </div>
 
-          <div>
+          <div suppressHydrationWarning>
             <label className="block text-sm font-semibold text-gray-700 mb-1.5">Password</label>
-            <div className="relative">
+            <div className="relative" suppressHydrationWarning>
               <input
                 type={showPassword ? 'text' : 'password'}
                 value={password}

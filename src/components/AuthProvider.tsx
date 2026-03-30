@@ -9,7 +9,7 @@ interface AuthContextType {
   user: User | null;
   profile: UserProfile | null;
   loading: boolean;
-  refreshProfile: () => Promise<void>;
+  refreshProfile: (userId?: string) => Promise<void>;
 }
 
 const AuthContext = createContext<AuthContextType>({
@@ -24,9 +24,10 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [profile, setProfile] = useState<UserProfile | null>(null);
   const [loading, setLoading] = useState(true);
 
-  const refreshProfile = useCallback(async () => {
-    if (!user) return;
-    const data = await getUserProfile(user.id);
+  const refreshProfile = useCallback(async (userId?: string) => {
+    const id = userId ?? user?.id;
+    if (!id) return;
+    const data = await getUserProfile(id);
     setProfile(data);
   }, [user]);
 

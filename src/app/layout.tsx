@@ -1,19 +1,23 @@
 import type { Metadata, Viewport } from 'next';
-import { Inter } from 'next/font/google';
+import { Anek_Malayalam } from 'next/font/google';
 import './globals.css';
 import { AuthProvider } from '@/components/AuthProvider';
 import { LanguageProvider } from '@/contexts/LanguageContext';
 
-const inter = Inter({ subsets: ['latin'] });
+const anekMalayalam = Anek_Malayalam({
+  subsets: ['malayalam', 'latin'],
+  weight: ['300', '400', '500', '600', '700', '800'],
+  variable: '--font-anek',
+});
 
 export const metadata: Metadata = {
-  title: 'Spirit Journey — 30 Days with God',
+  title: 'Shiloha — 30 Days with God',
   description: 'A 30-day spiritual adventure for kids. Grow in faith, love, and courage!',
   manifest: '/manifest.json',
   appleWebApp: {
     capable: true,
     statusBarStyle: 'default',
-    title: 'Spirit Journey',
+    title: 'Shiloha',
   },
 };
 
@@ -28,7 +32,7 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={anekMalayalam.variable}>
         <LanguageProvider>
           <AuthProvider>
             <div className="max-w-lg mx-auto min-h-screen relative">

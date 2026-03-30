@@ -10,8 +10,15 @@ import mlActivities from '@/data/activities.ml.json';
 import { useLang } from '@/contexts/LanguageContext';
 import { ChevronLeft, CheckCircle2, Circle, ExternalLink, BookOpen, Pen } from 'lucide-react';
 import { clsx } from 'clsx';
+import BibleAudioPlayer from '@/components/BibleAudioPlayer';
 
 type Params = Promise<{ day: string }>;
+
+function audioName(day: number) {
+  if (day === -1) return 'teaser';
+  if (day === 0) return 'intro';
+  return String(day);
+}
 
 export default function ActivityPage({ params }: { params: Params }) {
   const { day: dayParam } = use(params);
@@ -227,7 +234,7 @@ export default function ActivityPage({ params }: { params: Params }) {
           <div className="flex items-center gap-2 mb-3">
             <BookOpen size={18} className="text-purple-500" />
             <h2 className="text-sm font-bold text-gray-600 uppercase tracking-wide">
-              {lang === 'ml' ? 'ഇന്നത്തെ വചനം' : "Today's Verse"}
+              {lang === 'ml' ? 'ഇന്നത്തെ വചന വായന' : "Today's Reading"}
             </h2>
           </div>
           <p className="text-gray-700 text-base leading-relaxed italic font-medium">
@@ -235,6 +242,13 @@ export default function ActivityPage({ params }: { params: Params }) {
           </p>
           <p className="text-purple-500 text-sm font-bold mt-2">— {activity.verse}</p>
         </div>
+
+        {/* Bible Reflection Audio */}
+        <BibleAudioPlayer
+          src={`${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/audio/day-${audioName(dayNum)}.mp3`}
+          day={dayNum}
+          label={lang === 'ml' ? 'ബൈബിൾ ധ്യാനം' : 'Bible Reflection'}
+        />
 
         {/* Description */}
         <div className="bg-purple-50 rounded-3xl p-5 border border-purple-100">

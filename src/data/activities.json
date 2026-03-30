@@ -4,10 +4,10 @@
     "isTeaser": true,
     "title": "Get Ready for the Journey!",
     "theme": "Excitement",
-    "verse": "Jeremiah 29:11",
-    "verseText": "For I know the plans I have for you — plans to prosper you and not to harm you, plans to give you hope and a future.",
+    "verse": "Luke 19: 41-48",
+    "verseText": "My house shall be a house of prayer’but you have made it a den of robbers.",
     "description": "Something amazing is coming! In just 2 days, your 30-day Spirit Journey begins. This is your chance to get excited, tell a friend, and prepare your heart for an incredible adventure with God!",
-    "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+    "videoUrl": "https://youtube.com/shorts/XG7hb8L_Azk?si=GyJ14GJoMUrOyvSM",
     "tasks": [
       {
         "id": "read",
@@ -32,10 +32,10 @@
     "isTeaser": true,
     "title": "Tomorrow We Begin!",
     "theme": "Preparation",
-    "verse": "Joshua 1:9",
+    "verse": "Luke 20: 9-19",
     "verseText": "Be strong and courageous. Do not be afraid; do not be discouraged, for the Lord your God will be with you wherever you go.",
     "description": "Tomorrow is Day 1 of your Spirit Journey! Today is the perfect day to prepare — get a good night's sleep, spend a quiet moment with God, and get excited. Your adventure starts in just one day!",
-    "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+    "videoUrl": "https://youtube.com/shorts/zu6g8S2R2gY?si=rVfk4cWFzgfzpn3q",
     "tasks": [
       {
         "id": "read",
@@ -59,14 +59,14 @@
     "day": 1,
     "title": "Love One Another",
     "theme": "Love",
-    "verse": "John 13:34",
+    "verse": "John 12:20-36",
     "verseText": "Love one another. As I have loved you, so you must love one another.",
     "description": "Today we discover the most important commandment Jesus gave us — to love! Love is not just a feeling, it's a choice we make every single day.",
     "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
     "tasks": [
       {
         "id": "read",
-        "label": "Read John 13:34 out loud three times",
+        "label": "Read John 12:20-36 out loud three times",
         "emoji": "📖"
       },
       {

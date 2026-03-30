@@ -21,6 +21,7 @@ body {
   );
   min-height: 100vh;
   -webkit-font-smoothing: antialiased;
+  font-family: var(--font-anek), sans-serif;
 }
 
 /* Smooth scrolling */
@@ -49,4 +50,12 @@ input:focus, textarea:focus, select:focus {
 /* Safe area for bottom nav */
 .pb-nav {
   padding-bottom: calc(4rem + env(safe-area-inset-bottom));
+}
+
+@keyframes fade-in-up {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-in-up {
+  animation: fade-in-up 0.2s ease-out;
 }
