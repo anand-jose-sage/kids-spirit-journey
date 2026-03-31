@@ -28,6 +28,7 @@ export default function ActivityPage({ params }: { params: Params }) {
 
   const [checkedTasks, setCheckedTasks] = useState<Set<string>>(new Set());
   const [reflection, setReflection] = useState('');
+  const [reflectionLocked, setReflectionLocked] = useState(false);
   const [completing, setCompleting] = useState(false);
   const [completed, setCompleted] = useState(false);
   const [showCelebration, setShowCelebration] = useState(false);
@@ -63,6 +64,7 @@ export default function ActivityPage({ params }: { params: Params }) {
       if (entry) {
         setCheckedTasks(new Set(Object.keys(entry.tasksDone).filter((k) => entry.tasksDone[k])));
         setReflection(entry.reflection);
+        if (entry.reflection?.trim()) setReflectionLocked(true);
       }
     }).finally(() => setEntryLoading(false));
   }, [user, dayNum]);
@@ -332,9 +334,10 @@ export default function ActivityPage({ params }: { params: Params }) {
             onChange={(e) => handleReflectionChange(e.target.value)}
             placeholder={lang === 'ml' ? 'നിങ്ങളുടെ ഉത്തരം ഇവിടെ എഴുതുക...' : 'Write your answer here...'}
             disabled={alreadyDone}
+            readOnly={reflectionLocked}
             rows={4}
             maxLength={2000}
-            className="w-full bg-purple-50 border border-purple-100 rounded-2xl px-4 py-3 text-gray-700 text-sm focus:border-purple-400 focus:ring-2 focus:ring-purple-100 resize-none transition-all disabled:opacity-60"
+            className="w-full bg-purple-50 border border-purple-100 rounded-2xl px-4 py-3 text-gray-700 text-sm focus:border-purple-400 focus:ring-2 focus:ring-purple-100 resize-none transition-all disabled:opacity-60 read-only:cursor-default read-only:focus:border-purple-100 read-only:focus:ring-0"
           />
         </div>
 

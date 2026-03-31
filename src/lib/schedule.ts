@@ -11,6 +11,7 @@ export function getUnlockDate(day: number): Date {
 
 export function isDayUnlocked(day: number): boolean {
   if (day <= 0) return true; // teaser days are always accessible
+  if (process.env.NODE_ENV === 'development') return true;
   const today = new Date();
   today.setHours(0, 0, 0, 0);
   const unlock = getUnlockDate(day);
