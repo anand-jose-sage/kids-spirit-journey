@@ -1,16 +1,12 @@
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { supabase } from '@/lib/supabase';
 import { useAuth } from '@/components/AuthProvider';
-import { Eye, EyeOff, Sparkles, X, Volume2, VolumeX } from 'lucide-react';
+import { Eye, EyeOff, Sparkles } from 'lucide-react';
 import { useLang } from '@/contexts/LanguageContext';
-
-// WebM with alpha channel gives true transparent background (PNG effect)
-// Convert: ffmpeg -i donkey.mp4 -vf "colorkey=white:0.15:0.05" -c:v libvpx-9 -auto-alt-ref 0 -pix_fmt yuva420p donkey.webm
-const INTRO_VIDEO_URL = `${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/audio/donkey.webm`;
 
 export default function LoginPage() {
   const { user, loading } = useAuth();
@@ -21,47 +17,7 @@ export default function LoginPage() {
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState('');
   const [submitting, setSubmitting] = useState(false);
-  const [showVideo, setShowVideo] = useState(true);
-  const [muted, setMuted] = useState(false);
   const { lang, setLang } = useLang();
-  const videoRef = useRef<HTMLVideoElement>(null);
-
-  useEffect(() => {
-    const video = videoRef.current;
-    if (!video) return;
-
-    // Auto-unmute on first user interaction regardless of how play started
-    const unmuteOnInteraction = () => {
-      if (video.muted) {
-        video.muted = false;
-        setMuted(false);
-      }
-      document.removeEventListener('click', unmuteOnInteraction);
-    };
-    document.addEventListener('click', unmuteOnInteraction);
-
-    video.muted = false;
-    video.play().catch(() => {
-      // Browser blocked unmuted autoplay — mute and retry
-      video.muted = true;
-      setMuted(true);
-      video.play().catch(() => {});
-    });
-
-    return () => {
-      document.removeEventListener('click', unmuteOnInteraction);
-      document.removeEventListener('touchstart', unmuteOnInteraction);
-    };
-  }, []);
-
-  function toggleMute(e: React.MouseEvent | React.TouchEvent) {
-    e.stopPropagation();
-    e.preventDefault();
-    const video = videoRef.current;
-    if (!video) return;
-    video.muted = !video.muted;
-    setMuted(video.muted);
-  }
 
   useEffect(() => {
     if (!loading && user) router.replace('/dashboard');
@@ -94,37 +50,6 @@ export default function LoginPage() {
 
   return (
     <div className="min-h-screen flex flex-col bg-gradient-to-br from-purple-600 via-violet-600 to-indigo-700">
-      {/* Donkey peeking from right */}
-      {showVideo && (
-        <div className="fixed z-50 right-0" style={{ top: '52%' }}>
-          <div className="relative">
-            <video
-              ref={videoRef}
-              src={INTRO_VIDEO_URL}
-              playsInline
-              className="w-40 rounded-l-2xl"
-              onEnded={() => setShowVideo(false)}
-              style={{ pointerEvents: 'none' }}
-            />
-            <button
-              onTouchEnd={toggleMute}
-              onClick={toggleMute}
-              className="absolute bottom-2 left-2 flex items-center gap-1 bg-black/60 hover:bg-black/80 text-white rounded-full pl-1 pr-2 py-1 transition-colors"
-              aria-label={muted ? 'Unmute' : 'Mute'}
-            >
-              {muted ? <VolumeX size={16} /> : <Volume2 size={16} />}
-              {muted && <span className="text-xs leading-none">Tap to unmute</span>}
-            </button>
-            <button
-              onClick={(e) => { e.stopPropagation(); setShowVideo(false); }}
-              className="absolute top-2 left-2 bg-black/60 hover:bg-black/80 text-white rounded-full p-1 transition-colors"
-              aria-label="Close video"
-            >
-              <X size={16} />
-            </button>
-          </div>
-        </div>
-      )}
       {/* Top section */}
       <div className="flex flex-col items-center pt-8 pb-8 px-6">
         <img src="/images/logo.png" alt="Logo" className="w-24 h-24 mx-auto mb-4 rounded-full object-cover" />

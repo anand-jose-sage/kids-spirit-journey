@@ -1,61 +1,5 @@
 [
   {
-    "day": -1,
-    "isTeaser": true,
-    "title": "Get Ready for the Journey!",
-    "theme": "Excitement",
-    "verse": "Luke 19: 41-48",
-    "verseText": "My house shall be a house of prayer’but you have made it a den of robbers.",
-    "description": "Something amazing is coming! In just 2 days, your 30-day Spirit Journey begins. This is your chance to get excited, tell a friend, and prepare your heart for an incredible adventure with God!",
-    "videoUrl": "https://youtube.com/shorts/XG7hb8L_Azk?si=GyJ14GJoMUrOyvSM",
-    "tasks": [
-      {
-        "id": "read",
-        "label": "Tell one friend or family member about the Spirit Journey",
-        "emoji": "📢"
-      },
-      {
-        "id": "pray",
-        "label": "Find a notebook or journal you can use during the journey",
-        "emoji": "📓"
-      },
-      {
-        "id": "act",
-        "label": "Say a short prayer asking God to prepare your heart",
-        "emoji": "🙏"
-      }
-    ],
-    "question": "What is one thing you hope to learn or experience on this 30-day journey?"
-  },
-  {
-    "day": 0,
-    "isTeaser": true,
-    "title": "Tomorrow We Begin!",
-    "theme": "Preparation",
-    "verse": "Luke 20: 9-19",
-    "verseText": "Be strong and courageous. Do not be afraid; do not be discouraged, for the Lord your God will be with you wherever you go.",
-    "description": "Tomorrow is Day 1 of your Spirit Journey! Today is the perfect day to prepare — get a good night's sleep, spend a quiet moment with God, and get excited. Your adventure starts in just one day!",
-    "videoUrl": "https://youtube.com/shorts/zu6g8S2R2gY?si=rVfk4cWFzgfzpn3q",
-    "tasks": [
-      {
-        "id": "read",
-        "label": "Spend 5 minutes in a quiet place talking to God",
-        "emoji": "🕊️"
-      },
-      {
-        "id": "pray",
-        "label": "Plan to sleep early so you are fresh for Day 1 tomorrow",
-        "emoji": "😴"
-      },
-      {
-        "id": "act",
-        "label": "Share with your family that you are starting a 30-day journey with God",
-        "emoji": "❤️"
-      }
-    ],
-    "question": "How are you feeling about starting this journey tomorrow? What do you want to ask God for?"
-  },
-  {
     "day": 1,
     "title": "Pesha Wednesday",
     "theme": "Preparation Day for Holy Events",
@@ -89,26 +33,26 @@
   },
   {
     "day": 2,
-    "title": "Kindness Changes Everything",
-    "theme": "Kindness",
-    "verse": "Ephesians 4:32",
-    "verseText": "Be kind and compassionate to one another, forgiving each other, just as in Christ God forgave you.",
-    "description": "A small act of kindness can make someone's whole day! Today, we explore how kindness can change the world around us.",
-    "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+    "title": "Maundy Thursday",
+    "theme": "Eucharist & Priestly Institution",
+    "verse": "Luke 22:14-26",
+    "verseText": "I have eagerly desired to eat this Passover with you before I suffer",
+    "description": "",
+    "videoUrl": "https://www.youtube.com/watch?v=MF-Vxr7EbWk",
     "tasks": [
       {
         "id": "read",
-        "label": "Read Ephesians 4:32 and think about what it means",
+        "label": "Participate in the Maundy Thursday sacraments with devotion ",
         "emoji": "📖"
       },
       {
         "id": "act",
-        "label": "Do one surprise kind thing for someone without telling them",
+        "label": "Wish the parish priest and former priests on the day of priestly ordination",
         "emoji": "🌟"
       },
       {
         "id": "pray",
-        "label": "Pray for someone who needs kindness today",
+        "label": "Ask and learn how to make Easter bread at home",
         "emoji": "🙏"
       },
       {
@@ -117,7 +61,7 @@
         "emoji": "⛪"
       }
     ],
-    "question": "What kind thing did you do today? How did it make the other person feel?"
+    "question": "Who is the Pope who wrote the cyclical article on the Eucharist that I so desired?"
   },
   {
     "day": 3,

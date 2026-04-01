@@ -1,6 +1,5 @@
 // Journey starts April 1 2026 — Day 1 unlocks on this date.
-// Day N unlocks on April N. Teaser days use negative/zero day numbers:
-//   day -1 → March 30, day 0 → March 31, day 1 → April 1, etc.
+// Day N unlocks on April N.
 export const JOURNEY_START = new Date('2026-04-01T00:00:00');
 
 export function getUnlockDate(day: number): Date {
@@ -10,7 +9,6 @@ export function getUnlockDate(day: number): Date {
 }
 
 export function isDayUnlocked(day: number): boolean {
-  if (day <= 0) return true; // teaser days are always accessible
   if (process.env.NODE_ENV === 'development') return true;
   const today = new Date();
   today.setHours(0, 0, 0, 0);
