@@ -145,7 +145,7 @@ export default function ActivityPage({ params }: { params: Params }) {
   const canComplete = checkedTasks.size > 0 || reflection.trim().length > 0;
 
   async function handleComplete() {
-    if (!user || completing || !activity || activity.isTeaser) return;
+    if (!user || completing || !activity || dayNum < 1) return;
     if (reflectionTimer.current) {
       clearTimeout(reflectionTimer.current);
       reflectionTimer.current = null;
