@@ -341,18 +341,8 @@ export default function ActivityPage({ params }: { params: Params }) {
           />
         </div>
 
-        {/* Teaser save button */}
-        {activity.isTeaser && (
-          <button
-            onClick={() => autoSave(checkedTasks, reflection)}
-            className="w-full py-4 rounded-2xl font-bold text-base bg-gradient-to-r from-purple-500 to-indigo-500 text-white shadow-lg shadow-purple-200 active:scale-95 transition-all flex items-center justify-center gap-2"
-          >
-            {savedIndicator ? (lang === 'ml' ? '✓ സേവ് ചെയ്തു!' : '✓ Saved!') : (lang === 'ml' ? '💾 പ്രോഗ്രസ് സേവ് ചെയ്യൂ' : '💾 Save Progress')}
-          </button>
-        )}
-
         {/* Complete button */}
-        {!completed && !activity.isTeaser && (
+        {!completed && (
           <button
             onClick={handleComplete}
             disabled={!canComplete || completing}
