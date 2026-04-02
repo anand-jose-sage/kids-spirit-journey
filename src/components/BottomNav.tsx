@@ -2,13 +2,14 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Home, BookOpen, User } from 'lucide-react';
+import { Home, BookOpen, User, Trophy } from 'lucide-react';
 import { clsx } from 'clsx';
 import { useLang } from '@/contexts/LanguageContext';
 
 const navItems = [
   { href: '/dashboard', labelEn: 'Home', labelMl: 'ഹോം', icon: Home },
   { href: '/dashboard/activities', labelEn: 'Activities', labelMl: 'പ്രവൃത്തി', icon: BookOpen },
+  { href: '/dashboard/winners', labelEn: 'Winners', labelMl: 'വിജയി', icon: Trophy },
   { href: '/dashboard/profile', labelEn: 'Profile', labelMl: 'പ്രൊഫൈൽ', icon: User },
 ];
 

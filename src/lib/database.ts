@@ -115,6 +115,58 @@ export function getMassStreak(entries: { day: number; tasksDone: Record<string, 
   return max;
 }
 
+export interface Winner {
+  id: string;
+  day: number;
+  userId: string;
+  name: string;
+  parish: string;
+  standard: string;
+  answer: string;
+  answerMl: string;
+  createdAt: string | null;
+}
+
+export async function getWinners(): Promise<Winner[]> {
+  // Step 1: fetch all winner rows
+  const { data: winnerRows, error } = await supabase
+    .from('winners')
+    .select('id, day, user_id, answer, answer_ml, created_at')
+    .order('day', { ascending: true });
+  if (error || !winnerRows || winnerRows.length === 0) return [];
+
+  // Step 2: fetch user profiles for all referenced user ids
+  const userIds = [...new Set(winnerRows.map((r) => r.user_id as string))];
+  const { data: userRows } = await supabase
+    .from('users')
+    .select('id, name, parish, standard')
+    .in('id', userIds);
+
+  const userMap: Record<string, { name: string; parish: string; standard: string }> = {};
+  (userRows ?? []).forEach((u: Record<string, unknown>) => {
+    userMap[u.id as string] = {
+      name: u.name as string,
+      parish: u.parish as string,
+      standard: u.standard as string,
+    };
+  });
+
+  return winnerRows.map((row: Record<string, unknown>) => {
+    const user = userMap[row.user_id as string] ?? { name: '', parish: '', standard: '' };
+    return {
+      id: row.id as string,
+      day: row.day as number,
+      userId: row.user_id as string,
+      name: user.name,
+      parish: user.parish,
+      standard: user.standard,
+      answer: (row.answer as string) || '',
+      answerMl: (row.answer_ml as string) || '',
+      createdAt: row.created_at as string | null,
+    };
+  });
+}
+
 export async function completeDay(uid: string, day: number): Promise<void> {
   const today = new Date().toISOString().split('T')[0];
   const profile = await getUserProfile(uid);
