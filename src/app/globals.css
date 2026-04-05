@@ -60,6 +60,12 @@ input:focus, textarea:focus, select:focus {
   animation: fade-in-up 0.2s ease-out;
 }
 
+@keyframes shimmer {
+  0%   { transform: translateX(-100%); }
+  60%  { transform: translateX(100%); }
+  100% { transform: translateX(100%); }
+}
+
 @keyframes revolve-in {
   0%   { opacity: 0; transform: perspective(600px) rotateX(-90deg) translateY(40px) scale(0.9); }
   60%  { opacity: 1; transform: perspective(600px) rotateX(8deg) translateY(-4px) scale(1.02); }

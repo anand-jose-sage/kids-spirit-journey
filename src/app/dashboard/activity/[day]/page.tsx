@@ -35,6 +35,8 @@ export default function ActivityPage({ params }: { params: Params }) {
   const [showCelebration, setShowCelebration] = useState(false);
   const [entryLoading, setEntryLoading] = useState(true);
   const [savedIndicator, setSavedIndicator] = useState(false);
+  const [showEasterToast, setShowEasterToast] = useState(false);
+  const easterToastTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const { lang, setLang } = useLang();
   const reflectionTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
@@ -133,10 +135,16 @@ export default function ActivityPage({ params }: { params: Params }) {
   function toggleTask(id: string) {
     if (isReadOnly) return;
     const next = new Set(checkedTasks);
+    const isChecking = !next.has(id);
     if (next.has(id)) next.delete(id);
     else next.add(id);
     setCheckedTasks(next);
     autoSave(next, reflection);
+    if (isChecking) {
+      setShowEasterToast(true);
+      if (easterToastTimer.current) clearTimeout(easterToastTimer.current);
+      easterToastTimer.current = setTimeout(() => setShowEasterToast(false), 3000);
+    }
   }
 
   function handleReflectionChange(value: string) {
@@ -393,6 +401,21 @@ export default function ActivityPage({ params }: { params: Params }) {
             </Link>
           </div>
         )}
+      </div>
+
+      {/* Easter Toast */}
+      <div className={clsx(
+        'fixed bottom-24 left-1/2 -translate-x-1/2 z-50 transition-all duration-500',
+        showEasterToast ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4 pointer-events-none'
+      )}>
+        <div className="relative overflow-hidden bg-gradient-to-r from-slate-300 via-white to-slate-300 rounded-full px-5 py-2.5 shadow-xl flex items-center gap-2.5 border border-slate-200">
+          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/70 to-transparent animate-[shimmer_1.8s_ease-in-out_infinite]" />
+          <span className="text-base">🐣</span>
+          <span className="relative bg-gradient-to-r from-slate-500 via-slate-800 to-slate-500 bg-clip-text text-transparent font-black text-xs tracking-widest uppercase">
+            {lang === 'ml' ? 'ഈസ്റ്റർ ആശംസകൾ · അവൻ ഉയിർത്തെഴുന്നേറ്റു' : 'Happy Easter · He is Risen'}
+          </span>
+          <span className="text-base">🌸</span>
+        </div>
       </div>
     </div>
   );
