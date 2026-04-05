@@ -412,7 +412,7 @@ export default function ActivityPage({ params }: { params: Params }) {
           <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/70 to-transparent animate-[shimmer_1.8s_ease-in-out_infinite]" />
           <span className="text-base">🐣</span>
           <span className="relative bg-gradient-to-r from-slate-500 via-slate-800 to-slate-500 bg-clip-text text-transparent font-black text-xs tracking-widest uppercase">
-            {lang === 'ml' ? 'ഈസ്റ്റർ ആശംസകൾ · അവൻ ഉയിർത്തെഴുന്നേറ്റു' : 'Happy Easter · He is Risen'}
+            {lang === 'ml' ? 'അവൻ ഉയിർത്തെഴുന്നേറ്റു' : 'He is Risen'}
           </span>
           <span className="text-base">🌸</span>
         </div>
