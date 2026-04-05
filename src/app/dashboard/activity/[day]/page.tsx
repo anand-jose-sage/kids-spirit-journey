@@ -11,6 +11,7 @@ import { useLang } from '@/contexts/LanguageContext';
 import { ChevronLeft, CheckCircle2, Circle, ExternalLink, BookOpen, Pen } from 'lucide-react';
 import { clsx } from 'clsx';
 import BibleAudioPlayer from '@/components/BibleAudioPlayer';
+import { getTodayCalendarDay } from '@/lib/schedule';
 
 type Params = Promise<{ day: string }>;
 
@@ -47,6 +48,8 @@ export default function ActivityPage({ params }: { params: Params }) {
 
   const activity = activities.find((a) => a.day === dayNum);
   const alreadyDone = profile?.completedDays?.includes(dayNum) ?? false;
+  const isPastDay = dayNum < getTodayCalendarDay() && !alreadyDone;
+  const isReadOnly = alreadyDone || isPastDay;
 
   useEffect(() => {
     if (!loading && !user) router.replace('/login');
@@ -116,7 +119,7 @@ export default function ActivityPage({ params }: { params: Params }) {
   }
 
   async function autoSave(tasks: Set<string>, reflectionText: string) {
-    if (!user || alreadyDone || !activity) return;
+    if (!user || isReadOnly || !activity) return;
     try {
       const tasksDone = Object.fromEntries(activity.tasks.map((t) => [t.id, tasks.has(t.id)]));
       await saveDayEntry(user.id, dayNum, { tasksDone, reflection: reflectionText });
@@ -128,7 +131,7 @@ export default function ActivityPage({ params }: { params: Params }) {
   }
 
   function toggleTask(id: string) {
-    if (alreadyDone) return;
+    if (isReadOnly) return;
     const next = new Set(checkedTasks);
     if (next.has(id)) next.delete(id);
     else next.add(id);
@@ -293,9 +296,11 @@ export default function ActivityPage({ params }: { params: Params }) {
                 <button
                   key={task.id}
                   onClick={() => toggleTask(task.id)}
+                  disabled={isReadOnly}
                   className={clsx(
                     'w-full flex items-start gap-3 p-3 rounded-2xl text-left transition-all',
-                    checked ? 'bg-green-50 border border-green-200' : 'bg-gray-50 border border-gray-100 active:bg-gray-100'
+                    checked ? 'bg-green-50 border border-green-200' : 'bg-gray-50 border border-gray-100 active:bg-gray-100',
+                    isReadOnly && 'cursor-default opacity-60'
                   )}
                 >
                   {checked ? (
@@ -333,7 +338,7 @@ export default function ActivityPage({ params }: { params: Params }) {
             value={reflection}
             onChange={(e) => handleReflectionChange(e.target.value)}
             placeholder={lang === 'ml' ? 'നിങ്ങളുടെ ഉത്തരം ഇവിടെ എഴുതുക...' : 'Write your answer here...'}
-            disabled={alreadyDone}
+            disabled={isReadOnly}
             readOnly={reflectionLocked}
             rows={4}
             maxLength={2000}
@@ -341,8 +346,17 @@ export default function ActivityPage({ params }: { params: Params }) {
           />
         </div>
 
+        {/* Past day notice */}
+        {isPastDay && (
+          <div className="bg-gray-50 border border-gray-200 rounded-2xl p-4 text-center">
+            <p className="text-gray-500 text-sm font-medium">
+              {lang === 'ml' ? '⏳ ഈ ദിവസം കഴിഞ്ഞു. എഡിറ്റ് ചെയ്യാൻ കഴിയില്ല.' : '⏳ This day has passed and can no longer be edited.'}
+            </p>
+          </div>
+        )}
+
         {/* Complete button */}
-        {!completed && (
+        {!completed && !isPastDay && (
           <button
             onClick={handleComplete}
             disabled={!canComplete || completing}
