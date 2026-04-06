@@ -292,6 +292,25 @@ export default function ActivityPage({ params }: { params: Params }) {
           </a>
         </div>
 
+        {/* Puzzle Link — Day 6 only */}
+        {dayNum === 6 && <Link
+          href="/dashboard/puzzle"
+          className="flex items-center gap-3 bg-purple-50 border border-purple-100 rounded-2xl p-4 active:bg-purple-100 transition-colors"
+        >
+          <div className="bg-purple-500 text-white w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 text-lg">
+            🧩
+          </div>
+          <div className="flex-1">
+            <p className="text-purple-700 font-semibold text-sm">
+              {lang === 'ml' ? 'ഉയിർത്ത ക്രിസ്തു പസൽ' : 'Risen Christ Puzzle'}
+            </p>
+            <p className="text-purple-400 text-xs">
+              {lang === 'ml' ? '12 കഷണങ്ങൾ ചേർക്കൂ' : 'Arrange 12 pieces'}
+            </p>
+          </div>
+          <ExternalLink size={16} className="text-purple-400 flex-shrink-0" />
+        </Link>}
+
         {/* Tasks */}
         <div className="bg-white rounded-3xl p-5 shadow-sm border border-purple-50">
           <h2 className="text-sm font-bold text-gray-600 uppercase tracking-wide mb-4">
