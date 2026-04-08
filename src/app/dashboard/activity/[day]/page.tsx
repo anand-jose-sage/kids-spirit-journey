@@ -7,6 +7,7 @@ import { useAuth } from '@/components/AuthProvider';
 import { completeDay, saveDayEntry, getDayEntry } from '@/lib/database';
 import activities from '@/data/activities.json';
 import mlActivities from '@/data/activities.ml.json';
+import puzzleConfig from '@/data/puzzle-config.json';
 import { useLang } from '@/contexts/LanguageContext';
 import { ChevronLeft, CheckCircle2, Circle, ExternalLink, BookOpen, Pen } from 'lucide-react';
 import { clsx } from 'clsx';
@@ -35,8 +36,6 @@ export default function ActivityPage({ params }: { params: Params }) {
   const [showCelebration, setShowCelebration] = useState(false);
   const [entryLoading, setEntryLoading] = useState(true);
   const [savedIndicator, setSavedIndicator] = useState(false);
-  const [showEasterToast, setShowEasterToast] = useState(false);
-  const easterToastTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const { lang, setLang } = useLang();
   const reflectionTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
@@ -135,16 +134,10 @@ export default function ActivityPage({ params }: { params: Params }) {
   function toggleTask(id: string) {
     if (isReadOnly) return;
     const next = new Set(checkedTasks);
-    const isChecking = !next.has(id);
     if (next.has(id)) next.delete(id);
     else next.add(id);
     setCheckedTasks(next);
     autoSave(next, reflection);
-    if (isChecking) {
-      setShowEasterToast(true);
-      if (easterToastTimer.current) clearTimeout(easterToastTimer.current);
-      easterToastTimer.current = setTimeout(() => setShowEasterToast(false), 3000);
-    }
   }
 
   function handleReflectionChange(value: string) {
@@ -292,24 +285,56 @@ export default function ActivityPage({ params }: { params: Params }) {
           </a>
         </div>
 
-        {/* Puzzle Link — Day 6 only */}
-        {dayNum === 6 && <Link
-          href="/dashboard/puzzle"
-          className="flex items-center gap-3 bg-purple-50 border border-purple-100 rounded-2xl p-4 active:bg-purple-100 transition-colors"
-        >
-          <div className="bg-purple-500 text-white w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 text-lg">
-            🧩
-          </div>
-          <div className="flex-1">
-            <p className="text-purple-700 font-semibold text-sm">
-              {lang === 'ml' ? 'ഉയിർത്ത ക്രിസ്തു പസൽ' : 'Risen Christ Puzzle'}
-            </p>
-            <p className="text-purple-400 text-xs">
-              {lang === 'ml' ? '12 കഷണങ്ങൾ ചേർക്കൂ' : 'Arrange 12 pieces'}
-            </p>
-          </div>
-          <ExternalLink size={16} className="text-purple-400 flex-shrink-0" />
-        </Link>}
+        {/* Puzzle Link — driven by puzzle-config.json */}
+        {(() => {
+          const puzzle = puzzleConfig.puzzles.find((p) => p.day === dayNum);
+          if (!puzzle) return null;
+          const href = `/dashboard/puzzle?image=${encodeURIComponent(puzzle.image)}&titleEn=${encodeURIComponent(puzzle.titleEn)}&titleMl=${encodeURIComponent(puzzle.titleMl)}&solvedTextEn=${encodeURIComponent(puzzle.solvedTextEn)}&solvedTextMl=${encodeURIComponent(puzzle.solvedTextMl)}`;
+          return (
+            <Link
+              href={href}
+              className="flex items-center gap-3 bg-purple-50 border border-purple-100 rounded-2xl p-4 active:bg-purple-100 transition-colors"
+            >
+              <div className="bg-purple-500 text-white w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 text-lg">
+                🧩
+              </div>
+              <div className="flex-1">
+                <p className="text-purple-700 font-semibold text-sm">
+                  {lang === 'ml' ? puzzle.titleMl : puzzle.titleEn}
+                </p>
+                <p className="text-purple-400 text-xs">
+                  {lang === 'ml' ? puzzle.subtitleMl : puzzle.subtitleEn}
+                </p>
+              </div>
+              <ExternalLink size={16} className="text-purple-400 flex-shrink-0" />
+            </Link>
+          );
+        })()}
+
+        {/* Maze Link — driven by puzzle-config.json mazes array */}
+        {(() => {
+          const maze = puzzleConfig.mazes.find((m) => m.day === dayNum);
+          if (!maze) return null;
+          return (
+            <Link
+              href="/dashboard/maze"
+              className="flex items-center gap-3 bg-amber-50 border border-amber-100 rounded-2xl p-4 active:bg-amber-100 transition-colors"
+            >
+              <div className="bg-amber-500 text-white w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 text-lg">
+                🧭
+              </div>
+              <div className="flex-1">
+                <p className="text-amber-700 font-semibold text-sm">
+                  {lang === 'ml' ? maze.titleMl : maze.titleEn}
+                </p>
+                <p className="text-amber-400 text-xs">
+                  {lang === 'ml' ? maze.subtitleMl : maze.subtitleEn}
+                </p>
+              </div>
+              <ExternalLink size={16} className="text-amber-400 flex-shrink-0" />
+            </Link>
+          );
+        })()}
 
         {/* Tasks */}
         <div className="bg-white rounded-3xl p-5 shadow-sm border border-purple-50">
@@ -321,7 +346,7 @@ export default function ActivityPage({ params }: { params: Params }) {
               const checked = checkedTasks.has(task.id) || alreadyDone;
               return (
                 <button
-                  key={task.id}
+                  key={`${task.id}-${index}`}
                   onClick={() => toggleTask(task.id)}
                   disabled={isReadOnly}
                   className={clsx(
@@ -422,20 +447,6 @@ export default function ActivityPage({ params }: { params: Params }) {
         )}
       </div>
 
-      {/* Easter Toast */}
-      <div className={clsx(
-        'fixed bottom-24 left-1/2 -translate-x-1/2 z-50 transition-all duration-500',
-        showEasterToast ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4 pointer-events-none'
-      )}>
-        <div className="relative overflow-hidden bg-gradient-to-r from-slate-300 via-white to-slate-300 rounded-full px-5 py-2.5 shadow-xl flex items-center gap-2.5 border border-slate-200">
-          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/70 to-transparent animate-[shimmer_1.8s_ease-in-out_infinite]" />
-          <span className="text-base">🐣</span>
-          <span className="relative bg-gradient-to-r from-slate-500 via-slate-800 to-slate-500 bg-clip-text text-transparent font-black text-xs tracking-widest uppercase">
-            {lang === 'ml' ? 'അവൻ ഉയിർത്തെഴുന്നേറ്റു' : 'He is Risen'}
-          </span>
-          <span className="text-base">🌸</span>
-        </div>
-      </div>
     </div>
   );
 }

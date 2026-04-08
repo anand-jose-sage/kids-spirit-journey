@@ -1,0 +1,33 @@
+{
+  "puzzles": [
+    {
+      "day": 6,
+      "image": "/images/risen-christ.jpg",
+      "titleEn": "Risen Christ Puzzle",
+      "titleMl": "ഉയിർത്ത ക്രിസ്തു പസൽ",
+      "subtitleEn": "Arrange 12 pieces",
+      "subtitleMl": "12 കഷണങ്ങൾ ചേർക്കൂ",
+      "solvedTextEn": "He is Risen! Alleluia! 🌅",
+      "solvedTextMl": "അവൻ ഉയിർത്തെഴുന്നേറ്റു! അല്ലേലൂയ! 🌅"
+    },
+    {
+      "day": 8,
+      "image": "/images/chavara.jpg",
+      "titleEn": "Find the Saint",
+      "titleMl": "വിശുദ്ധനെ കണ്ടെത്തുക",
+      "subtitleEn": "Arrange 12 pieces",
+      "subtitleMl": "12 കഷണങ്ങൾ ചേർക്കൂ",
+      "solvedTextEn": "",
+      "solvedTextMl": ""
+    }
+  ],
+  "mazes": [
+    {
+      "day": 8,
+      "titleEn": "Way to Emmaus Maze",
+      "titleMl": "എമ്മാവൂസ് പാത",
+      "subtitleEn": "Guide Jesus to Emmaus",
+      "subtitleMl": "ഈശോയെ എമ്മാവൂസിലേക്ക് നയിക്കൂ"
+    }
+  ]
+}

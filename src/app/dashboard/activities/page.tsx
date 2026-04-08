@@ -35,22 +35,7 @@ export default function ActivitiesPage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-50 to-indigo-50 pb-nav">
       {/* Header */}
-      <div className="bg-gradient-to-br from-purple-600 to-indigo-700 px-5 pt-12 pb-6 relative overflow-hidden">
-        {/* Easter Silver Ribbon */}
-        <div className="absolute top-0 left-0 right-0 overflow-hidden">
-          <div className="relative bg-gradient-to-r from-slate-300 via-white to-slate-300 py-1.5 text-center shadow-lg">
-            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/70 to-transparent -translate-x-full animate-[shimmer_2.5s_ease-in-out_infinite]" style={{backgroundSize:'200% 100%'}} />
-            <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white to-transparent" />
-            <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-slate-400 to-transparent" />
-            <p className="relative text-slate-700 font-extrabold tracking-widest text-xs uppercase drop-shadow-sm flex items-center justify-center gap-2">
-              <span>🐣</span>
-              <span className="bg-gradient-to-r from-slate-500 via-slate-800 to-slate-500 bg-clip-text text-transparent font-black">
-                {lang === 'ml' ? '✦ ഈസ്റ്റർ ആശംസകൾ · അവൻ ഉയിർത്തെഴുന്നേറ്റു ✦' : '✦ Happy Easter · He is Risen ✦'}
-              </span>
-              <span>🌸</span>
-            </p>
-          </div>
-        </div>
+      <div className="bg-gradient-to-br from-purple-600 to-indigo-700 px-5 pt-12 pb-6">
         <h1 className="text-white text-2xl font-bold">
           {lang === 'ml' ? 'എല്ലാ പ്രവൃത്തികളും 📖' : 'All Activities 📖'}
         </h1>

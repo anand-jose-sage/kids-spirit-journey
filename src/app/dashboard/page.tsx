@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { useAuth } from '@/components/AuthProvider';
@@ -30,12 +30,21 @@ export default function DashboardPage() {
   const { lang } = useLang();
   const [savedDays, setSavedDays] = useState<number[]>([]);
   const [massStreak, setMassStreak] = useState(0);
+  const todayDayRef = useRef<HTMLAnchorElement>(null);
 
   useEffect(() => {
     if (!user) return;
     getSavedDays(user.id).then(setSavedDays);
     getSavedEntries(user.id).then((entries) => setMassStreak(getMassStreak(entries)));
   }, [user]);
+
+  useEffect(() => {
+    if (!profile) return;
+    const frame = requestAnimationFrame(() => {
+      todayDayRef.current?.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+    });
+    return () => cancelAnimationFrame(frame);
+  }, [profile]);
 
   async function handleLogout() {
     await supabase.auth.signOut();
@@ -70,24 +79,6 @@ export default function DashboardPage() {
     <div className="min-h-screen bg-gradient-to-br from-purple-50 to-indigo-50 pb-nav">
       {/* Header */}
       <div className="bg-gradient-to-br from-purple-600 via-violet-600 to-indigo-700 px-5 pt-12 pb-8 relative overflow-hidden">
-        {/* Easter Silver Ribbon */}
-        <div className="absolute top-0 left-0 right-0 overflow-hidden">
-          <div className="relative bg-gradient-to-r from-slate-300 via-white to-slate-300 py-1.5 text-center shadow-lg">
-            {/* shimmer sweep */}
-            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/70 to-transparent -translate-x-full animate-[shimmer_2.5s_ease-in-out_infinite]" style={{backgroundSize:'200% 100%'}} />
-            {/* ribbon edge lines */}
-            <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white to-transparent" />
-            <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-slate-400 to-transparent" />
-            <p className="relative text-slate-700 font-extrabold tracking-widest text-xs uppercase drop-shadow-sm flex items-center justify-center gap-2">
-              <span>🐣</span>
-              <span className="bg-gradient-to-r from-slate-500 via-slate-800 to-slate-500 bg-clip-text text-transparent font-black">
-                {lang === 'ml' ? '✦ ഈസ്റ്റർ ആശംസകൾ · അവൻ ഉയിർത്തെഴുന്നേറ്റു ✦' : '✦ Happy Easter · He is Risen ✦'}
-              </span>
-              <span>🌸</span>
-            </p>
-          </div>
-        </div>
-
         {/* Decorative circles */}
         <div className="absolute top-0 right-0 w-48 h-48 bg-white/10 rounded-full -translate-y-1/2 translate-x-1/4" />
         <div className="absolute bottom-0 left-0 w-32 h-32 bg-white/5 rounded-full translate-y-1/2 -translate-x-1/4" />
@@ -177,8 +168,8 @@ export default function DashboardPage() {
                   </div>
                 </div>
                 <div className="mt-4 flex gap-2">
-                  {todayActivity.tasks.map((t) => (
-                    <span key={t.id} className="bg-white/20 text-white text-lg rounded-xl px-2 py-1">
+                  {todayActivity.tasks.map((t, i) => (
+                    <span key={`${t.id}-${i}`} className="bg-white/20 text-white text-lg rounded-xl px-2 py-1">
                       {t.emoji}
                     </span>
                   ))}
@@ -207,7 +198,7 @@ export default function DashboardPage() {
             </Link>
           </div>
           <div className="flex gap-3 overflow-x-auto pb-2 -mx-1 px-1 scrollbar-hide">
-            {activities.slice(0, 10).map((act) => {
+            {activities.map((act) => {
               const done = completedDays.includes(act.day);
               const inProgress = !done && savedDays.includes(act.day);
               const isToday = act.day === todayDay && !done;
@@ -216,6 +207,7 @@ export default function DashboardPage() {
               return (
                 <Link
                   key={act.day}
+                  ref={isToday ? todayDayRef : undefined}
                   href={locked ? '#' : `/dashboard/activity/${act.day}`}
                   className={clsx(
                     'flex-shrink-0 w-16 rounded-2xl p-2 text-center transition-all',

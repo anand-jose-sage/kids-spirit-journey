@@ -2,13 +2,15 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import { useSearchParams } from 'next/navigation';
 import { ChevronLeft, RefreshCw } from 'lucide-react';
 import { clsx } from 'clsx';
+import { useLang } from '@/contexts/LanguageContext';
 
 const COLS = 3;
 const ROWS = 4;
 const TOTAL = COLS * ROWS;
-const IMAGE = '/images/risen-christ.jpg';
+const DEFAULT_IMAGE = '/images/risen-christ.jpg';
 
 function shuffle<T>(arr: T[]): T[] {
   const a = [...arr];
@@ -23,17 +25,27 @@ type Selection =
   | { kind: 'tray'; piece: number }
   | { kind: 'grid'; slot: number; piece: number };
 
-function pieceStyle(piece: number) {
+function pieceStyle(piece: number, image: string) {
   const pCol = piece % COLS;
   const pRow = Math.floor(piece / COLS);
   return {
-    backgroundImage: `url(${IMAGE})`,
+    backgroundImage: `url(${image})`,
     backgroundSize: `${COLS * 100}% ${ROWS * 100}%`,
     backgroundPosition: `${(pCol / (COLS - 1)) * 100}% ${(pRow / (ROWS - 1)) * 100}%`,
   };
 }
 
 export default function PuzzlePage() {
+  const params = useSearchParams();
+  const { lang } = useLang();
+  const IMAGE = params.get('image') || DEFAULT_IMAGE;
+  const titleEn = params.get('titleEn') || 'Risen Christ Puzzle';
+  const titleMl = params.get('titleMl') || 'ഉയിർത്ത ക്രിസ്തു പസൽ';
+  const solvedTextEn = params.get('solvedTextEn') || 'He is Risen! Alleluia! 🌅';
+  const solvedTextMl = params.get('solvedTextMl') || 'അവൻ ഉയിർത്തെഴുന്നേറ്റു! അല്ലേലൂയ! 🌅';
+  const title = lang === 'ml' ? titleMl : titleEn;
+  const solvedText = lang === 'ml' ? solvedTextMl : solvedTextEn;
+
   const [tray, setTray] = useState<number[]>(() =>
     shuffle(Array.from({ length: TOTAL }, (_, i) => i))
   );
@@ -106,7 +118,7 @@ export default function PuzzlePage() {
             <ChevronLeft size={22} />
           </Link>
           <div className="flex-1">
-            <h1 className="text-white text-xl font-bold">Risen Christ Puzzle</h1>
+            <h1 className="text-white text-xl font-bold">{title}</h1>
             <p className="text-purple-200 text-xs">
               {placedCount}/{TOTAL} pieces placed
             </p>
@@ -127,7 +139,7 @@ export default function PuzzlePage() {
           <div className="bg-gradient-to-r from-yellow-400 to-orange-400 rounded-3xl p-5 text-center">
             <div className="text-4xl mb-2">🎉</div>
             <h3 className="text-white text-xl font-bold">Puzzle Complete!</h3>
-            <p className="text-yellow-100 text-sm mt-1">He is Risen! Alleluia! 🌅</p>
+            <p className="text-yellow-100 text-sm mt-1">{solvedText}</p>
             <div className="flex gap-3 justify-center mt-3">
               <button
                 onClick={reset}
@@ -197,7 +209,7 @@ export default function PuzzlePage() {
                     )}
                   >
                     {piece !== null && (
-                      <div className="w-full h-full" style={pieceStyle(piece)} />
+                      <div className="w-full h-full" style={pieceStyle(piece, IMAGE)} />
                     )}
                   </div>
                 );
@@ -224,7 +236,7 @@ export default function PuzzlePage() {
                       ? 'border-yellow-400 ring-2 ring-yellow-300 ring-offset-1 scale-110 shadow-md'
                       : 'border-purple-200 hover:border-purple-400 active:scale-95'
                   )}
-                  style={pieceStyle(piece)}
+                  style={pieceStyle(piece, IMAGE)}
                 />
               );
             })}
