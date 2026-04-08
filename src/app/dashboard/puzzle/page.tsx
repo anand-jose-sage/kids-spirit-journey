@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, Suspense } from 'react';
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
 import { ChevronLeft, RefreshCw } from 'lucide-react';
@@ -35,7 +35,7 @@ function pieceStyle(piece: number, image: string) {
   };
 }
 
-export default function PuzzlePage() {
+function PuzzleContent() {
   const params = useSearchParams();
   const { lang } = useLang();
   const IMAGE = params.get('image') || DEFAULT_IMAGE;
@@ -244,5 +244,13 @@ export default function PuzzlePage() {
         </div>
       </div>
     </div>
+  );
+}
+
+export default function PuzzlePage() {
+  return (
+    <Suspense>
+      <PuzzleContent />
+    </Suspense>
   );
 }
