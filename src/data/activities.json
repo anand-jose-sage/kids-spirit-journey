@@ -313,10 +313,10 @@
     "day": 11,
     "title": "Patient and Persistent",
     "theme": "Patience",
-    "verse": "James 1:4",
-    "verseText": "Let perseverance finish its work so that you may be mature and complete, not lacking anything.",
+    "verse": "Luke 24:36-43",
+    "verseText": "Christ must suffer and rise from the dead on the third day.",
     "description": "Waiting is hard! But patience is a superpower. When we are patient, we become stronger and wiser. God is always working, even when we cannot see it.",
-    "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+    "videoUrl": "https://www.youtube.com/watch?v=qrYVjZVL1zg",
     "tasks": [
       {
         "id": "read",
@@ -330,8 +330,8 @@
       },
       {
         "id": "pray",
-        "label": "Ask God to grow patience in your heart like a garden",
-        "emoji": "🙏"
+        "label": "Collect a seed and plant it in your garden or field.",
+        "emoji": "🌱"
       },
       {
         "id": "mass",
@@ -339,7 +339,7 @@
         "emoji": "⛪"
       }
     ],
-    "question": "What is hardest to wait for? How does God help you be patient?"
+    "question": "Which Gospel passage describes the scene in the picture puzzle above?"
   },
   {
     "day": 12,
