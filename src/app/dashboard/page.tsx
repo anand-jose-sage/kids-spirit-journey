@@ -46,8 +46,8 @@ export default function DashboardPage() {
     return () => cancelAnimationFrame(frame);
   }, [profile]);
 
-  async function handleLogout() {
-    await supabase.auth.signOut();
+  function handleLogout() {
+    supabase.auth.signOut(); // clears local session immediately; server revocation runs in background
     router.replace('/login');
   }
 

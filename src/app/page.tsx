@@ -1,36 +1,75 @@
-'use client';
+import Link from 'next/link';
+import AuthRedirect from './AuthRedirect';
 
-import { useEffect } from 'react';
-import { useRouter } from 'next/navigation';
-import { useAuth } from '@/components/AuthProvider';
-
-export default function RootPage() {
-  const { user, loading } = useAuth();
-  const router = useRouter();
-
-  useEffect(() => {
-    if (!loading) {
-      router.replace(user ? '/dashboard' : '/login');
-    }
-  }, [user, loading, router]);
-
+export default function HomePage() {
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-purple-600 via-violet-600 to-indigo-700">
-      <div className="text-white text-center px-6">
+    <div className="min-h-screen bg-gradient-to-br from-purple-600 via-violet-600 to-indigo-700 flex flex-col">
+      {/* Redirects logged-in users to /dashboard without blocking server render */}
+      <AuthRedirect />
+
+      {/* Decorative background circles */}
+      <div className="absolute top-0 right-0 w-72 h-72 bg-white/5 rounded-full -translate-y-1/3 translate-x-1/3 pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-56 h-56 bg-white/5 rounded-full translate-y-1/3 -translate-x-1/3 pointer-events-none" />
+
+      <div className="flex-1 flex flex-col items-center justify-center px-6 text-center relative">
+        {/* Logo */}
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src="/images/logo.png" alt="Shiloha logo" width={112} height={112} fetchPriority="high" className="w-28 h-28 mx-auto mb-6 rounded-full object-cover animate-bounce" />
-        <h1 className="text-3xl font-bold mb-2">ശിലോഹ <span className="text-xl font-semibold">| Shiloha</span></h1>
-        <p className="text-purple-200 text-lg">Loading your adventure...</p>
-        <div className="mt-8 flex justify-center gap-2">
-          {[0, 1, 2].map((i) => (
-            <div
-              key={i}
-              className="w-2.5 h-2.5 bg-white rounded-full animate-bounce"
-              style={{ animationDelay: `${i * 0.15}s` }}
-            />
+        <img
+          src="/images/logo.png"
+          alt="Shiloha — 30 Days with God"
+          width={120}
+          height={120}
+          fetchPriority="high"
+          className="w-28 h-28 rounded-full object-cover shadow-2xl shadow-black/30 mb-6"
+        />
+
+        {/* Title */}
+        <h1 className="text-white text-4xl font-extrabold leading-tight">
+          ശിലോഹ
+        </h1>
+        <p className="text-purple-200 text-xl font-semibold mt-1">Shiloha</p>
+
+        {/* Tagline */}
+        <p className="text-purple-100 text-lg font-medium mt-4 max-w-xs leading-snug">
+          A 30-day spiritual adventure for kids 🌟
+        </p>
+        <p className="text-purple-300 text-sm mt-2 max-w-xs leading-relaxed">
+          Daily Bible readings, activities, games, and prayers to help children
+          grow in faith, love, and courage.
+        </p>
+
+        {/* Feature pills */}
+        <div className="flex flex-wrap justify-center gap-2 mt-6">
+          {['📖 Bible Readings', '🎮 Games', '🙏 Prayers', '🏆 Achievements'].map((f) => (
+            <span
+              key={f}
+              className="bg-white/15 text-white text-xs font-semibold px-3 py-1.5 rounded-full"
+            >
+              {f}
+            </span>
           ))}
         </div>
-        <p className="text-purple-300/70 text-xs mt-8">
+
+        {/* CTAs */}
+        <div className="mt-10 flex flex-col gap-3 w-full max-w-xs">
+          <Link
+            href="/login"
+            className="w-full bg-white text-purple-700 font-bold text-base py-3.5 rounded-2xl text-center shadow-lg shadow-black/20 active:scale-95 transition-transform"
+          >
+            Sign In
+          </Link>
+          <Link
+            href="/register"
+            className="w-full bg-white/20 text-white font-bold text-base py-3.5 rounded-2xl text-center border border-white/30 active:scale-95 transition-transform"
+          >
+            Create Account
+          </Link>
+        </div>
+      </div>
+
+      {/* Footer */}
+      <div className="text-center pb-8 relative">
+        <p className="text-purple-300/70 text-xs">
           ✝️ Cherupusha Mission League · Manathavady
         </p>
       </div>
