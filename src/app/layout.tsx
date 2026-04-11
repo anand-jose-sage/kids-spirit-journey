@@ -80,8 +80,6 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
-  maximumScale: 1,
-  userScalable: false,
   themeColor: '#7c3aed',
 };
 
@@ -116,6 +114,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <head>
+        <link rel="preconnect" href="https://rhgqtrcoiqmeobzrshpf.supabase.co" />
+        <link rel="dns-prefetch" href="https://rhgqtrcoiqmeobzrshpf.supabase.co" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
@@ -124,9 +124,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className={anekMalayalam.variable}>
         <LanguageProvider>
           <AuthProvider>
-            <div className="max-w-lg mx-auto min-h-screen relative">
+            <main className="max-w-lg mx-auto min-h-screen relative">
               {children}
-            </div>
+            </main>
           </AuthProvider>
         </LanguageProvider>
       </body>

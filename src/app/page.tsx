@@ -17,7 +17,8 @@ export default function RootPage() {
   return (
     <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-purple-600 via-violet-600 to-indigo-700">
       <div className="text-white text-center px-6">
-        <img src="/images/logo.png" alt="Logo" className="w-28 h-28 mx-auto mb-6 rounded-full object-cover animate-bounce" />
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src="/images/logo.png" alt="Shiloha logo" width={112} height={112} fetchPriority="high" className="w-28 h-28 mx-auto mb-6 rounded-full object-cover animate-bounce" />
         <h1 className="text-3xl font-bold mb-2">ശിലോഹ <span className="text-xl font-semibold">| Shiloha</span></h1>
         <p className="text-purple-200 text-lg">Loading your adventure...</p>
         <div className="mt-8 flex justify-center gap-2">

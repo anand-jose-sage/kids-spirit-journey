@@ -61,7 +61,8 @@ export default function DashboardPage() {
     return (
       <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-purple-50 to-indigo-50">
         <div className="text-center">
-          <img src="/images/logo.png" alt="Logo" className="w-24 h-24 mx-auto mb-4 animate-bounce rounded-full object-cover" />
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/images/logo.png" alt="Shiloha logo" width={96} height={96} fetchPriority="high" className="w-24 h-24 mx-auto mb-4 animate-bounce rounded-full object-cover" />
           <p className="text-purple-600 font-semibold">Loading your journey...</p>
         </div>
       </div>
