@@ -29,6 +29,9 @@ export default function RootPage() {
             />
           ))}
         </div>
+        <p className="text-purple-300/70 text-xs mt-8">
+          ✝️ Cherupusha Mission League · Manathavady
+        </p>
       </div>
     </div>
   );

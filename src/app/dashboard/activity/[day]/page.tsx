@@ -336,6 +336,32 @@ export default function ActivityPage({ params }: { params: Params }) {
           );
         })()}
 
+        {/* Memory Match Link — driven by puzzle-config.json memories array */}
+        {(() => {
+          const memory = (puzzleConfig as { memories?: { day: number; theme: string; titleEn: string; titleMl: string; subtitleEn: string; subtitleMl: string }[] }).memories?.find((m) => m.day === dayNum);
+          if (!memory) return null;
+          const href = `/dashboard/memory?theme=${encodeURIComponent(memory.theme)}&titleEn=${encodeURIComponent(memory.titleEn)}&titleMl=${encodeURIComponent(memory.titleMl)}`;
+          return (
+            <Link
+              href={href}
+              className="flex items-center gap-3 bg-sky-50 border border-sky-100 rounded-2xl p-4 active:bg-sky-100 transition-colors"
+            >
+              <div className="bg-sky-500 text-white w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 text-lg">
+                🃏
+              </div>
+              <div className="flex-1">
+                <p className="text-sky-700 font-semibold text-sm">
+                  {lang === 'ml' ? memory.titleMl : memory.titleEn}
+                </p>
+                <p className="text-sky-400 text-xs">
+                  {lang === 'ml' ? memory.subtitleMl : memory.subtitleEn}
+                </p>
+              </div>
+              <ExternalLink size={16} className="text-sky-400 flex-shrink-0" />
+            </Link>
+          );
+        })()}
+
         {/* Tasks */}
         <div className="bg-white rounded-3xl p-5 shadow-sm border border-purple-50">
           <h2 className="text-sm font-bold text-gray-600 uppercase tracking-wide mb-4">

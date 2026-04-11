@@ -36,7 +36,7 @@
       "titleEn": "Forgiving love",
       "titleMl": "ക്ഷമിക്കുന്ന സ്നേഹം",
       "subtitleEn": "Arrange 12 pieces",
-      "subtitleMl": "12 കഷണങ്ങൾ ചേർക്കൂ",
+      "subtitleMl": "ചിത്ര പസ്സിൽ പൂർത്തിയാക്കൂ",
       "solvedTextEn": "",
       "solvedTextMl": ""
     }
@@ -49,6 +49,16 @@
       "titleMl": "എമ്മാവൂസ് പാത",
       "subtitleEn": "Guide Jesus to Emmaus",
       "subtitleMl": "ഈശോയെ എമ്മാവൂസിലേക്ക് നയിക്കൂ"
+    }
+  ],
+  "memories": [
+    {
+      "day": 12,
+      "theme": "thomas",
+      "titleEn": "👆 Doubting Thomas Match",
+      "titleMl": "👆 വി തോമസ് കാർഡ് മാച്ച്",
+      "subtitleEn": "Match 8 pairs of Easter symbols",
+      "subtitleMl": "8 ജോഡി ഈസ്റ്റർ ചിഹ്നങ്ങൾ ചേർക്കൂ"
     }
   ]
 }

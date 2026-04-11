@@ -256,6 +256,12 @@ export default function DashboardPage() {
             </div>
           </div>
         )}
+        {/* Footer attribution */}
+        <div className="text-center pt-2 pb-1">
+          <p className="text-xs text-gray-400">
+            ✝️ Cherupusha Mission League · Manathavady
+          </p>
+        </div>
       </div>
 
       <BottomNav />
