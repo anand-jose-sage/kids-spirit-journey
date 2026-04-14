@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { useAuth } from '@/components/AuthProvider';
 import { completeDay, saveDayEntry, getDayEntry } from '@/lib/database';
+import { sanitizeText } from '@/lib/sanitize';
 import activities from '@/data/activities.json';
 import mlActivities from '@/data/activities.ml.json';
 import puzzleConfig from '@/data/puzzle-config.json';
@@ -141,9 +142,10 @@ export default function ActivityPage({ params }: { params: Params }) {
   }
 
   function handleReflectionChange(value: string) {
-    setReflection(value);
+    const safe = sanitizeText(value);
+    setReflection(safe);
     if (reflectionTimer.current) clearTimeout(reflectionTimer.current);
-    reflectionTimer.current = setTimeout(() => autoSave(checkedTasks, value), 1000);
+    reflectionTimer.current = setTimeout(() => autoSave(checkedTasks, safe), 1000);
   }
 
   const canComplete = checkedTasks.size > 0 || reflection.trim().length > 0;

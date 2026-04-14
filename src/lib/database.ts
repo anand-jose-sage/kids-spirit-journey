@@ -1,4 +1,5 @@
 import { supabase } from './supabase';
+import { sanitizeText } from './sanitize';
 
 export interface UserProfile {
   name: string;
@@ -42,7 +43,7 @@ export async function saveDayEntry(uid: string, day: number, entry: Omit<DayEntr
       user_id: uid,
       day,
       tasks_done: entry.tasksDone,
-      reflection: entry.reflection.slice(0, 2000),
+      reflection: sanitizeText(entry.reflection).slice(0, 2000),
       saved_at: new Date().toISOString(),
     },
     { onConflict: 'user_id,day' }
@@ -73,11 +74,11 @@ export async function isPhoneTaken(phone: string): Promise<boolean> {
 export async function createUserProfile(uid: string, data: NewUserData): Promise<void> {
   const { error } = await supabase.from('users').insert({
     id: uid,
-    name: data.name,
-    house_name: data.houseName,
-    parish: data.parish,
-    standard: data.standard,
-    phone: data.phone,
+    name: sanitizeText(data.name).slice(0, 100),
+    house_name: sanitizeText(data.houseName).slice(0, 100),
+    parish: sanitizeText(data.parish).slice(0, 100),
+    standard: sanitizeText(data.standard).slice(0, 50),
+    phone: data.phone.replace(/\D/g, '').slice(0, 12),
     completed_days: [],
     current_streak: 0,
     last_completed_date: null,

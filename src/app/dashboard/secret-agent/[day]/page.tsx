@@ -10,6 +10,7 @@ import missions from '@/data/secret-agent-missions.json';
 import mlMissions from '@/data/secret-agent-missions.ml.json';
 import { getAgentDayProgress, submitAgentAnswer, AgentProgress } from '@/lib/database';
 import { isAgentDayUnlocked, isPuzzleUnlocked } from '@/lib/schedule';
+import { sanitizeInput } from '@/lib/sanitize';
 import { useLang } from '@/contexts/LanguageContext';
 import { ChevronLeft, Eye, EyeOff, CheckCircle2, XCircle, Lock, Shield, Send, AlertTriangle, Crosshair, Puzzle } from 'lucide-react';
 import { clsx } from 'clsx';
@@ -150,7 +151,7 @@ export default function MissionDayPage() {
   async function handleSubmit() {
     if (!user || submitting || !answer.trim()) return;
     setSubmitting(true);
-    const normalized = answer.toLowerCase().trim();
+    const normalized = sanitizeInput(answer, 100).toLowerCase();
     const mlAliases = mlData?.aliases ?? [];
     const correct = mission!.aliases.includes(normalized) || mlAliases.includes(normalized);
     setFeedback(correct ? 'correct' : 'wrong');
@@ -377,6 +378,7 @@ export default function MissionDayPage() {
                 onChange={(e) => setAnswer(e.target.value)}
                 onKeyDown={(e) => e.key === 'Enter' && handleSubmit()}
                 placeholder={lang === 'ml' ? 'വ്യക്തിയുടെ പേര് ടൈപ്പ് ചെയ്യൂ…' : 'Type the name of the person…'}
+                maxLength={100}
                 className="w-full bg-transparent text-emerald-100 placeholder-emerald-500/40 text-lg font-mono font-bold focus:outline-none caret-emerald-400"
                 disabled={submitting}
               />
