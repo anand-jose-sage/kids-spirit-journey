@@ -1,4 +1,4 @@
-﻿[
+[
   {
     "day": 1,
     "title": "Pesha Wednesday",
@@ -11,22 +11,22 @@
       {
         "id": "read",
         "label": "Read John 12:20-36",
-        "emoji": "ðŸ“–"
+        "emoji": "📖"
       },
       {
         "id": "pray",
         "label": "Say a prayer asking God to fill your heart with love",
-        "emoji": "ðŸ™"
+        "emoji": "🙏"
       },
       {
         "id": "act",
         "label": "Let's prepare by having a good confession.",
-        "emoji": "ðŸ¤—"
+        "emoji": "🤗"
       },
       {
         "id": "mass",
         "label": "Attended Holy Qurbana",
-        "emoji": "â›ª"
+        "emoji": "⛪"
       }
     ],
     "question": "God reveals the glory of Jesus at many times in the Gospels,but is there one such event, chapter and verse, recorded only by John?"
@@ -43,22 +43,22 @@
       {
         "id": "read",
         "label": "Participate in the Maundy Thursday sacraments with devotion ",
-        "emoji": "ðŸ“–"
+        "emoji": "📖"
       },
       {
         "id": "act",
         "label": "Wish the parish priest and former priests on the day of priestly ordination",
-        "emoji": "ðŸŒŸ"
+        "emoji": "🌟"
       },
       {
         "id": "pray",
         "label": "Ask and learn how to make Easter bread at home",
-        "emoji": "ðŸ™"
+        "emoji": "🙏"
       },
       {
         "id": "mass",
         "label": "Attended Holy Qurbana",
-        "emoji": "â›ª"
+        "emoji": "⛪"
       }
     ],
     "question": "Who is the Pope who wrote the cyclical article on the Eucharist that I so desired?"
@@ -69,23 +69,23 @@
     "theme": "Gratitude",
     "verse": "1 Thessalonians 5:18",
     "verseText": "Give thanks in all circumstances; for this is God's will for you in Christ Jesus.",
-    "description": "Gratitude is like magic â€” when we are thankful, our hearts become happier! Let's count our blessings today.",
+    "description": "Gratitude is like magic — when we are thankful, our hearts become happier! Let's count our blessings today.",
     "videoUrl": "",
     "tasks": [
       {
         "id": "pray",
         "label": "Say a prayer of thanksgiving to God for three specific things",
-        "emoji": "ðŸ™"
+        "emoji": "🙏"
       },
       {
         "id": "act",
         "label": "Say 'thank you' with a big smile to everyone who helps you today",
-        "emoji": "ðŸ˜Š"
+        "emoji": "😊"
       },
       {
         "id": "mass",
         "label": "Attended Holy Qurbana",
-        "emoji": "â›ª"
+        "emoji": "⛪"
       }
     ],
     "question": "What is the greatest blessing God has given you? Why are you grateful for it?"
@@ -102,22 +102,22 @@
       {
         "id": "pray",
         "label": "Recite the Our Father slowly, thinking about each word",
-        "emoji": "ðŸ™"
+        "emoji": "🙏"
       },
       {
         "id": "act",
         "label": "Find a quiet place and spend 5 minutes talking to God",
-        "emoji": "ðŸ•Šï¸"
+        "emoji": "🕊️"
       },
       {
         "id": "read",
-        "label": "Read Matthew 6:5-15 â€” Jesus teaches us how to pray",
-        "emoji": "ðŸ“–"
+        "label": "Read Matthew 6:5-15 — Jesus teaches us how to pray",
+        "emoji": "📖"
       },
       {
         "id": "mass",
         "label": "Attended Holy Qurbana",
-        "emoji": "â›ª"
+        "emoji": "⛪"
       }
     ],
     "question": "Who were the women who visited Christ's tomb according to the Gospel of Matthewl?"
@@ -134,22 +134,22 @@
       {
         "id": "read",
         "label": "Read the story of the Prodigal Son (Luke 15:11-32)",
-        "emoji": "ðŸ“–"
+        "emoji": "📖"
       },
       {
         "id": "pray",
         "label": "Lets eat all the meals together with your whole family, in this easter day",
-        "emoji": "ðŸ™"
+        "emoji": "🙏"
       },
       {
         "id": "act",
         "label": "Say sorry to someone you may have hurt or been unkind to",
-        "emoji": "ðŸ’›"
+        "emoji": "💛"
       },
       {
         "id": "mass",
         "label": "Attended Holy Qurbana",
-        "emoji": "â›ª"
+        "emoji": "⛪"
       }
     ],
     "question": "What sacred object is used in the Holy Qurbana to symbolize the stone covering Jesus' tomb and the cloth wrapped in the tomb?"
@@ -166,22 +166,22 @@
       {
         "id": "read",
         "label": "Read Proverbs 12:17-19 about the power of truth",
-        "emoji": "ðŸ“–"
+        "emoji": "📖"
       },
       {
         "id": "act",
         "label": "Make a promise to tell the truth all day today",
-        "emoji": "ðŸ¤"
+        "emoji": "🤝"
       },
       {
         "id": "pray",
         "label": "Ask God to give you a brave and honest heart",
-        "emoji": "ðŸ™"
+        "emoji": "🙏"
       },
       {
         "id": "mass",
         "label": "Attended Holy Qurbana",
-        "emoji": "â›ª"
+        "emoji": "⛪"
       }
     ],
     "question": "What does the word Rabboni mean in Hebrew?"
@@ -192,23 +192,23 @@
     "theme": "Sharing",
     "verse": "Luke 3:11",
     "verseText": "Anyone who has two shirts should share with the one who has none, and anyone who has food should do the same.",
-    "description": "When we share, we multiply the joy! Sharing is not just about things â€” we can share our time, our smiles, and our love too.",
+    "description": "When we share, we multiply the joy! Sharing is not just about things — we can share our time, our smiles, and our love too.",
     "videoUrl": "",
     "tasks": [
       {
         "id": "act",
         "label": "Find something you own and give it to someone who needs it",
-        "emoji": "ðŸŽ"
+        "emoji": "🎁"
       },
       {
         "id": "pray",
         "label": "Thank God for everything you have and ask Him to make you generous",
-        "emoji": "ðŸ™"
+        "emoji": "🙏"
       },
       {
         "id": "mass",
         "label": "Attended Holy Qurbana",
-        "emoji": "â›ª"
+        "emoji": "⛪"
       }
     ],
     "question": "How did sharing make you feel today? What is the best thing you ever shared?"
@@ -225,22 +225,22 @@
       {
         "id": "act",
         "label": "Help with a household chore without being asked",
-        "emoji": "ðŸ "
+        "emoji": "🏠"
       },
       {
         "id": "act",
         "label": "Ask someone: 'Is there anything I can do to help you today?'",
-        "emoji": "ðŸ¤"
+        "emoji": "🤝"
       },
       {
         "id": "pray",
         "label": "Pray for people around the world who need help",
-        "emoji": "ðŸ™"
+        "emoji": "🙏"
       },
       {
         "id": "mass",
         "label": "Attended Holy Qurbana",
-        "emoji": "â›ª"
+        "emoji": "⛪"
       }
     ],
     "question": "Find the saint who is hidden in the image puzzle."
@@ -251,28 +251,28 @@
     "theme": "Peace",
     "verse": "Philippians 4:7",
     "verseText": "And the peace of God, which transcends all understanding, will guard your hearts and your minds in Christ Jesus.",
-    "description": "Peace is a special gift from God â€” it is a calm feeling in your heart even when things around you are noisy or scary. Jesus said 'Peace be with you!'",
+    "description": "Peace is a special gift from God — it is a calm feeling in your heart even when things around you are noisy or scary. Jesus said 'Peace be with you!'",
     "videoUrl": "",
     "tasks": [
       {
         "id": "pray",
         "label": "Sit quietly for 5 minutes and ask God to give you His peace",
-        "emoji": "ðŸ•Šï¸"
+        "emoji": "🕊️"
       },
       {
         "id": "read",
-        "label": "Read John 14:27 â€” Jesus promises us His peace",
-        "emoji": "ðŸ“–"
+        "label": "Read John 14:27 — Jesus promises us His peace",
+        "emoji": "📖"
       },
       {
         "id": "act",
         "label": "Help resolve a small disagreement or argument between people today",
-        "emoji": "ðŸ¤"
+        "emoji": "🤝"
       },
       {
         "id": "mass",
         "label": "Attended Holy Qurbana",
-        "emoji": "â›ª"
+        "emoji": "⛪"
       }
     ],
     "question": "When do you feel most peaceful? What does God's peace feel like in your heart?"
@@ -289,22 +289,22 @@
       {
         "id": "act",
         "label": "Sing or hum your favourite praise song today",
-        "emoji": "ðŸŽµ"
+        "emoji": "🎵"
       },
       {
         "id": "act",
         "label": "Make someone laugh or smile today",
-        "emoji": "ðŸ˜„"
+        "emoji": "😄"
       },
       {
         "id": "pray",
         "label": "Thank God for the gift of joy and ask Him to keep it in your heart",
-        "emoji": "ðŸ™"
+        "emoji": "🙏"
       },
       {
         "id": "mass",
         "label": "Attended Holy Qurbana",
-        "emoji": "â›ª"
+        "emoji": "⛪"
       }
     ],
     "question": "What is the difference between happiness and joy? Where does your joy come from?"
@@ -321,22 +321,22 @@
       {
         "id": "read",
         "label": "Read James 1:2-4 about how trials build patience",
-        "emoji": "ðŸ“–"
+        "emoji": "📖"
       },
       {
         "id": "act",
-        "label": "Practice patience today â€” count to 10 before reacting when upset",
-        "emoji": "ðŸ’ª"
+        "label": "Practice patience today — count to 10 before reacting when upset",
+        "emoji": "💪"
       },
       {
         "id": "pray",
         "label": "Collect a seed and plant it in your garden or field.",
-        "emoji": "ðŸŒ±"
+        "emoji": "🌱"
       },
       {
         "id": "mass",
         "label": "Attended Holy Qurbana",
-        "emoji": "â›ª"
+        "emoji": "⛪"
       }
     ],
     "question": "Which Gospel passage describes the scene in the picture puzzle above?"
@@ -347,28 +347,28 @@
     "theme": "Humility",
     "verse": "Philippians 2:3",
     "verseText": "Do nothing out of selfish ambition or vain conceit. Rather, in humility value others above yourselves.",
-    "description": "Humility is not thinking less of yourself â€” it is thinking of others more! Jesus, the King of kings, washed His disciples' feet. That is real humility!",
+    "description": "Humility is not thinking less of yourself — it is thinking of others more! Jesus, the King of kings, washed His disciples' feet. That is real humility!",
     "videoUrl": "",
     "tasks": [
       {
         "id": "read",
-        "label": "Read John 13:1-17 â€” Jesus washes feet",
-        "emoji": "ðŸ“–"
+        "label": "Read John 13:1-17 — Jesus washes feet",
+        "emoji": "📖"
       },
       {
         "id": "act",
-        "label": "Let someone else go first today â€” in line, in games, in choice",
-        "emoji": "ðŸ¤"
+        "label": "Let someone else go first today — in line, in games, in choice",
+        "emoji": "🤝"
       },
       {
         "id": "pray",
         "label": "Ask Jesus to give you a servant heart like His",
-        "emoji": "ðŸ™"
+        "emoji": "🙏"
       },
       {
         "id": "mass",
         "label": "Attended Holy Qurbana",
-        "emoji": "â›ª"
+        "emoji": "⛪"
       }
     ],
     "question": "How can you serve others today without expecting anything in return?"
@@ -379,60 +379,60 @@
     "theme": "Courage",
     "verse": "Joshua 1:9",
     "verseText": "Be strong and courageous. Do not be afraid; do not be discouraged, for the Lord your God will be with you wherever you go.",
-    "description": "Courage is not the absence of fear â€” it is doing the right thing even when you are scared! God promises to be with us, so we can be brave.",
+    "description": "Courage is not the absence of fear — it is doing the right thing even when you are scared! God promises to be with us, so we can be brave.",
     "videoUrl": "",
     "tasks": [
       {
         "id": "read",
         "label": "Read the story of David and Goliath (1 Samuel 17:32-50)",
-        "emoji": "ðŸ“–"
+        "emoji": "📖"
       },
       {
         "id": "act",
         "label": "Do something today that scares you a little (speak up, try something new)",
-        "emoji": "ðŸ’ª"
+        "emoji": "💪"
       },
       {
         "id": "pray",
         "label": "Ask God to give you His courage today",
-        "emoji": "ðŸ™"
+        "emoji": "🙏"
       },
       {
         "id": "mass",
         "label": "Attended Holy Qurbana",
-        "emoji": "â›ª"
+        "emoji": "⛪"
       }
     ],
     "question": "What is one thing you have been afraid to do? What would help you be brave?"
   },
   {
     "day": 14,
-    "title": "Faith â€” Trusting What We Cannot See",
+    "title": "Faith — Trusting What We Cannot See",
     "theme": "Faith",
     "verse": "Hebrews 11:1",
     "verseText": "Now faith is confidence in what we hope for and assurance about what we do not see.",
-    "description": "Have you ever seen the wind? You cannot see it, but you feel it! Faith is like that â€” we believe in God even though we cannot see Him, because we feel Him in our hearts.",
+    "description": "Have you ever seen the wind? You cannot see it, but you feel it! Faith is like that — we believe in God even though we cannot see Him, because we feel Him in our hearts.",
     "videoUrl": "",
     "tasks": [
       {
         "id": "read",
-        "label": "Read Hebrews 11 â€” the great heroes of faith",
-        "emoji": "ðŸ“–"
+        "label": "Read Hebrews 11 — the great heroes of faith",
+        "emoji": "📖"
       },
       {
         "id": "act",
         "label": "Share something you believe about God with a friend or family member",
-        "emoji": "ðŸ’¬"
+        "emoji": "💬"
       },
       {
         "id": "pray",
         "label": "Ask God to grow your faith stronger every day",
-        "emoji": "ðŸ™"
+        "emoji": "🙏"
       },
       {
         "id": "mass",
         "label": "Attended Holy Qurbana",
-        "emoji": "â›ª"
+        "emoji": "⛪"
       }
     ],
     "question": "How has your faith in God grown? What do you believe that you cannot see?"
@@ -449,17 +449,17 @@
       {
         "id": "pray",
         "label": "Pray for someone who seems sad or without hope today",
-        "emoji": "ðŸ™"
+        "emoji": "🙏"
       },
       {
         "id": "act",
         "label": "Share an encouraging word with someone who needs it",
-        "emoji": "ðŸ’¬"
+        "emoji": "💬"
       },
       {
         "id": "mass",
         "label": "Attended Holy Qurbana",
-        "emoji": "â›ª"
+        "emoji": "⛪"
       }
     ],
     "question": "What do you hope for most? How does your faith in God give you hope?"
@@ -470,28 +470,28 @@
     "theme": "Service",
     "verse": "Mark 10:45",
     "verseText": "For even the Son of Man did not come to be served, but to serve, and to give his life as a ransom for many.",
-    "description": "Jesus came to serve, not to be served! We are called to live like Jesus â€” putting others first and giving freely of ourselves.",
+    "description": "Jesus came to serve, not to be served! We are called to live like Jesus — putting others first and giving freely of ourselves.",
     "videoUrl": "",
     "tasks": [
       {
         "id": "act",
-        "label": "Serve your family â€” cook, clean, or do something helpful without being asked",
-        "emoji": "ðŸ½ï¸"
+        "label": "Serve your family — cook, clean, or do something helpful without being asked",
+        "emoji": "🍽️"
       },
       {
         "id": "pray",
         "label": "Ask God to show you someone who needs your service today",
-        "emoji": "ðŸ™"
+        "emoji": "🙏"
       },
       {
         "id": "read",
         "label": "Read the parable of the talents (Matthew 25:14-30)",
-        "emoji": "ðŸ“–"
+        "emoji": "📖"
       },
       {
         "id": "mass",
         "label": "Attended Holy Qurbana",
-        "emoji": "â›ª"
+        "emoji": "⛪"
       }
     ],
     "question": "How did you serve someone today? How did it feel to give without expecting anything back?"
@@ -501,29 +501,29 @@
     "title": "Respect Everyone",
     "theme": "Respect",
     "verse": "Ephesians 6:2",
-    "verseText": "Honor your father and mother â€” which is the first commandment with a promise.",
+    "verseText": "Honor your father and mother — which is the first commandment with a promise.",
     "description": "Respect means treating everyone as valuable because every person is made in God's image. When we respect others, we honor God!",
     "videoUrl": "",
     "tasks": [
       {
         "id": "act",
         "label": "Listen carefully without interrupting when someone speaks to you today",
-        "emoji": "ðŸ‘‚"
+        "emoji": "👂"
       },
       {
         "id": "act",
         "label": "Say 'please' and 'thank you' to everyone all day",
-        "emoji": "ðŸ˜Š"
+        "emoji": "😊"
       },
       {
         "id": "pray",
         "label": "Ask God to help you see the value and beauty in every person",
-        "emoji": "ðŸ™"
+        "emoji": "🙏"
       },
       {
         "id": "mass",
         "label": "Attended Holy Qurbana",
-        "emoji": "â›ª"
+        "emoji": "⛪"
       }
     ],
     "question": "What does respect look like in your daily life at home and at school?"
@@ -534,23 +534,23 @@
     "theme": "Compassion",
     "verse": "Matthew 9:36",
     "verseText": "When he saw the crowds, he had compassion on them, because they were harassed and helpless, like sheep without a shepherd.",
-    "description": "Compassion means feeling what others feel and then doing something about it. Jesus always had compassion â€” He never turned anyone away. Let's be like Jesus!",
+    "description": "Compassion means feeling what others feel and then doing something about it. Jesus always had compassion — He never turned anyone away. Let's be like Jesus!",
     "videoUrl": "",
     "tasks": [
       {
         "id": "act",
         "label": "Sit with someone who seems lonely today",
-        "emoji": "ðŸ¤"
+        "emoji": "🤝"
       },
       {
         "id": "pray",
         "label": "Ask Jesus to give you His eyes to see those who are hurting",
-        "emoji": "ðŸ™"
+        "emoji": "🙏"
       },
       {
         "id": "mass",
         "label": "Attended Holy Qurbana",
-        "emoji": "â›ª"
+        "emoji": "⛪"
       }
     ],
     "question": "Who did you show compassion to today? How did it reflect Jesus's love?"
@@ -561,28 +561,28 @@
     "theme": "Generosity",
     "verse": "2 Corinthians 9:7",
     "verseText": "Each of you should give what you have decided in your heart to give, not reluctantly or under compulsion, for God loves a cheerful giver.",
-    "description": "Generosity is giving cheerfully! When we give freely â€” our time, love, money, or talents â€” we become more like God, who gives us everything.",
+    "description": "Generosity is giving cheerfully! When we give freely — our time, love, money, or talents — we become more like God, who gives us everything.",
     "videoUrl": "",
     "tasks": [
       {
         "id": "act",
         "label": "Give away something meaningful to someone who would love it",
-        "emoji": "ðŸŽ"
+        "emoji": "🎁"
       },
       {
         "id": "act",
         "label": "Donate or set aside something for those in need",
-        "emoji": "ðŸ’›"
+        "emoji": "💛"
       },
       {
         "id": "pray",
         "label": "Ask God to give you a generous and open heart",
-        "emoji": "ðŸ™"
+        "emoji": "🙏"
       },
       {
         "id": "mass",
         "label": "Attended Holy Qurbana",
-        "emoji": "â›ª"
+        "emoji": "⛪"
       }
     ],
     "question": "What did you give today? How did it feel to be a cheerful giver?"
@@ -599,22 +599,22 @@
       {
         "id": "read",
         "label": "Read Proverbs 3:5-6 and think about trusting God's plan",
-        "emoji": "ðŸ“–"
+        "emoji": "📖"
       },
       {
         "id": "pray",
         "label": "Pray: 'God, I trust You with my whole heart. Your plan is better than mine.'",
-        "emoji": "ðŸ™"
+        "emoji": "🙏"
       },
       {
         "id": "act",
         "label": "Talk to a parent or trusted person about something that worries you",
-        "emoji": "ðŸ’¬"
+        "emoji": "💬"
       },
       {
         "id": "mass",
         "label": "Attended Holy Qurbana",
-        "emoji": "â›ª"
+        "emoji": "⛪"
       }
     ],
     "question": "What does it mean to trust God when things don't go the way you planned?"
@@ -631,22 +631,22 @@
       {
         "id": "read",
         "label": "Read the parable of the Good Samaritan (Luke 10:25-37)",
-        "emoji": "ðŸ“–"
+        "emoji": "📖"
       },
       {
         "id": "act",
-        "label": "Help someone unexpected today â€” someone outside your usual group",
-        "emoji": "ðŸ¤"
+        "label": "Help someone unexpected today — someone outside your usual group",
+        "emoji": "🤝"
       },
       {
         "id": "pray",
         "label": "Ask God to help you see everyone as your neighbour",
-        "emoji": "ðŸ™"
+        "emoji": "🙏"
       },
       {
         "id": "mass",
         "label": "Attended Holy Qurbana",
-        "emoji": "â›ª"
+        "emoji": "⛪"
       }
     ],
     "question": "Who is a 'Good Samaritan' in your life? How can you be one for someone else?"
@@ -657,23 +657,23 @@
     "theme": "Faith in Miracles",
     "verse": "John 11:25",
     "verseText": "Jesus said to her, 'I am the resurrection and the life. The one who believes in me will live, even though they die.'",
-    "description": "Jesus performed many amazing miracles â€” healing the sick, feeding thousands, raising the dead! These miracles show us that nothing is impossible with God.",
+    "description": "Jesus performed many amazing miracles — healing the sick, feeding thousands, raising the dead! These miracles show us that nothing is impossible with God.",
     "videoUrl": "",
     "tasks": [
       {
         "id": "read",
         "label": "Read the miracle of the loaves and fish (John 6:1-14)",
-        "emoji": "ðŸ“–"
+        "emoji": "📖"
       },
       {
         "id": "pray",
         "label": "Ask Jesus for a miracle for someone who needs healing or help",
-        "emoji": "ðŸ™"
+        "emoji": "🙏"
       },
       {
         "id": "mass",
         "label": "Attended Holy Qurbana",
-        "emoji": "â›ª"
+        "emoji": "⛪"
       }
     ],
     "question": "Do you believe God still does miracles today? Have you seen or heard of one?"
@@ -684,60 +684,60 @@
     "theme": "Prayer Life",
     "verse": "Matthew 6:9",
     "verseText": "Our Father in heaven, hallowed be your name, your kingdom come, your will be done.",
-    "description": "Jesus gave us the perfect prayer! The Our Father is not just words â€” it is a conversation with our Heavenly Father. Let's pray it with meaning today.",
+    "description": "Jesus gave us the perfect prayer! The Our Father is not just words — it is a conversation with our Heavenly Father. Let's pray it with meaning today.",
     "videoUrl": "",
     "tasks": [
       {
         "id": "pray",
         "label": "Pray the Our Father very slowly, thinking about every single line",
-        "emoji": "ðŸ™"
+        "emoji": "🙏"
       },
       {
         "id": "act",
         "label": "Teach a younger child or sibling the Our Father",
-        "emoji": "ðŸ‘¶"
+        "emoji": "👶"
       },
       {
         "id": "read",
-        "label": "Read Matthew 6:5-15 â€” everything Jesus teaches about prayer",
-        "emoji": "ðŸ“–"
+        "label": "Read Matthew 6:5-15 — everything Jesus teaches about prayer",
+        "emoji": "📖"
       },
       {
         "id": "mass",
         "label": "Attended Holy Qurbana",
-        "emoji": "â›ª"
+        "emoji": "⛪"
       }
     ],
     "question": "Which part of the Our Father means the most to you today? Why?"
   },
   {
     "day": 24,
-    "title": "The Beatitudes â€” Blessed Are You!",
+    "title": "The Beatitudes — Blessed Are You!",
     "theme": "Blessed Life",
     "verse": "Matthew 5:3",
     "verseText": "Blessed are the poor in spirit, for theirs is the kingdom of heaven.",
-    "description": "Jesus gave us a map for a truly blessed life â€” the Beatitudes! These are not the world's idea of success, but God's beautiful upside-down kingdom.",
+    "description": "Jesus gave us a map for a truly blessed life — the Beatitudes! These are not the world's idea of success, but God's beautiful upside-down kingdom.",
     "videoUrl": "",
     "tasks": [
       {
         "id": "read",
         "label": "Read all the Beatitudes in Matthew 5:3-12",
-        "emoji": "ðŸ“–"
+        "emoji": "📖"
       },
       {
         "id": "act",
         "label": "Live one Beatitude fully today (e.g., be a peacemaker)",
-        "emoji": "ðŸ•Šï¸"
+        "emoji": "🕊️"
       },
       {
         "id": "pray",
         "label": "Ask God to help you live the Beatitudes in your daily life",
-        "emoji": "ðŸ™"
+        "emoji": "🙏"
       },
       {
         "id": "mass",
         "label": "Attended Holy Qurbana",
-        "emoji": "â›ª"
+        "emoji": "⛪"
       }
     ],
     "question": "Which Beatitude is hardest for you to live? Which comes most naturally?"
@@ -748,57 +748,57 @@
     "theme": "Mary",
     "verse": "John 19:27",
     "verseText": "Then he said to the disciple, 'Here is your mother.' And from that time on, this disciple took her into his own home.",
-    "description": "From the Cross, Jesus gave us Mary as our mother! She is our greatest intercessor â€” she always brings us to her Son Jesus. Let's honour Mary today.",
+    "description": "From the Cross, Jesus gave us Mary as our mother! She is our greatest intercessor — she always brings us to her Son Jesus. Let's honour Mary today.",
     "videoUrl": "",
     "tasks": [
       {
         "id": "pray",
         "label": "Pray the Hail Mary slowly, meditating on each word",
-        "emoji": "ðŸ™"
+        "emoji": "🙏"
       },
       {
         "id": "read",
-        "label": "Read Luke 1:26-55 â€” The Annunciation and the Magnificat",
-        "emoji": "ðŸ“–"
+        "label": "Read Luke 1:26-55 — The Annunciation and the Magnificat",
+        "emoji": "📖"
       },
       {
         "id": "mass",
         "label": "Attended Holy Qurbana",
-        "emoji": "â›ª"
+        "emoji": "⛪"
       }
     ],
     "question": "How can Mary help you grow closer to Jesus? What do you admire about her?"
   },
   {
     "day": 26,
-    "title": "The Cloud of Witnesses â€” The Saints",
+    "title": "The Cloud of Witnesses — The Saints",
     "theme": "Saints",
     "verse": "Hebrews 12:1",
     "verseText": "Therefore, since we are surrounded by such a great cloud of witnesses, let us throw off everything that hinders and run with perseverance.",
-    "description": "The saints are our older brothers and sisters in faith who ran the race before us! They cheer us on from heaven. We all have a saint's name â€” let's find out more about them.",
+    "description": "The saints are our older brothers and sisters in faith who ran the race before us! They cheer us on from heaven. We all have a saint's name — let's find out more about them.",
     "videoUrl": "",
     "tasks": [
       {
         "id": "read",
         "label": "Read about your patron saint or a saint you admire",
-        "emoji": "ðŸ“–"
+        "emoji": "📖"
       },
       {
         "id": "pray",
         "label": "Ask your patron saint to pray for you and intercede for your needs",
-        "emoji": "ðŸ™"
+        "emoji": "🙏"
       },
       {
         "id": "mass",
         "label": "Attended Holy Qurbana",
-        "emoji": "â›ª"
+        "emoji": "⛪"
       }
     ],
     "question": "Which saint inspires you most? How can you live like them in your daily life?"
   },
   {
     "day": 27,
-    "title": "The Holy Spirit â€” Our Helper",
+    "title": "The Holy Spirit — Our Helper",
     "theme": "Holy Spirit",
     "verse": "John 14:26",
     "verseText": "But the Advocate, the Holy Spirit, whom the Father will send in my name, will teach you all things and will remind you of everything I have said to you.",
@@ -807,50 +807,50 @@
     "tasks": [
       {
         "id": "read",
-        "label": "Read about Pentecost (Acts 2:1-13) â€” the Holy Spirit arrives!",
-        "emoji": "ðŸ“–"
+        "label": "Read about Pentecost (Acts 2:1-13) — the Holy Spirit arrives!",
+        "emoji": "📖"
       },
       {
         "id": "pray",
         "label": "Pray: 'Come, Holy Spirit, fill my heart with your fire and love'",
-        "emoji": "ðŸ”¥"
+        "emoji": "🔥"
       },
       {
         "id": "act",
-        "label": "Listen to the Spirit's gentle voice today â€” what is He telling you?",
-        "emoji": "ðŸ‘‚"
+        "label": "Listen to the Spirit's gentle voice today — what is He telling you?",
+        "emoji": "👂"
       },
       {
         "id": "mass",
         "label": "Attended Holy Qurbana",
-        "emoji": "â›ª"
+        "emoji": "⛪"
       }
     ],
     "question": "How have you felt the Holy Spirit's presence in your life? What does He say to you?"
   },
   {
     "day": 28,
-    "title": "The Bread of Life â€” The Eucharist",
+    "title": "The Bread of Life — The Eucharist",
     "theme": "Eucharist",
     "verse": "John 6:35",
     "verseText": "Then Jesus declared, 'I am the bread of life. Whoever comes to me will never go hungry, and whoever believes in me will never be thirsty.'",
-    "description": "The Eucharist is the greatest gift Jesus gave us â€” His Body and Blood! At Mass, He comes to us in the most intimate and beautiful way. Let's treasure this gift.",
+    "description": "The Eucharist is the greatest gift Jesus gave us — His Body and Blood! At Mass, He comes to us in the most intimate and beautiful way. Let's treasure this gift.",
     "videoUrl": "",
     "tasks": [
       {
         "id": "read",
-        "label": "Read John 6:22-58 â€” The Bread of Life discourse",
-        "emoji": "ðŸ“–"
+        "label": "Read John 6:22-58 — The Bread of Life discourse",
+        "emoji": "📖"
       },
       {
         "id": "pray",
         "label": "Make a spiritual communion prayer if you cannot receive today",
-        "emoji": "ðŸ™"
+        "emoji": "🙏"
       },
       {
         "id": "mass",
         "label": "Attended Holy Qurbana",
-        "emoji": "â›ª"
+        "emoji": "⛪"
       }
     ],
     "question": "How does the Eucharist nourish you? How do you prepare your heart to receive Jesus?"
@@ -861,28 +861,28 @@
     "theme": "Community",
     "verse": "Matthew 16:18",
     "verseText": "And I tell you that you are Peter, and on this rock I will build my church, and the gates of Hades will not overcome it.",
-    "description": "The Church is not just a building â€” it is us! We are the Body of Christ, all connected to each other and to Jesus our Head. We need each other!",
+    "description": "The Church is not just a building — it is us! We are the Body of Christ, all connected to each other and to Jesus our Head. We need each other!",
     "videoUrl": "",
     "tasks": [
       {
         "id": "act",
         "label": "Call or message a friend from your parish to encourage them",
-        "emoji": "ðŸ“ž"
+        "emoji": "📞"
       },
       {
         "id": "pray",
         "label": "Pray for your priest, parish, and the entire Church",
-        "emoji": "ðŸ™"
+        "emoji": "🙏"
       },
       {
         "id": "read",
-        "label": "Read 1 Corinthians 12:12-27 â€” We are one body",
-        "emoji": "ðŸ“–"
+        "label": "Read 1 Corinthians 12:12-27 — We are one body",
+        "emoji": "📖"
       },
       {
         "id": "mass",
         "label": "Attended Holy Qurbana",
-        "emoji": "â›ª"
+        "emoji": "⛪"
       }
     ],
     "question": "How do you contribute to your church community? How can you serve your parish better?"
@@ -898,23 +898,23 @@
     "tasks": [
       {
         "id": "read",
-        "label": "Read Matthew 5:13-16 â€” Salt and Light of the World",
-        "emoji": "ðŸ“–"
+        "label": "Read Matthew 5:13-16 — Salt and Light of the World",
+        "emoji": "📖"
       },
       {
         "id": "act",
         "label": "Share one thing you learned from this 30-day journey with your family",
-        "emoji": "ðŸ’¬"
+        "emoji": "💬"
       },
       {
         "id": "pray",
         "label": "Thank God for walking with you on this journey and ask Him what's next",
-        "emoji": "ðŸ™"
+        "emoji": "🙏"
       },
       {
         "id": "mass",
         "label": "Attended Holy Qurbana",
-        "emoji": "â›ª"
+        "emoji": "⛪"
       }
     ],
     "question": "How have you grown over these 30 days? How will you be a light in your school, home, and world?"
