@@ -42,8 +42,7 @@ function PuzzleContent() {
   const titleEn = params.get('titleEn') || 'Risen Christ Puzzle';
   const titleMl = params.get('titleMl') || 'ഉയിർത്ത ക്രിസ്തു പസൽ';
   const solvedTextEn = params.get('solvedTextEn') || 'He is Risen! Alleluia! 🌅';
-  const solvedTextMl = params.get('solvedTextMl') || 'അവൻ ഉയിർത്തെഴുന്നേറ്റു! അല്ലേലൂയ! 🌅';
-  const title = lang === 'ml' ? titleMl : titleEn;
+  const solvedTextMl = params.get('solvedTextMl') || 'അവൻ ഉയിർത്തെഴുന്നേറ്റു! അല്ലേലൂയ! 🌅';  const backUrl = params.get('backUrl') || '/dashboard';  const title = lang === 'ml' ? titleMl : titleEn;
   const solvedText = lang === 'ml' ? solvedTextMl : solvedTextEn;
 
   const [tray, setTray] = useState<number[]>(() =>
@@ -112,7 +111,7 @@ function PuzzleContent() {
       <div className="bg-gradient-to-br from-purple-600 to-indigo-700 px-5 pt-12 pb-6">
         <div className="flex items-center gap-3">
           <Link
-            href="/dashboard"
+            href={backUrl}
             className="bg-white/20 text-white p-2 rounded-xl hover:bg-white/30 transition-colors"
           >
             <ChevronLeft size={22} />
@@ -148,7 +147,7 @@ function PuzzleContent() {
                 Play Again
               </button>
               <Link
-                href="/dashboard"
+                href={backUrl}
                 className="bg-white text-orange-500 font-bold text-sm px-4 py-2 rounded-xl"
               >
                 Back to Journey →

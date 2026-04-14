@@ -279,3 +279,86 @@ export function getAchievements(completedDays: number[], massStreak = 0): Achiev
     },
   ];
 }
+
+// ── Secret Agent Game ──────────────────────────────────────
+
+export interface AgentProgress {
+  day: number;
+  completed: boolean;
+  attempts: number;
+  completedAt: string | null;
+}
+
+export async function getAgentProgress(uid: string): Promise<AgentProgress[]> {
+  const { data } = await supabase
+    .from('agent_progress')
+    .select('day, completed, attempts, completed_at')
+    .eq('user_id', uid)
+    .order('day');
+  return (data ?? []).map((r) => ({
+    day: r.day as number,
+    completed: r.completed as boolean,
+    attempts: r.attempts as number,
+    completedAt: r.completed_at as string | null,
+  }));
+}
+
+export async function getAgentDayProgress(uid: string, day: number): Promise<AgentProgress | null> {
+  const { data, error } = await supabase
+    .from('agent_progress')
+    .select('day, completed, attempts, completed_at')
+    .eq('user_id', uid)
+    .eq('day', day)
+    .maybeSingle();
+  if (error || !data) return null;
+  return {
+    day: data.day as number,
+    completed: data.completed as boolean,
+    attempts: data.attempts as number,
+    completedAt: data.completed_at as string | null,
+  };
+}
+
+export async function submitAgentAnswer(uid: string, day: number, correct: boolean): Promise<void> {
+  const existing = await getAgentDayProgress(uid, day);
+  if (existing?.completed) return; // already solved
+
+  if (existing) {
+    const update: Record<string, unknown> = { attempts: existing.attempts + 1 };
+    if (correct) {
+      update.completed = true;
+      update.completed_at = new Date().toISOString();
+    }
+    const { error } = await supabase
+      .from('agent_progress')
+      .update(update)
+      .eq('user_id', uid)
+      .eq('day', day);
+    if (error) throw error;
+  } else {
+    const { error } = await supabase.from('agent_progress').insert({
+      user_id: uid,
+      day,
+      completed: correct,
+      attempts: 1,
+      completed_at: correct ? new Date().toISOString() : null,
+    });
+    if (error) throw error;
+  }
+}
+
+export function getAgentLevel(completedCount: number): string {
+  if (completedCount >= 15) return 'Apostle';
+  if (completedCount >= 12) return 'Disciple';
+  if (completedCount >= 9) return 'King';
+  if (completedCount >= 6) return 'Prophet';
+  if (completedCount >= 3) return 'Messenger';
+  return 'Recruit';
+}
+
+export function getAgentPoints(progress: AgentProgress[]): number {
+  return progress.filter((p) => p.completed).reduce((sum, p) => {
+    // Day 15 is worth 100, rest 50
+    return sum + (p.day === 15 ? 100 : 50);
+  }, 0);
+}

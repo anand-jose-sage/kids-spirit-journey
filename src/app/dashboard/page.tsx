@@ -3,13 +3,14 @@
 import { useEffect, useRef, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
+import Image from 'next/image';
 import { useAuth } from '@/components/AuthProvider';
 import { getAchievements, getSavedDays, getSavedEntries, getMassStreak } from '@/lib/database';
 import BottomNav from '@/components/BottomNav';
 import activities from '@/data/activities.json';
 import mlActivities from '@/data/activities.ml.json';
 import { useLang } from '@/contexts/LanguageContext';
-import { Lock, CheckCircle2, ChevronRight, Flame, Star, LogOut, Clock } from 'lucide-react';
+import { Lock, CheckCircle2, ChevronRight, Flame, Star, LogOut, Clock, X, Sparkles } from 'lucide-react';
 import { supabase } from '@/lib/supabase';
 import { clsx } from 'clsx';
 import { isDayUnlocked, getTodayCalendarDay } from '@/lib/schedule';
@@ -30,6 +31,10 @@ export default function DashboardPage() {
   const { lang } = useLang();
   const [savedDays, setSavedDays] = useState<number[]>([]);
   const [massStreak, setMassStreak] = useState(0);
+  const [showAnnouncement, setShowAnnouncement] = useState(() => {
+    if (typeof window === 'undefined') return true;
+    return localStorage.getItem('dismiss-agent-announce') !== 'true';
+  });
   const todayDayRef = useRef<HTMLAnchorElement>(null);
 
   useEffect(() => {
@@ -136,6 +141,40 @@ export default function DashboardPage() {
       </div>
 
       <div className="px-5 py-5 space-y-5">
+        {/* Announcement Banner */}
+        {showAnnouncement && (
+          <div className="relative bg-gradient-to-r from-amber-500 via-orange-500 to-red-500 rounded-2xl p-4 shadow-lg shadow-orange-200 overflow-hidden">
+            {/* Decorative sparkles */}
+            <div className="absolute top-1 right-12 text-yellow-200/40 animate-pulse"><Sparkles size={20} /></div>
+            <div className="absolute bottom-1 left-4 text-yellow-200/30 animate-pulse" style={{ animationDelay: '0.5s' }}><Sparkles size={14} /></div>
+
+            <button
+              onClick={() => { setShowAnnouncement(false); localStorage.setItem('dismiss-agent-announce', 'true'); }}
+              className="absolute top-2 right-2 bg-white/20 hover:bg-white/40 text-white rounded-full p-1 transition-colors"
+              aria-label="Close"
+            >
+              <X size={14} />
+            </button>
+
+            <div className="flex items-center gap-3">
+              <Image src="/images/estherq.png" alt="Agent Esther" width={48} height={48} className="rounded-xl border-2 border-white/30 flex-shrink-0" />
+              <div className="flex-1 min-w-0">
+                <p className="text-white font-bold text-sm leading-tight">
+                  {lang === 'ml' ? '🕵️ പുതിയ ഗെയിം നാളെ ആരംഭിക്കുന്നു!' : '🕵️ New Game Starts Tomorrow!'}
+                </p>
+                <p className="text-orange-100 text-xs mt-0.5">
+                  {lang === 'ml'
+                    ? 'എസ്തേർ ദി ഏജന്റ് — 15 ദിവസത്തെ ബൈബിൾ രഹസ്യ ദൗത്യം'
+                    : 'Esther The Agent — 15-day Bible mystery mission'}
+                </p>
+                <Link href="/dashboard/secret-agent" className="inline-flex items-center gap-1 bg-white/25 hover:bg-white/35 text-white text-xs font-bold px-3 py-1 rounded-full mt-2 transition-colors">
+                  {lang === 'ml' ? 'കൂടുതൽ അറിയൂ' : 'Learn More'} <ChevronRight size={12} />
+                </Link>
+              </div>
+            </div>
+          </div>
+        )}
+
         {/* Today's Activity */}
         {todayActivity && completedDays.length < TOTAL_DAYS && (
           <div>
@@ -187,6 +226,40 @@ export default function DashboardPage() {
             <p className="text-yellow-100 text-sm mt-1">{lang === 'ml' ? 'നിങ്ങൾ 30-ദിവസ ചാമ്പ്യൻ ആണ്!' : 'You are a 30-Day Champion!'}</p>
           </div>
         )}
+
+        {/* Secret Agent Game */}
+        <div>
+          <h2 className="text-base font-bold text-gray-700 mb-3 flex items-center gap-2">
+            <span className="text-lg">🕵️</span> {lang === 'ml' ? 'ബിബ്ലിയ സീക്രട്ട്' : 'Biblia Secret'}
+          </h2>
+          <Link href="/dashboard/secret-agent">
+            <div className="bg-gradient-to-br from-amber-500 to-orange-600 rounded-3xl p-5 shadow-lg shadow-amber-200 active:scale-[0.98] transition-transform">
+              <div className="flex items-start justify-between">
+                <div className="flex-1">
+                  <p className="text-amber-100 text-xs font-semibold uppercase tracking-wider">
+                    {lang === 'ml' ? 'എസ്തേർ ദി ഏജന്റ്' : 'Esther The Agent'}
+                  </p>
+                  <h3 className="text-white text-xl font-bold mt-1 leading-tight">
+                    {lang === 'ml' ? 'മിഷൻ: രക്ഷാ ചരിത്രം' : 'Mission: Salvation History'}
+                  </h3>
+                  <p className="text-amber-200 text-sm mt-1">
+                    {lang === 'ml' ? '15 ദിവസം · ബൈബിൾ രഹസ്യങ്ങൾ അനാവരണം ചെയ്യൂ' : '15 days · Solve Bible mysteries with clues'}
+                  </p>
+                  <div className="mt-3 flex items-center gap-2 text-amber-100 text-sm">
+                    <span>🔍 Riddles</span>
+                    <span className="text-amber-300">·</span>
+                    <span>🧩 Puzzles</span>
+                    <span className="text-amber-300">·</span>
+                    <span>📖 Verses</span>
+                  </div>
+                </div>
+                <div className="ml-3 flex-shrink-0">
+                  <Image src="/images/estherq.png" alt="Agent Esther" width={72} height={72} className="rounded-2xl drop-shadow-lg" />
+                </div>
+              </div>
+            </div>
+          </Link>
+        </div>
 
         {/* Day Timeline Preview */}
         <div>
