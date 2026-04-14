@@ -28,11 +28,11 @@ export function getTodayCalendarDay(): number {
 }
 
 // ── Secret Agent Game schedule ─────────────────────────────
-// Mission 1 unlocks April 14 2026, one mission per day.
-export const AGENT_START = new Date('2026-04-14T00:00:00');
+// Mission 1 unlocks April 15 2026, one mission per day.
+export const AGENT_START = new Date('2026-04-15T00:00:00');
 
-// Jigsaw puzzle clue starts April 15 2026
-export const PUZZLE_START = new Date('2026-04-15T00:00:00');
+// Jigsaw puzzle clue starts April 16 2026
+export const PUZZLE_START = new Date('2026-04-16T00:00:00');
 
 export function getAgentUnlockDate(day: number): Date {
   const d = new Date(AGENT_START);
@@ -56,7 +56,7 @@ export function getTodayAgentDay(): number {
   const start = new Date(AGENT_START);
   start.setHours(0, 0, 0, 0);
   const diff = Math.floor((today.getTime() - start.getTime()) / (1000 * 60 * 60 * 24));
-  return diff + 1; // mission 1 on April 14
+  return diff + 1; // mission 1 on April 15
 }
 
 /** Whether the jigsaw puzzle clue is available yet (from April 15). */

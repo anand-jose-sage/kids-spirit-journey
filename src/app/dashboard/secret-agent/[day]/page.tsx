@@ -9,7 +9,7 @@ import BottomNav from '@/components/BottomNav';
 import missions from '@/data/secret-agent-missions.json';
 import mlMissions from '@/data/secret-agent-missions.ml.json';
 import { getAgentDayProgress, submitAgentAnswer, AgentProgress } from '@/lib/database';
-import { isAgentDayUnlocked, isPuzzleUnlocked } from '@/lib/schedule';
+import { isAgentDayUnlocked, isPuzzleUnlocked, getAgentUnlockDate } from '@/lib/schedule';
 import { sanitizeInput } from '@/lib/sanitize';
 import { useLang } from '@/contexts/LanguageContext';
 import { ChevronLeft, Eye, EyeOff, CheckCircle2, XCircle, Lock, Shield, Send, AlertTriangle, Crosshair, Puzzle } from 'lucide-react';
@@ -91,11 +91,7 @@ export default function MissionDayPage() {
   }, [user, loading, router]);
 
   // Redirect if mission is still locked
-  useEffect(() => {
-    if (!loading && mission && !isAgentDayUnlocked(day)) {
-      router.replace('/dashboard/secret-agent');
-    }
-  }, [loading, mission, day, router]);
+  const dayUnlocked = !loading && mission ? isAgentDayUnlocked(day) : false;
 
   useEffect(() => {
     loadProgress();
@@ -142,6 +138,64 @@ export default function MissionDayPage() {
     return (
       <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-900 to-gray-800">
         <p className="text-white text-lg">Mission not found.</p>
+      </div>
+    );
+  }
+
+  // Locked day — show disabled preview
+  if (!dayUnlocked) {
+    const unlockDate = getAgentUnlockDate(day);
+    const unlockStr = unlockDate.toLocaleDateString(lang === 'ml' ? 'ml-IN' : 'en-IN', { month: 'short', day: 'numeric' });
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-slate-800 via-slate-700 to-slate-800 pb-nav">
+        <div className="fixed inset-0 pointer-events-none z-10 opacity-[0.02]" style={{ backgroundImage: 'repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,255,65,0.08) 2px, rgba(0,255,65,0.08) 4px)' }} />
+
+        <div className="relative bg-gradient-to-b from-slate-900 to-slate-800 px-5 pt-12 pb-5 border-b border-emerald-500/25">
+          <div className="absolute inset-0 opacity-5" style={{ backgroundImage: 'radial-gradient(circle, rgba(0,255,65,0.3) 1px, transparent 1px)', backgroundSize: '20px 20px' }} />
+          <div className="relative">
+            <Link href="/dashboard/secret-agent" className="flex items-center gap-1 text-emerald-400/70 text-xs font-mono mb-4 hover:text-emerald-300 transition-colors">
+              <ChevronLeft size={14} /> {lang === 'ml' ? '← എല്ലാ ദൗത്യങ്ങളും' : '← MISSION HQ'}
+            </Link>
+            <div className="flex items-center gap-3">
+              <Image src="/images/estherq.png" alt="Agent Esther" width={48} height={48} className="rounded-lg border border-emerald-400/40 object-cover opacity-50" />
+              <div>
+                <p className="text-emerald-400/70 text-[10px] font-mono uppercase tracking-[0.15em]">
+                  {lang === 'ml' ? `ദൗത്യം ${String(day).padStart(2, '0')} / 15` : `MISSION ${String(day).padStart(2, '0')} OF 15`}
+                </p>
+                <h1 className="text-white/50 text-lg font-bold tracking-tight mt-0.5">
+                  {lang === 'ml' ? mlData?.title || mission.title : mission.title}
+                </h1>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="px-5 py-10 flex flex-col items-center justify-center text-center space-y-4">
+          <div className="w-20 h-20 rounded-full bg-slate-700/60 border-2 border-emerald-500/30 flex items-center justify-center">
+            <Lock size={36} className="text-emerald-400/50" />
+          </div>
+          <div>
+            <p className="text-emerald-400/70 text-[10px] font-mono uppercase tracking-widest mb-1">
+              {lang === 'ml' ? 'രഹസ്യ വർഗ്ഗീകൃതം' : 'CLASSIFIED'}
+            </p>
+            <h2 className="text-white text-lg font-bold">
+              {lang === 'ml' ? 'ദൗത്യം ലോക്ക് ചെയ്തിരിക്കുന്നു' : 'Mission Locked'}
+            </h2>
+            <p className="text-slate-400 text-sm mt-2 max-w-[260px] mx-auto">
+              {lang === 'ml'
+                ? `ഈ ദൗത്യം ${unlockStr} മുതൽ ലഭ്യമാകും. തയ്യാറാകൂ, ഏജന്റ്!`
+                : `This mission unlocks on ${unlockStr}. Stand by, Agent!`}
+            </p>
+          </div>
+          <Link
+            href="/dashboard/secret-agent"
+            className="mt-4 bg-emerald-600 hover:bg-emerald-500 text-black font-mono font-bold text-sm py-3 px-6 rounded-lg active:scale-[0.98] transition-all"
+          >
+            {lang === 'ml' ? '← ദൗത്യ കേന്ദ്രം' : '← MISSION HQ'}
+          </Link>
+        </div>
+
+        <BottomNav />
       </div>
     );
   }
