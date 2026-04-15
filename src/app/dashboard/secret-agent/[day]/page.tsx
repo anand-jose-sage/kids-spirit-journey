@@ -8,15 +8,15 @@ import { useAuth } from '@/components/AuthProvider';
 import BottomNav from '@/components/BottomNav';
 import missions from '@/data/secret-agent-missions.json';
 import mlMissions from '@/data/secret-agent-missions.ml.json';
-import { getAgentDayProgress, submitAgentAnswer, AgentProgress } from '@/lib/database';
+import { getAgentDayProgress, submitAgentAnswer, recordClueView, AgentProgress } from '@/lib/database';
 import { isAgentDayUnlocked, isPuzzleUnlocked, getAgentUnlockDate } from '@/lib/schedule';
 import { sanitizeInput } from '@/lib/sanitize';
 import { useLang } from '@/contexts/LanguageContext';
-import { ChevronLeft, Eye, EyeOff, CheckCircle2, XCircle, Lock, Shield, Send, AlertTriangle, Crosshair, Puzzle } from 'lucide-react';
+import { ChevronLeft, Eye, EyeOff, CheckCircle2, XCircle, Lock, Shield, Send, Crosshair, Puzzle, Pencil } from 'lucide-react';
 import { clsx } from 'clsx';
 
-const CLUE_LABELS = ['🔍 INTEL 1 — RIDDLE', '🧩 INTEL 2 — PUZZLE', '📖 INTEL 3 — SCRIPTURE', '🧩 INTEL 4 — JIGSAW'];
-const CLUE_LABELS_ML = ['🔍 ഇന്റൽ 1 — കടങ്കഥ', '🧩 ഇന്റൽ 2 — പസിൽ', '📖 ഇന്റൽ 3 — വേദവാക്യം', '🧩 ഇന്റൽ 4 — ജിഗ്സോ'];
+const CLUE_LABELS = ['🔍 STAR 1 — RIDDLE', '🧩 STAR 2 — PUZZLE', '📖 STAR 3 — SCRIPTURE', '🧩 STAR 4 — JIGSAW'];
+const CLUE_LABELS_ML = ['🔍 സ്റ്റാർ 1 — കടങ്കഥ', '🧩 സ്റ്റാർ 2 — പസിൽ', '📖 സ്റ്റാർ 3 — വേദവാക്യം', '🧩 സ്റ്റാർ 4 — ജിഗ്സോ'];
 const CLUE_DELAY_MS = [0, 10_000, 20_000, 30_000]; // free, 10s, 20s, 30s
 
 export default function MissionDayPage() {
@@ -25,6 +25,7 @@ export default function MissionDayPage() {
   const params = useParams();
   const { lang } = useLang();
   const day = Number(params.day);
+  const isDev = process.env.NODE_ENV === 'development';
 
   const mission = missions.find((m) => m.day === day);
   const mlData = mlMissions[String(day) as keyof typeof mlMissions];
@@ -51,8 +52,8 @@ export default function MissionDayPage() {
   const [timers, setTimers] = useState<number[]>(() => computeTimers());
   const [revealedClues, setRevealedClues] = useState<boolean[]>(() => computeRevealed(computeTimers()));
   const [answer, setAnswer] = useState('');
-  const [feedback, setFeedback] = useState<'correct' | 'wrong' | null>(null);
   const [submitting, setSubmitting] = useState(false);
+  const [editing, setEditing] = useState(false);
 
   // Reset all state when day changes (navigating between missions)
   useEffect(() => {
@@ -60,8 +61,8 @@ export default function MissionDayPage() {
     setTimers(t);
     setRevealedClues(computeRevealed(t));
     setAnswer('');
-    setFeedback(null);
     setProgress(null);
+    setEditing(false);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [day]);
 
@@ -73,14 +74,11 @@ export default function MissionDayPage() {
       // Clear localStorage for completed day — no longer needed
       localStorage.removeItem(`agent-day-${day}-openedAt`);
       setRevealedClues([true, true, true, true]);
-      setFeedback('correct');
     } else if (p) {
-      // Restore clue reveals based on stored attempts
+      // Restore clue reveals based on viewed_clues from DB
       setRevealedClues((rc) => {
         const u = [...rc];
-        if (p.attempts >= 1) u[1] = true;
-        if (p.attempts >= 2) u[2] = true;
-        if (p.attempts >= 3) u[3] = true;
+        for (const idx of p.viewedClues) u[idx] = true;
         return u;
       });
     }
@@ -103,11 +101,9 @@ export default function MissionDayPage() {
     const interval = setInterval(() => {
       setTimers((prev) => {
         const next = prev.map((t) => Math.max(0, t - 1));
-        // Auto-reveal clues when timer reaches 0
+        // Auto-reveal only clue 4 (index 3) when timer reaches 0
         setRevealedClues((rc) => {
           const updated = [...rc];
-          if (next[1] === 0) updated[1] = true;
-          if (next[2] === 0) updated[2] = true;
           if (next[3] === 0) updated[3] = true;
           return updated;
         });
@@ -118,19 +114,16 @@ export default function MissionDayPage() {
     return () => clearInterval(interval);
   }, [progress?.completed]);
 
-  // Unlock clue early on wrong attempt
+  // Unlock clue on attempts
   useEffect(() => {
-    if (feedback === 'wrong') {
-      const attempts = (progress?.attempts ?? 0) + 1;
+    if (progress && progress.viewedClues.length > 0) {
       setRevealedClues((rc) => {
         const u = [...rc];
-        if (attempts >= 1) u[1] = true;
-        if (attempts >= 2) u[2] = true;
-        if (attempts >= 3) u[3] = true;
+        for (const idx of progress.viewedClues) u[idx] = true;
         return u;
       });
     }
-  }, [feedback, progress?.attempts]);
+  }, [progress?.viewedClues]);
 
   if (loading || !user) return null;
 
@@ -147,7 +140,7 @@ export default function MissionDayPage() {
     const unlockDate = getAgentUnlockDate(day);
     const unlockStr = unlockDate.toLocaleDateString(lang === 'ml' ? 'ml-IN' : 'en-IN', { month: 'short', day: 'numeric' });
     return (
-      <div className="min-h-screen bg-gradient-to-br from-slate-800 via-slate-700 to-slate-800 pb-nav">
+      <div className="min-h-screen bg-gradient-to-br from-slate-800 via-slate-700 to-slate-800 pb-nav font-anek">
         <div className="fixed inset-0 pointer-events-none z-10 opacity-[0.02]" style={{ backgroundImage: 'repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,255,65,0.08) 2px, rgba(0,255,65,0.08) 4px)' }} />
 
         <div className="relative bg-gradient-to-b from-slate-900 to-slate-800 px-5 pt-12 pb-5 border-b border-emerald-500/25">
@@ -200,28 +193,27 @@ export default function MissionDayPage() {
     );
   }
 
-  const solved = progress?.completed ?? false;
+  const solved = (progress?.completed ?? false) && !editing;
 
   async function handleSubmit() {
     if (!user || submitting || !answer.trim()) return;
     setSubmitting(true);
-    const normalized = sanitizeInput(answer, 100).toLowerCase();
+    const normalized = sanitizeInput(answer, 100);
     const mlAliases = mlData?.aliases ?? [];
-    const correct = mission!.aliases.includes(normalized) || mlAliases.includes(normalized);
-    setFeedback(correct ? 'correct' : 'wrong');
+    const allAliases = [...mission!.aliases, ...mlAliases];
     try {
-      await submitAgentAnswer(user.id, day, correct);
+      await submitAgentAnswer(user.id, day, normalized, allAliases);
+      setEditing(false);
       await loadProgress();
     } finally {
       setSubmitting(false);
-      if (!correct) setTimeout(() => setFeedback(null), 2000);
     }
   }
 
   const nextDay = day < 15 ? day + 1 : null;
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-800 via-slate-700 to-slate-800 pb-nav">
+    <div className="min-h-screen bg-gradient-to-br from-slate-800 via-slate-700 to-slate-800 pb-nav font-anek">
       {/* Scanline overlay */}
       <div className="fixed inset-0 pointer-events-none z-10 opacity-[0.02]" style={{ backgroundImage: 'repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,255,65,0.08) 2px, rgba(0,255,65,0.08) 4px)' }} />
 
@@ -294,7 +286,7 @@ export default function MissionDayPage() {
                 >
                   {/* Classified stripe for locked clues */}
                   {!revealed && (
-                    <div className="absolute inset-0 opacity-[0.02]" style={{ backgroundImage: 'repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(255,255,255,0.1) 10px, rgba(255,255,255,0.1) 20px)' }} />
+                    <div className="absolute inset-0 opacity-[0.02] pointer-events-none" style={{ backgroundImage: 'repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(255,255,255,0.1) 10px, rgba(255,255,255,0.1) 20px)' }} />
                   )}
 
                   <div className="flex items-center justify-between mb-2 relative">
@@ -327,12 +319,23 @@ export default function MissionDayPage() {
                         <p className="text-emerald-400/60 text-[10px] font-mono mt-1.5">📖 {clue.reference}</p>
                       )}
                     </div>
+                  ) : (idx === 1 || idx === 2) && timer === 0 ? (
+                    <button
+                      onClick={async () => {
+                        setRevealedClues((rc) => { const u = [...rc]; u[idx] = true; return u; });
+                        if (user) await recordClueView(user.id, day, idx);
+                      }}
+                      className="flex items-center gap-2 bg-emerald-600 hover:bg-emerald-500 text-black font-mono font-bold text-xs py-2 px-4 rounded-lg transition-all active:scale-[0.98]"
+                    >
+                      <Eye size={14} />
+                      {lang === 'ml' ? 'കാണുക' : 'VIEW'}
+                    </button>
                   ) : (
                     <div className="relative">
                       <p className="text-slate-400 text-xs font-mono italic">
                         {timer > 0
                           ? (lang === 'ml' ? `[${timer}s ൽ ഡീക്രിപ്റ്റ് ചെയ്യും…]` : `[DECRYPTING IN ${timer}s…]`)
-                          : (lang === 'ml' ? '[തെറ്റായ ഇന്റൽ ശേഷം ലഭ്യം]' : '[AVAILABLE AFTER FAILED INTEL]')}
+                          : (lang === 'ml' ? '[തെറ്റായ ശ്രമത്തിന് ശേഷം ലഭ്യം]' : '[AVAILABLE AFTER FAILED ATTEMPT]')}
                       </p>
                     </div>
                   )}
@@ -350,8 +353,8 @@ export default function MissionDayPage() {
                 image: mission.puzzleImage,
                 titleEn: `Mission ${day} Puzzle`,
                 titleMl: `ദൗത്യം ${day} പസിൽ`,
-                solvedTextEn: 'Intel Decoded! Go back and submit your answer.',
-                solvedTextMl: 'ഇന്റൽ ഡീകോഡ് ചെയ്തു! തിരികെ പോയി ഉത്തരം സമർപ്പിക്കൂ.',
+                solvedTextEn: 'Star Decoded! Go back and submit your answer.',
+                solvedTextMl: 'സ്റ്റാർ ഡീകോഡ് ചെയ്തു! തിരികെ പോയി ഉത്തരം സമർപ്പിക്കൂ.',
                 backUrl: `/dashboard/secret-agent/${day}`,
               });
               return (
@@ -362,7 +365,7 @@ export default function MissionDayPage() {
                   )}
                 >
                   {!revealed && (
-                    <div className="absolute inset-0 opacity-[0.02]" style={{ backgroundImage: 'repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(255,255,255,0.1) 10px, rgba(255,255,255,0.1) 20px)' }} />
+                    <div className="absolute inset-0 opacity-[0.02] pointer-events-none" style={{ backgroundImage: 'repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(255,255,255,0.1) 10px, rgba(255,255,255,0.1) 20px)' }} />
                   )}
 
                   <div className="flex items-center justify-between mb-2 relative">
@@ -402,7 +405,7 @@ export default function MissionDayPage() {
                       <p className="text-slate-400 text-xs font-mono italic">
                         {timer > 0
                           ? (lang === 'ml' ? `[${timer}s ൽ ഡീക്രിപ്റ്റ് ചെയ്യും…]` : `[DECRYPTING IN ${timer}s…]`)
-                          : (lang === 'ml' ? '[തെറ്റായ ഇന്റൽ ശേഷം ലഭ്യം]' : '[AVAILABLE AFTER FAILED INTEL]')}
+                          : (lang === 'ml' ? '[തെറ്റായ ശ്രമത്തിന് ശേഷം ലഭ്യം]' : '[AVAILABLE AFTER FAILED ATTEMPT]')}
                       </p>
                     </div>
                   )}
@@ -424,7 +427,7 @@ export default function MissionDayPage() {
 
             <div className="bg-slate-900/80 rounded-lg p-4 border border-emerald-400/30 mb-4">
               <p className="text-emerald-300/70 text-xs font-mono mb-2">
-                {lang === 'ml' ? '> ടാർഗെറ്റ് ഐഡി നൽകുക_' : '> ENTER TARGET ID_'}
+                {lang === 'ml' ? '> വ്യക്തിയെ മനസിലാക്കിയെങ്കിൽ ഉത്തരമായി എഴുതുക_' : '> ENTER IDENTIFIED PERSON NAME'}
               </p>
               <input
                 type="text"
@@ -444,15 +447,9 @@ export default function MissionDayPage() {
               className="w-full bg-emerald-500 hover:bg-emerald-400 text-black font-mono font-bold text-base py-3.5 rounded-lg disabled:opacity-30 disabled:hover:bg-emerald-500 transition-all active:scale-[0.98] flex items-center justify-center gap-2 shadow-md shadow-emerald-500/20"
             >
               <Send size={16} />
-              {submitting ? (lang === 'ml' ? 'പരിശോധിക്കുന്നു…' : 'VERIFYING…') : (lang === 'ml' ? 'സമർപ്പിക്കുക' : 'SUBMIT')}
+              {submitting ? (lang === 'ml' ? 'സേവ് ചെയ്യുന്നു…' : 'SAVING…') : (lang === 'ml' ? 'സമർപ്പിക്കുക' : 'SUBMIT')}
             </button>
 
-            {feedback === 'wrong' && (
-              <div className="flex items-center gap-2 text-red-400 text-xs font-mono mt-3 bg-red-500/10 border border-red-500/20 rounded-lg p-2.5">
-                <AlertTriangle size={14} className="flex-shrink-0" />
-                {lang === 'ml' ? 'ശരിയല്ല — വീണ്ടും ശ്രമിക്കൂ! കൂടുതൽ ഇന്റൽ ലഭിച്ചേക്കാം.' : 'INCORRECT — TRY AGAIN. MORE INTEL MAY UNLOCK.'}
-              </div>
-            )}
             {progress && progress.attempts > 0 && !solved && (
               <p className="text-emerald-400/50 text-[10px] font-mono mt-2">
                 {lang === 'ml' ? `ശ്രമങ്ങൾ: ${progress.attempts}` : `ATTEMPTS: ${progress.attempts}`}
@@ -460,28 +457,52 @@ export default function MissionDayPage() {
             )}
           </div>
         ) : (
-          <div className="bg-slate-900/50 border border-emerald-400/30 rounded-xl p-5 text-center space-y-3 relative overflow-hidden">
-            {/* Success glow */}
-            <div className="absolute inset-0 bg-emerald-500/8" />
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-32 bg-emerald-500/10 rounded-full blur-3xl" />
+          <div className={clsx(
+            'border rounded-xl p-5 text-center space-y-3 relative overflow-hidden',
+            progress?.correct
+              ? 'bg-slate-900/50 border-emerald-400/30'
+              : 'bg-slate-900/50 border-red-400/30'
+          )}>
+            {/* Glow */}
+            <div className={clsx('absolute inset-0', progress?.correct ? 'bg-emerald-500/8' : 'bg-red-500/8')} />
+            <div className={clsx('absolute top-0 left-1/2 -translate-x-1/2 w-32 h-32 rounded-full blur-3xl', progress?.correct ? 'bg-emerald-500/10' : 'bg-red-500/10')} />
 
             <div className="relative">
-              <CheckCircle2 size={36} className="mx-auto text-emerald-400 mb-1" />
-              <p className="text-emerald-400/70 text-[10px] font-mono uppercase tracking-widest mb-1">
+              {progress?.correct ? (
+                <CheckCircle2 size={36} className="mx-auto text-emerald-400 mb-1" />
+              ) : (
+                <XCircle size={36} className="mx-auto text-red-400 mb-1" />
+              )}
+              <p className={clsx('text-[10px] font-mono uppercase tracking-widest mb-1', progress?.correct ? 'text-emerald-400/70' : 'text-red-400/70')}>
                 {lang === 'ml' ? 'ദൗത്യം പൂർത്തിയായി' : 'MISSION COMPLETE'}
               </p>
               <h3 className="text-white text-xl font-bold">
-                {lang === 'ml' ? 'ടാർഗെറ്റ് തിരിച്ചറിഞ്ഞു!' : 'TARGET IDENTIFIED!'}
+                {progress?.correct
+                  ? (lang === 'ml' ? 'ഉത്തരം ശരി!' : 'CORRECT ANSWER!')
+                  : (lang === 'ml' ? 'ഉത്തരം സമർപ്പിച്ചു!' : 'ANSWER SUBMITTED!')}
               </h3>
-              <p className="text-emerald-200 text-sm font-mono mt-1">
-                <span className="text-emerald-400/60">{lang === 'ml' ? 'ഉത്തരം: ' : 'ID: '}</span>
-                <span className="font-bold capitalize">{mission.answer}</span>
+              <p className="text-slate-200 text-sm font-mono mt-1">
+                <span className="text-slate-400">{lang === 'ml' ? 'നിങ്ങളുടെ ഉത്തരം: ' : 'YOUR ANSWER: '}</span>
+                <span className="font-bold capitalize">{progress?.answer ?? ''}</span>
               </p>
+              {!progress?.correct && (
+                <p className="text-slate-200 text-sm font-mono mt-0.5">
+                  <span className="text-emerald-400/60">{lang === 'ml' ? 'ശരിയായ ഉത്തരം: ' : 'CORRECT ANSWER: '}</span>
+                  <span className="font-bold capitalize">{mission.answer}</span>
+                </p>
+              )}
 
-              <div className="inline-flex items-center gap-2 bg-emerald-500/15 border border-emerald-400/25 text-emerald-200 px-4 py-2 rounded-lg text-xs font-mono font-semibold mt-3">
-                <span className="text-lg">{mission.reward.emoji}</span>
-                {lang === 'ml' ? mlData?.reward || mission.reward.badge : mission.reward.badge} · +{mission.reward.points} PTS
-              </div>
+              {progress?.correct && (
+                <div className="inline-flex items-center gap-2 bg-emerald-500/15 border border-emerald-400/25 text-emerald-200 px-4 py-2 rounded-lg text-xs font-mono font-semibold mt-3">
+                  <span className="text-lg">{mission.reward.emoji}</span>
+                  {lang === 'ml' ? mlData?.reward || mission.reward.badge : mission.reward.badge} · +{mission.reward.points} PTS
+                </div>
+              )}
+              {!progress?.correct && (
+                <div className="inline-flex items-center gap-2 bg-red-500/15 border border-red-400/25 text-red-200 px-4 py-2 rounded-lg text-xs font-mono font-semibold mt-3">
+                  +0 PTS
+                </div>
+              )}
 
               {nextDay && (
                 <Link
@@ -498,6 +519,14 @@ export default function MissionDayPage() {
                 >
                   {lang === 'ml' ? 'ദൗത്യ കേന്ദ്രം →' : 'MISSION HQ →'}
                 </Link>
+              )}
+              {isDev && (
+                <button
+                  onClick={() => { setEditing(true); setAnswer(progress?.answer ?? ''); }}
+                  className="block mt-2 w-full bg-amber-600 hover:bg-amber-500 text-black font-mono font-bold text-sm py-3 rounded-lg active:scale-[0.98] transition-all flex items-center justify-center gap-2"
+                >
+                  <Pencil size={14} /> EDIT ANSWER (DEV)
+                </button>
               )}
             </div>
           </div>

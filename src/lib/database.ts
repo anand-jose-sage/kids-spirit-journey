@@ -286,28 +286,34 @@ export function getAchievements(completedDays: number[], massStreak = 0): Achiev
 export interface AgentProgress {
   day: number;
   completed: boolean;
+  correct: boolean;
   attempts: number;
   completedAt: string | null;
+  answer: string | null;
+  viewedClues: number[];
 }
 
 export async function getAgentProgress(uid: string): Promise<AgentProgress[]> {
   const { data } = await supabase
     .from('agent_progress')
-    .select('day, completed, attempts, completed_at')
+    .select('day, completed, correct, attempts, completed_at, answer, viewed_clues')
     .eq('user_id', uid)
     .order('day');
   return (data ?? []).map((r) => ({
     day: r.day as number,
     completed: r.completed as boolean,
+    correct: (r.correct as boolean) ?? false,
     attempts: r.attempts as number,
     completedAt: r.completed_at as string | null,
+    answer: (r.answer as string) || null,
+    viewedClues: (r.viewed_clues as number[]) || [],
   }));
 }
 
 export async function getAgentDayProgress(uid: string, day: number): Promise<AgentProgress | null> {
   const { data, error } = await supabase
     .from('agent_progress')
-    .select('day, completed, attempts, completed_at')
+    .select('day, completed, correct, attempts, completed_at, answer, viewed_clues')
     .eq('user_id', uid)
     .eq('day', day)
     .maybeSingle();
@@ -315,24 +321,24 @@ export async function getAgentDayProgress(uid: string, day: number): Promise<Age
   return {
     day: data.day as number,
     completed: data.completed as boolean,
+    correct: (data.correct as boolean) ?? false,
     attempts: data.attempts as number,
     completedAt: data.completed_at as string | null,
+    answer: (data.answer as string) || null,
+    viewedClues: (data.viewed_clues as number[]) || [],
   };
 }
 
-export async function submitAgentAnswer(uid: string, day: number, correct: boolean): Promise<void> {
+export async function recordClueView(uid: string, day: number, clueIdx: number): Promise<void> {
   const existing = await getAgentDayProgress(uid, day);
-  if (existing?.completed) return; // already solved
+  const viewed = existing?.viewedClues ?? [];
+  if (viewed.includes(clueIdx)) return; // already recorded
+  const updated = [...viewed, clueIdx];
 
   if (existing) {
-    const update: Record<string, unknown> = { attempts: existing.attempts + 1 };
-    if (correct) {
-      update.completed = true;
-      update.completed_at = new Date().toISOString();
-    }
     const { error } = await supabase
       .from('agent_progress')
-      .update(update)
+      .update({ viewed_clues: updated })
       .eq('user_id', uid)
       .eq('day', day);
     if (error) throw error;
@@ -340,12 +346,42 @@ export async function submitAgentAnswer(uid: string, day: number, correct: boole
     const { error } = await supabase.from('agent_progress').insert({
       user_id: uid,
       day,
-      completed: correct,
-      attempts: 1,
-      completed_at: correct ? new Date().toISOString() : null,
+      completed: false,
+      attempts: 0,
+      viewed_clues: updated,
     });
     if (error) throw error;
   }
+}
+
+export async function submitAgentAnswer(uid: string, day: number, answerText: string, aliases: string[]): Promise<boolean> {
+  const existing = await getAgentDayProgress(uid, day);
+  if (existing?.completed && process.env.NODE_ENV !== 'development') return existing.correct;
+
+  const now = new Date().toISOString();
+  const sanitized = sanitizeText(answerText).slice(0, 200);
+  const isCorrect = aliases.includes(sanitized.toLowerCase());
+
+  if (existing) {
+    const { error } = await supabase
+      .from('agent_progress')
+      .update({ completed: true, completed_at: now, answer: sanitized, correct: isCorrect, attempts: existing.attempts + 1 })
+      .eq('user_id', uid)
+      .eq('day', day);
+    if (error) throw error;
+  } else {
+    const { error } = await supabase.from('agent_progress').insert({
+      user_id: uid,
+      day,
+      completed: true,
+      correct: isCorrect,
+      attempts: 1,
+      completed_at: now,
+      answer: sanitized,
+    });
+    if (error) throw error;
+  }
+  return isCorrect;
 }
 
 export function getAgentLevel(completedCount: number): string {
@@ -358,7 +394,7 @@ export function getAgentLevel(completedCount: number): string {
 }
 
 export function getAgentPoints(progress: AgentProgress[]): number {
-  return progress.filter((p) => p.completed).reduce((sum, p) => {
+  return progress.filter((p) => p.completed && p.correct).reduce((sum, p) => {
     // Day 15 is worth 100, rest 50
     return sum + (p.day === 15 ? 100 : 50);
   }, 0);

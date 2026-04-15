@@ -160,7 +160,7 @@ export default function DashboardPage() {
               <Image src="/images/estherq.png" alt="Agent Esther" width={48} height={48} className="rounded-xl border-2 border-white/30 flex-shrink-0" />
               <div className="flex-1 min-w-0">
                 <p className="text-white font-bold text-sm leading-tight">
-                  {lang === 'ml' ? '🕵️ പുതിയ ഗെയിം നാളെ ആരംഭിക്കുന്നു!' : '🕵️ New Game Starts Tomorrow!'}
+                  {lang === 'ml' ? '🕵️ പുതിയ ഗെയിം ഇന്ന് ആരംഭിക്കുന്നു!' : '🕵️ New Game Starts Today!'}
                 </p>
                 <p className="text-orange-100 text-xs mt-0.5">
                   {lang === 'ml'

@@ -24,6 +24,7 @@ const config: Config = {
       },
       fontFamily: {
         rounded: ['var(--font-rounded)', 'system-ui', 'sans-serif'],
+        anek: ['var(--font-anek)', 'sans-serif'],
       },
       borderRadius: {
         '4xl': '2rem',

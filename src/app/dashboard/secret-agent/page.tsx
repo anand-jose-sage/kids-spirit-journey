@@ -48,7 +48,7 @@ export default function SecretAgentPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-800 via-slate-700 to-slate-800 pb-nav">
+    <div className="min-h-screen bg-gradient-to-br from-slate-800 via-slate-700 to-slate-800 pb-nav font-anek">
       {/* Scanline overlay */}
       <div className="fixed inset-0 pointer-events-none z-10 opacity-[0.02]" style={{ backgroundImage: 'repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,255,65,0.08) 2px, rgba(0,255,65,0.08) 4px)' }} />
 
@@ -97,7 +97,7 @@ export default function SecretAgentPage() {
                 </div>
               </div>
               <div className="text-right">
-                <p className="text-emerald-400/70 text-[10px] font-mono uppercase">{lang === 'ml' ? 'ഇന്റൽ പോയിന്റ്' : 'INTEL PTS'}</p>
+                <p className="text-emerald-400/70 text-[10px] font-mono uppercase">{lang === 'ml' ? 'സ്റ്റാർ പോയിന്റ്' : 'STAR PTS'}</p>
                 <p className="text-emerald-200 text-sm font-bold font-mono">{points}</p>
               </div>
             </div>
