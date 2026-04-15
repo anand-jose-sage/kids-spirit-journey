@@ -407,3 +407,29 @@ export function getAgentPoints(progress: AgentProgress[]): number {
     return sum + getClueBasedPoints(p.viewedClues);
   }, 0);
 }
+
+export interface AgentScoreEntry {
+  userId: string;
+  name: string;
+  standard: string;
+  points: number;
+}
+
+export async function getAgentScoreboard(page: number = 0, pageSize: number = 20): Promise<{ entries: AgentScoreEntry[]; total: number; hasMore: boolean }> {
+  const offset = page * pageSize;
+  const { data, error } = await supabase.rpc('get_agent_scoreboard', {
+    page_offset: offset,
+    page_limit: pageSize,
+  });
+  if (error || !data || data.length === 0) return { entries: [], total: 0, hasMore: false };
+
+  const total = (data[0] as Record<string, unknown>).total_count as number;
+  const entries: AgentScoreEntry[] = data.map((row: Record<string, unknown>) => ({
+    userId: row.user_id as string,
+    name: row.name as string,
+    standard: row.standard as string,
+    points: Number(row.points),
+  }));
+
+  return { entries, total, hasMore: offset + pageSize < total };
+}
