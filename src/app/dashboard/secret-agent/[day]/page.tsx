@@ -8,7 +8,7 @@ import { useAuth } from '@/components/AuthProvider';
 import BottomNav from '@/components/BottomNav';
 import missions from '@/data/secret-agent-missions.json';
 import mlMissions from '@/data/secret-agent-missions.ml.json';
-import { getAgentDayProgress, submitAgentAnswer, recordClueView, AgentProgress } from '@/lib/database';
+import { getAgentDayProgress, submitAgentAnswer, recordClueView, AgentProgress, getClueBasedPoints } from '@/lib/database';
 import { isAgentDayUnlocked, isPuzzleUnlocked, getAgentUnlockDate } from '@/lib/schedule';
 import { sanitizeInput } from '@/lib/sanitize';
 import { useLang } from '@/contexts/LanguageContext';
@@ -45,7 +45,8 @@ export default function MissionDayPage() {
   }
 
   function computeRevealed(timersArr: number[]): boolean[] {
-    return timersArr.map((t) => t === 0);
+    // Only clue 0 auto-reveals; clues 1-3 require explicit VIEW click (restored from DB)
+    return timersArr.map((t, i) => i === 0 && t === 0);
   }
 
   const [progress, setProgress] = useState<AgentProgress | null>(null);
@@ -101,12 +102,6 @@ export default function MissionDayPage() {
     const interval = setInterval(() => {
       setTimers((prev) => {
         const next = prev.map((t) => Math.max(0, t - 1));
-        // Auto-reveal only clue 4 (index 3) when timer reaches 0
-        setRevealedClues((rc) => {
-          const updated = [...rc];
-          if (next[3] === 0) updated[3] = true;
-          return updated;
-        });
         if (next.every((t) => t === 0)) clearInterval(interval);
         return next;
       });
@@ -400,6 +395,17 @@ export default function MissionDayPage() {
                         {lang === 'ml' ? 'ജിഗ്സോ പസിൽ തുറക്കൂ' : 'OPEN JIGSAW PUZZLE'}
                       </Link>
                     </div>
+                  ) : timer === 0 ? (
+                    <button
+                      onClick={async () => {
+                        setRevealedClues((rc) => { const u = [...rc]; u[puzzleIdx] = true; return u; });
+                        if (user) await recordClueView(user.id, day, puzzleIdx);
+                      }}
+                      className="flex items-center gap-2 bg-emerald-600 hover:bg-emerald-500 text-black font-mono font-bold text-xs py-2 px-4 rounded-lg transition-all active:scale-[0.98]"
+                    >
+                      <Eye size={14} />
+                      {lang === 'ml' ? 'കാണുക' : 'VIEW'}
+                    </button>
                   ) : (
                     <div className="relative">
                       <p className="text-slate-400 text-xs font-mono italic">
@@ -495,7 +501,7 @@ export default function MissionDayPage() {
               {progress?.correct && (
                 <div className="inline-flex items-center gap-2 bg-emerald-500/15 border border-emerald-400/25 text-emerald-200 px-4 py-2 rounded-lg text-xs font-mono font-semibold mt-3">
                   <span className="text-lg">{mission.reward.emoji}</span>
-                  {lang === 'ml' ? mlData?.reward || mission.reward.badge : mission.reward.badge} · +{mission.reward.points} PTS
+                  {lang === 'ml' ? mlData?.reward || mission.reward.badge : mission.reward.badge} · +{getClueBasedPoints(progress.viewedClues)} PTS
                 </div>
               )}
               {!progress?.correct && (

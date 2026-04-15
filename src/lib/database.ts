@@ -393,9 +393,17 @@ export function getAgentLevel(completedCount: number): string {
   return 'Recruit';
 }
 
+export function getClueBasedPoints(viewedClues: number[]): number {
+  // Clue 0 is always visible (not recorded in viewedClues), so total = viewedClues.length + 1
+  const count = viewedClues.length + 1;
+  if (count <= 1) return 100;
+  if (count === 2) return 60;
+  if (count === 3) return 30;
+  return 10;
+}
+
 export function getAgentPoints(progress: AgentProgress[]): number {
   return progress.filter((p) => p.completed && p.correct).reduce((sum, p) => {
-    // Day 15 is worth 100, rest 50
-    return sum + (p.day === 15 ? 100 : 50);
+    return sum + getClueBasedPoints(p.viewedClues);
   }, 0);
 }
