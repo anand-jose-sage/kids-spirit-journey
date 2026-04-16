@@ -9,7 +9,6 @@ import { getAgentScoreboard, AgentScoreEntry } from '@/lib/database';
 import { useLang } from '@/contexts/LanguageContext';
 import { Shield, ChevronLeft, Star } from 'lucide-react';
 
-const MEDAL_ICONS = ['🥇', '🥈', '🥉'];
 const PAGE_SIZE = 20;
 
 export default function ScoreboardPage() {
@@ -124,7 +123,6 @@ export default function ScoreboardPage() {
             {/* Table rows */}
             <div className="divide-y divide-amber-100">
               {entries.map((entry, idx) => {
-                const isTop3 = idx < 3;
                 const isCurrentUser = entry.userId === user?.id;
                 return (
                   <div
@@ -134,7 +132,7 @@ export default function ScoreboardPage() {
                     }`}
                   >
                     <span className="text-sm font-bold text-gray-500">
-                      {isTop3 ? MEDAL_ICONS[idx] : idx + 1}
+                      {idx + 1}
                     </span>
                     <div className="min-w-0">
                       <p className={`text-sm font-semibold truncate ${isCurrentUser ? 'text-amber-700' : 'text-gray-800'}`}>
@@ -145,7 +143,7 @@ export default function ScoreboardPage() {
                     <span className="text-xs text-gray-500 truncate">{entry.standard}</span>
                     <div className="flex items-center justify-end gap-1">
                       <Star size={12} className="text-amber-500" fill="currentColor" />
-                      <span className={`text-sm font-bold ${isTop3 ? 'text-amber-600' : 'text-gray-700'}`}>
+                      <span className="text-sm font-bold text-gray-700">
                         {entry.points}
                       </span>
                     </div>

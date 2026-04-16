@@ -9,7 +9,7 @@ import BottomNav from '@/components/BottomNav';
 import missions from '@/data/secret-agent-missions.json';
 import mlMissions from '@/data/secret-agent-missions.ml.json';
 import { getAgentDayProgress, submitAgentAnswer, recordClueView, AgentProgress, getClueBasedPoints } from '@/lib/database';
-import { isAgentDayUnlocked, isPuzzleUnlocked, getAgentUnlockDate } from '@/lib/schedule';
+import { isAgentDayUnlocked, isPuzzleUnlocked, getAgentUnlockDate, getTodayAgentDay } from '@/lib/schedule';
 import { sanitizeInput } from '@/lib/sanitize';
 import { useLang } from '@/contexts/LanguageContext';
 import { ChevronLeft, Eye, EyeOff, CheckCircle2, XCircle, Lock, Shield, Send, Crosshair, Puzzle, Pencil } from 'lucide-react';
@@ -188,6 +188,7 @@ export default function MissionDayPage() {
     );
   }
 
+  const isExpired = day < getTodayAgentDay() && !progress?.completed;
   const solved = (progress?.completed ?? false) && !editing;
 
   async function handleSubmit() {
@@ -422,7 +423,32 @@ export default function MissionDayPage() {
         </div>
 
         {/* Answer terminal */}
-        {!solved ? (
+        {isExpired ? (
+          <div className="bg-slate-900/50 border border-red-400/30 rounded-xl p-5 text-center space-y-3 relative overflow-hidden">
+            <div className="absolute inset-0 bg-red-500/5" />
+            <div className="relative">
+              <Lock size={32} className="mx-auto text-red-400/70 mb-2" />
+              <p className="text-red-400/70 text-[10px] font-mono uppercase tracking-widest mb-1">
+                {lang === 'ml' ? 'ദൗത്യം കാലഹരണപ്പെട്ടു' : 'MISSION EXPIRED'}
+              </p>
+              <p className="text-slate-400 text-sm">
+                {lang === 'ml'
+                  ? 'ഈ ദൗത്യത്തിന്റെ ഉത്തരം സമർപ്പിക്കാനുള്ള സമയം കഴിഞ്ഞു.'
+                  : 'The window to submit an answer for this mission has closed.'}
+              </p>
+              <p className="text-slate-200 text-sm font-mono mt-2">
+                <span className="text-emerald-400/60">{lang === 'ml' ? 'ഉത്തരം: ' : 'ANSWER: '}</span>
+                <span className="font-bold capitalize">{mission.answer}</span>
+              </p>
+              <Link
+                href="/dashboard/secret-agent"
+                className="inline-block mt-4 bg-emerald-600 hover:bg-emerald-500 text-black font-mono font-bold text-sm py-3 px-6 rounded-lg active:scale-[0.98] transition-all"
+              >
+                {lang === 'ml' ? '← ദൗത്യ കേന്ദ്രം' : '← MISSION HQ'}
+              </Link>
+            </div>
+          </div>
+        ) : !solved ? (
           <div className="bg-gradient-to-b from-slate-800 to-slate-900 border-2 border-emerald-400/40 rounded-xl p-5 shadow-lg shadow-emerald-500/10">
             <div className="flex items-center gap-2 mb-4">
               <div className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse" />

@@ -10,7 +10,7 @@ import BottomNav from '@/components/BottomNav';
 import activities from '@/data/activities.json';
 import mlActivities from '@/data/activities.ml.json';
 import { useLang } from '@/contexts/LanguageContext';
-import { Lock, CheckCircle2, ChevronRight, Flame, Star, LogOut, Clock, X, Sparkles } from 'lucide-react';
+import { Lock, CheckCircle2, ChevronRight, Flame, Star, LogOut, Clock } from 'lucide-react';
 import { supabase } from '@/lib/supabase';
 import { clsx } from 'clsx';
 import { isDayUnlocked, getTodayCalendarDay } from '@/lib/schedule';
@@ -31,10 +31,6 @@ export default function DashboardPage() {
   const { lang } = useLang();
   const [savedDays, setSavedDays] = useState<number[]>([]);
   const [massStreak, setMassStreak] = useState(0);
-  const [showAnnouncement, setShowAnnouncement] = useState(() => {
-    if (typeof window === 'undefined') return true;
-    return localStorage.getItem('dismiss-agent-announce') !== 'true';
-  });
   const todayDayRef = useRef<HTMLAnchorElement>(null);
 
   useEffect(() => {
@@ -141,40 +137,6 @@ export default function DashboardPage() {
       </div>
 
       <div className="px-5 py-5 space-y-5">
-        {/* Announcement Banner */}
-        {showAnnouncement && (
-          <div className="relative bg-gradient-to-r from-amber-500 via-orange-500 to-red-500 rounded-2xl p-4 shadow-lg shadow-orange-200 overflow-hidden">
-            {/* Decorative sparkles */}
-            <div className="absolute top-1 right-12 text-yellow-200/40 animate-pulse"><Sparkles size={20} /></div>
-            <div className="absolute bottom-1 left-4 text-yellow-200/30 animate-pulse" style={{ animationDelay: '0.5s' }}><Sparkles size={14} /></div>
-
-            <button
-              onClick={() => { setShowAnnouncement(false); localStorage.setItem('dismiss-agent-announce', 'true'); }}
-              className="absolute top-2 right-2 bg-white/20 hover:bg-white/40 text-white rounded-full p-1 transition-colors"
-              aria-label="Close"
-            >
-              <X size={14} />
-            </button>
-
-            <div className="flex items-center gap-3">
-              <Image src="/images/estherq.png" alt="Agent Esther" width={48} height={48} className="rounded-xl border-2 border-white/30 flex-shrink-0" />
-              <div className="flex-1 min-w-0">
-                <p className="text-white font-bold text-sm leading-tight">
-                  {lang === 'ml' ? '🕵️ പുതിയ ഗെയിം ഇന്ന് ആരംഭിക്കുന്നു!' : '🕵️ New Game Starts Today!'}
-                </p>
-                <p className="text-orange-100 text-xs mt-0.5">
-                  {lang === 'ml'
-                    ? 'എസ്തേർ ദി ഏജന്റ് — 15 ദിവസത്തെ ബൈബിൾ രഹസ്യ ദൗത്യം'
-                    : 'Esther The Agent — 15-day Bible mystery mission'}
-                </p>
-                <Link href="/dashboard/secret-agent" className="inline-flex items-center gap-1 bg-white/25 hover:bg-white/35 text-white text-xs font-bold px-3 py-1 rounded-full mt-2 transition-colors">
-                  {lang === 'ml' ? 'കൂടുതൽ അറിയൂ' : 'Learn More'} <ChevronRight size={12} />
-                </Link>
-              </div>
-            </div>
-          </div>
-        )}
-
         {/* Today's Activity */}
         {todayActivity && completedDays.length < TOTAL_DAYS && (
           <div>
