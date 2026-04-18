@@ -195,6 +195,7 @@ export default function MissionDayPage() {
     if (!user || submitting || !answer.trim()) return;
     setSubmitting(true);
     const normalized = sanitizeInput(answer, 100);
+    if (!normalized) return;
     const mlAliases = mlData?.aliases ?? [];
     const allAliases = [...mission!.aliases, ...mlAliases];
     try {

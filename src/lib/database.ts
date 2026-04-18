@@ -360,7 +360,7 @@ export async function submitAgentAnswer(uid: string, day: number, answerText: st
 
   const now = new Date().toISOString();
   const sanitized = sanitizeText(answerText).slice(0, 200);
-  const isCorrect = aliases.includes(sanitized.toLowerCase());
+  const isCorrect = sanitized.length > 0 && aliases.some(a => a.toLowerCase() === sanitized.toLowerCase());
 
   if (existing) {
     const { error } = await supabase
