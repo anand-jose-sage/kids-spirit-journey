@@ -6,6 +6,7 @@ import { supabase } from '@/lib/supabase';
 import { useAuth } from '@/components/AuthProvider';
 import { getAchievements, getSavedEntries, getMassStreak } from '@/lib/database';
 import BottomNav from '@/components/BottomNav';
+import PushNotificationToggle from '@/components/PushNotificationToggle';
 import { LogOut, Star, Flame, Trophy, Calendar, School, Church, Home } from 'lucide-react';
 
 const TOTAL_DAYS = 30;
@@ -170,6 +171,11 @@ export default function ProfilePage() {
           <p className="text-sm font-bold text-indigo-700 leading-tight">
             Kalpatta Meghala
           </p>
+        </div>
+
+        {/* Push Notifications */}
+        <div className="bg-white rounded-3xl p-5 shadow-sm border border-purple-50">
+          <PushNotificationToggle />
         </div>
 
         {/* Logout */}
