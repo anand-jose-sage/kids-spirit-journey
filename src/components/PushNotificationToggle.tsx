@@ -49,18 +49,11 @@ export default function PushNotificationToggle() {
 
   if (denied) {
     return (
-      <div className="flex items-center gap-3 bg-slate-800/50 border border-slate-600/40 rounded-xl p-4">
-        <BellOff size={20} className="text-slate-400 shrink-0" />
-        <div>
-          <p className="text-slate-300 text-sm font-medium">
-            {lang === 'ml' ? 'അറിയിപ്പുകൾ തടഞ്ഞിരിക്കുന്നു' : 'Notifications blocked'}
-          </p>
-          <p className="text-slate-500 text-xs mt-0.5">
-            {lang === 'ml'
-              ? 'ബ്രൗസർ സെറ്റിംഗ്‌സിൽ അനുവദിക്കൂ'
-              : 'Enable in browser settings to receive notifications'}
-          </p>
-        </div>
+      <div className="flex items-center gap-3 bg-gray-50 border border-gray-200 rounded-xl px-4 py-3">
+        <BellOff size={18} className="text-gray-400 shrink-0" />
+        <p className="text-gray-400 text-xs">
+          {lang === 'ml' ? 'ബ്രൗസർ സെറ്റിംഗ്‌സിൽ അറിയിപ്പുകൾ അനുവദിക്കൂ' : 'Enable notifications in browser settings'}
+        </p>
       </div>
     );
   }
@@ -70,32 +63,39 @@ export default function PushNotificationToggle() {
       onClick={handleToggle}
       disabled={loading}
       className={clsx(
-        'flex items-center gap-3 w-full rounded-xl p-4 transition-all active:scale-[0.98] border',
+        'flex items-center gap-3 w-full rounded-2xl px-4 py-3 transition-all active:scale-[0.97]',
         subscribed
-          ? 'bg-emerald-500/10 border-emerald-400/30 hover:bg-emerald-500/20'
-          : 'bg-slate-800/50 border-slate-600/40 hover:bg-slate-700/50'
+          ? 'bg-gradient-to-r from-green-50 to-emerald-50 border border-green-200'
+          : 'bg-gradient-to-r from-purple-500 to-indigo-600 shadow-lg shadow-purple-200'
       )}
     >
-      {subscribed ? (
-        <BellRing size={20} className="text-emerald-400 shrink-0" />
-      ) : (
-        <Bell size={20} className="text-slate-400 shrink-0" />
-      )}
+      <div className={clsx(
+        'w-9 h-9 rounded-xl flex items-center justify-center shrink-0',
+        subscribed ? 'bg-green-100' : 'bg-white/20'
+      )}>
+        {subscribed ? (
+          <BellRing size={18} className="text-green-600" />
+        ) : (
+          <Bell size={18} className="text-white" />
+        )}
+      </div>
       <div className="text-left flex-1">
-        <p className={clsx('text-sm font-medium', subscribed ? 'text-emerald-300' : 'text-slate-300')}>
+        <p className={clsx('text-sm font-bold', subscribed ? 'text-green-700' : 'text-white')}>
           {subscribed
-            ? (lang === 'ml' ? 'അറിയിപ്പുകൾ ഓൺ ✓' : 'Notifications ON ✓')
-            : (lang === 'ml' ? 'അറിയിപ്പുകൾ ഓൺ ചെയ്യൂ' : 'Enable Notifications')}
+            ? (lang === 'ml' ? '🔔 അറിയിപ്പുകൾ ഓൺ' : '🔔 Notifications ON')
+            : (lang === 'ml' ? '🔔 അറിയിപ്പുകൾ ഓൺ ചെയ്യൂ' : '🔔 Turn On Notifications')}
         </p>
-        <p className="text-slate-500 text-xs mt-0.5">
+        <p className={clsx('text-[11px] mt-0.5', subscribed ? 'text-green-500' : 'text-white/70')}>
           {subscribed
-            ? (lang === 'ml' ? 'ദൗത്യ അപ്‌ഡേറ്റുകളും ഓർമ്മപ്പെടുത്തലുകളും ലഭിക്കും' : 'You\'ll get mission updates & reminders')
-            : (lang === 'ml' ? 'ദൈനംദിന ദൗത്യങ്ങൾ, ഓർമ്മപ്പെടുത്തലുകൾ' : 'Daily missions, activity reminders')}
+            ? (lang === 'ml' ? 'ദൗത്യ അപ്‌ഡേറ്റുകളും ഓർമ്മപ്പെടുത്തലുകളും ലഭിക്കും' : 'Receiving mission updates & reminders')
+            : (lang === 'ml' ? 'ദൈനംദിന ദൗത്യങ്ങൾ നഷ്ടപ്പെടുത്തരുത്!' : "Don't miss daily missions & reminders!")}
         </p>
       </div>
-      {loading && (
-        <div className="animate-spin rounded-full h-4 w-4 border-2 border-slate-500 border-t-emerald-400" />
-      )}
+      {loading ? (
+        <div className={clsx('animate-spin rounded-full h-5 w-5 border-2', subscribed ? 'border-green-200 border-t-green-600' : 'border-white/30 border-t-white')} />
+      ) : subscribed ? (
+        <span className="text-green-400 text-xs font-semibold bg-green-100 px-2 py-1 rounded-lg">✓</span>
+      ) : null}
     </button>
   );
 }

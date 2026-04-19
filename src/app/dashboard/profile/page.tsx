@@ -174,9 +174,7 @@ export default function ProfilePage() {
         </div>
 
         {/* Push Notifications */}
-        <div className="bg-white rounded-3xl p-5 shadow-sm border border-purple-50">
-          <PushNotificationToggle />
-        </div>
+        <PushNotificationToggle />
 
         {/* Logout */}
         <button
