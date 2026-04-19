@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -42,6 +42,20 @@ export default function SecretAgentPage() {
   const progressPct = Math.round((completedCount / 15) * 100);
 
   const todayMission = getTodayAgentDay();
+
+  // Refs for scrolling
+  const listRef = useRef<HTMLDivElement>(null);
+  const missionRefs = useRef<(HTMLAnchorElement | null)[]>([]);
+
+  // Scroll current day mission to top on load
+  useEffect(() => {
+    if (missionRefs.current && todayMission && missionRefs.current[todayMission - 1]) {
+      const el = missionRefs.current[todayMission - 1];
+      if (el) {
+        el.scrollIntoView({ behavior: 'auto', block: 'center' });
+      }
+    }
+  }, [progress, todayMission]);
 
   function ml(day: number) {
     return mlMissions[String(day) as keyof typeof mlMissions];
@@ -140,7 +154,7 @@ export default function SecretAgentPage() {
       </div>
 
       {/* Mission dossier list */}
-      <div className="px-5 py-4">
+      <div className="px-5 py-4" ref={listRef}>
         <div className="flex items-center gap-2 mb-3">
           <Radio size={12} className="text-emerald-400 animate-pulse" />
           <p className="text-emerald-400/70 text-[10px] font-mono uppercase tracking-widest">
@@ -150,7 +164,7 @@ export default function SecretAgentPage() {
         </div>
 
         <div className="space-y-2">
-          {missions.map((m) => {
+          {missions.map((m, idx) => {
             const dayProgress = completedMap.get(m.day);
             const done = dayProgress?.completed ?? false;
             const unlocked = isAgentDayUnlocked(m.day);
@@ -167,6 +181,7 @@ export default function SecretAgentPage() {
                   !done && !isToday && unlocked && 'bg-slate-700/50 border-slate-600/50 hover:border-emerald-500/40 hover:bg-emerald-500/10',
                   !unlocked && 'bg-slate-800/40 border-slate-700/30 opacity-50'
                 )}
+                ref={el => { missionRefs.current[idx] = el; }}
               >
                 {/* Mission number badge */}
                 <div className={clsx(
