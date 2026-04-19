@@ -83,13 +83,14 @@ export async function sendPushToAll(payload: PushPayload): Promise<{ sent: numbe
 }
 
 /** Send push to a specific user */
-export async function sendPushToUser(userId: string, payload: PushPayload): Promise<{ sent: number; failed: number }> {
+export async function sendPushToUser(userId: string, payload: PushPayload): Promise<{ sent: number; failed: number; debug?: string }> {
   const supabase = getAdminSupabase();
   const { data: subs, error } = await supabase
     .from('push_subscriptions')
     .select('id, endpoint, p256dh, auth')
     .eq('user_id', userId);
-  if (error || !subs) return { sent: 0, failed: 0 };
+  if (error) return { sent: 0, failed: 0, debug: `db error: ${error.message}` };
+  if (!subs || subs.length === 0) return { sent: 0, failed: 0, debug: `no subscriptions found for user ${userId}` };
 
   let sent = 0;
   let failed = 0;
