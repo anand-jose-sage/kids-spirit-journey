@@ -140,18 +140,23 @@ export default function WinnersPage() {
                               )}
 
                               <div className="relative pr-10">
-                                <div className="flex items-center gap-1.5 mb-1">
-                                  {idx < 3 && (
-                                    <Star size={13} className="text-white/90 flex-shrink-0" fill="currentColor" />
-                                  )}
-                                  <p className="font-extrabold text-base truncate text-red-800">{winner.name}</p>
-                                </div>
-
-                                <div className="flex flex-wrap gap-x-3 gap-y-0.5">
-                                  <div className="flex items-center gap-1">
-                                    <MapPin size={12} className="text-red-800 flex-shrink-0" />
-                                    <span className="text-sm truncate text-red-800">{winner.parish}</span>
+                                <div className="mb-1">
+                                  <div className="flex items-center gap-1.5">
+                                    {idx < 3 && (
+                                      <Star size={13} className="text-white/90 flex-shrink-0" fill="currentColor" />
+                                    )}
+                                    <p className="font-extrabold text-base text-red-800 max-w-xs break-words leading-tight">
+                                      {winner.name}
+                                    </p>
                                   </div>
+                                  <div className="flex items-center gap-1 mt-0.5">
+                                    <MapPin size={12} className="text-red-800 flex-shrink-0" />
+                                    <span className="text-sm text-red-800 max-w-xs break-words leading-tight">
+                                      {winner.parish}
+                                    </span>
+                                  </div>
+                                </div>
+                                <div className="flex flex-wrap gap-x-3 gap-y-0.5">
                                   <div className="flex items-center gap-1">
                                     <BookOpen size={12} className="text-red-800 flex-shrink-0" />
                                     <span className="text-sm text-red-800">

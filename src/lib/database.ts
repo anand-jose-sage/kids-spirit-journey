@@ -411,6 +411,7 @@ export function getAgentPoints(progress: AgentProgress[]): number {
 export interface AgentScoreEntry {
   userId: string;
   name: string;
+  parish: string;
   standard: string;
   points: number;
 }
@@ -427,6 +428,7 @@ export async function getAgentScoreboard(page: number = 0, pageSize: number = 20
   const entries: AgentScoreEntry[] = data.map((row: Record<string, unknown>) => ({
     userId: row.user_id as string,
     name: row.name as string,
+    parish: row.parish as string,
     standard: row.standard as string,
     points: Number(row.points),
   }));
