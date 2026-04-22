@@ -113,10 +113,9 @@ export default function ScoreboardPage() {
           <>
           <div className="bg-white rounded-2xl shadow-lg overflow-hidden border border-amber-200">
             {/* Table header */}
-            <div className="grid grid-cols-[2.5rem_1fr_8rem_5rem_4rem] bg-gradient-to-r from-amber-500 to-orange-500 text-white text-xs font-bold uppercase tracking-wider px-3 py-3">
+            <div className="grid grid-cols-[2.5rem_1fr_5rem_4rem] bg-gradient-to-r from-amber-500 to-orange-500 text-white text-xs font-bold uppercase tracking-wider px-3 py-3">
               <span>#</span>
               <span>{lang === 'ml' ? 'പേര്' : 'Name'}</span>
-              <span>{lang === 'ml' ? 'പള്ളി' : 'Parish'}</span>
               <span>{lang === 'ml' ? 'മേഖല' : 'Meghala'}</span>
               <span className="text-right">{lang === 'ml' ? 'സ്കോർ' : 'Score'}</span>
             </div>
@@ -128,7 +127,7 @@ export default function ScoreboardPage() {
                 return (
                   <div
                     key={entry.userId}
-                    className={`grid grid-cols-[2.5rem_1fr_8rem_5rem_4rem] items-center px-3 py-3 ${
+                    className={`grid grid-cols-[2.5rem_1fr_5rem_4rem] items-center px-3 py-3 ${
                       isCurrentUser ? 'bg-amber-50' : idx % 2 === 0 ? 'bg-white' : 'bg-orange-50/30'
                     }`}
                   >
@@ -141,7 +140,6 @@ export default function ScoreboardPage() {
                         {isCurrentUser && <span className="text-amber-500 text-xs ml-1">(You)</span>}
                       </p>
                     </div>
-                    <span className="text-xs text-gray-500 break-words">{entry.parish}</span>
                     <span className="text-xs text-gray-500 break-words">{entry.standard}</span>
                     <div className="flex items-center justify-end gap-1">
                       <Star size={12} className="text-amber-500" fill="currentColor" />
