@@ -24,8 +24,8 @@ const cormorantGaramond = Cormorant_Garamond({
 });
 
 const BASE_URL = 'https://www.shiloha.in';
-const TITLE    = 'Shiloha — 30 Days with God';
-const DESC     = 'A free 30-day spiritual journey app for Catholic kids. Daily Bible readings, activities, games, and prayers to help children grow in faith, love, and courage.';
+const TITLE    = 'Shiloha — Marian Study';
+const DESC     = 'A free 30-day Marian study app for Catholic kids and families. Daily lessons on Our Lady, Bible verses, quizzes, and prayers to deepen devotion to Mary.';
 
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
@@ -37,9 +37,9 @@ export const metadata: Metadata = {
   applicationName: 'Shiloha',
   authors: [{ name: 'Shiloha' }],
   keywords: [
-    'kids spiritual journey', 'Catholic children app', '30 days with God',
-    'Bible activities for kids', 'Easter devotional', 'Malayalam Catholic app',
-    'children faith app', 'daily Bible reading kids', 'Shiloha', 'ശിലോഹ',
+    'Marian study', 'Catholic Marian app', '30 days with Mary',
+    'Our Lady devotion kids', 'Marian devotion app', 'Malayalam Catholic app',
+    'children Marian prayer', 'daily Mary lessons', 'Shiloha', 'ശിലോഹ',
   ],
   category: 'education',
   manifest: '/manifest.json',
@@ -67,7 +67,7 @@ export const metadata: Metadata = {
         url: '/images/preview.png',
         width: 1200,
         height: 630,
-        alt: 'Shiloha — 30 Days with God',
+        alt: 'Shiloha — Marian Study',
       },
     ],
     type: 'website',
@@ -101,7 +101,7 @@ const jsonLd = {
   '@type': 'WebApplication',
   name: 'Shiloha',
   url: 'https://www.shiloha.in',
-  description: 'A free 30-day spiritual journey app for Catholic kids. Daily Bible readings, activities, games, and prayers.',
+  description: 'A free 30-day Marian study app for Catholic kids and families. Daily lessons on Our Lady, Bible verses, quizzes, and prayers.',
   applicationCategory: 'EducationalApplication',
   operatingSystem: 'Any',
   inLanguage: ['en', 'ml'],
