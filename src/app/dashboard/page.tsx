@@ -1,300 +1,414 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState, useRef, useCallback } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
-import Image from 'next/image';
 import { useAuth } from '@/components/AuthProvider';
-import { getAchievements, getSavedDays, getSavedEntries, getMassStreak } from '@/lib/database';
 import BottomNav from '@/components/BottomNav';
-import activities from '@/data/activities.json';
-import mlActivities from '@/data/activities.ml.json';
 import { useLang } from '@/contexts/LanguageContext';
-import { Lock, CheckCircle2, ChevronRight, Flame, Star, LogOut, Clock } from 'lucide-react';
+import { ChevronRight, LogOut, BookOpen } from 'lucide-react';
 import { supabase } from '@/lib/supabase';
-import { clsx } from 'clsx';
-import { isDayUnlocked, getTodayCalendarDay } from '@/lib/schedule';
-
-const TOTAL_DAYS = 30;
-
-function getGreeting() {
-  const h = new Date().getHours();
-  if (h < 12) return 'Good morning';
-  if (h < 17) return 'Good afternoon';
-  return 'Good evening';
-}
+import {
+  getMarianProgress,
+  getMarianStats,
+  getMarianBadges,
+  MarianProgress,
+  MarianStats,
+  getLevelForDay,
+} from '@/lib/marian-path-db';
+import marianData from '@/data/marian-path.json';
 
 
 export default function DashboardPage() {
   const { user, profile, loading } = useAuth();
   const router = useRouter();
   const { lang } = useLang();
-  const [savedDays, setSavedDays] = useState<number[]>([]);
-  const [massStreak, setMassStreak] = useState(0);
-  const todayDayRef = useRef<HTMLAnchorElement>(null);
 
-  useEffect(() => {
+  const [marianProgress, setMarianProgress] = useState<MarianProgress[]>([]);
+  const [marianStats, setMarianStats] = useState<MarianStats>({ totalScore: 0, streakDays: 0, rank: 1, completedCount: 0 });
+  const currentDayRef = useRef<HTMLAnchorElement>(null);
+
+  const loadProgress = useCallback(async () => {
     if (!user) return;
-    getSavedDays(user.id).then(setSavedDays);
-    getSavedEntries(user.id).then((entries) => setMassStreak(getMassStreak(entries)));
+    const [prog, stats] = await Promise.all([
+      getMarianProgress(user.id),
+      getMarianStats(user.id),
+    ]);
+    setMarianProgress(prog);
+    setMarianStats(stats);
   }, [user]);
-
-  useEffect(() => {
-    if (!profile) return;
-    const frame = requestAnimationFrame(() => {
-      todayDayRef.current?.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
-    });
-    return () => cancelAnimationFrame(frame);
-  }, [profile]);
-
-  function handleLogout() {
-    supabase.auth.signOut(); // clears local session immediately; server revocation runs in background
-    router.replace('/login');
-  }
 
   useEffect(() => {
     if (!loading && !user) router.replace('/login');
   }, [user, loading, router]);
 
-  // Show spinner while auth resolves OR while Firestore profile is being
-  // written for the first time (new registration race condition).
+  useEffect(() => {
+    loadProgress();
+  }, [loadProgress]);
+
+  useEffect(() => {
+    if (marianProgress.length > 0 || user) {
+      requestAnimationFrame(() => {
+        currentDayRef.current?.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+      });
+    }
+  }, [marianProgress, user]);
+
+  function handleLogout() {
+    supabase.auth.signOut();
+    router.replace('/login');
+  }
+
   if (loading || !profile) {
     return (
-      <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-purple-50 to-indigo-50">
+      <div
+        className="flex items-center justify-center min-h-screen"
+        style={{
+          background: [
+            'radial-gradient(ellipse 55% 44% at 8% 8%, oklch(0.82 0.12 295 / 0.85) 0%, transparent 70%)',
+            'radial-gradient(ellipse 40% 35% at 92% 5%, oklch(0.86 0.09 195 / 0.75) 0%, transparent 65%)',
+            'oklch(0.96 0.018 290)',
+          ].join(','),
+        }}
+      >
         <div className="text-center">
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/images/logo.png" alt="Shiloha logo" width={96} height={96} fetchPriority="high" className="w-24 h-24 mx-auto mb-4 animate-bounce rounded-full object-cover" />
-          <p className="text-purple-600 font-semibold">Loading your journey...</p>
+          <img
+            src="/images/logo.png" alt="Shiloha logo" width={96} height={96}
+            fetchPriority="high"
+            className="w-24 h-24 mx-auto mb-4 rounded-full object-cover"
+            style={{ boxShadow: '0 8px 32px rgba(100,60,200,0.25), 0 0 0 3px rgba(255,255,255,0.7)' }}
+          />
+          <p className="font-cinzel font-semibold" style={{ color: 'oklch(0.42 0.22 280)' }}>
+            Loading your journey...
+          </p>
         </div>
       </div>
     );
   }
 
-  const completedDays = profile.completedDays || [];
-  const todayDay = getTodayCalendarDay();
-  const todayActivity = activities.find((a) => a.day === todayDay);
-  const progressPct = Math.round((completedDays.length / TOTAL_DAYS) * 100);
-  const achievements = getAchievements(completedDays, massStreak).filter((a) => a.unlocked);
-  const streak = profile.currentStreak || 0;
+  const completedSet = new Set(marianProgress.filter((p) => p.completed).map((p) => p.day));
+  const completedCount = completedSet.size;
+  const progressPct = Math.round((completedCount / 30) * 100);
+
+  const calendarDay = new Date().getDate();
+  const bibleDay = Math.min(calendarDay, 30);
+  const bibleData = marianData.days.find((d) => d.day === bibleDay) as typeof marianData.days[0] & {
+    bible_book: string; bible_reference: string; bible_verse: string; bible_verse_ml: string;
+  } | undefined;
+
+  const badges = getMarianBadges(marianProgress, marianStats.streakDays);
+  const unlockedCount = badges.filter((b) => b.unlocked).length;
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-50 to-indigo-50 pb-nav">
-      {/* Header */}
-      <div className="bg-gradient-to-br from-purple-600 via-violet-600 to-indigo-700 px-5 pt-12 pb-8 relative overflow-hidden">
-        {/* Decorative circles */}
-        <div className="absolute top-0 right-0 w-48 h-48 bg-white/10 rounded-full -translate-y-1/2 translate-x-1/4" />
-        <div className="absolute bottom-0 left-0 w-32 h-32 bg-white/5 rounded-full translate-y-1/2 -translate-x-1/4" />
+    <div className="min-h-screen pb-nav relative overflow-x-hidden">
 
-        <div className="relative">
-          {/* Logout button — top right */}
-          <button
-            onClick={handleLogout}
-            title="Sign out"
-            className="absolute top-0 right-0 flex items-center gap-1.5 bg-white/15 hover:bg-white/30 active:bg-white/40 text-white text-xs font-semibold px-3 py-1.5 rounded-full transition-colors"
-          >
-            <LogOut size={13} />
-            Sign out
-          </button>
+      {/* ── Mary image hero header ── */}
+      <div style={{ flexShrink: 0, position: 'relative', textAlign: 'center', overflow: 'hidden' }}>
 
-          <p className="text-purple-200 text-sm font-medium">{getGreeting()} 👋</p>
-          <h1 className="text-white text-2xl font-bold mt-0.5">
-            {profile.name?.split(' ')[0] || 'Friend'}!
-          </h1>
-          <div className="flex items-center gap-3 mt-1">
-            <span className="bg-white/20 text-white text-xs font-semibold px-3 py-1 rounded-full">
-              🏠 {profile.houseName}
-            </span>
-            <span className="bg-white/20 text-white text-xs font-semibold px-3 py-1 rounded-full">
-              📚 {profile.standard}
-            </span>
-          </div>
+        {/* Sign out — floating pill top-right */}
+        <button
+          onClick={handleLogout}
+          className="sg-pill convex absolute z-20 flex items-center gap-1.5 transition-all active:scale-95"
+          style={{
+            top: 14, right: 14,
+            padding: '6px 12px', fontSize: 12, fontWeight: 500,
+            color: 'oklch(0.42 0.08 270)',
+          }}
+        >
+          <LogOut size={12} />
+          Sign out
+        </button>
+
+        {/* Mary image — full bleed, fade at bottom */}
+        <div style={{ position: 'relative', width: '100%', height: 260, marginTop: -30 }}>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/images/marian.png"
+            alt="Our Lady"
+            style={{
+              width: '100%', height: '100%',
+              objectFit: 'contain', objectPosition: 'center top',
+              display: 'block',
+            }}
+          />
+          {/* Bottom fade — matches page bg */}
+          <div style={{
+            position: 'absolute', inset: 0, pointerEvents: 'none',
+            background: 'linear-gradient(to bottom, rgba(237,233,250,0) 0%, rgba(237,233,250,0) 45%, rgba(237,233,250,0.65) 72%, rgba(237,233,250,1) 100%)',
+          }} />
+          {/* Top status bar fade */}
+          <div style={{
+            position: 'absolute', top: 0, left: 0, right: 0, height: 60, pointerEvents: 'none',
+            background: 'linear-gradient(to bottom, rgba(237,233,250,0.85), transparent)',
+          }} />
         </div>
 
-        {/* Progress card */}
-        <div className="relative mt-5 bg-white/15 backdrop-blur-sm rounded-3xl p-4">
-          <div className="flex items-center justify-between mb-3">
-            <div>
-              <p className="text-purple-100 text-xs font-medium">{lang === 'ml' ? 'നിന്റെ പുരോഗതി' : 'Your Progress'}</p>
-              <p className="text-white text-2xl font-bold">
-                {completedDays.length}
-                <span className="text-purple-200 text-base font-medium"> / {TOTAL_DAYS} {lang === 'ml' ? 'ദിവസം' : 'days'}</span>
-              </p>
-            </div>
-            <div className="flex items-center gap-1.5 bg-orange-400 text-white px-3 py-1.5 rounded-full">
-              <Flame size={16} />
-              <span className="font-bold text-sm">{streak}</span>
-            </div>
-          </div>
-          {/* Progress bar */}
-          <div className="bg-white/20 rounded-full h-3 overflow-hidden">
-            <div
-              className="bg-gradient-to-r from-yellow-400 to-orange-400 h-full rounded-full transition-all duration-700"
-              style={{ width: `${progressPct}%` }}
-            />
-          </div>
-          <p className="text-purple-100 text-xs mt-2 text-right">{progressPct}% {lang === 'ml' ? 'പൂർത്തിയായി ✨' : 'complete ✨'}</p>
+        {/* Text overlay sitting over the image fade */}
+        <div style={{ marginTop: -100, paddingBottom: 18, position: 'relative', zIndex: 5 }}>
+          <h1
+            className="font-display"
+            style={{
+              fontSize: 54, fontWeight: 700, letterSpacing: '0.18em',
+              color: 'oklch(0.22 0.10 275)',
+              textTransform: 'uppercase', lineHeight: 1,
+              marginBottom: 6,
+              textShadow: '0 2px 24px oklch(0.65 0.20 280 / 0.18)',
+            }}
+          >
+            MARIAN
+          </h1>
+          <p
+            className="font-display"
+            style={{
+              fontSize: 13, fontWeight: 500, letterSpacing: '0.08em',
+              color: 'oklch(0.42 0.12 270)', marginBottom: 4,
+              fontStyle: 'italic',
+            }}
+          >
+            Through Mary To Jesus
+          </p>
+          <p
+            className="font-cinzel"
+            style={{
+              fontSize: 10.5, fontWeight: 600, letterSpacing: '0.14em',
+              color: 'oklch(0.52 0.10 270)', textTransform: 'uppercase',
+            }}
+          >
+            Cherupushpa Mission League
+          </p>
         </div>
       </div>
 
-      <div className="px-5 py-5 space-y-5">
-        {/* Today's Activity */}
-        {todayActivity && completedDays.length < TOTAL_DAYS && (
-          <div>
-            <h2 className="text-base font-bold text-gray-700 mb-3 flex items-center gap-2">
-              <span className="text-lg">🎯</span> {lang === 'ml' ? 'ഇന്നത്തെ ദൗത്യം' : "Today's Mission"}
-            </h2>
-            <Link href={`/dashboard/activity/${todayActivity.day}`}>
-              <div className="bg-gradient-to-br from-purple-500 to-indigo-600 rounded-3xl p-5 shadow-lg shadow-purple-200 active:scale-98 transition-transform">
-                <div className="flex items-start justify-between">
-                  <div className="flex-1">
-                    <p className="text-purple-200 text-xs font-semibold uppercase tracking-wider">
-                      {lang === 'ml' ? `ദിവസം ${todayActivity.day}` : `Day ${todayActivity.day}`}
-                    </p>
-                    <h3 className="text-white text-xl font-bold mt-1 leading-tight">
-                      {lang === 'ml'
-                        ? (mlActivities[String(todayActivity.day) as keyof typeof mlActivities]?.title || todayActivity.title)
-                        : todayActivity.title}
-                    </h3>
-                    <p className="text-purple-200 text-sm mt-1">
-                      {lang === 'ml'
-                        ? (mlActivities[String(todayActivity.day) as keyof typeof mlActivities]?.theme || todayActivity.theme)
-                        : todayActivity.theme}
-                    </p>
-                    <div className="mt-3 flex items-center gap-1 text-yellow-300 text-sm font-medium">
-                      <Star size={14} fill="currentColor" />
-                      <span className="text-purple-100 text-xs">{todayActivity.verse}</span>
-                    </div>
-                  </div>
-                  <div className="ml-3 bg-white/20 rounded-2xl p-3 flex-shrink-0">
-                    <ChevronRight size={24} className="text-white" />
-                  </div>
+      <div className="px-4 pb-4 space-y-4" style={{ marginTop: -10 }}>
+
+        {/* ── Marian Path hero card ── */}
+        <Link href="/dashboard/marian-path">
+          <div
+            className="sg-noise relative overflow-hidden active:scale-[0.98] transition-transform"
+            style={{
+              borderRadius: 26, marginLeft: 4, marginRight: 4,
+              background: 'rgba(255,255,255,0.22)',
+              backdropFilter: 'blur(48px) saturate(2.4) brightness(1.05)',
+              WebkitBackdropFilter: 'blur(48px) saturate(2.4) brightness(1.05)',
+              boxShadow: [
+                'inset 0 1.5px 0 rgba(255,255,255,0.98)',
+                'inset 1px 0 0 rgba(255,255,255,0.7)',
+                'inset -0.5px 0 0 rgba(255,255,255,0.3)',
+                'inset 0 -1px 0 rgba(180,160,240,0.12)',
+                '0 0 0 1px rgba(180,140,255,0.35)',
+                '0 0 18px 2px oklch(0.62 0.22 280 / 0.28)',
+                '0 0 40px 6px oklch(0.65 0.20 280 / 0.16)',
+                '0 8px 24px rgba(100,60,200,0.12)',
+              ].join(','),
+            }}
+          >
+            <div style={{
+              position: 'absolute', inset: 0, pointerEvents: 'none',
+              background: 'linear-gradient(135deg, oklch(0.72 0.12 280 / 0.10) 0%, oklch(0.75 0.10 200 / 0.08) 100%)',
+            }} />
+
+            <div style={{ position: 'relative', zIndex: 5, padding: '20px 20px 18px' }}>
+              {/* Top row */}
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 14 }}>
+                <div style={{ display: 'inline-flex', alignItems: 'center', gap: 6 }}>
+                  <span style={{ fontSize: 9, color: 'oklch(0.52 0.20 280)' }}>✦</span>
+                  <span className="font-cinzel" style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.13em', color: 'oklch(0.42 0.16 270)' }}>
+                    MARIAN PATH 30
+                  </span>
                 </div>
-                <div className="mt-4 flex gap-2">
-                  {todayActivity.tasks.map((t, i) => (
-                    <span key={`${t.id}-${i}`} className="bg-white/20 text-white text-lg rounded-xl px-2 py-1">
-                      {t.emoji}
-                    </span>
-                  ))}
+                <ChevronRight size={15} style={{ color: 'oklch(0.55 0.10 270)', opacity: 0.7 }} />
+              </div>
+
+              {/* Hero number + meta */}
+              <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', marginBottom: 14 }}>
+                <div style={{ display: 'flex', alignItems: 'baseline', gap: 5 }}>
+                  <span className="font-display" style={{ fontSize: 72, fontWeight: 700, color: 'oklch(0.28 0.18 280)', lineHeight: 1 }}>
+                    {completedCount}
+                  </span>
+                  <span style={{ fontSize: 20, color: 'oklch(0.52 0.08 270)', fontWeight: 400, marginBottom: 6 }}>/30</span>
+                </div>
+                <div style={{ textAlign: 'right', paddingBottom: 8 }}>
+                  <p style={{ fontSize: 11, color: 'oklch(0.48 0.10 270)', fontWeight: 500, marginBottom: 2 }}>
+                    {lang === 'ml' ? 'ദിവസം' : 'days'}
+                  </p>
+                  <p style={{ fontSize: 11, color: 'oklch(0.55 0.08 270)' }}>300 PTS</p>
                 </div>
               </div>
-            </Link>
-          </div>
-        )}
 
-        {completedDays.length === TOTAL_DAYS && (
-          <div className="bg-gradient-to-br from-yellow-400 to-orange-400 rounded-3xl p-5 text-center shadow-lg">
-            <div className="text-5xl mb-2">🏆</div>
-            <h3 className="text-white text-xl font-bold">{lang === 'ml' ? 'യാത്ര പൂർത്തിയായി!' : 'Journey Complete!'}</h3>
-            <p className="text-yellow-100 text-sm mt-1">{lang === 'ml' ? 'നിങ്ങൾ 30-ദിവസ ചാമ്പ്യൻ ആണ്!' : 'You are a 30-Day Champion!'}</p>
-          </div>
-        )}
-
-        {/* Secret Agent Game */}
-        <div>
-          <h2 className="text-base font-bold text-gray-700 mb-3 flex items-center gap-2">
-            <span className="text-lg">🕵️</span> {lang === 'ml' ? 'ബിബ്ലിയ സീക്രട്ട്' : 'Biblia Secret'}
-          </h2>
-          <Link href="/dashboard/secret-agent">
-            <div className="bg-gradient-to-br from-amber-500 to-orange-600 rounded-3xl p-5 shadow-lg shadow-amber-200 active:scale-[0.98] transition-transform">
-              <div className="flex items-start justify-between">
-                <div className="flex-1">
-                  <p className="text-amber-100 text-xs font-semibold uppercase tracking-wider">
-                    {lang === 'ml' ? 'എസ്തേർ ദി ഏജന്റ്' : 'Esther The Agent'}
-                  </p>
-                  <h3 className="text-white text-xl font-bold mt-1 leading-tight">
-                    {lang === 'ml' ? 'മിഷൻ: രക്ഷാ ചരിത്രം' : 'Mission: Salvation History'}
-                  </h3>
-                  <p className="text-amber-200 text-sm mt-1">
-                    {lang === 'ml' ? '15 ദിവസം · ബൈബിൾ രഹസ്യങ്ങൾ അനാവരണം ചെയ്യൂ' : '15 days · Solve Bible mysteries with clues'}
-                  </p>
-                  <div className="mt-3 flex items-center gap-2 text-amber-100 text-sm">
-                    <span>🔍 Riddles</span>
-                    <span className="text-amber-300">·</span>
-                    <span>🧩 Puzzles</span>
-                    <span className="text-amber-300">·</span>
-                    <span>📖 Verses</span>
-                  </div>
+              {/* Progress bar */}
+              <div>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 6 }}>
+                  <span style={{ fontSize: 10.5, color: 'oklch(0.48 0.08 270)', fontWeight: 500 }}>
+                    {lang === 'ml' ? `${completedCount} തലങ്ങൾ പൂർത്തിയായി` : `${completedCount} days complete`}
+                  </span>
+                  <span className="font-cinzel" style={{ fontSize: 10, color: 'oklch(0.52 0.14 280)', fontWeight: 600, letterSpacing: '0.06em' }}>
+                    {progressPct}%
+                  </span>
                 </div>
-                <div className="ml-3 flex-shrink-0">
-                  <Image src="/images/estherq.png" alt="Agent Esther" width={72} height={72} className="rounded-2xl drop-shadow-lg" />
+                <div style={{
+                  height: 10, borderRadius: 99,
+                  background: 'rgba(180,160,240,0.15)',
+                  boxShadow: 'inset 0 1px 3px rgba(100,60,200,0.12)',
+                  overflow: 'hidden',
+                }}>
+                  <div className="progress-bar-fill" style={{ width: `${progressPct}%` }} />
                 </div>
               </div>
             </div>
-          </Link>
-        </div>
+          </div>
+        </Link>
 
-        {/* Day Timeline Preview */}
+        {/* ── Day timeline ── */}
         <div>
-          <div className="flex items-center justify-between mb-3">
-            <h2 className="text-base font-bold text-gray-700 flex items-center gap-2">
-              <span className="text-lg">📅</span> {lang === 'ml' ? 'ദിവസങ്ങൾ' : 'Days'}
-            </h2>
-            <Link href="/dashboard/activities" className="text-purple-600 text-sm font-semibold">
-              {lang === 'ml' ? 'എല്ലാം കാണൂ →' : 'See all →'}
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 14 }}>
+            <span className="font-cinzel" style={{ fontSize: 13, fontWeight: 600, color: 'oklch(0.28 0.08 270)', display: 'flex', alignItems: 'center', gap: 7 }}>
+              🕊️ {lang === 'ml' ? 'ദിവസങ്ങൾ' : 'Days'}
+            </span>
+            <Link href="/dashboard/marian-path" className="font-cinzel" style={{ fontSize: 12, color: 'oklch(0.50 0.22 280)', fontWeight: 500 }}>
+              {lang === 'ml' ? 'എല്ലാം →' : 'View all →'}
             </Link>
           </div>
-          <div className="flex gap-3 overflow-x-auto pb-2 -mx-1 px-1 scrollbar-hide">
-            {activities.map((act) => {
-              const done = completedDays.includes(act.day);
-              const inProgress = !done && savedDays.includes(act.day);
-              const isToday = act.day === todayDay && !done;
-              const locked = !done && !isDayUnlocked(act.day);
+
+          <div className="flex gap-2.5 overflow-x-auto pt-1.5 pb-2 -mx-4 px-4" style={{ scrollbarWidth: 'none' }}>
+            {marianData.days.map((dayEntry) => {
+              const day = dayEntry.day;
+              const isDone = completedSet.has(day);
+              const isCurrent = day === calendarDay;
+              const isLocked = day > calendarDay;
+              const href = isLocked ? '#' : `/dashboard/marian-path/${day}`;
 
               return (
                 <Link
-                  key={act.day}
-                  ref={isToday ? todayDayRef : undefined}
-                  href={locked ? '#' : `/dashboard/activity/${act.day}`}
-                  className={clsx(
-                    'flex-shrink-0 w-16 rounded-2xl p-2 text-center transition-all',
-                    done && 'bg-green-100',
-                    inProgress && 'bg-orange-100 ring-2 ring-orange-300',
-                    isToday && !inProgress && 'bg-purple-100 ring-2 ring-purple-400',
-                    locked && 'bg-gray-100 opacity-60'
-                  )}
+                  key={day}
+                  href={href}
+                  ref={isCurrent ? currentDayRef : undefined}
+                  onClick={isLocked ? (e) => e.preventDefault() : undefined}
+                  className="flex-shrink-0 transition-all active:scale-95"
+                  style={{
+                    width: 70, height: 82, borderRadius: 20,
+                    display: 'flex', flexDirection: 'column', alignItems: 'center',
+                    justifyContent: 'center', gap: 6,
+                    cursor: isLocked ? 'not-allowed' : 'pointer',
+                    position: 'relative',
+                    background: isDone ? 'rgba(255,255,255,0.52)' : isCurrent ? 'rgba(255,255,255,0.38)' : 'rgba(255,255,255,0.2)',
+                    backdropFilter: 'blur(36px) saturate(2)',
+                    WebkitBackdropFilter: 'blur(36px) saturate(2)',
+                    boxShadow: isDone ? [
+                      'inset 0 1.5px 0 rgba(255,255,255,0.98)',
+                      'inset 1px 0 0 rgba(255,255,255,0.65)',
+                      '0 0 0 0.5px rgba(180,160,240,0.2)',
+                      '0 4px 18px rgba(100,60,200,0.08)',
+                    ].join(',') : isCurrent ? [
+                      'inset 0 1.5px 0 rgba(255,255,255,0.95)',
+                      '0 0 0 1px oklch(0.65 0.20 280 / 0.4)',
+                      '0 0 0 3px oklch(0.65 0.20 280 / 0.08)',
+                      '0 6px 22px oklch(0.52 0.22 280 / 0.18)',
+                    ].join(',') : [
+                      'inset 0 1px 0 rgba(255,255,255,0.6)',
+                      '0 0 0 0.5px rgba(180,160,240,0.12)',
+                    ].join(','),
+                    opacity: isLocked ? 0.55 : 1,
+                  }}
                 >
-                  {done ? (
-                    <CheckCircle2 size={22} className="mx-auto text-green-500" />
-                  ) : inProgress ? (
-                    <Clock size={20} className="mx-auto text-orange-400" />
-                  ) : locked ? (
-                    <Lock size={20} className="mx-auto text-gray-400" />
-                  ) : (
-                    <div className="w-6 h-6 bg-purple-500 rounded-full mx-auto flex items-center justify-center">
-                      <span className="text-white text-xs font-bold">{act.day}</span>
+                  {isDone && (
+                    <div style={{
+                      width: 28, height: 28, borderRadius: '50%',
+                      background: 'linear-gradient(145deg, oklch(0.60 0.20 145), oklch(0.52 0.18 160))',
+                      display: 'flex', alignItems: 'center', justifyContent: 'center',
+                      boxShadow: '0 3px 10px oklch(0.55 0.18 145 / 0.4), inset 0 1px 0 rgba(255,255,255,0.35)',
+                    }}>
+                      <svg width={14} height={14} viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                        <polyline points="20 6 9 17 4 12" />
+                      </svg>
                     </div>
                   )}
-                  <p className={clsx(
-                    'text-xs mt-1 font-medium truncate',
-                    done ? 'text-green-600' : inProgress ? 'text-orange-500' : isToday ? 'text-purple-600' : 'text-gray-400'
-                  )}>
-                    {lang === 'ml' ? `ദി. ${act.day}` : `Day ${act.day}`}
-                  </p>
+                  {isCurrent && (
+                    <span className="font-display" style={{ fontSize: 28, fontWeight: 700, color: 'oklch(0.32 0.20 280)', lineHeight: 1 }}>
+                      {day}
+                    </span>
+                  )}
+                  {isLocked && (
+                    <svg width={18} height={18} viewBox="0 0 24 24" fill="none" stroke="oklch(0.52 0.06 270)" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                      <rect x="3" y="11" width="18" height="11" rx="2" />
+                      <path d="M7 11V7a5 5 0 0110 0v4" />
+                    </svg>
+                  )}
+                  <span className="font-cinzel" style={{ fontSize: 10.5, fontWeight: 500, color: isCurrent ? 'oklch(0.35 0.18 280)' : 'oklch(0.5 0.06 270)' }}>
+                    {lang === 'ml' ? `ദി. ${day}` : `Day ${day}`}
+                  </span>
+                  {isCurrent && (
+                    <div style={{ width: 6, height: 6, borderRadius: '50%', background: 'oklch(0.62 0.22 280)', position: 'absolute', bottom: 7 }} />
+                  )}
                 </Link>
               );
             })}
           </div>
         </div>
 
-        {/* Achievements */}
-        {achievements.length > 0 && (
-          <div>
-            <h2 className="text-base font-bold text-gray-700 mb-3 flex items-center gap-2">
-              <span className="text-lg">🏅</span> {lang === 'ml' ? 'നേട്ടങ്ങൾ' : 'Achievements'}
-            </h2>
-            <div className="grid grid-cols-4 gap-3">
-              {achievements.map((a) => (
-                <div key={a.id} className="bg-white rounded-2xl p-3 text-center shadow-sm border border-purple-50">
-                  <div className="text-2xl mb-1">{a.emoji}</div>
-                  <p className="text-xs font-semibold text-gray-600 leading-tight">{a.title}</p>
-                </div>
-              ))}
+        {/* ── Reading of the day ── */}
+        {bibleData && (
+          <div className="sg-card sg-noise" style={{ padding: '16px 18px', display: 'flex', alignItems: 'center', gap: 14 }}>
+            <div style={{
+              width: 44, height: 44, borderRadius: 14, flexShrink: 0,
+              background: 'linear-gradient(145deg, oklch(0.55 0.18 200), oklch(0.50 0.20 240))',
+              display: 'flex', alignItems: 'center', justifyContent: 'center',
+              boxShadow: [
+                'inset 0 1px 0 rgba(255,255,255,0.4)',
+                '0 4px 16px oklch(0.52 0.18 200 / 0.35)',
+                '0 1px 3px rgba(0,0,0,0.12)',
+              ].join(','),
+            }}>
+              <BookOpen size={18} color="white" />
+            </div>
+            <div style={{ flex: 1, minWidth: 0 }}>
+              <p className="font-cinzel" style={{ fontSize: 10, color: 'oklch(0.50 0.22 280)', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: 3 }}>
+                {bibleData.bible_book} · {bibleData.bible_reference}
+              </p>
+              <p style={{ fontSize: 13, fontWeight: 500, color: 'oklch(0.25 0.06 270)', lineHeight: 1.45, display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', overflow: 'hidden' }}>
+                {lang === 'ml' ? bibleData.bible_verse_ml : bibleData.bible_verse}
+              </p>
             </div>
           </div>
         )}
-        {/* Footer attribution */}
-        <div className="text-center pt-2 pb-1">
-          <p className="text-xs text-gray-400">
+
+        {/* ── Badges ── */}
+        <div className="sg-card sg-noise" style={{ padding: '18px 18px' }}>
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 14 }}>
+            <span className="font-cinzel" style={{ fontSize: 13, fontWeight: 600, color: 'oklch(0.28 0.08 270)', display: 'flex', alignItems: 'center', gap: 7 }}>
+              🏅 {lang === 'ml' ? 'ബാഡ്ജുകൾ' : 'Badges'}
+            </span>
+            <span className="font-cinzel font-bold" style={{ fontSize: 11, color: 'oklch(0.52 0.18 280)' }}>
+              {unlockedCount}/{badges.length}
+            </span>
+          </div>
+          <div className="grid grid-cols-6 gap-2">
+            {badges.map((badge) => (
+              <div key={badge.id} className="flex flex-col items-center gap-0.5" title={lang === 'ml' ? badge.titleMl : badge.title}>
+                <div
+                  className="w-10 h-10 rounded-2xl flex items-center justify-center text-xl transition-all"
+                  style={badge.unlocked ? {
+                    background: 'rgba(255,255,255,0.65)',
+                    boxShadow: 'inset 0 1.5px 0 rgba(255,255,255,0.98), 0 0 0 0.5px rgba(180,160,240,0.28), 0 2px 8px rgba(100,60,200,0.10)',
+                  } : {
+                    background: 'rgba(255,255,255,0.22)',
+                    boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.6), 0 0 0 0.5px rgba(180,160,240,0.08)',
+                    opacity: 0.4, filter: 'grayscale(0.7)',
+                  }}
+                >
+                  {badge.emoji}
+                </div>
+                <p className="font-cinzel text-center leading-tight line-clamp-1 px-0.5" style={{ fontSize: 7, color: badge.unlocked ? 'oklch(0.38 0.08 270)' : 'oklch(0.55 0.04 270)' }}>
+                  {(lang === 'ml' ? badge.titleMl : badge.title).split(' ')[0]}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Footer */}
+        <div className="text-center pt-1 pb-1">
+          <p className="font-cinzel" style={{ fontSize: 10, color: 'oklch(0.60 0.06 270)', opacity: 0.6 }}>
             ✝️ Cherupusha Mission League · Manathavady
           </p>
         </div>

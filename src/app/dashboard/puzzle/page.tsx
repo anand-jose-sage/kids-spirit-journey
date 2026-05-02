@@ -6,6 +6,7 @@ import { useSearchParams } from 'next/navigation';
 import { ChevronLeft, RefreshCw } from 'lucide-react';
 import { clsx } from 'clsx';
 import { useLang } from '@/contexts/LanguageContext';
+import BottomNav from '@/components/BottomNav';
 
 const COLS = 3;
 const ROWS = 4;
@@ -106,7 +107,7 @@ function PuzzleContent() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-50 to-indigo-50 pb-8">
+    <div className="min-h-screen bg-gradient-to-br from-purple-50 to-indigo-50 pb-nav">
       {/* Header */}
       <div className="bg-gradient-to-br from-purple-600 to-indigo-700 px-5 pt-12 pb-6">
         <div className="flex items-center gap-3">
@@ -242,6 +243,7 @@ function PuzzleContent() {
           </div>
         </div>
       </div>
+      <BottomNav />
     </div>
   );
 }

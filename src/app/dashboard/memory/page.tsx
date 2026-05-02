@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
 import { ChevronLeft, RefreshCw } from 'lucide-react';
 import { useLang } from '@/contexts/LanguageContext';
+import BottomNav from '@/components/BottomNav';
 
 type CardDef = { emoji: string; labelEn: string; labelMl: string };
 
@@ -102,7 +103,7 @@ function MemoryContent() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-sky-50 to-blue-50 pb-8">
+    <div className="min-h-screen bg-gradient-to-br from-sky-50 to-blue-50 pb-nav">
       {/* Header */}
       <div className="bg-gradient-to-br from-sky-600 to-blue-700 px-5 pt-12 pb-6">
         <div className="flex items-center gap-3">
@@ -206,6 +207,7 @@ function MemoryContent() {
             : '👆 Tap cards to find matching pairs'}
         </p>
       </div>
+      <BottomNav />
     </div>
   );
 }
