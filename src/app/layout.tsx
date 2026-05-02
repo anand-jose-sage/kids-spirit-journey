@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from 'next';
-import { Anek_Malayalam } from 'next/font/google';
+import { Anek_Malayalam, Cinzel, Cormorant_Garamond } from 'next/font/google';
 import './globals.css';
 import { AuthProvider } from '@/components/AuthProvider';
 import { LanguageProvider } from '@/contexts/LanguageContext';
@@ -8,6 +8,19 @@ const anekMalayalam = Anek_Malayalam({
   subsets: ['malayalam', 'latin'],
   weight: ['300', '400', '500', '600', '700', '800'],
   variable: '--font-anek',
+});
+
+const cinzel = Cinzel({
+  subsets: ['latin'],
+  weight: ['400', '600', '700'],
+  variable: '--font-cinzel',
+});
+
+const cormorantGaramond = Cormorant_Garamond({
+  subsets: ['latin'],
+  weight: ['400', '600', '700'],
+  style: ['normal', 'italic'],
+  variable: '--font-display',
 });
 
 const BASE_URL = 'https://www.shiloha.in';
@@ -80,7 +93,7 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
-  themeColor: '#7c3aed',
+  themeColor: '#EDE9F8',
 };
 
 const jsonLd = {
@@ -126,7 +139,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           }}
         />
       </head>
-      <body className={anekMalayalam.variable}>
+      <body className={`${anekMalayalam.variable} ${cinzel.variable} ${cormorantGaramond.variable}`}>
         <LanguageProvider>
           <AuthProvider>
             <main className="max-w-lg mx-auto min-h-screen relative">

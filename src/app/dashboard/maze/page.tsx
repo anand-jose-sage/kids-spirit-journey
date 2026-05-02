@@ -4,6 +4,7 @@ import { useState, useRef } from 'react';
 import Link from 'next/link';
 import { ChevronLeft, RefreshCw } from 'lucide-react';
 import { useLang } from '@/contexts/LanguageContext';
+import BottomNav from '@/components/BottomNav';
 
 const COLS = 9;
 const ROWS = 11;
@@ -139,7 +140,7 @@ export default function MazePage() {
   const OPEN = '2px solid transparent';
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-amber-50 to-orange-50 pb-8">
+    <div className="min-h-screen bg-gradient-to-br from-amber-50 to-orange-50 pb-nav">
       {/* Header */}
       <div className="bg-gradient-to-br from-amber-600 to-orange-700 px-5 pt-12 pb-6">
         <div className="flex items-center gap-3">
@@ -271,6 +272,7 @@ export default function MazePage() {
             : '👆 Press and drag to find the path'}
         </p>
       </div>
+      <BottomNav />
     </div>
   );
 }

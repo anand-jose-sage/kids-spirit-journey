@@ -1,0 +1,724 @@
+{
+  "days": [
+    {
+      "day": 1,
+      "level": 1,
+      "title": "Who is Mary?",
+      "learning_text": "Mary is a young Jewish woman from Nazareth chosen by God to be the mother of Jesus Christ. She is the greatest of all human beings, fully embraced by God's grace from the very beginning of her life.",
+      "learning_text_ml": "മറിയം നസ്രത്തിൽ നിന്നുള്ള ഒരു യഹൂദ യുവതിയാണ്, ദൈവം യേശുക്രിസ്തുവിന്റെ അമ്മയായി തിരഞ്ഞെടുത്തത്. അവൾ ജനിച്ചതു മുതൽ ദൈവകൃപ നിറഞ്ഞ ഏറ്റവും വലിയ മനുഷ്യജീവിയാണ്.",
+      "learning_reference": "Luke 1:28",
+      "bible_book": "Luke",
+      "bible_reference": "1:28",
+      "bible_verse": "Hail, full of grace, the Lord is with you!",
+      "bible_verse_ml": "കൃപ നിറഞ്ഞവളേ, ആശംസ! കർത്താവ് നിന്നോടുകൂടെ ഉണ്ട്!",
+      "quiz": {
+        "question": "From which town was Mary, the mother of Jesus?",
+        "question_ml": "യേശുവിന്റെ അമ്മ മറിയം ഏത് പട്ടണത്തിൽ നിന്നുള്ളവളായിരുന്നു?",
+        "options": ["Bethlehem", "Jerusalem", "Nazareth", "Capernaum"],
+        "options_ml": ["ബേത്‍ലഹേം", "ജറുസലേം", "നസ്രത്ത്", "കഫർനാഹും"],
+        "correct_index": 2
+      },
+      "text_quiz": {
+        "question": "In which modern-day country is the city of Nazareth located?",
+        "question_ml": "നസ്രത്ത് നഗരം ഇന്ന് ഏത് രാജ്യത്തിലാണ് സ്ഥിതി ചെയ്യുന്നത്?",
+        "accepted_answers": ["israel"]
+      }
+    },
+    {
+      "day": 2,
+      "level": 1,
+      "title": "Full of Grace",
+      "learning_text": "When the angel Gabriel greeted Mary, he called her 'full of grace' — kecharitomene in Greek, meaning she was completely and permanently filled with divine grace. This was God's unique gift to her alone.",
+      "learning_text_ml": "ദൂതൻ ഗബ്രിയേൽ മറിയത്തെ 'കൃപ നിറഞ്ഞവൾ' എന്ന് വിളിച്ചു — ഗ്രീക്കിൽ kecharitomene, ദൈവകൃപ പൂർണ്ണമായും ശാശ്വതമായും നിറഞ്ഞവൾ എന്നർഥം. ഇത് ദൈവം അവൾക്കു മാത്രം നൽകിയ അദ്വിതീയ വരദാനമാണ്.",
+      "learning_reference": "Luke 1:28",
+      "bible_book": "Luke",
+      "bible_reference": "1:28",
+      "bible_verse": "Hail, full of grace, the Lord is with you!",
+      "bible_verse_ml": "കൃപ നിറഞ്ഞവളേ, ആശംസ! കർത്താവ് നിന്നോടുകൂടെ ഉണ്ട്!",
+      "quiz": {
+        "question": "What Greek word is used for 'full of grace' in Luke 1:28, meaning permanently filled with grace?",
+        "question_ml": "ലൂക്കാ 1:28-ൽ 'കൃപ നിറഞ്ഞവൾ' എന്നതിന് ഉപയോഗിച്ച ഗ്രീക്ക് വാക്ക് ഏതാണ്?",
+        "options": ["Theotokos", "Kecharitomene", "Magnificat", "Fiat"],
+        "options_ml": ["തിയോടോക്കോസ്", "കെഖാരിതൊമേനേ", "മഗ്നിഫിക്കാത്ത്", "ഫിയാത്ത്"],
+        "correct_index": 1
+      },
+      "text_quiz": {
+        "question": "What language was the New Testament originally written in?",
+        "question_ml": "പുതിയ നിയമം ആദ്യം ഏത് ഭാഷയിൽ എഴുതപ്പെട്ടു?",
+        "accepted_answers": ["greek"]
+      }
+    },
+    {
+      "day": 3,
+      "level": 1,
+      "title": "Immaculate Conception",
+      "learning_text": "The Immaculate Conception means Mary was preserved from original sin from the very moment she was conceived. This dogma was solemnly defined by Pope Pius IX in 1854 in the document Ineffabilis Deus.",
+      "learning_text_ml": "നിർമ്മല ഗർഭധാരണം എന്നാൽ മറിയം ഉദരസ്ഥയായ നിമിഷം മുതൽ മൗലിക പാപത്തിൽ നിന്ന് സൂക്ഷിക്കപ്പെട്ടു. ഈ വിശ്വാസ സത്യം 1854-ൽ മാർപ്പാ പിയൂസ് IX Ineffabilis Deus-ൽ ഔദ്യോഗികമായി പ്രഖ്യാപിച്ചു.",
+      "learning_reference": "Ineffabilis Deus, Pope Pius IX (1854)",
+      "bible_book": "Luke",
+      "bible_reference": "1:30",
+      "bible_verse": "Do not be afraid, Mary, for you have found favor with God.",
+      "bible_verse_ml": "ഭയപ്പെടേണ്ടാ, മറിയമേ; ദൈവം നിന്നോട് പ്രസാദിച്ചിരിക്കുന്നു.",
+      "quiz": {
+        "question": "Which Pope solemnly defined the dogma of the Immaculate Conception in 1854?",
+        "question_ml": "1854-ൽ നിർമ്മല ഗർഭധാരണ വിശ്വാസസത്യം ഔദ്യോഗിക ഏത് മാർപ്പ പ്രഖ്യാപിച്ചു?",
+        "options": ["Pope Leo XIII", "Pope Pius XII", "Pope Pius IX", "Pope John Paul II"],
+        "options_ml": ["മാർപ്പ ലെയോ XIII", "മാർപ്പ പിയൂസ് XII", "മാർപ്പ പിയൂസ് IX", "മാർപ്പ ജോൺ പോൾ II"],
+        "correct_index": 2
+      },
+      "text_quiz": {
+        "question": "What is the name of Mary's mother, who carried her in her womb, according to Catholic tradition?",
+        "question_ml": "കത്തോലിക്ക പാരമ്പര്യ പ്രകാരം, മറിയത്തെ ഉദരത്തിൽ വഹിച്ച അവളുടെ അമ്മ ആരാണ്?",
+        "accepted_answers": ["anne", "saint anne", "st anne", "st. anne"]
+      }
+    },
+    {
+      "day": 4,
+      "level": 1,
+      "title": "Mary's Fiat",
+      "learning_text": "When the angel announced God's plan, Mary responded: 'Let it be done to me according to your word.' This 'yes' — her Fiat — is the most important human yes in all of history, opening the door for God to enter the world.",
+      "learning_text_ml": "ദൂതൻ ദൈവത്തിന്റെ പദ്ധതി അറിയിച്ചപ്പോൾ മറിയം പ്രതിവചിച്ചു: 'നിന്റെ വചനം പോലെ എനിക്കു ഭവിക്കട്ടെ.' ഈ 'ഉവ്വ്' — അവളുടെ Fiat — ചരിത്രത്തിലെ ഏറ്റവും പ്രധാനമായ മനുഷ്യ സമ്മതമാണ്.",
+      "learning_reference": "Luke 1:38",
+      "bible_book": "Luke",
+      "bible_reference": "1:38",
+      "bible_verse": "Behold, I am the handmaid of the Lord; let it be done to me according to your word.",
+      "bible_verse_ml": "ഞാൻ കർത്താവിന്റെ ദാസിയാണ്; നിന്റെ വചനം പോലെ എനിക്കു ഭവിക്കട്ടെ.",
+      "quiz": {
+        "question": "What Latin word describes Mary's 'yes' to God's plan at the Annunciation?",
+        "question_ml": "ഘോഷണ സമയത്ത് ദൈവ പദ്ധതിക്ക് മറിയത്തിന്റെ 'ഉവ്വ്' ഏത് ലാറ്റിൻ പദത്തിൽ അറിയപ്പെടുന്നു?",
+        "options": ["Gloria", "Fiat", "Magnificat", "Ave"],
+        "options_ml": ["ഗ്ലോറിയ", "ഫിയാത്ത്", "മഗ്നിഫിക്കാത്ത്", "അവേ"],
+        "correct_index": 1
+      },
+      "text_quiz": {
+        "question": "What is the name of the traditional Catholic prayer said three times a day that recalls the moment the angel greeted Mary?",
+        "question_ml": "ദൂതൻ മറിയത്തെ അഭിവാദ്യം ചെയ്ത നിമിഷം അനുസ്മരിക്കുന്ന, ദിവസം മൂന്ന് തവണ ചൊല്ലുന്ന കത്തോലിക്ക പ്രാർഥനയുടെ പേര് എന്താണ്?",
+        "accepted_answers": ["angelus", "the angelus"]
+      }
+    },
+    {
+      "day": 5,
+      "level": 1,
+      "title": "Mother of God",
+      "learning_text": "Mary is truly the Mother of God — Theotokos — because Jesus, whom she carried in her womb, is truly God. The Council of Ephesus in 431 AD solemnly affirmed this title against the heresy of Nestorius.",
+      "learning_text_ml": "മറിയം യഥാർഥത്തിൽ ദൈവമാതാവ് — Theotokos — ആണ്, കാരണം അവൾ ഉദരത്തിൽ വഹിച്ച യേശു യഥാർഥ ദൈവമാണ്. 431 AD-ൽ എഫേസസ് കൗൺസിൽ ഈ പദവി ഔദ്യോഗിക ഉറപ്പിച്ചു.",
+      "learning_reference": "Council of Ephesus, 431 AD",
+      "bible_book": "Luke",
+      "bible_reference": "1:43",
+      "bible_verse": "And why is this granted to me that the mother of my Lord should come to me?",
+      "bible_verse_ml": "എന്റെ കർത്താവിന്റെ അമ്മ എന്റെ അടുക്കൽ വരുവാൻ ഞാൻ ആരാണ്?",
+      "quiz": {
+        "question": "Which Church Council declared Mary to be Theotokos (Mother of God) in 431 AD?",
+        "question_ml": "431 AD-ൽ ഏത് സഭ കൗൺസിൽ മറിയത്തെ തിയോടോക്കോസ് (ദൈവമാതാവ്) ആയി പ്രഖ്യാപിച്ചു?",
+        "options": ["Council of Nicaea", "Council of Trent", "Council of Ephesus", "Vatican II"],
+        "options_ml": ["നിഖ്യ കൗൺസിൽ", "ത്രന്ത് കൗൺസിൽ", "എഫേസസ് കൗൺസിൽ", "വത്തിക്കാൻ II"],
+        "correct_index": 2
+      },
+      "text_quiz": {
+        "question": "In which modern country is the ancient city of Ephesus located today?",
+        "question_ml": "പ്രാചീന നഗരമായ എഫേസസ് ഇന്ന് ഏത് ആധുനിക രാജ്യത്തിലാണ് സ്ഥിതി ചെയ്യുന്നത്?",
+        "accepted_answers": ["turkey"]
+      }
+    },
+    {
+      "day": 6,
+      "level": 1,
+      "title": "Ever Virgin",
+      "learning_text": "The Church teaches that Mary was a virgin before, during, and after the birth of Jesus. Her perpetual virginity is a sign of her total and undivided consecration to God, affirmed by early Church Fathers and councils.",
+      "learning_text_ml": "യേശുവിന്റെ ജനനത്തിനു മുമ്പ്, ജനന സമയത്ത്, ശേഷവും മറിയം കന്യകയായിരുന്നു. അവളുടെ ശാശ്വത കന്യകാത്വം ദൈവത്തിനായുള്ള പൂർണ്ണ സമർപ്പണത്തിന്റെ അടയാളമാണ്.",
+      "learning_reference": "Lateran Council (649 AD); Catechism of the Catholic Church 499",
+      "bible_book": "Isaiah",
+      "bible_reference": "7:14",
+      "bible_verse": "Behold, the virgin shall conceive and bear a son, and shall call his name Immanuel.",
+      "bible_verse_ml": "ഒരു കന്യക ഗർഭം ധരിക്കും, ഒരു പുത്രനെ പ്രസവിക്കും, അവൻ ഇമ്മാനുവൽ എന്ന് വിളിക്കപ്പെടും.",
+      "quiz": {
+        "question": "The Church teaches that Mary remained a virgin before, during, and after the birth of Jesus. This is called her:",
+        "question_ml": "യേശുവിന്റെ ജനനത്തിനു മുമ്പ്, ജനന സമയത്ത്, ശേഷവും മറിയം കന്യകയായിരുന്നു എന്ന് സഭ പഠിപ്പിക്കുന്നു. ഇത് അവളുടെ _____ എന്ന് വിളിക്കുന്നു:",
+        "options": ["Immaculate Conception", "Assumption", "Perpetual Virginity", "Fiat"],
+        "options_ml": ["നിർമ്മല ഗർഭധാരണം", "ഉദ്ഗ്രഹണം", "ശാശ്വത കന്യകാത്വം", "ഫിയാത്ത്"],
+        "correct_index": 2
+      },
+      "text_quiz": {
+        "question": "What was the name of Mary's husband, the foster father of Jesus?",
+        "question_ml": "മറിയത്തിന്റെ ഭർത്താവ്, യേശുവിന്റെ ദത്ത് പിതാവ്, ആരായിരുന്നു?",
+        "accepted_answers": ["joseph", "saint joseph", "st joseph", "st. joseph"]
+      }
+    },
+    {
+      "day": 7,
+      "level": 2,
+      "title": "The Annunciation",
+      "learning_text": "The Annunciation is the moment when the angel Gabriel appeared to Mary in Nazareth and announced that she would conceive and bear the Son of God by the power of the Holy Spirit. Mary's 'yes' changed all of history.",
+      "learning_text_ml": "ദൂതൻ ഗബ്രിയേൽ നസ്രത്തിൽ മറിയത്തിന് പ്രത്യക്ഷനായി, പരിശുദ്ധാത്മാവിന്റെ ശക്തിയാൽ ദൈവപുത്രനെ ഗർഭം ധരിക്കും എന്ന് അറിയിച്ചു.",
+      "learning_reference": "Luke 1:26–38",
+      "bible_book": "Luke",
+      "bible_reference": "1:31",
+      "bible_verse": "Behold, you will conceive in your womb and bear a son, and you shall call his name Jesus.",
+      "bible_verse_ml": "നീ ഗർഭം ധരിക്കുകയും ഒരു പുത്രനെ പ്രസവിക്കുകയും ചെയ്യും; അവന് യേശു എന്ന് പേരിടണം.",
+      "quiz": {
+        "question": "Which angel appeared to Mary at the Annunciation?",
+        "question_ml": "ഘോഷണ സമയത്ത് ഏത് ദൂതൻ മറിയത്തിന് പ്രത്യക്ഷനായി?",
+        "options": ["Michael", "Raphael", "Gabriel", "Uriel"],
+        "options_ml": ["മിഖായേൽ", "റഫായേൽ", "ഗബ്രിയേൽ", "ഉറിയേൽ"],
+        "correct_index": 2
+      },
+      "text_quiz": {
+        "question": "On which calendar date does the Catholic Church celebrate the feast of the Annunciation?",
+        "question_ml": "ഘോഷണ തിരുനാൾ കത്തോലിക്ക സഭ ഏത് തിയ്യതി ആഘോഷിക്കുന്നു?",
+        "accepted_answers": ["march 25", "25 march", "march 25th", "25th march"]
+      }
+    },
+    {
+      "day": 8,
+      "level": 2,
+      "title": "Ark of the Covenant",
+      "learning_text": "Mary is the New Ark of the Covenant. Just as the Ark carried the presence of God in the Old Testament, Mary carried Jesus — God incarnate — in her womb. The parallel between 2 Samuel 6 and Luke 1 shows this clearly.",
+      "learning_text_ml": "മറിയം പുതിയ ഉടമ്പടിയുടെ പേടകമാണ്. പഴയ നിയമത്തിൽ പേടകം ദൈവ സാന്നിദ്ധ്യം വഹിച്ചതുപോലെ, മറിയം ദൈവം-മനുഷ്യൻ ആയ യേശുവിനെ ഉദരത്തിൽ വഹിച്ചു.",
+      "learning_reference": "2 Samuel 6:9–11; Luke 1:39–45",
+      "bible_book": "Luke",
+      "bible_reference": "1:41",
+      "bible_verse": "When Elizabeth heard the greeting of Mary, the baby leaped in her womb.",
+      "bible_verse_ml": "മറിയത്തിന്റെ ആശംസ കേട്ടപ്പോൾ എലിസബേത്തിന്റെ ഉദരത്തിൽ ശിശു ചാടി.",
+      "quiz": {
+        "question": "What Old Testament object is Mary often typologically compared to, because she carried Jesus in her womb?",
+        "question_ml": "ഉദരത്തിൽ യേശുവിനെ വഹിച്ചതിനാൽ, പഴയ നിയമത്തിലെ ഏത് വസ്തുവിനോട് മറിയം ഉപമിക്കപ്പെടുന്നു?",
+        "options": ["The Burning Bush", "The Ark of the Covenant", "The Temple Veil", "The Staff of Aaron"],
+        "options_ml": ["ജ്വലിക്കുന്ന കുറ്റി", "ഉടമ്പടി പേടകം", "ദേവാലയ തിരശ്ശീല", "അഹരോന്റെ ദണ്ഡ്"],
+        "correct_index": 1
+      },
+      "text_quiz": {
+        "question": "What precious metal covered the original Ark of the Covenant according to the Bible?",
+        "question_ml": "ബൈബിൾ പ്രകാരം ഉടമ്പടി പേടകം ഏത് ലോഹം കൊണ്ട് പൊതിഞ്ഞിരുന്നു?",
+        "accepted_answers": ["gold"]
+      }
+    },
+    {
+      "day": 9,
+      "level": 2,
+      "title": "Isaiah's Prophecy",
+      "learning_text": "Around 700 BC, the prophet Isaiah foretold: 'The virgin shall conceive and bear a son, and shall call his name Immanuel.' The Church has always seen this as a prophecy fulfilled in Mary and the birth of Jesus.",
+      "learning_text_ml": "ഏകദേശം 700 BC-ൽ ഏശയ്യ പ്രവാചകൻ മുൻ‌കൂട്ടി പറഞ്ഞു: 'ഒരു കന്യക ഗർഭം ധരിക്കും, ഒരു പുത്രനെ പ്രസവിക്കും, അവൻ ഇമ്മാനുവൽ എന്ന് വിളിക്കപ്പെടും.'",
+      "learning_reference": "Isaiah 7:14; Matthew 1:22–23",
+      "bible_book": "Isaiah",
+      "bible_reference": "7:14",
+      "bible_verse": "Therefore the Lord himself will give you a sign. Behold, the virgin shall conceive and bear a son.",
+      "bible_verse_ml": "കർത്താവ് തന്നെ ഒരു അടയാളം തരും: ഒരു കന്യക ഗർഭം ധരിക്കും, ഒരു പുത്രനെ പ്രസവിക്കും.",
+      "quiz": {
+        "question": "In which book of the Old Testament do we find the prophecy: 'The virgin shall conceive and bear a son, and shall call his name Immanuel'?",
+        "question_ml": "'ഒരു കന്യക ഗർഭം ധരിക്കും, ഒരു പുത്രനെ പ്രസവിക്കും, അവൻ ഇമ്മാനുവൽ എന്ന് വിളിക്കപ്പെടും' എന്ന പ്രവചനം പഴയ നിയമത്തിലെ ഏത് ഗ്രന്ഥത്തിൽ കാണാം?",
+        "options": ["Jeremiah", "Isaiah", "Ezekiel", "Daniel"],
+        "options_ml": ["ജെറെമിയ", "ഏശയ്യ", "എസേക്കിയേൽ", "ദാനിയേൽ"],
+        "correct_index": 1
+      },
+      "text_quiz": {
+        "question": "What does the name 'Immanuel' mean in English?",
+        "question_ml": "'ഇമ്മാനുവൽ' എന്ന പേരിന്റെ അർഥം എന്താണ്?",
+        "accepted_answers": ["god with us", "god is with us", "god-with-us"]
+      }
+    },
+    {
+      "day": 10,
+      "level": 2,
+      "title": "The New Eve",
+      "learning_text": "Genesis 3:15 speaks of enmity between the serpent and the woman. The Church Fathers saw this as the first Marian prophecy — Mary is the New Eve whose obedience reversed Eve's disobedience, bringing Christ the Redeemer.",
+      "learning_text_ml": "ഉൽ‌പ്പത്തി 3:15 സ്ത്രീക്കും പാമ്പിനും ഇടയിലെ ശത്രുതയെക്കുറിച്ച് പറയുന്നു. ഇത് ആദ്യ മറിയൻ പ്രവചനമാണ് — മറിയം ഹവ്വയുടെ അനുസരണക്കേടിനെ അനുസരണം കൊണ്ട് മറികടന്ന പുതിയ ഹവ്വ.",
+      "learning_reference": "Genesis 3:15; St. Irenaeus, Against Heresies (c. 180 AD)",
+      "bible_book": "Genesis",
+      "bible_reference": "3:15",
+      "bible_verse": "I will put enmity between you and the woman, and between your offspring and her offspring.",
+      "bible_verse_ml": "നിനക്കും സ്ത്രീക്കും, നിന്റെ സന്തതിക്കും അവളുടെ സന്തതിക്കും ഇടയിൽ ഞാൻ ശത്രുത ഉണ്ടാക്കും.",
+      "quiz": {
+        "question": "Genesis 3:15, which speaks of enmity between the woman and the serpent, is called the first Marian prophecy. What name is given to Mary in this typology?",
+        "question_ml": "ഉൽ‌പ്പത്തി 3:15, സ്ത്രീക്കും പാമ്പിനും ഇടയിലെ ശത്രുതയെക്കുറിച്ച് സംസാരിക്കുന്ന ഈ ഭാഗം ആദ്യ മറിയൻ പ്രവചനം എന്ന് വിളിക്കുന്നു. ഈ ഉപമയിൽ മറിയം ഏത് നാമത്തിൽ അറിയപ്പെടുന്നു?",
+        "options": ["New Sarah", "New Eve", "New Judith", "New Esther"],
+        "options_ml": ["പുതിയ സാറ", "പുതിയ ഹവ്വ", "പുതിയ ജൂദിത്ത്", "പുതിയ എസ്തർ"],
+        "correct_index": 1
+      },
+      "text_quiz": {
+        "question": "What is the name of the garden where Eve disobeyed God in Genesis?",
+        "question_ml": "ഉൽ‌പ്പത്തിയിൽ ഹവ്വ ദൈവത്തോടു അനുസരണക്കേട് കാണിച്ച ഉദ്യാനം ഏതാണ്?",
+        "accepted_answers": ["garden of eden", "eden", "the garden of eden"]
+      }
+    },
+    {
+      "day": 11,
+      "level": 2,
+      "title": "The Magnificat",
+      "learning_text": "The Magnificat is Mary's great canticle of praise from Luke 1:46–55. She sings: 'My soul magnifies the Lord.' It is one of the most beautiful prayers in Scripture and is prayed daily in the Church's Evening Prayer.",
+      "learning_text_ml": "മഗ്നിഫിക്കാത്ത് ലൂക്കാ 1:46–55-ൽ നിന്നുള്ള മറിയത്തിന്റെ മഹത്തായ സ്തുതി ഗീതമാണ്. 'എന്റെ ആത്മാവ് കർത്താവിനെ മഹത്ത്വപ്പെടുത്തുന്നു' — ഇത് സഭ ദിനേന സന്ധ്യ പ്രാർഥനയിൽ ആലപിക്കുന്നു.",
+      "learning_reference": "Luke 1:46–55",
+      "bible_book": "Luke",
+      "bible_reference": "1:46–47",
+      "bible_verse": "My soul magnifies the Lord, and my spirit rejoices in God my Savior.",
+      "bible_verse_ml": "എന്റെ ആത്മാവ് കർത്താവിനെ മഹത്ത്വപ്പെടുത്തുന്നു; എന്റെ ആത്മാവ് എന്റെ രക്ഷകനായ ദൈവത്തിൽ ആനന്ദിക്കുന്നു.",
+      "quiz": {
+        "question": "The Magnificat begins with which words?",
+        "question_ml": "മഗ്നിഫിക്കാത്ത് ഏത് വചനങ്ങളോടെ ആരംഭിക്കുന്നു?",
+        "options": ["Blessed are you among women", "My soul magnifies the Lord", "Hail, full of grace", "Do whatever he tells you"],
+        "options_ml": ["സ്ത്രീകളിൽ നീ അനുഗ്രഹിക്കപ്പെട്ടവൾ", "എന്റെ ആത്മാവ് കർത്താവിനെ മഹത്ത്വപ്പെടുത്തുന്നു", "കൃപ നിറഞ്ഞവളേ, ആശംസ", "അവൻ പറയുന്നതെല്ലാം ചെയ്യുക"],
+        "correct_index": 1
+      },
+      "text_quiz": {
+        "question": "What is the Latin name for the Evening Prayer of the Church, during which the Magnificat is prayed daily?",
+        "question_ml": "ദിനേന മഗ്നിഫിക്കാത്ത് ചൊല്ലുന്ന സഭയുടെ സന്ധ്യ പ്രാർഥനയുടെ ലാറ്റിൻ നാമം എന്താണ്?",
+        "accepted_answers": ["vespers"]
+      }
+    },
+    {
+      "day": 12,
+      "level": 2,
+      "title": "Woman Clothed with the Sun",
+      "learning_text": "Revelation 12 describes a woman clothed with the sun, with the moon under her feet and a crown of twelve stars. The Church sees this as Mary — both the mother of Jesus and the image of the Church in glory.",
+      "learning_text_ml": "വെളിപ്പാട് 12 സൂര്യനെ ഉടുത്ത ഒരു സ്ത്രീയെ വർണ്ണിക്കുന്നു, ചന്ദ്രൻ കാൽക്കൽ, 12 നക്ഷത്രങ്ങളുടെ കിരീടം. സഭ ഇതിൽ മറിയത്തെ — യേശുവിന്റെ അമ്മയെയും മഹിമയിലെ സഭയുടെ പ്രതിരൂപത്തെയും — കാണുന്നു.",
+      "learning_reference": "Revelation 12:1–2",
+      "bible_book": "Revelation",
+      "bible_reference": "12:1",
+      "bible_verse": "A great sign appeared in heaven: a woman clothed with the sun, with the moon under her feet, and on her head a crown of twelve stars.",
+      "bible_verse_ml": "ആകാശത്ത് ഒരു മഹത്തായ അടയാളം: സൂര്യനെ ഉടുത്ത ഒരു സ്ത്രീ, ചന്ദ്രൻ കാൽക്കൽ, 12 നക്ഷത്രങ്ങളുടെ കിരീടം.",
+      "quiz": {
+        "question": "In Revelation 12, the woman is described as clothed with the sun. How many stars make up her crown?",
+        "question_ml": "വെളിപ്പാട് 12-ൽ, സ്ത്രീ സൂര്യനെ ഉടുത്തതായി വർണ്ണിക്കുന്നു. അവളുടെ കിരീടത്തിൽ എത്ര നക്ഷത്രങ്ങൾ ഉണ്ട്?",
+        "options": ["Seven", "Ten", "Twelve", "Three"],
+        "options_ml": ["ഏഴ്", "പത്ത്", "പന്ത്രണ്ട്", "മൂന്ന്"],
+        "correct_index": 2
+      },
+      "text_quiz": {
+        "question": "On which island did Saint John write the Book of Revelation?",
+        "question_ml": "ഏത് ദ്വീപിൽ വച്ച് വിശുദ്ധ ജോൺ വെളിപ്പാട് ഗ്രന്ഥം എഴുതി?",
+        "accepted_answers": ["patmos", "isle of patmos", "island of patmos"]
+      }
+    },
+    {
+      "day": 13,
+      "level": 3,
+      "title": "Theotokos",
+      "learning_text": "Theotokos is a Greek title meaning 'God-bearer' or 'Mother of God.' It affirms that Mary's child is truly divine. Denying this title, as Nestorius did, was condemned as heresy at the Council of Ephesus in 431 AD.",
+      "learning_text_ml": "'ദൈവഭാരക' അഥവാ 'ദൈവമാതാവ്' എന്ന് അർഥമുള്ള ഗ്രീക്ക് പദമാണ് Theotokos. മറിയത്തിന്റെ കുഞ്ഞ് യഥാർഥ ദൈവമാണ് എന്ന് ഇത് ഉറപ്പിക്കുന്നു.",
+      "learning_reference": "Council of Ephesus (431 AD)",
+      "bible_book": "Luke",
+      "bible_reference": "1:43",
+      "bible_verse": "And why is this granted to me that the mother of my Lord should come to me?",
+      "bible_verse_ml": "എന്റെ കർത്താവിന്റെ അമ്മ എന്റെ അടുക്കൽ വരുവാൻ ഞാൻ ആരാണ്?",
+      "quiz": {
+        "question": "The title 'Theotokos' literally means:",
+        "question_ml": "'തിയോടോക്കോസ്' എന്ന പദത്തിന്റെ അക്ഷരാർഥം:",
+        "options": ["Star of the Sea", "Full of Grace", "God-bearer or Mother of God", "Queen of Heaven"],
+        "options_ml": ["കടലിന്റെ നക്ഷത്രം", "കൃപ നിറഞ്ഞവൾ", "ദൈവഭാരക അഥവാ ദൈവമാതാവ്", "സ്വർഗ്ഗ രാജ്ഞി"],
+        "correct_index": 2
+      },
+      "text_quiz": {
+        "question": "What is the name of the heresy that denied Mary was the Mother of God, condemned at Ephesus in 431 AD?",
+        "question_ml": "431 AD-ൽ എഫേസസ് കൗൺസിൽ അപലപിച്ച, മറിയം ദൈവമാതാവ് അല്ല എന്ന് നിഷേധിച്ച പാഷണ്ഡതയുടെ പേര് എന്ത്?",
+        "accepted_answers": ["nestorianism", "nestorius", "the heresy of nestorius"]
+      }
+    },
+    {
+      "day": 14,
+      "level": 3,
+      "title": "Queen of Heaven",
+      "learning_text": "Mary is honored as Queen of Heaven because her Son is the King of the universe. This title, rooted in Scripture and Tradition, was formally celebrated in the Church's calendar by Pope Pius XII in 1954, on the feast of August 22.",
+      "learning_text_ml": "മറിയം സ്വർഗ്ഗരാജ്ഞി ആദരിക്കപ്പെടുന്നു, കാരണം അവളുടെ പുത്രൻ പ്രപഞ്ചത്തിന്റെ രാജാവാണ്. 1954-ൽ മാർപ്പാ പിയൂസ് XII ഈ ഉത്സവം ഓഗസ്റ്റ് 22-ന് ഔദ്യോഗിക ആഘോഷദിനമായി ഏർപ്പെടുത്തി.",
+      "learning_reference": "Ad Caeli Reginam, Pope Pius XII (1954)",
+      "bible_book": "Revelation",
+      "bible_reference": "12:1",
+      "bible_verse": "A great sign appeared in heaven: a woman clothed with the sun, with the moon under her feet.",
+      "bible_verse_ml": "ആകാശത്ത് ഒരു മഹത്തായ അടയാളം: സൂര്യനെ ഉടുത്ത ഒരു സ്ത്രീ, ചന്ദ്രൻ കാൽക്കൽ.",
+      "quiz": {
+        "question": "Which Pope established the feast of Mary as Queen of Heaven on August 22 in 1954?",
+        "question_ml": "1954-ൽ ഓഗസ്റ്റ് 22-ന് മറിയത്തിന്റെ സ്വർഗ്ഗ രാജ്ഞി ഉത്സവം ഏർപ്പെടുത്തിയ ഏത് മാർപ്പ?",
+        "options": ["Pope John XXIII", "Pope Pius IX", "Pope Leo XIII", "Pope Pius XII"],
+        "options_ml": ["മാർപ്പ ജോൺ XXIII", "മാർപ്പ പിയൂസ് IX", "മാർപ്പ ലെയോ XIII", "മാർപ്പ പിയൂസ് XII"],
+        "correct_index": 3
+      },
+      "text_quiz": {
+        "question": "What is the name of the Easter-season antiphon sung to Mary as Queen of Heaven, beginning with those Latin words?",
+        "question_ml": "ലാറ്റിൻ പദങ്ങളോടെ ആരംഭിക്കുന്ന, ഈസ്റ്റർ കാലത്ത് സ്വർഗ്ഗ രാജ്ഞിക്ക് ആലപിക്കുന്ന ആ ആന്തിഫോണിന്റെ പേര് എന്ത്?",
+        "accepted_answers": ["regina caeli", "regina coeli", "queen of heaven"]
+      }
+    },
+    {
+      "day": 15,
+      "level": 3,
+      "title": "Mediatrix",
+      "learning_text": "Mary is called Mediatrix of All Graces — not as a co-redeemer, but because all graces flow through her maternal intercession. Pope Leo XIII strongly promoted this understanding in his many Marian encyclicals.",
+      "learning_text_ml": "മറിയം എല്ലാ കൃപകളുടെയും മധ്യസ്ഥ എന്ന് വിളിക്കപ്പെടുന്നു — സഹരക്ഷകയായിട്ടല്ല, മറിച്ച് അവളുടെ മാതൃ മാധ്യസ്ഥ്യം വഴി കൃപ ലഭ്യമാകുന്നതിനാൽ. മാർപ്പാ ലെയോ XIII ഇത് ഊന്നി പ്രഖ്യാപിച്ചു.",
+      "learning_reference": "Octobri Mense, Pope Leo XIII (1891)",
+      "bible_book": "John",
+      "bible_reference": "2:5",
+      "bible_verse": "His mother said to the servants, 'Do whatever he tells you.'",
+      "bible_verse_ml": "അവളുടെ അമ്മ ശുശ്രൂഷക്കാരോട് പറഞ്ഞു: 'അവൻ നിങ്ങളോട് പറയുന്നതെല്ലാം ചെയ്യുക.'",
+      "quiz": {
+        "question": "Which Pope strongly promoted Mary's role as Mediatrix of All Graces through multiple Marian encyclicals?",
+        "question_ml": "ഒന്നിലധികം മറിയൻ ചാക്രിക ലേഖനങ്ങൾ വഴി, ഏത് മാർപ്പ മറിയത്തിന്റെ 'എല്ലാ കൃപകളുടെ മധ്യസ്ഥ' എന്ന പദവി ഊന്നി പ്രഖ്യാപിച്ചു?",
+        "options": ["Pope Pius IX", "Pope Leo XIII", "Pope Francis", "Pope Benedict XVI"],
+        "options_ml": ["മാർപ്പ പിയൂസ് IX", "മാർപ്പ ലെയോ XIII", "മാർപ്പ ഫ്രാൻസിസ്", "മാർപ്പ ബെനഡിക്ട് XVI"],
+        "correct_index": 1
+      },
+      "text_quiz": {
+        "question": "At which event in the Gospel of John did Mary first intercede for others, leading to Jesus' first miracle?",
+        "question_ml": "ജോൺ സുവിശേഷത്തിലെ ഏത് സംഭവത്തിൽ മറിയം ആദ്യമായി മറ്റുള്ളവർക്കു വേണ്ടി മദ്ധ്യസ്ഥ്യം വഹിച്ചു, യേശുവിന്റെ ആദ്യ അദ്ഭുതത്തിലേക്ക് നയിച്ചു?",
+        "accepted_answers": ["wedding at cana", "the wedding at cana", "cana", "wedding in cana", "marriage at cana"]
+      }
+    },
+    {
+      "day": 16,
+      "level": 3,
+      "title": "The Rosary — Leo XIII",
+      "learning_text": "Pope Leo XIII wrote 11 encyclicals on the Rosary, more than any other pope. He believed the Rosary was the most powerful prayer after the Mass for the renewal of Christian family life and for peace in the world.",
+      "learning_text_ml": "മാർപ്പാ ലെയോ XIII റോസരിയെക്കുറിച്ച് 11 ചാക്രിക ലേഖനങ്ങൾ രചിച്ചു — ഏതൊരു മാർപ്പായെക്കാളും കൂടുതൽ. ദിവ്യബലി കഴിഞ്ഞ ഏറ്റവും ശക്തമായ പ്രാർഥനയാണ് റോസരി എന്ന് അദ്ദേഹം വിശ്വസിച്ചു.",
+      "learning_reference": "Supremi Apostolatus Officio, Pope Leo XIII (1883)",
+      "bible_book": "Luke",
+      "bible_reference": "1:42",
+      "bible_verse": "Blessed are you among women, and blessed is the fruit of your womb!",
+      "bible_verse_ml": "നീ സ്ത്രീകളിൽ അനുഗ്രഹിക്കപ്പെട്ടവൾ; നിന്റെ ഉദരഫലം അനുഗ്രഹിക്കപ്പെട്ടതുമാണ്!",
+      "quiz": {
+        "question": "How many encyclicals did Pope Leo XIII write specifically about the Rosary?",
+        "question_ml": "റോസരിയെ കുറിച്ച് മാർപ്പ ലെയോ XIII എത്ര ചാക്രിക ലേഖനങ്ങൾ രചിച്ചു?",
+        "options": ["3", "7", "11", "15"],
+        "options_ml": ["3", "7", "11", "15"],
+        "correct_index": 2
+      },
+      "text_quiz": {
+        "question": "In what year did Pope Leo XIII become Pope?",
+        "question_ml": "ഏത് വർഷം മാർപ്പ ലെയോ XIII മാർപ്പ ആയി?",
+        "accepted_answers": ["1878"]
+      }
+    },
+    {
+      "day": 17,
+      "level": 3,
+      "title": "Redemptoris Mater",
+      "learning_text": "In 1987, Pope John Paul II wrote Redemptoris Mater — 'Mother of the Redeemer' — a landmark encyclical on Mary's role in salvation history. He called her the first and most perfect disciple of Christ.",
+      "learning_text_ml": "1987-ൽ മാർപ്പാ ജോൺ പോൾ II Redemptoris Mater — 'രക്ഷകന്റെ അമ്മ' — രചിച്ചു. രക്ഷാ ചരിത്രത്തിൽ മറിയത്തിന്റെ പങ്കിനെക്കുറിച്ചുള്ള ഈ ചാക്രിക ലേഖനം ക്രിസ്തുവിന്റെ ഒന്നാമത്തെ ശിഷ്യ എന്ന് അവളെ വിളിക്കുന്നു.",
+      "learning_reference": "Redemptoris Mater, Pope John Paul II (1987)",
+      "bible_book": "John",
+      "bible_reference": "19:27",
+      "bible_verse": "Then he said to the disciple, 'Behold, your mother!' And from that hour the disciple took her to his own home.",
+      "bible_verse_ml": "പിന്നെ ശിഷ്യനോട് പറഞ്ഞു: 'ഇതാ, നിന്റെ അമ്മ!' ആ നാഴിക മുതൽ ശിഷ്യൻ അവളെ സ്വന്തം ഭവനത്തിൽ കൂട്ടിക്കൊണ്ടു പോയി.",
+      "quiz": {
+        "question": "The encyclical Redemptoris Mater (1987) was written by:",
+        "question_ml": "Redemptoris Mater (1987) ചാക്രിക ലേഖനം ആരു എഴുതി:",
+        "options": ["Pope Paul VI", "Pope Pius XII", "Pope John Paul II", "Pope Benedict XVI"],
+        "options_ml": ["മാർപ്പ പോൾ VI", "മാർപ്പ പിയൂസ് XII", "മാർപ്പ ജോൺ പോൾ II", "മാർപ്പ ബെനഡിക്ട് XVI"],
+        "correct_index": 2
+      },
+      "text_quiz": {
+        "question": "In which year was Pope John Paul II shot in St. Peter's Square, after which he credited Our Lady of Fatima for saving his life?",
+        "question_ml": "ഏത് വർഷം മാർപ്പ ജോൺ പോൾ II-ൽ St. Peter's Square-ൽ വെടിയേറ്റു, ശേഷം ഫാത്തിമ മാതാവ് തന്റെ ജീവൻ രക്ഷിച്ചു എന്ന് അദ്ദേഹം ഏറ്റുപറഞ്ഞു?",
+        "accepted_answers": ["1981"]
+      }
+    },
+    {
+      "day": 18,
+      "level": 3,
+      "title": "Mother of the Church",
+      "learning_text": "At the Second Vatican Council, Pope Paul VI proclaimed Mary as 'Mother of the Church' in 1964. This title emphasizes that Mary is not only the mother of Jesus but spiritually mother to all the faithful — the whole body of Christ.",
+      "learning_text_ml": "1964-ൽ വത്തിക്കാൻ II-ൽ മാർപ്പാ പോൾ VI മറിയത്തെ 'സഭയുടെ അമ്മ' ആയി പ്രഖ്യാപിച്ചു. ഈ പദവി — യേശുവിന്റെ അമ്മ മാത്രമല്ല, ക്രിസ്തുവിന്റെ മുഴുവൻ ശരീരത്തിനും അമ്മ — ഊന്നി പ്രഖ്യാപിക്കുന്നു.",
+      "learning_reference": "Vatican II, Lumen Gentium, Ch. VIII; Pope Paul VI (1964)",
+      "bible_book": "John",
+      "bible_reference": "19:26",
+      "bible_verse": "When Jesus saw his mother and the disciple whom he loved, he said to his mother, 'Woman, behold your son!'",
+      "bible_verse_ml": "യേശു തന്റെ അമ്മയെയും തനിക്ക് പ്രിയനായ ശിഷ്യനെയും കണ്ടപ്പോൾ അമ്മയോടു പറഞ്ഞു: 'സ്ത്രീ, ഇതാ നിന്റെ പുത്രൻ!'",
+      "quiz": {
+        "question": "Which Pope proclaimed Mary as 'Mother of the Church' at the Second Vatican Council in 1964?",
+        "question_ml": "1964-ൽ വത്തിക്കാൻ II-ൽ ഏത് മാർപ്പ മറിയത്തെ 'സഭയുടെ അമ്മ' ആയി പ്രഖ്യാപിച്ചു?",
+        "options": ["Pope John XXIII", "Pope Paul VI", "Pope John Paul II", "Pope Benedict XVI"],
+        "options_ml": ["മാർപ്പ ജോൺ XXIII", "മാർപ്പ പോൾ VI", "മാർപ്പ ജോൺ പോൾ II", "മാർപ്പ ബെനഡിക്ട് XVI"],
+        "correct_index": 1
+      },
+      "text_quiz": {
+        "question": "In what year did the Second Vatican Council end?",
+        "question_ml": "വത്തിക്കാൻ II ഏത് വർഷം അവസാനിച്ചു?",
+        "accepted_answers": ["1965"]
+      }
+    },
+    {
+      "day": 19,
+      "level": 4,
+      "title": "Our Lady of Lourdes",
+      "learning_text": "In 1858, Mary appeared 18 times to Bernadette Soubirous in Lourdes, France. In one apparition, she identified herself: 'I am the Immaculate Conception.' This confirmed Pius IX's definition from just four years earlier.",
+      "learning_text_ml": "1858-ൽ ഫ്രാൻസിലെ ലൂർദ്ദിൽ ബർനദത്ത് സൂബിറൂവിന് 18 തവണ മറിയം പ്രത്യക്ഷപ്പെട്ടു. ഒരു ദർശനത്തിൽ അവൾ വെളിപ്പെടുത്തി: 'ഞാൻ നിർമ്മല ഗർഭധാരണം ആണ്.'",
+      "learning_reference": "Lourdes apparitions, 1858; canonized 1933",
+      "bible_book": "Luke",
+      "bible_reference": "1:28",
+      "bible_verse": "Hail, full of grace, the Lord is with you!",
+      "bible_verse_ml": "കൃപ നിറഞ്ഞവളേ, ആശംസ! കർത്താവ് നിന്നോടുകൂടെ ഉണ്ട്!",
+      "quiz": {
+        "question": "In which country did Mary appear to Bernadette Soubirous at Lourdes in 1858?",
+        "question_ml": "1858-ൽ ലൂർദ്ദിൽ ബർനദത്ത് സൂബിറൂവിന് ഏത് രാജ്യത്ത് മറിയം പ്രത്യക്ഷപ്പെട്ടു?",
+        "options": ["Italy", "Spain", "Portugal", "France"],
+        "options_ml": ["ഇറ്റലി", "സ്പെയിൻ", "പോർച്ചുഗൽ", "ഫ്രാൻസ്"],
+        "correct_index": 3
+      },
+      "text_quiz": {
+        "question": "In what year was Saint Bernadette Soubirous canonized as a saint?",
+        "question_ml": "ഏത് വർഷം വിശുദ്ധ ബർനദത്ത് സൂബിറൂ വിശുദ്ധനായി പ്രഖ്യാപിക്കപ്പെട്ടു?",
+        "accepted_answers": ["1933"]
+      }
+    },
+    {
+      "day": 20,
+      "level": 4,
+      "title": "Our Lady of Fatima",
+      "learning_text": "In 1917, Mary appeared six times to three shepherd children — Lucia, Francisco, and Jacinta — in Fatima, Portugal. She called for prayer, penance, and the consecration of Russia to her Immaculate Heart for world peace.",
+      "learning_text_ml": "1917-ൽ പോർച്ചുഗലിലെ ഫാത്തിമയിൽ ലൂസിയ, ഫ്രാൻസിസ്കോ, ജസിന്ത എന്നീ മൂന്ന് ഇടയ കുട്ടികൾക്ക് ആറ് തവണ മറിയം പ്രത്യക്ഷപ്പെട്ടു. ലോകസമാധാനത്തിനായി പ്രാർഥനയും തപശ്ചര്യയും ആഹ്വാനം ചെയ്തു.",
+      "learning_reference": "Fatima apparitions, 1917",
+      "bible_book": "Luke",
+      "bible_reference": "1:48",
+      "bible_verse": "For he has looked on the humble estate of his servant. For behold, from now on all generations will call me blessed.",
+      "bible_verse_ml": "അദ്ദേഹം തന്റെ ദാസിയുടെ താഴ്മ കണ്ടു; ഇതാ, ഇന്നു മുതൽ എല്ലാ തലമുറകളും എന്നെ ഭാഗ്യവതി എന്നു വിളിക്കും.",
+      "quiz": {
+        "question": "How many times did Our Lady appear at Fatima in 1917?",
+        "question_ml": "1917-ൽ ഫാത്തിമയിൽ നമ്മുടെ അമ്മ എത്ര തവണ പ്രത്യക്ഷപ്പെട്ടു?",
+        "options": ["Three", "Six", "Twelve", "Eighteen"],
+        "options_ml": ["മൂന്ന്", "ആറ്", "പന്ത്രണ്ട്", "പതിനെട്ട്"],
+        "correct_index": 1
+      },
+      "text_quiz": {
+        "question": "What is the surname of the eldest Fatima seer, Lucia, who later became a Carmelite nun?",
+        "question_ml": "പിന്നീട് കാർമലൈറ്റ് സന്ന്യാസിനിയായ ഫാത്തിമ ദർശക ലൂസിയയുടെ കുടുംബനാമം എന്ത്?",
+        "accepted_answers": ["dos santos", "santos"]
+      }
+    },
+    {
+      "day": 21,
+      "level": 4,
+      "title": "Luminous Mysteries",
+      "learning_text": "In 2002, Pope John Paul II added the Luminous Mysteries (Mysteries of Light) to the traditional Rosary, covering Jesus' public ministry. These include the Wedding at Cana, where Mary's intercession led to Jesus' first miracle.",
+      "learning_text_ml": "2002-ൽ മാർപ്പാ ജോൺ പോൾ II റോസരിയോടു ദ്യോതക രഹസ്യങ്ങൾ (Luminous Mysteries) കൂട്ടിച്ചേർത്തു. കാനായിൽ കല്യാണ സദ്യയടക്കം — മറിയത്തിന്റെ മാധ്യസ്ഥ്യം ദൈവകൃപ ലഭ്യമാക്കിയ — 5 സന്ദർഭങ്ങൾ ഉൾക്കൊള്ളുന്നു.",
+      "learning_reference": "Rosarium Virginis Mariae, Pope John Paul II (2002)",
+      "bible_book": "John",
+      "bible_reference": "2:5",
+      "bible_verse": "His mother said to the servants, 'Do whatever he tells you.'",
+      "bible_verse_ml": "അവളുടെ അമ്മ ശുശ്രൂഷക്കാരോട് പറഞ്ഞു: 'അവൻ നിങ്ങളോട് പറയുന്നതെല്ലാം ചെയ്യുക.'",
+      "quiz": {
+        "question": "Which Pope added the Luminous Mysteries to the Rosary in 2002?",
+        "question_ml": "2002-ൽ ഏത് മാർപ്പ റോസരിയോടു ദ്യോതക രഹസ്യങ്ങൾ കൂട്ടിച്ചേർത്തു?",
+        "options": ["Pope Paul VI", "Pope Benedict XVI", "Pope John Paul II", "Pope Francis"],
+        "options_ml": ["മാർപ്പ പോൾ VI", "മാർപ്പ ബെനഡിക്ട് XVI", "മാർപ്പ ജോൺ പോൾ II", "മാർപ്പ ഫ്രാൻസിസ്"],
+        "correct_index": 2
+      },
+      "text_quiz": {
+        "question": "How many decades (sets of 10 Hail Marys) are prayed in a single set of Rosary mysteries?",
+        "question_ml": "ഒരു റോസരി രഹസ്യ സമൂഹത്തിൽ എത്ര ദശകങ്ങൾ (10 ജപമാലകളുടെ കൂട്ടങ്ങൾ) ചൊല്ലുന്നു?",
+        "accepted_answers": ["5", "five"]
+      }
+    },
+    {
+      "day": 22,
+      "level": 4,
+      "title": "The Brown Scapular",
+      "learning_text": "The Brown Scapular is a devotional garment associated with Our Lady of Mount Carmel. Tradition holds that Mary appeared to St. Simon Stock in 1251 with a promise: those who wear it faithfully shall not suffer eternal fire.",
+      "learning_text_ml": "ബ്രൗൺ സ്കാപ്പുലർ ഓർ ലേഡി ഓഫ് കാർമൽ ഭക്തിയുമായി ബന്ധപ്പെട്ട ആരാധനാ വസ്ത്രമാണ്. 1251-ൽ മറിയം സെന്റ് സൈമൺ സ്റ്റോക്കിന് ഒരു വാഗ്ദാനം നൽകി: ഇത് ഭക്ത്യാദരത്തോടെ ധരിക്കുന്നവർ നരകാഗ്നിക്ക് ഇരയാകില്ല.",
+      "learning_reference": "Carmelite tradition; Our Lady of Mount Carmel feast: July 16",
+      "bible_book": "Isaiah",
+      "bible_reference": "66:13",
+      "bible_verse": "As one whom his mother comforts, so I will comfort you.",
+      "bible_verse_ml": "ഒരു അമ്മ മകനെ ആശ്വസിപ്പിക്കുന്നതുപോലെ, ഞാൻ നിങ്ങളെ ആശ്വസിപ്പിക്കും.",
+      "quiz": {
+        "question": "To which saint did Our Lady of Mount Carmel traditionally appear in 1251, promising protection to those who wear the Brown Scapular?",
+        "question_ml": "1251-ൽ ഓർ ലേഡി ഓഫ് കാർമൽ ഏത് വിശുദ്ധന് പ്രത്യക്ഷനായി ബ്രൗൺ സ്കാപ്പുലർ ധരിക്കുന്നവർക്ക് സംരക്ഷണം വാഗ്ദാനം ചെയ്തു?",
+        "options": ["St. Francis of Assisi", "St. Dominic", "St. Simon Stock", "St. Ignatius of Loyola"],
+        "options_ml": ["വി. ഫ്രാൻസിസ് ഓഫ് അസീസി", "വി. ഡോമിനിക്", "വി. സൈമൺ സ്റ്റോക്ക്", "വി. ഇഗ്നേഷ്യസ് ഓഫ് ലൊയോള"],
+        "correct_index": 2
+      },
+      "text_quiz": {
+        "question": "Which religious order is associated with Our Lady of Mount Carmel and the Brown Scapular?",
+        "question_ml": "ഓർ ലേഡി ഓഫ് കാർമൽ, ബ്രൗൺ സ്കാപ്പുലർ എന്നിവയുമായി ബന്ധപ്പെട്ട ഏത് മതസ്ഥാനം?",
+        "accepted_answers": ["carmelites", "carmelite", "order of carmel", "order of carmelites", "carmelite order"]
+      }
+    },
+    {
+      "day": 23,
+      "level": 4,
+      "title": "Month of Mary",
+      "learning_text": "May is traditionally dedicated to Mary, the Mother of God, and is known as the Month of Mary. This centuries-old devotion invites Catholics to honor Mary especially through Rosary, Marian hymns, and acts of charity throughout May.",
+      "learning_text_ml": "മേയ് മാസം പരമ്പരാഗതമായി ദൈവമാതാവ് മറിയത്തിന് സമർപ്പിതമാണ്, മേരി മാസം എന്ന് അറിയപ്പെടുന്നു. ഈ ശതകങ്ങൾ പഴക്കമുള്ള ഭക്തി, റോസരി, ഗാനങ്ങൾ, ദാനധർമ്മ പ്രവൃത്തികൾ വഴി മറിയത്തെ ആദരിക്കാൻ ക്ഷണിക്കുന്നു.",
+      "learning_reference": "Traditional Catholic devotion; also October is the Month of the Rosary",
+      "bible_book": "Luke",
+      "bible_reference": "11:27",
+      "bible_verse": "Blessed is the womb that bore you, and the breasts at which you nursed!",
+      "bible_verse_ml": "അനുഗ്രഹിക്കപ്പെട്ടവൾ നിന്നെ ഗർഭം ധരിച്ച ഉദരം, നിന്നെ മുലകൊടുത്ത മാർ!",
+      "quiz": {
+        "question": "Which month of the year is traditionally dedicated to Mary as the 'Month of Mary'?",
+        "question_ml": "പരമ്പരാഗതമായി 'മേരി മാസം' ആയി മറിയത്തിന് സമർപ്പിക്കപ്പെടുന്ന ഏത് മാസം?",
+        "options": ["March", "April", "May", "October"],
+        "options_ml": ["മാർച്ച്", "ഏപ്രിൽ", "മേയ്", "ഒക്ടോബർ"],
+        "correct_index": 2
+      },
+      "text_quiz": {
+        "question": "What title is given to Mary in October, the other month specially dedicated to her in Catholic tradition?",
+        "question_ml": "കത്തോലിക്ക പാരമ്പര്യത്തിൽ അവൾക്ക് പ്രത്യേകം സമർപ്പിക്കപ്പെട്ട ഒക്ടോബർ മാസത്തിൽ മറിയത്തിന് നൽകുന്ന ഏത് പദവി?",
+        "accepted_answers": ["our lady of the rosary", "lady of the rosary", "our lady of rosary"]
+      }
+    },
+    {
+      "day": 24,
+      "level": 4,
+      "title": "The Hail Mary",
+      "learning_text": "The Hail Mary prayer is drawn from Scripture. The first part comes from Gabriel's greeting (Luke 1:28) and Elizabeth's blessing (Luke 1:42). The second part — 'Holy Mary, Mother of God, pray for us sinners' — was added later by the Church.",
+      "learning_text_ml": "നമ്മുക്ക് അറിയാവുന്ന ജപമാലയിലെ ആദ്യ ഭാഗം ഗ്രന്ഥത്തിൽ നിന്നാണ് — ഗബ്രിയേലിന്റെ ആശംസ (ലൂക്കാ 1:28), എലിസബേത്തിന്റെ അനുഗ്രഹം (ലൂക്കാ 1:42). 'വിശുദ്ധ മറിയമേ...' ഭാഗം പിൽക്കാലത്ത് സഭ കൂട്ടിച്ചേർത്തു.",
+      "learning_reference": "Luke 1:28, 42; CCC 2676–2677",
+      "bible_book": "Luke",
+      "bible_reference": "1:42",
+      "bible_verse": "Blessed are you among women, and blessed is the fruit of your womb!",
+      "bible_verse_ml": "നീ സ്ത്രീകളിൽ അനുഗ്രഹിക്കപ്പെട്ടവൾ; നിന്റെ ഉദരഫലം അനുഗ്രഹിക്കപ്പെട്ടതുമാണ്!",
+      "quiz": {
+        "question": "The first part of the Hail Mary prayer is drawn from the greetings of two people in Scripture. Who are they?",
+        "question_ml": "ജപമാലയുടെ ആദ്യ ഭാഗം ഗ്രന്ഥത്തിലെ രണ്ട് ആളുകളുടെ ആശംസകളിൽ നിന്നാണ്. അവർ ആരാണ്?",
+        "options": ["Mary and Joseph", "Gabriel and Elizabeth", "Zechariah and Simeon", "Peter and John"],
+        "options_ml": ["മറിയവും ജോസഫും", "ഗബ്രിയേലും എലിസബേത്തും", "സഖര്യാവും ശിമ്യോനും", "പത്രോസും ജോണും"],
+        "correct_index": 1
+      },
+      "text_quiz": {
+        "question": "How many times is the Hail Mary prayed in one decade of the Rosary?",
+        "question_ml": "റോസരിയുടെ ഒരു ദശകത്തിൽ ജപമാല എത്ര തവണ ചൊല്ലുന്നു?",
+        "accepted_answers": ["10", "ten"]
+      }
+    },
+    {
+      "day": 25,
+      "level": 5,
+      "title": "Mary's Humility",
+      "learning_text": "In the Magnificat, Mary calls herself 'the handmaid of the Lord.' True humility is not self-rejection but honest acknowledgment of God's gifts. Mary's humility made her open to God's greatest miracle — the Incarnation.",
+      "learning_text_ml": "മഗ്നിഫിക്കാത്തിൽ മറിയം സ്വയം 'കർത്താവിന്റെ ദാസി' എന്ന് വിളിക്കുന്നു. യഥാർഥ വിനയം ദൈവദാനങ്ങൾ ആദരവോടെ അംഗീകരിക്കലാണ്. ആ വിനയം ദൈവ അവതാരത്തിനു വഴി തുറന്നു.",
+      "learning_reference": "Luke 1:38, 48",
+      "bible_book": "Luke",
+      "bible_reference": "1:48",
+      "bible_verse": "For he has looked on the humble estate of his servant; for behold, from now on all generations will call me blessed.",
+      "bible_verse_ml": "അദ്ദേഹം തന്റെ ദാസിയുടെ താഴ്മ കണ്ടു; ഇതാ, ഇന്നു മുതൽ എല്ലാ തലമുറകളും എന്നെ ഭാഗ്യവതി എന്നു വിളിക്കും.",
+      "quiz": {
+        "question": "In the Magnificat, Mary refers to herself as:",
+        "question_ml": "മഗ്നിഫിക്കാത്തിൽ മറിയം സ്വയം _____ എന്ന് പരാമർശിക്കുന്നു:",
+        "options": ["Queen of Heaven", "The handmaid of the Lord", "The Immaculate One", "Star of the Sea"],
+        "options_ml": ["സ്വർഗ്ഗ രാജ്ഞി", "കർത്താവിന്റെ ദാസി", "നിർമ്മലയായവൾ", "കടലിന്റെ നക്ഷത്രം"],
+        "correct_index": 1
+      },
+      "text_quiz": {
+        "question": "What Latin word means 'handmaid' or 'servant girl', the title Mary used for herself before God?",
+        "question_ml": "'ദാസി' അഥവാ 'പരിചാരിക' എന്ന് അർഥമുള്ള ലാറ്റിൻ വാക്ക് ഏതാണ്, ദൈവ സന്നിധിയിൽ മറിയം സ്വയം ഉപയോഗിച്ച പദവി?",
+        "accepted_answers": ["ancilla", "ancilla domini"]
+      }
+    },
+    {
+      "day": 26,
+      "level": 5,
+      "title": "Mary's Obedience",
+      "learning_text": "Mary's obedience stands in contrast to Eve's disobedience. Where Eve said 'no' to God through pride, Mary said 'yes' through faith. St. Irenaeus wrote: 'The knot of Eve's disobedience was loosed by Mary's obedience.'",
+      "learning_text_ml": "മറിയത്തിന്റെ അനുസരണം ഹവ്വയുടെ അനുസരണക്കേടിനെതിരായി നിൽക്കുന്നു. ഹവ്വ അഹങ്കാരത്തോടെ 'ഇല്ല' പറഞ്ഞിടത്ത്, മറിയം വിശ്വാസത്തോടെ 'ഉവ്വ്' പറഞ്ഞു. ഇറനേയൂസ്: 'ഹവ്വയുടെ അനുസരണക്കേടിന്റെ കെട്ട് മറിയത്തിന്റെ അനുസരണം കൊണ്ട് അഴിഞ്ഞു.'",
+      "learning_reference": "St. Irenaeus, Against Heresies 3.22.4 (c. 180 AD)",
+      "bible_book": "Luke",
+      "bible_reference": "1:38",
+      "bible_verse": "Behold, I am the handmaid of the Lord; let it be done to me according to your word.",
+      "bible_verse_ml": "ഞാൻ കർത്താവിന്റെ ദാസിയാണ്; നിന്റെ വചനം പോലെ എനിക്കു ഭവിക്കട്ടെ.",
+      "quiz": {
+        "question": "Which early Church Father wrote that 'the knot of Eve's disobedience was loosed by Mary's obedience'?",
+        "question_ml": "'ഹവ്വയുടെ അനുസരണക്കേടിന്റെ കെട്ട് മറിയത്തിന്റെ അനുസരണം കൊണ്ട് അഴിഞ്ഞു' എന്ന് ഏത് ആദ്യകാല സഭ പിതാവ് എഴുതി?",
+        "options": ["St. Augustine", "St. Thomas Aquinas", "St. Irenaeus", "St. Ambrose"],
+        "options_ml": ["വി. ഓഗസ്തീനോസ്", "വി. തോമസ് അക്വിനാസ്", "വി. ഇറേനിയൂസ്", "വി. അംബ്രോസ്"],
+        "correct_index": 2
+      },
+      "text_quiz": {
+        "question": "In which city was Saint Irenaeus a bishop when he wrote Against Heresies?",
+        "question_ml": "Against Heresies എഴുതിയ സമയത്ത് വി. ഇറേനിയൂസ് ഏത് നഗരത്തിൽ മെത്രാനായിരുന്നു?",
+        "accepted_answers": ["lyon", "lyons", "lugdunum"]
+      }
+    },
+    {
+      "day": 27,
+      "level": 5,
+      "title": "Mary's Faith",
+      "learning_text": "Elizabeth proclaimed Mary 'blessed because she believed.' Mary's faith was not blind; she asked Gabriel 'How shall this be?' yet she trusted fully. Pope Francis has often called Mary the woman who teaches us how to trust God completely.",
+      "learning_text_ml": "എലിസബേത്ത് മറിയത്തെ 'വിശ്വസിച്ചതിനാൽ ഭാഗ്യവതി' എന്ന് പ്രഖ്യാപിച്ചു. മറിയത്തിന്റെ വിശ്വാസം അന്ധമായിരുന്നില്ല — 'ഇത് എങ്ങനെ ആകും?' എന്ന് ചോദിച്ചു, എന്നിട്ടും ദൈവത്തിൽ പൂർണ്ണ ആശ്രയം വെച്ചു.",
+      "learning_reference": "Luke 1:45; Lumen Gentium 58",
+      "bible_book": "Luke",
+      "bible_reference": "1:45",
+      "bible_verse": "And blessed is she who believed that there would be a fulfillment of what was spoken to her from the Lord.",
+      "bible_verse_ml": "കർത്താവ് പറഞ്ഞതു നിറവേറുമെന്ന് വിശ്വസിച്ചവൾ ഭാഗ്യവതി.",
+      "quiz": {
+        "question": "Who proclaimed Mary 'blessed because she believed' in Luke 1:45?",
+        "question_ml": "ലൂക്കാ 1:45-ൽ മറിയത്തെ 'വിശ്വസിച്ചതിനാൽ ഭാഗ്യവതി' ആരു പ്രഖ്യാപിച്ചു?",
+        "options": ["The angel Gabriel", "The prophet Simeon", "Elizabeth", "Anna the prophetess"],
+        "options_ml": ["ദൂതൻ ഗബ്രിയേൽ", "പ്രവാചകൻ ശിമ്യോൻ", "എലിസബേത്ത്", "പ്രവാചകി അന്ന"],
+        "correct_index": 2
+      },
+      "text_quiz": {
+        "question": "What is the name of Elizabeth's husband, the father of John the Baptist?",
+        "question_ml": "ജ്ഞാനസ്നാപകൻ ജോൺ-ന്റെ പിതാവ്, എലിസബേത്തിന്റെ ഭർത്താവ്, ആരാണ്?",
+        "accepted_answers": ["zechariah", "zacharias", "zachary"]
+      }
+    },
+    {
+      "day": 28,
+      "level": 5,
+      "title": "Mary's Charity",
+      "learning_text": "After the Annunciation, Mary immediately went to help her elderly cousin Elizabeth — the Visitation. She stayed for three months. This act of charity, born from joy and love, shows Mary's life was defined by giving, not receiving.",
+      "learning_text_ml": "ഘോഷണത്തിനു ശേഷം മറിയം ഉടൻ വൃദ്ധ കൂടപ്പിറന്ന എലിസബേത്തിനെ സഹായിക്കാൻ പോയി — സന്ദർശനം. മൂന്ന് മാസം അവിടെ തങ്ങി. ഈ ദാനഗുണ കർമ്മം മറിയത്തിന്റെ ജീവൻ ദാനത്തിൽ ഉറപ്പിക്കപ്പെട്ടതാണ് എന്ന് കാണിക്കുന്നു.",
+      "learning_reference": "Luke 1:39–56",
+      "bible_book": "Luke",
+      "bible_reference": "1:39",
+      "bible_verse": "In those days Mary arose and went with haste into the hill country, to a town in Judah.",
+      "bible_verse_ml": "ആ ദിവസങ്ങളിൽ മറിയം എഴുന്നേറ്റ് ജൂദയിലെ ഒരു മലനാട്ടിലെ നഗരത്തിലേക്ക് ബദ്ധപ്പെട്ടു പോയി.",
+      "quiz": {
+        "question": "The Visitation, where Mary went to help Elizabeth, is recorded in which Gospel?",
+        "question_ml": "മറിയം എലിസബേത്തിനെ സഹായിക്കാൻ പോയ സന്ദർശനം ഏത് സുവിശേഷത്തിൽ രേഖപ്പെടുത്തിയിരിക്കുന്നു?",
+        "options": ["Matthew", "Mark", "Luke", "John"],
+        "options_ml": ["മത്തായി", "മർക്കോസ്", "ലൂക്കാ", "ജോൺ"],
+        "correct_index": 2
+      },
+      "text_quiz": {
+        "question": "The Visitation is the Second Joyful Mystery of the Rosary. What is the First Joyful Mystery?",
+        "question_ml": "സന്ദർശനം റോസരിയുടെ രണ്ടാം ആനന്ദ രഹസ്യമാണ്. ആദ്യ ആനന്ദ രഹസ്യം ഏതാണ്?",
+        "accepted_answers": ["the annunciation", "annunciation"]
+      }
+    },
+    {
+      "day": 29,
+      "level": 5,
+      "title": "Mary at the Cross",
+      "learning_text": "Mary stood at the foot of the Cross as her Son suffered and died. Jesus gave her to John — and to all of us — as mother: 'Woman, behold your son.' Her suffering united with Christ's became a source of grace for the whole Church.",
+      "learning_text_ml": "മറിയം കുരിശിനടിയിൽ പുത്രൻ കഷ്ടപ്പെടുന്നപ്പോൾ നിൽക്കുന്നതായി ജോൺ 19 ൽ ഉണ്ട്. 'സ്ത്രീ, ഇതാ നിന്റെ പുത്രൻ' — യേശു അവളെ ജോണിനും എല്ലാ വിശ്വാസികൾക്കും അമ്മയായി നൽകി. അവളുടെ ദുഃഖം ക്രിസ്തുവിന്റേതുമായി ചേർന്ന് കൃപയുടെ ഉറവിടമായി.",
+      "learning_reference": "John 19:25–27",
+      "bible_book": "John",
+      "bible_reference": "19:25",
+      "bible_verse": "But standing by the cross of Jesus were his mother and his mother's sister, Mary the wife of Clopas, and Mary Magdalene.",
+      "bible_verse_ml": "യേശുവിന്റെ കുരിശിന്നരികെ അദ്ദേഹത്തിന്റെ അമ്മ, അമ്മയുടെ സഹോദരി, ക്ലോപ്പാസിന്റെ ഭാര്യ മറിയ, മഗ്ദലേനക്കാരി മറിയ എന്നിവർ നിൽക്കുന്നുണ്ടായിരുന്നു.",
+      "quiz": {
+        "question": "At the Cross, to which apostle did Jesus give Mary as mother with the words 'Behold your mother'?",
+        "question_ml": "കുരിശിൽ, 'ഇതാ നിന്റെ അമ്മ' എന്ന് പറഞ്ഞ് ഏത് ശ്ലീഹക്ക് യേശു മറിയത്തെ അമ്മയായി നൽകി?",
+        "options": ["Peter", "James", "John", "Andrew"],
+        "options_ml": ["പത്രോസ്", "ജാക്കോബ്", "ജോൺ", "അന്ത്രയോസ്"],
+        "correct_index": 2
+      },
+      "text_quiz": {
+        "question": "What Latin title, meaning 'Sorrowful Mother', is given to Mary in her grief at the foot of the Cross?",
+        "question_ml": "'ദുഃഖ മാതാവ്' എന്ന് അർഥമുള്ള ലാറ്റിൻ പദവി ഏത്, കുരിശിനടിയിൽ ദുഃഖത്തിൽ നിൽക്കുന്ന മറിയത്തിന് നൽകുന്നു?",
+        "accepted_answers": ["mater dolorosa", "the mater dolorosa"]
+      }
+    },
+    {
+      "day": 30,
+      "level": 5,
+      "title": "The Assumption",
+      "learning_text": "The Assumption is the final Marian dogma: that Mary, at the end of her earthly life, was taken up — body and soul — into heavenly glory. This was solemnly defined by Pope Pius XII in the document Munificentissimus Deus on November 1, 1950.",
+      "learning_text_ml": "ഉദ്ഗ്രഹണം ആണ് അവസാന മറിയൻ വിശ്വാസ സത്യം: ഭൗതിക ജീവൻ അവസാനിച്ചപ്പോൾ മറിയം — ശരീരവും ആത്മാവും സഹിതം — സ്വർഗ്ഗ മഹിമയിലേക്ക് ആരോഹണം ചെയ്തു. 1950 നവംബർ 1-ന് മാർപ്പാ പിയൂസ് XII ഇത് ഔദ്യോഗിക സത്യമായി പ്രഖ്യാപിച്ചു.",
+      "learning_reference": "Munificentissimus Deus, Pope Pius XII (1950)",
+      "bible_book": "Psalm",
+      "bible_reference": "45:10",
+      "bible_verse": "Hear, O daughter, and consider, and incline your ear; forget your people and your father's house.",
+      "bible_verse_ml": "മകളേ, കേൾക്കുക, ശ്രദ്ധിക്കുക; ചെവി ചായ്ക്കുക: നിന്റെ ജനത്തെയും അച്ഛന്റെ ഭവനത്തെയും മറക്കുക.",
+      "quiz": {
+        "question": "In which document did Pope Pius XII officially define the dogma of the Assumption of Mary in 1950?",
+        "question_ml": "1950-ൽ ഏത് രേഖയിൽ മാർപ്പ പിയൂസ് XII മറിയത്തിന്റെ ഉദ്ഗ്രഹണ വിശ്വാസസത്യം ഔദ്യോഗിക ഏർപ്പെടുത്തി?",
+        "options": ["Ineffabilis Deus", "Redemptoris Mater", "Munificentissimus Deus", "Ad Caeli Reginam"],
+        "options_ml": ["Ineffabilis Deus", "Redemptoris Mater", "Munificentissimus Deus", "Ad Caeli Reginam"],
+        "correct_index": 2
+      },
+      "text_quiz": {
+        "question": "On which feast date does the Catholic Church celebrate the Assumption of Mary each year?",
+        "question_ml": "ഓരോ വർഷവും ഏത് ദിവസം കത്തോലിക്ക സഭ മറിയത്തിന്റെ ഉദ്ഗ്രഹണ തിരുനാൾ ആഘോഷിക്കുന്നു?",
+        "accepted_answers": ["august 15", "15 august", "august 15th", "15th august"]
+      }
+    }
+  ]
+}

@@ -49,110 +49,251 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="min-h-screen flex flex-col bg-gradient-to-br from-purple-600 via-violet-600 to-indigo-700">
-      {/* Top section */}
-      <div className="flex flex-col items-center pt-8 pb-8 px-6">
-        <img src="/images/logo.png" alt="Logo" className="w-24 h-24 mx-auto mb-4 rounded-full object-cover" />
-        <h1 className="text-4xl font-bold text-white mb-1">ശിലോഹ <span className="text-2xl font-semibold">| Shiloha</span></h1>
-        <div className="mt-2 mb-1 px-5 py-2 rounded-full bg-gradient-to-r from-yellow-400 via-red-500 to-yellow-400 border border-yellow-200/50 text-center shadow-lg">
-          <p className="text-white font-bold text-base tracking-wide" style={{textShadow: '2px 2px 6px rgba(0,0,0,0.8), -1px -1px 4px rgba(0,0,0,0.6)'}}>ചെറുപുഷ്‌പ മിഷൻ ലീഗ്</p>
-          <p className="text-yellow-100 text-sm font-semibold" style={{textShadow: '2px 2px 6px rgba(0,0,0,0.8), -1px -1px 4px rgba(0,0,0,0.6)'}}>മാനന്തവാടി രൂപത</p>
+    <div className="min-h-screen flex flex-col relative overflow-hidden">
+
+      {/* Decorative blobs */}
+      <div
+        className="aurora-blob pointer-events-none absolute"
+        style={{
+          width: 320, height: 320, borderRadius: '50%',
+          background: 'radial-gradient(circle, oklch(0.78 0.14 295 / 0.50) 0%, transparent 70%)',
+          top: -60, right: -80, zIndex: 0,
+        }}
+      />
+      <div
+        className="aurora-blob pointer-events-none absolute"
+        style={{
+          width: 260, height: 260, borderRadius: '50%',
+          background: 'radial-gradient(circle, oklch(0.84 0.10 200 / 0.45) 0%, transparent 70%)',
+          bottom: 60, left: -60, zIndex: 0, animationDelay: '4s',
+        }}
+      />
+
+      {/* Header */}
+      <div className="flex flex-col items-center pt-safe pt-10 pb-6 px-6 relative z-10">
+        {/* Logo */}
+        <div className="sg-pill" style={{ padding: 5, marginBottom: 14, display: 'inline-block' }}>
+          <img
+            src="/images/logo.png"
+            alt="Logo"
+            style={{ width: 80, height: 80, borderRadius: '50%', objectFit: 'cover', display: 'block' }}
+          />
         </div>
-        <p className="text-purple-200 text-base text-center mt-1">Your 30-day adventure with God</p>
+
+        {/* Title */}
+        <h1
+          className="font-display"
+          style={{ fontSize: 32, fontWeight: 800, color: 'oklch(0.20 0.10 275)', lineHeight: 1.1 }}
+        >
+          ശിലോഹ{' '}
+          <span style={{ fontSize: 20, fontWeight: 600, color: 'oklch(0.42 0.14 280)' }}>| Shiloha</span>
+        </h1>
+
+        {/* Org banner */}
+        <div
+          style={{
+            marginTop: 10,
+            padding: '7px 20px',
+            borderRadius: 99,
+            background: 'linear-gradient(90deg, oklch(0.75 0.18 55), oklch(0.62 0.22 20), oklch(0.75 0.18 55))',
+            boxShadow: '0 2px 12px oklch(0.62 0.22 20 / 0.35)',
+            textAlign: 'center',
+          }}
+        >
+          <p
+            className="font-display"
+            style={{ color: 'white', fontWeight: 700, fontSize: 14, lineHeight: 1.4, textShadow: '0 1px 4px rgba(0,0,0,0.5)' }}
+          >
+            ചെറുപുഷ്‌പ മിഷൻ ലീഗ്
+          </p>
+          <p
+            className="font-anek"
+            style={{ color: 'oklch(0.95 0.06 55)', fontSize: 12, textShadow: '0 1px 4px rgba(0,0,0,0.45)' }}
+          >
+            മാനന്തവാടി രൂപത
+          </p>
+        </div>
+
+        <p
+          className="font-anek"
+          style={{ color: 'oklch(0.48 0.08 270)', fontSize: 13, marginTop: 8 }}
+        >
+          Through Mary, to Jesus
+        </p>
       </div>
 
-      {/* Card */}
-      <div className="flex-1 bg-white rounded-t-4xl px-6 pt-4 pb-12 shadow-2xl">
-        {/* Welcome + Lang */}
-        <div className="flex items-center justify-between mb-3">
-          <h2 className="text-2xl font-bold text-gray-800">Welcome 👋</h2>
-          <button
-            type="button"
-            onClick={() => setLang(lang === 'en' ? 'ml' : 'en')}
-            className="text-xs font-bold px-3 py-1 rounded-full border-2 border-purple-400 text-purple-600 hover:bg-purple-50 transition-colors"
+      {/* Glass form card */}
+      <div className="flex-1 px-4 pb-10 relative z-10">
+        <div className="sg-panel prism sg-noise" style={{ padding: '24px 20px' }}>
+
+          {/* Welcome + Lang toggle */}
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 18 }}>
+            <h2
+              className="font-display"
+              style={{ fontSize: 22, fontWeight: 700, color: 'oklch(0.20 0.08 270)' }}
+            >
+              Welcome 👋
+            </h2>
+            <button
+              type="button"
+              onClick={() => setLang(lang === 'en' ? 'ml' : 'en')}
+              className="sg-pill convex font-cinzel"
+              style={{ padding: '5px 13px', fontSize: 11, fontWeight: 700, color: 'oklch(0.42 0.18 280)', position: 'relative', border: 'none', cursor: 'pointer' }}
+            >
+              {lang === 'en' ? 'മലയാളം' : 'EN'}
+            </button>
+          </div>
+
+          {/* Create account CTA */}
+          <div style={{ textAlign: 'center', marginBottom: 18 }}>
+            <p
+              className="font-anek"
+              style={{ fontSize: 13, color: 'oklch(0.42 0.14 280)', fontWeight: 600, marginBottom: 10 }}
+            >
+              {lang === 'en' ? 'New member here?' : 'പുതിയ അംഗമോ?'}
+            </p>
+            <Link
+              href="/register"
+              style={{
+                display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
+                padding: '11px 28px', borderRadius: 99,
+                background: 'linear-gradient(135deg, oklch(0.62 0.22 340), oklch(0.58 0.20 10))',
+                boxShadow: '0 4px 18px oklch(0.60 0.22 340 / 0.35), inset 0 1px 0 rgba(255,255,255,0.25)',
+                color: 'white', fontWeight: 700, fontSize: 14,
+                fontFamily: 'var(--font-anek), sans-serif',
+                textDecoration: 'none',
+              }}
+            >
+              {lang === 'en' ? 'Create an account' : 'അക്കൗണ്ട് ഉണ്ടാക്കാം'}
+            </Link>
+          </div>
+
+          {/* Divider */}
+          <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 18 }}>
+            <div style={{ flex: 1, height: 1, background: 'linear-gradient(90deg, transparent, rgba(180,160,240,0.35), transparent)' }} />
+            <span
+              className="font-cinzel"
+              style={{ fontSize: 9, fontWeight: 700, color: 'oklch(0.58 0.08 270)', letterSpacing: '0.18em' }}
+            >
+              OR SIGN IN
+            </span>
+            <div style={{ flex: 1, height: 1, background: 'linear-gradient(90deg, transparent, rgba(180,160,240,0.35), transparent)' }} />
+          </div>
+
+          <p
+            className="font-anek"
+            style={{ fontSize: 13, color: 'oklch(0.52 0.06 270)', marginBottom: 16 }}
           >
-            {lang === 'en' ? 'മലയാളം' : 'EN'}
-          </button>
-        </div>
+            {lang === 'en' ? 'Sign in to continue your journey' : 'യാത്ര തുടരാൻ ലോഗിൻ ചെയ്യൂ'}
+          </p>
 
-        {/* Create Account */}
-        <div className="text-center mb-3">
-          <p className="text-purple-600 text-base font-semibold mb-2">{lang === 'en' ? 'New member here?' : 'പുതിയ അംഗമോ?'}</p>
-          <Link href="/register" className="inline-block px-8 py-3 rounded-2xl bg-gradient-to-r from-pink-500 to-rose-500 text-white font-bold text-base text-center shadow-md hover:from-pink-600 hover:to-rose-600 active:scale-95 transition-all">
-            {lang === 'en' ? 'Create an account' : 'അക്കൗണ്ട് ഉണ്ടാക്കാം'}
-          </Link>
-        </div>
-
-        {/* Divider */}
-        <div className="flex items-center gap-3 mb-4">
-          <div className="flex-1 h-px bg-gray-200 rounded-full" />
-          <span className="text-xs font-semibold text-gray-400 uppercase tracking-widest">or sign in</span>
-          <div className="flex-1 h-px bg-gray-200 rounded-full" />
-        </div>
-
-        <p className="text-gray-500 text-sm mb-4">Sign in to continue your journey</p>
-
-        {error && (
-          <div className="mb-4 bg-red-50 border border-red-200 text-red-700 rounded-2xl px-4 py-3 text-sm font-medium">
-            {error}
-          </div>
-        )}
-
-        <form onSubmit={handleLogin} className="space-y-4" suppressHydrationWarning>
-          <div suppressHydrationWarning>
-            <label className="block text-sm font-semibold text-gray-700 mb-1.5">{lang === 'en' ? 'Mobile Number 📱' : 'മൊബൈൽ നമ്പർ 📱'}</label>
-            <input
-              type="tel"
-              value={phone}
-              onChange={(e) => setPhone(e.target.value.replace(/\D/g, ''))}
-              placeholder="10-digit mobile number"
-              required
-              maxLength={12}
-              inputMode="numeric"
-              pattern="[0-9]{10,12}"
-              className="w-full bg-gray-50 border border-gray-200 rounded-2xl px-4 py-3.5 text-gray-800 text-base focus:border-purple-400 focus:bg-white focus:ring-2 focus:ring-purple-100 transition-all"
-            />
-          </div>
-
-          <div suppressHydrationWarning>
-            <label className="block text-sm font-semibold text-gray-700 mb-1.5">{lang === 'en' ? 'Password' : 'പാസ്സ്‌വേഡ്'}</label>
-            <div className="relative" suppressHydrationWarning>
-              <input
-                type={showPassword ? 'text' : 'password'}
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                placeholder="••••••••"
-                required
-                className="w-full bg-gray-50 border border-gray-200 rounded-2xl px-4 py-3.5 pr-12 text-gray-800 text-base focus:border-purple-400 focus:bg-white focus:ring-2 focus:ring-purple-100 transition-all"
-              />
-              <button
-                type="button"
-                onClick={() => setShowPassword(!showPassword)}
-                className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600"
-              >
-                {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
-              </button>
+          {/* Error */}
+          {error && (
+            <div
+              style={{
+                marginBottom: 16, padding: '12px 16px', borderRadius: 15,
+                background: 'rgba(254,202,202,0.35)',
+                backdropFilter: 'blur(16px)',
+                border: '1px solid rgba(239,68,68,0.28)',
+                boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.8)',
+              }}
+            >
+              <p className="font-anek" style={{ fontSize: 13, color: 'oklch(0.42 0.20 15)', fontWeight: 500 }}>
+                {error}
+              </p>
             </div>
-          </div>
+          )}
 
-          <button
-            type="submit"
-            disabled={submitting}
-            className="w-full bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-bold py-4 rounded-2xl text-base shadow-lg shadow-purple-200 active:scale-95 transition-all disabled:opacity-70 disabled:cursor-not-allowed mt-2 flex items-center justify-center gap-2"
-          >
-            {submitting ? (
-              <>
-                <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
-                {lang === 'en' ? 'Signing in...' : 'ലോഗിൻ ചെയ്യുന്നു...'}
-              </>
-            ) : (
-              <>
-                <Sparkles size={18} />
-                {lang === 'en' ? "Let's Go!" : 'ആരംഭിക്കാം!'}
-              </>
-            )}
-          </button>
-        </form>
+          <form onSubmit={handleLogin} style={{ display: 'flex', flexDirection: 'column', gap: 14 }} suppressHydrationWarning>
+
+            {/* Mobile */}
+            <div suppressHydrationWarning>
+              <label
+                className="font-cinzel"
+                style={{ display: 'block', fontSize: 10, fontWeight: 700, letterSpacing: '0.12em', color: 'oklch(0.42 0.10 270)', marginBottom: 7, textTransform: 'uppercase' }}
+              >
+                {lang === 'en' ? 'Mobile Number 📱' : 'മൊബൈൽ നമ്പർ 📱'}
+              </label>
+              <input
+                type="tel"
+                value={phone}
+                onChange={(e) => setPhone(e.target.value.replace(/\D/g, ''))}
+                placeholder="10-digit mobile number"
+                required
+                maxLength={12}
+                inputMode="numeric"
+                pattern="[0-9]{10,12}"
+                className="glass-input"
+              />
+            </div>
+
+            {/* Password */}
+            <div suppressHydrationWarning>
+              <label
+                className="font-cinzel"
+                style={{ display: 'block', fontSize: 10, fontWeight: 700, letterSpacing: '0.12em', color: 'oklch(0.42 0.10 270)', marginBottom: 7, textTransform: 'uppercase' }}
+              >
+                {lang === 'en' ? 'Password' : 'പാസ്സ്‌വേഡ്'}
+              </label>
+              <div style={{ position: 'relative' }} suppressHydrationWarning>
+                <input
+                  type={showPassword ? 'text' : 'password'}
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  placeholder="••••••••"
+                  required
+                  className="glass-input"
+                  style={{ paddingRight: 48 }}
+                />
+                <button
+                  type="button"
+                  onClick={() => setShowPassword(!showPassword)}
+                  style={{
+                    position: 'absolute', right: 14, top: '50%', transform: 'translateY(-50%)',
+                    color: 'oklch(0.55 0.08 270)', background: 'none', border: 'none', cursor: 'pointer',
+                    zIndex: 4,
+                  }}
+                >
+                  {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
+                </button>
+              </div>
+            </div>
+
+            {/* Submit */}
+            <button
+              type="submit"
+              disabled={submitting}
+              style={{
+                width: '100%', padding: '14px 24px', borderRadius: 99, border: 'none',
+                background: submitting
+                  ? 'rgba(180,160,240,0.30)'
+                  : 'linear-gradient(135deg, oklch(0.52 0.22 280), oklch(0.56 0.18 215))',
+                boxShadow: submitting
+                  ? 'none'
+                  : '0 4px 24px oklch(0.52 0.22 280 / 0.38), inset 0 1px 0 rgba(255,255,255,0.25)',
+                color: submitting ? 'oklch(0.55 0.10 270)' : 'white',
+                fontFamily: 'var(--font-cinzel), serif',
+                fontSize: 13, fontWeight: 700, letterSpacing: '0.08em',
+                cursor: submitting ? 'not-allowed' : 'pointer',
+                display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8,
+                transition: 'all 0.18s', marginTop: 4,
+                zIndex: 3, position: 'relative',
+              }}
+            >
+              {submitting ? (
+                <>
+                  <div style={{ width: 18, height: 18, border: '2px solid rgba(100,60,200,0.4)', borderTopColor: 'oklch(0.52 0.22 280)', borderRadius: '50%', animation: 'spin 0.8s linear infinite' }} />
+                  {lang === 'en' ? 'Signing in...' : 'ലോഗിൻ ചെയ്യുന്നു...'}
+                </>
+              ) : (
+                <>
+                  <Sparkles size={16} />
+                  {lang === 'en' ? "Let's Go!" : 'ആരംഭിക്കാം!'}
+                </>
+              )}
+            </button>
+          </form>
+        </div>
       </div>
     </div>
   );
