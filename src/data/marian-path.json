@@ -21,7 +21,7 @@
       "text_quiz": {
         "question": "In which modern-day country is the city of Nazareth located?",
         "question_ml": "നസ്രത്ത് നഗരം ഇന്ന് ഏത് രാജ്യത്തിലാണ് സ്ഥിതി ചെയ്യുന്നത്?",
-        "accepted_answers": ["israel"]
+        "accepted_answers": ["israel", "ഇസ്രയേൽ", "ഇസ്രാഈൽ"]
       }
     },
     {
@@ -45,7 +45,7 @@
       "text_quiz": {
         "question": "What language was the New Testament originally written in?",
         "question_ml": "പുതിയ നിയമം ആദ്യം ഏത് ഭാഷയിൽ എഴുതപ്പെട്ടു?",
-        "accepted_answers": ["greek"]
+        "accepted_answers": ["greek", "ഗ്രീക്ക്"]
       }
     },
     {
@@ -69,7 +69,7 @@
       "text_quiz": {
         "question": "What is the name of Mary's mother, who carried her in her womb, according to Catholic tradition?",
         "question_ml": "കത്തോലിക്ക പാരമ്പര്യ പ്രകാരം, മറിയത്തെ ഉദരത്തിൽ വഹിച്ച അവളുടെ അമ്മ ആരാണ്?",
-        "accepted_answers": ["anne", "saint anne", "st anne", "st. anne"]
+        "accepted_answers": ["anne", "saint anne", "st anne", "st. anne", "അന്ന", "വിശുദ്ധ അന്ന"]
       }
     },
     {
@@ -93,7 +93,7 @@
       "text_quiz": {
         "question": "What is the name of the traditional Catholic prayer said three times a day that recalls the moment the angel greeted Mary?",
         "question_ml": "ദൂതൻ മറിയത്തെ അഭിവാദ്യം ചെയ്ത നിമിഷം അനുസ്മരിക്കുന്ന, ദിവസം മൂന്ന് തവണ ചൊല്ലുന്ന കത്തോലിക്ക പ്രാർഥനയുടെ പേര് എന്താണ്?",
-        "accepted_answers": ["angelus", "the angelus"]
+        "accepted_answers": ["angelus", "the angelus", "ആഞ്ജലൂസ്"]
       }
     },
     {
@@ -117,7 +117,7 @@
       "text_quiz": {
         "question": "In which modern country is the ancient city of Ephesus located today?",
         "question_ml": "പ്രാചീന നഗരമായ എഫേസസ് ഇന്ന് ഏത് ആധുനിക രാജ്യത്തിലാണ് സ്ഥിതി ചെയ്യുന്നത്?",
-        "accepted_answers": ["turkey"]
+        "accepted_answers": ["turkey", "തുർക്കി"]
       }
     },
     {
@@ -141,7 +141,7 @@
       "text_quiz": {
         "question": "What was the name of Mary's husband, the foster father of Jesus?",
         "question_ml": "മറിയത്തിന്റെ ഭർത്താവ്, യേശുവിന്റെ ദത്ത് പിതാവ്, ആരായിരുന്നു?",
-        "accepted_answers": ["joseph", "saint joseph", "st joseph", "st. joseph"]
+        "accepted_answers": ["joseph", "saint joseph", "st joseph", "st. joseph", "ജോസഫ്", "വിശുദ്ധ ജോസഫ്"]
       }
     },
     {
@@ -165,7 +165,7 @@
       "text_quiz": {
         "question": "On which calendar date does the Catholic Church celebrate the feast of the Annunciation?",
         "question_ml": "ഘോഷണ തിരുനാൾ കത്തോലിക്ക സഭ ഏത് തിയ്യതി ആഘോഷിക്കുന്നു?",
-        "accepted_answers": ["march 25", "25 march", "march 25th", "25th march"]
+        "accepted_answers": ["march 25", "25 march", "march 25th", "25th march", "മാർച്ച് 25", "25 മാർച്ച്"]
       }
     },
     {
@@ -189,7 +189,7 @@
       "text_quiz": {
         "question": "What precious metal covered the original Ark of the Covenant according to the Bible?",
         "question_ml": "ബൈബിൾ പ്രകാരം ഉടമ്പടി പേടകം ഏത് ലോഹം കൊണ്ട് പൊതിഞ്ഞിരുന്നു?",
-        "accepted_answers": ["gold"]
+        "accepted_answers": ["gold", "സ്വർണ്ണം", "പൊന്ന്"]
       }
     },
     {
@@ -213,7 +213,7 @@
       "text_quiz": {
         "question": "What does the name 'Immanuel' mean in English?",
         "question_ml": "'ഇമ്മാനുവൽ' എന്ന പേരിന്റെ അർഥം എന്താണ്?",
-        "accepted_answers": ["god with us", "god is with us", "god-with-us"]
+        "accepted_answers": ["god with us", "god is with us", "god-with-us", "ദൈവം നമ്മോടുകൂടെ", "ദൈവം നമ്മോടൊപ്പം"]
       }
     },
     {
@@ -237,7 +237,7 @@
       "text_quiz": {
         "question": "What is the name of the garden where Eve disobeyed God in Genesis?",
         "question_ml": "ഉൽ‌പ്പത്തിയിൽ ഹവ്വ ദൈവത്തോടു അനുസരണക്കേട് കാണിച്ച ഉദ്യാനം ഏതാണ്?",
-        "accepted_answers": ["garden of eden", "eden", "the garden of eden"]
+        "accepted_answers": ["garden of eden", "eden", "the garden of eden", "ഏദൻ", "ഏദൻ തോട്ടം"]
       }
     },
     {
@@ -261,7 +261,7 @@
       "text_quiz": {
         "question": "What is the Latin name for the Evening Prayer of the Church, during which the Magnificat is prayed daily?",
         "question_ml": "ദിനേന മഗ്നിഫിക്കാത്ത് ചൊല്ലുന്ന സഭയുടെ സന്ധ്യ പ്രാർഥനയുടെ ലാറ്റിൻ നാമം എന്താണ്?",
-        "accepted_answers": ["vespers"]
+        "accepted_answers": ["vespers", "വെസ്പേർസ്"]
       }
     },
     {
@@ -285,7 +285,7 @@
       "text_quiz": {
         "question": "On which island did Saint John write the Book of Revelation?",
         "question_ml": "ഏത് ദ്വീപിൽ വച്ച് വിശുദ്ധ ജോൺ വെളിപ്പാട് ഗ്രന്ഥം എഴുതി?",
-        "accepted_answers": ["patmos", "isle of patmos", "island of patmos"]
+        "accepted_answers": ["patmos", "isle of patmos", "island of patmos", "പത്മോസ്"]
       }
     },
     {
@@ -309,7 +309,7 @@
       "text_quiz": {
         "question": "What is the name of the heresy that denied Mary was the Mother of God, condemned at Ephesus in 431 AD?",
         "question_ml": "431 AD-ൽ എഫേസസ് കൗൺസിൽ അപലപിച്ച, മറിയം ദൈവമാതാവ് അല്ല എന്ന് നിഷേധിച്ച പാഷണ്ഡതയുടെ പേര് എന്ത്?",
-        "accepted_answers": ["nestorianism", "nestorius", "the heresy of nestorius"]
+        "accepted_answers": ["nestorianism", "nestorius", "the heresy of nestorius", "നെസ്തോറിയനിസം", "നെസ്തോറിയൂസ്"]
       }
     },
     {
@@ -333,7 +333,7 @@
       "text_quiz": {
         "question": "What is the name of the Easter-season antiphon sung to Mary as Queen of Heaven, beginning with those Latin words?",
         "question_ml": "ലാറ്റിൻ പദങ്ങളോടെ ആരംഭിക്കുന്ന, ഈസ്റ്റർ കാലത്ത് സ്വർഗ്ഗ രാജ്ഞിക്ക് ആലപിക്കുന്ന ആ ആന്തിഫോണിന്റെ പേര് എന്ത്?",
-        "accepted_answers": ["regina caeli", "regina coeli", "queen of heaven"]
+        "accepted_answers": ["regina caeli", "regina coeli", "queen of heaven", "സ്വർഗ്ഗ രാജ്ഞി", "സ്വർഗ്ഗരാജ്ഞി"]
       }
     },
     {
@@ -357,7 +357,7 @@
       "text_quiz": {
         "question": "At which event in the Gospel of John did Mary first intercede for others, leading to Jesus' first miracle?",
         "question_ml": "ജോൺ സുവിശേഷത്തിലെ ഏത് സംഭവത്തിൽ മറിയം ആദ്യമായി മറ്റുള്ളവർക്കു വേണ്ടി മദ്ധ്യസ്ഥ്യം വഹിച്ചു, യേശുവിന്റെ ആദ്യ അദ്ഭുതത്തിലേക്ക് നയിച്ചു?",
-        "accepted_answers": ["wedding at cana", "the wedding at cana", "cana", "wedding in cana", "marriage at cana"]
+        "accepted_answers": ["wedding at cana", "the wedding at cana", "cana", "wedding in cana", "marriage at cana", "കാന", "കാനാ", "കാനായിലെ കല്യാണം", "കാനായിലെ വിവാഹം"]
       }
     },
     {
@@ -477,7 +477,7 @@
       "text_quiz": {
         "question": "What is the surname of the eldest Fatima seer, Lucia, who later became a Carmelite nun?",
         "question_ml": "പിന്നീട് കാർമലൈറ്റ് സന്ന്യാസിനിയായ ഫാത്തിമ ദർശക ലൂസിയയുടെ കുടുംബനാമം എന്ത്?",
-        "accepted_answers": ["dos santos", "santos"]
+        "accepted_answers": ["dos santos", "santos", "ഡോസ് സാന്റോസ്", "സാന്റോസ്"]
       }
     },
     {
@@ -501,7 +501,7 @@
       "text_quiz": {
         "question": "How many decades (sets of 10 Hail Marys) are prayed in a single set of Rosary mysteries?",
         "question_ml": "ഒരു റോസരി രഹസ്യ സമൂഹത്തിൽ എത്ര ദശകങ്ങൾ (10 ജപമാലകളുടെ കൂട്ടങ്ങൾ) ചൊല്ലുന്നു?",
-        "accepted_answers": ["5", "five"]
+        "accepted_answers": ["5", "five", "അഞ്ച്"]
       }
     },
     {
@@ -525,7 +525,7 @@
       "text_quiz": {
         "question": "Which religious order is associated with Our Lady of Mount Carmel and the Brown Scapular?",
         "question_ml": "ഓർ ലേഡി ഓഫ് കാർമൽ, ബ്രൗൺ സ്കാപ്പുലർ എന്നിവയുമായി ബന്ധപ്പെട്ട ഏത് മതസ്ഥാനം?",
-        "accepted_answers": ["carmelites", "carmelite", "order of carmel", "order of carmelites", "carmelite order"]
+        "accepted_answers": ["carmelites", "carmelite", "order of carmel", "order of carmelites", "carmelite order", "കാർമലൈറ്റ്", "കാർമലൈറ്റുകൾ"]
       }
     },
     {
@@ -549,7 +549,7 @@
       "text_quiz": {
         "question": "What title is given to Mary in October, the other month specially dedicated to her in Catholic tradition?",
         "question_ml": "കത്തോലിക്ക പാരമ്പര്യത്തിൽ അവൾക്ക് പ്രത്യേകം സമർപ്പിക്കപ്പെട്ട ഒക്ടോബർ മാസത്തിൽ മറിയത്തിന് നൽകുന്ന ഏത് പദവി?",
-        "accepted_answers": ["our lady of the rosary", "lady of the rosary", "our lady of rosary"]
+        "accepted_answers": ["our lady of the rosary", "lady of the rosary", "our lady of rosary", "ജപമാലയുടെ മാതാവ്", "റോസരിയുടെ മാതാവ്"]
       }
     },
     {
@@ -573,7 +573,7 @@
       "text_quiz": {
         "question": "How many times is the Hail Mary prayed in one decade of the Rosary?",
         "question_ml": "റോസരിയുടെ ഒരു ദശകത്തിൽ ജപമാല എത്ര തവണ ചൊല്ലുന്നു?",
-        "accepted_answers": ["10", "ten"]
+        "accepted_answers": ["10", "ten", "പത്ത്"]
       }
     },
     {
@@ -597,7 +597,7 @@
       "text_quiz": {
         "question": "What Latin word means 'handmaid' or 'servant girl', the title Mary used for herself before God?",
         "question_ml": "'ദാസി' അഥവാ 'പരിചാരിക' എന്ന് അർഥമുള്ള ലാറ്റിൻ വാക്ക് ഏതാണ്, ദൈവ സന്നിധിയിൽ മറിയം സ്വയം ഉപയോഗിച്ച പദവി?",
-        "accepted_answers": ["ancilla", "ancilla domini"]
+        "accepted_answers": ["ancilla", "ancilla domini", "അൻസില്ല"]
       }
     },
     {
@@ -621,7 +621,7 @@
       "text_quiz": {
         "question": "In which city was Saint Irenaeus a bishop when he wrote Against Heresies?",
         "question_ml": "Against Heresies എഴുതിയ സമയത്ത് വി. ഇറേനിയൂസ് ഏത് നഗരത്തിൽ മെത്രാനായിരുന്നു?",
-        "accepted_answers": ["lyon", "lyons", "lugdunum"]
+        "accepted_answers": ["lyon", "lyons", "lugdunum", "ലിയോൺ"]
       }
     },
     {
@@ -645,7 +645,7 @@
       "text_quiz": {
         "question": "What is the name of Elizabeth's husband, the father of John the Baptist?",
         "question_ml": "ജ്ഞാനസ്നാപകൻ ജോൺ-ന്റെ പിതാവ്, എലിസബേത്തിന്റെ ഭർത്താവ്, ആരാണ്?",
-        "accepted_answers": ["zechariah", "zacharias", "zachary"]
+        "accepted_answers": ["zechariah", "zacharias", "zachary", "സഖറിയ", "സഖര്യ"]
       }
     },
     {
@@ -669,7 +669,7 @@
       "text_quiz": {
         "question": "The Visitation is the Second Joyful Mystery of the Rosary. What is the First Joyful Mystery?",
         "question_ml": "സന്ദർശനം റോസരിയുടെ രണ്ടാം ആനന്ദ രഹസ്യമാണ്. ആദ്യ ആനന്ദ രഹസ്യം ഏതാണ്?",
-        "accepted_answers": ["the annunciation", "annunciation"]
+        "accepted_answers": ["the annunciation", "annunciation", "ഘോഷണം", "ദേവദൂത ഘോഷണം"]
       }
     },
     {
@@ -693,7 +693,7 @@
       "text_quiz": {
         "question": "What Latin title, meaning 'Sorrowful Mother', is given to Mary in her grief at the foot of the Cross?",
         "question_ml": "'ദുഃഖ മാതാവ്' എന്ന് അർഥമുള്ള ലാറ്റിൻ പദവി ഏത്, കുരിശിനടിയിൽ ദുഃഖത്തിൽ നിൽക്കുന്ന മറിയത്തിന് നൽകുന്നു?",
-        "accepted_answers": ["mater dolorosa", "the mater dolorosa"]
+        "accepted_answers": ["mater dolorosa", "the mater dolorosa", "മേതർ ദൊലോറോസ", "ദുഃഖ മാതാവ്"]
       }
     },
     {
@@ -717,7 +717,7 @@
       "text_quiz": {
         "question": "On which feast date does the Catholic Church celebrate the Assumption of Mary each year?",
         "question_ml": "ഓരോ വർഷവും ഏത് ദിവസം കത്തോലിക്ക സഭ മറിയത്തിന്റെ ഉദ്ഗ്രഹണ തിരുനാൾ ആഘോഷിക്കുന്നു?",
-        "accepted_answers": ["august 15", "15 august", "august 15th", "15th august"]
+        "accepted_answers": ["august 15", "15 august", "august 15th", "15th august", "ഓഗസ്റ്റ് 15", "15 ഓഗസ്റ്റ്"]
       }
     }
   ]

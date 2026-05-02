@@ -128,7 +128,7 @@ export default function QuizCard({
             className="font-cinzel"
             style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.10em', color: 'oklch(0.42 0.18 280)' }}
           >
-            {language === 'ml' ? 'ക്വിസ്' : 'What we learned today'}
+            {language === 'ml' ? 'നാം ഇന്ന് പഠിച്ചത്' : 'What we learned today'}
           </span>
         </div>
       </div>
