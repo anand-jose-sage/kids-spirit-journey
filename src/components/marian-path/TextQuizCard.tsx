@@ -211,7 +211,7 @@ export default function TextQuizCard({
                     : (showPoints ? '✦ Correct · +100 points' : '✦ Correct')}
                 </p>
                 <p className="font-anek" style={{ fontSize: 11.5, color: 'oklch(0.42 0.10 155)', marginTop: 2 }}>
-                  {language === 'ml' ? 'അസാധാരണ!' : 'Outstanding!'}
+                  {language === 'ml' ? 'മികച്ച ഉത്തരം!' : 'Outstanding!'}
                 </p>
               </div>
             </div>
