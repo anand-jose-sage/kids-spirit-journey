@@ -53,7 +53,7 @@
       "level": 1,
       "title": "Immaculate Conception",
       "learning_text": "The Immaculate Conception means Mary was preserved from original sin from the very moment she was conceived. This dogma was solemnly defined by Pope Pius IX in 1854 in the document Ineffabilis Deus.",
-      "learning_text_ml": "അമലോത്ഭവ എന്നാൽ മറിയം ഉദരസ്ഥയായ നിമിഷം മുതൽ മൗലിക പാപത്തിൽ നിന്ന് സൂക്ഷിക്കപ്പെട്ടു. ഈ വിശ്വാസ സത്യം 1854-ൽ മാർപ്പാ പിയൂസ് IX Ineffabilis Deus-ൽ ഔദ്യോഗികമായി പ്രഖ്യാപിച്ചു.",
+      "learning_text_ml": "അമലോത്ഭവ എന്നാൽ മറിയം ഉദരസ്ഥയായ നിമിഷം മുതൽ മൗലിക പാപത്തിൽ നിന്ന് സൂക്ഷിക്കപ്പെട്ടു. ഈ വിശ്വാസ സത്യം 1854-ൽ മാർപാപ്പ പിയൂസ് IX Ineffabilis Deus-ൽ ഔദ്യോഗികമായി പ്രഖ്യാപിച്ചു.",
       "learning_reference": "Ineffabilis Deus, Pope Pius IX (1854)",
       "bible_book": "Luke",
       "bible_reference": "1:30",
@@ -63,7 +63,7 @@
         "question": "Which Pope solemnly defined the dogma of the Immaculate Conception in 1854?",
         "question_ml": "1854-ൽ പരിശുദ്ധ അമ്മ അമലോത്ഭവ എന്ന വിശ്വാസസത്യം ഔദ്യോഗികമായി ഏത് മാർപാപ്പ പ്രഖ്യാപിച്ചു?",
         "options": ["Pope Leo XIII", "Pope Pius XII", "Pope Pius IX", "Pope John Paul II"],
-        "options_ml": ["മാർപ്പ ലെയോ XIII", "മാർപ്പ പിയൂസ് XII", "മാർപ്പ പിയൂസ് IX", "മാർപ്പ ജോൺ പോൾ II"],
+        "options_ml": ["മാർപാപ്പ ലെയോ XIII", "മാർപാപ്പ പിയൂസ് XII", "മാർപാപ്പ പിയൂസ് IX", "മാർപാപ്പ ജോൺ പോൾ II"],
         "correct_index": 2
       },
       "text_quiz": {
