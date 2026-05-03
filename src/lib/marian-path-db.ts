@@ -186,3 +186,33 @@ export async function getMarianLeaderboard(limit = 20): Promise<MarianLeaderboar
     completedCount: row.completed_count as number,
   }));
 }
+
+export async function getMarianLeaderboardPaged(
+  page: number,
+  pageSize: number
+): Promise<{ entries: MarianLeaderboardEntry[]; total: number; hasMore: boolean }> {
+  const from = page * pageSize;
+  const to = from + pageSize - 1;
+
+  const { data, error, count } = await supabase
+    .from('marian_path_leaderboard')
+    .select('user_id, name, parish, total_score, completed_count', { count: 'exact' })
+    .order('total_score', { ascending: false })
+    .order('completed_count', { ascending: false })
+    .range(from, to);
+
+  if (error || !data) return { entries: [], total: 0, hasMore: false };
+
+  const total = count ?? 0;
+  return {
+    entries: data.map((row) => ({
+      userId: row.user_id as string,
+      name: row.name as string,
+      parish: row.parish as string,
+      totalScore: row.total_score as number,
+      completedCount: row.completed_count as number,
+    })),
+    total,
+    hasMore: to < total - 1,
+  };
+}

@@ -85,15 +85,15 @@
       "bible_verse_ml": "ഞാൻ കർത്താവിന്റെ ദാസിയാണ്; നിന്റെ വചനം പോലെ എനിക്കു ഭവിക്കട്ടെ.",
       "quiz": {
         "question": "What Latin word describes Mary's 'yes' to God's plan at the Annunciation?",
-        "question_ml": "ഘോഷണ സമയത്ത് ദൈവ പദ്ധതിക്ക് മറിയത്തിന്റെ 'ഉവ്വ്' ഏത് ലാറ്റിൻ പദത്തിൽ അറിയപ്പെടുന്നു?",
+        "question_ml": "മംഗളവാർത്ത  സമയത്ത് ദൈവ പദ്ധതിക്ക് മറിയത്തിന്റെ 'ഉവ്വ്' ഏത് ലാറ്റിൻ പദത്തിൽ അറിയപ്പെടുന്നു?",
         "options": ["Gloria", "Fiat", "Magnificat", "Ave"],
         "options_ml": ["ഗ്ലോറിയ", "ഫിയാത്ത്", "മഗ്നിഫിക്കാത്ത്", "അവേ"],
         "correct_index": 1
       },
       "text_quiz": {
-        "question": "What is the name of the traditional Catholic prayer said three times a day that recalls the moment the angel greeted Mary?",
-        "question_ml": "ദൂതൻ മറിയത്തെ അഭിവാദ്യം ചെയ്ത നിമിഷം അനുസ്മരിക്കുന്ന, ദിവസം മൂന്ന് തവണ ചൊല്ലുന്ന കത്തോലിക്ക പ്രാർഥനയുടെ പേര് എന്താണ്?",
-        "accepted_answers": ["angelus", "the angelus", "ആഞ്ജലൂസ്"]
+        "question": "What were Mary’s words of acceptance at the Annunciation?",
+        "question_ml": "ദൂതൻ മറിയത്തെ അഭിവാദ്യം ചെയ്ത നിമിഷം സമയത്ത് മറിയത്തിന്റെ സമ്മതവാക്കുകൾ എന്തായിരുന്നു?",
+        "accepted_answers": ["ഇതാ, കര്‍ത്താവിന്റെ ദാസി! നിന്റെ വാക്ക് എന്നില്‍ നിറവേറട്ടെ", "ഇതാ കര്‍ത്താവിന്റെ ദാസി നിന്റെ വാക്ക് എന്നില്‍ നിറവേറട്ടെ"]
       }
     },
     {

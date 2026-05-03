@@ -6,7 +6,7 @@ import Link from 'next/link';
 import { useAuth } from '@/components/AuthProvider';
 import BottomNav from '@/components/BottomNav';
 import { useLang } from '@/contexts/LanguageContext';
-import { Trophy, Shield, ChevronRight } from 'lucide-react';
+import { Trophy, Shield, ChevronRight, Flower2 } from 'lucide-react';
 
 export default function WinnersHubPage() {
   const { user, loading } = useAuth();
@@ -39,7 +39,7 @@ export default function WinnersHubPage() {
         </div>
       </div>
 
-      <div className="px-5 py-6 space-y-4">
+      <div className="px-5 py-6 flex flex-col gap-2">
         {/* Link 1 — Shiloha Spiritual Journey Winners */}
         <Link href="/dashboard/winners/journey">
           <div className="bg-gradient-to-br from-purple-500 to-indigo-600 rounded-3xl p-5 shadow-lg shadow-purple-200 active:scale-[0.98] transition-transform">
@@ -62,7 +62,29 @@ export default function WinnersHubPage() {
           </div>
         </Link>
 
-        {/* Link 2 — Biblia Secret Scoreboard */}
+        {/* Link 2 — Marian Path Scoreboard */}
+        <Link href="/dashboard/winners/marian-path">
+          <div className="bg-gradient-to-br from-rose-500 to-purple-600 rounded-3xl p-5 shadow-lg shadow-rose-200 active:scale-[0.98] transition-transform">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-3">
+                <div className="w-12 h-12 bg-white/20 rounded-2xl flex items-center justify-center">
+                  <Flower2 size={24} className="text-white" />
+                </div>
+                <div>
+                  <h3 className="text-white text-lg font-bold leading-tight">
+                    {lang === 'ml' ? 'മരിയൻ പാത്ത് സ്കോർബോർഡ്' : 'Marian Path Scoreboard'}
+                  </h3>
+                  <p className="text-rose-200 text-xs mt-0.5">
+                    {lang === 'ml' ? '30 ദിന മരിയൻ യാത്ര സ്കോർ' : '30-day Marian journey scores'}
+                  </p>
+                </div>
+              </div>
+              <ChevronRight size={24} className="text-white/70 flex-shrink-0" />
+            </div>
+          </div>
+        </Link>
+
+        {/* Link 3 — Biblia Secret Scoreboard */}
         <Link href="/dashboard/winners/scoreboard">
           <div className="bg-gradient-to-br from-amber-500 to-orange-600 rounded-3xl p-5 shadow-lg shadow-amber-200 active:scale-[0.98] transition-transform">
             <div className="flex items-center justify-between">
