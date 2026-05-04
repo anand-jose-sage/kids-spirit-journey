@@ -115,9 +115,9 @@
         "correct_index": 2
       },
       "text_quiz": {
-        "question": "In which modern country is the ancient city of Ephesus located today?",
-        "question_ml": "പ്രാചീന നഗരമായ എഫേസസ് ഇന്ന് ഏത് ആധുനിക രാജ്യത്തിലാണ് സ്ഥിതി ചെയ്യുന്നത്?",
-        "accepted_answers": ["turkey", "തുർക്കി"]
+        "question": "Which prophet foretold ‘Emmanuel’ (God is with us)?",
+        "question_ml": "ഇമ്മാനുവേൽ’ (ദൈവം നമ്മോടുകൂടെ) എന്ന പ്രവചനം നടത്തിയ പ്രവാചകൻ ആരായിരുന്നു?",
+        "accepted_answers": ["isaiah", "ഏശയ്യാ", "ഐസയ്യാ", "യെശയ്യാ"]
       }
     },
     {
