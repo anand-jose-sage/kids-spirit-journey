@@ -9,14 +9,25 @@ interface TextQuizCardProps {
   viewOnly?: boolean;
   language?: 'en' | 'ml';
   day?: number;
-  onAnswer: (correct: boolean) => Promise<void>;
+  onAnswer: (answer: string, correct: boolean) => Promise<void>;
 }
 
+const ML_RANGE = /[ഀ-ൿ]/;
+
 function normalize(s: string): string {
+  const trimmed = s.trim();
+  if (ML_RANGE.test(trimmed)) {
+    return trimmed
+      .normalize('NFC')
+      .replace(/‍/g, '')                    // strip zero-width joiners (old-style encoding)
+      .replace(/[.,!?;:'"()\-_/।॥]/g, '')
+      .replace(/(വിശുദ്ധ|സെന്റ്)\s*/g, '')       // strip "saint" equivalents
+      .replace(/\s+/g, ' ')
+      .trim();
+  }
   // eslint-disable-next-line no-misleading-character-class
   const diacritics = /[̀-ͯ]/g;
-  return s
-    .trim()
+  return trimmed
     .toLowerCase()
     .normalize('NFD')
     .replace(diacritics, '')
@@ -31,10 +42,10 @@ function checkAnswer(input: string, accepted: string[]): boolean {
   return accepted.some((a) => {
     const na = normalize(a);
     if (na === n) return true;
-    // also accept if the core answer appears as a word in the user's input
+    // \b doesn't work for non-ASCII scripts; use whitespace anchors instead
     if (na.length >= 2) {
       const escaped = na.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-      if (new RegExp(`\\b${escaped}\\b`).test(n)) return true;
+      if (new RegExp(`(?:^|\\s)${escaped}(?:\\s|$)`).test(n)) return true;
     }
     return false;
   });
@@ -61,7 +72,7 @@ export default function TextQuizCard({
     setLoading(true);
     const correct = checkAnswer(input, acceptedAnswers);
     try {
-      await onAnswer(correct);
+      await onAnswer(input, correct);
     } finally {
       setLoading(false);
     }

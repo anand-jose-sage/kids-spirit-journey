@@ -2,6 +2,7 @@ import { supabase } from './supabase';
 
 // Supabase migration needed:
 // ALTER TABLE marian_path_progress ADD COLUMN IF NOT EXISTS text_score integer DEFAULT NULL;
+// ALTER TABLE marian_path_progress ADD COLUMN IF NOT EXISTS text_answer text DEFAULT NULL;
 
 export interface MarianProgress {
   day: number;
@@ -9,6 +10,7 @@ export interface MarianProgress {
   completed: boolean;
   completedAt: string | null;
   textScore: number | null; // null = not attempted, 0 = wrong, 100 = correct
+  textAnswer: string | null;
 }
 
 export interface MarianStats {
@@ -86,7 +88,7 @@ export function getMarianBadges(progress: MarianProgress[], streakDays: number):
 export async function getMarianProgress(userId: string): Promise<MarianProgress[]> {
   const { data, error } = await supabase
     .from('marian_path_progress')
-    .select('day, score, completed, completed_at, text_score')
+    .select('day, score, completed, completed_at, text_score, text_answer')
     .eq('user_id', userId)
     .order('day', { ascending: true });
 
@@ -98,6 +100,7 @@ export async function getMarianProgress(userId: string): Promise<MarianProgress[
     completed: row.completed as boolean,
     completedAt: row.completed_at as string | null,
     textScore: row.text_score as number | null,
+    textAnswer: row.text_answer as string | null,
   }));
 }
 
@@ -126,12 +129,13 @@ export async function saveMarianQuizResult(
 export async function saveMarianTextQuizResult(
   userId: string,
   day: number,
+  textAnswer: string,
   correct: boolean
 ): Promise<{ score: number }> {
   const textScore = day >= 3 && correct ? 100 : 0;
 
   const { error } = await supabase.from('marian_path_progress').upsert(
-    { user_id: userId, day, text_score: textScore },
+    { user_id: userId, day, text_score: textScore, text_answer: textAnswer.trim() },
     { onConflict: 'user_id,day' }
   );
 

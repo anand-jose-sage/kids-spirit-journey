@@ -77,11 +77,11 @@ export default function MarianDayPage() {
     }
   }
 
-  async function handleTextAnswer(correct: boolean) {
+  async function handleTextAnswer(answer: string, correct: boolean) {
     if (!user || submitting) return;
     setSubmitting(true);
     try {
-      await saveMarianTextQuizResult(user.id, dayNum, correct);
+      await saveMarianTextQuizResult(user.id, dayNum, answer, correct);
       await load();
     } finally {
       setSubmitting(false);
