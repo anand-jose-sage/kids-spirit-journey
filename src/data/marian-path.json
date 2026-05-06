@@ -157,14 +157,14 @@
       "bible_verse_ml": "നീ ഗർഭം ധരിക്കുകയും ഒരു പുത്രനെ പ്രസവിക്കുകയും ചെയ്യും; അവന് യേശു എന്ന് പേരിടണം.",
       "quiz": {
         "question": "Which angel appeared to Mary at the Annunciation?",
-        "question_ml": "ഘോഷണ സമയത്ത് ഏത് ദൂതൻ മറിയത്തിന് പ്രത്യക്ഷനായി?",
+        "question_ml": "മംഗളവാർത്ത സമയത്ത് ഏത് ദൂതൻ മറിയത്തിന് പ്രത്യക്ഷനായി?",
         "options": ["Michael", "Raphael", "Gabriel", "Uriel"],
         "options_ml": ["മിഖായേൽ", "റഫായേൽ", "ഗബ്രിയേൽ", "ഉറിയേൽ"],
         "correct_index": 2
       },
       "text_quiz": {
         "question": "On which calendar date does the Catholic Church celebrate the feast of the Annunciation?",
-        "question_ml": "ഘോഷണ തിരുനാൾ കത്തോലിക്ക സഭ ഏത് തിയ്യതി ആഘോഷിക്കുന്നു?",
+        "question_ml": "മംഗളവാർത്ത  തിരുനാൾ കത്തോലിക്ക സഭ ഏത് തിയ്യതി ആഘോഷിക്കുന്നു?",
         "accepted_answers": ["march 25", "25 march", "march 25th", "25th march", "മാർച്ച് 25", "25 മാർച്ച്"]
       }
     },
