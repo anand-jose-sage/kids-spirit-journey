@@ -213,7 +213,7 @@
       "text_quiz": {
         "question": "What does the name 'Immanuel' mean in English?",
         "question_ml": "'ഇമ്മാനുവൽ' എന്ന പേരിന്റെ അർഥം എന്താണ്?",
-        "accepted_answers": ["god with us", "god is with us", "god-with-us", "ദൈവം നമ്മോടുകൂടെ", "ദൈവം നമ്മോടൊപ്പം"]
+        "accepted_answers": ["god with us", "god is with us", "god-with-us", "ദൈവം നമ്മോടുകൂടെ", "ദൈവം നമ്മോടു കൂടെ", "ദൈവം നമ്മോടൊപ്പം"]
       }
     },
     {
@@ -235,9 +235,9 @@
         "correct_index": 1
       },
       "text_quiz": {
-        "question": "What is the name of the garden where Eve disobeyed God in Genesis?",
-        "question_ml": "ഉൽ‌പ്പത്തിയിൽ ഹവ്വ ദൈവത്തോടു അനുസരണക്കേട് കാണിച്ച ഉദ്യാനം ഏതാണ്?",
-        "accepted_answers": ["garden of eden", "eden", "the garden of eden", "ഏദൻ", "ഏദൻ തോട്ടം"]
+        "question": "Which New Testament passage describes the woman battling the great serpent?",
+        "question_ml": "സൂര്യനെ ധരിച്ച സ്ത്രീയും മഹാസർപ്പവും തമ്മിലുള്ള പോരാട്ടം വിവരിക്കുന്ന പുതിയ നിയമ ഭാഗം ഏതാണ്?",
+        "accepted_answers": ["revelation", "revelation 12", "revelation 12:1-6", "വെളിപാട് 12:1-6", "വെളിപാട് 12","വെളിപാട്"]
       }
     },
     {

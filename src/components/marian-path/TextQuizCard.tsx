@@ -39,9 +39,13 @@ function normalize(s: string): string {
 
 function checkAnswer(input: string, accepted: string[]): boolean {
   const n = normalize(input);
+  const isMl = ML_RANGE.test(n);
   return accepted.some((a) => {
     const na = normalize(a);
     if (na === n) return true;
+    // Malayalam compound words can be written with or without spaces between morphemes
+    // (e.g. "നമ്മോടുകൂടെ" === "നമ്മോടു കൂടെ"), so compare space-stripped forms too
+    if (isMl && na.replace(/\s/g, '') === n.replace(/\s/g, '')) return true;
     // \b doesn't work for non-ASCII scripts; use whitespace anchors instead
     if (na.length >= 2) {
       const escaped = na.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
