@@ -244,8 +244,8 @@
       "day": 11,
       "level": 2,
       "title": "The Magnificat",
-      "learning_text": "The Magnificat is Mary's great canticle of praise from Luke 1:46–55. She sings: 'My soul magnifies the Lord.' It is one of the most beautiful prayers in Scripture and is prayed daily in the Church's Evening Prayer.",
-      "learning_text_ml": "മഗ്നിഫിക്കാത്ത് ലൂക്കാ 1:46–55-ൽ നിന്നുള്ള മറിയത്തിന്റെ മഹത്തായ സ്തുതി ഗീതമാണ്. 'എന്റെ ആത്മാവ് കർത്താവിനെ മഹത്ത്വപ്പെടുത്തുന്നു' — ഇത് സഭ ദിനേന സന്ധ്യ പ്രാർഥനയിൽ ആലപിക്കുന്നു.",
+      "learning_text": "The Magnificat is Mary’s great hymn of praise from Gospel of Luke 1:46–55. “My soul magnifies the Lord” — Mary sings not about her own greatness, but about what God has done in her life.",
+      "learning_text_ml": "മാഗ്നിഫിക്കാത്ത് ലൂക്കാ 1:46–55-ൽ നിന്നുള്ള മറിയത്തിന്റെ മഹത്തായ സ്തുതി ഗീതമാണ്. 'എന്റെ ആത്മാവ് കർത്താവിനെ മഹത്ത്വപ്പെടുത്തുന്നു' — മറിയം തന്റെ മഹത്വത്തെക്കുറിച്ച് അല്ല, ദൈവം തന്റെ ജീവിതത്തിൽ പ്രവർത്തിച്ചതിനെക്കുറിച്ചാണ് പാടുന്നത്.",
       "learning_reference": "Luke 1:46–55",
       "bible_book": "Luke",
       "bible_reference": "1:46–47",
@@ -253,15 +253,15 @@
       "bible_verse_ml": "എന്റെ ആത്മാവ് കർത്താവിനെ മഹത്ത്വപ്പെടുത്തുന്നു; എന്റെ ആത്മാവ് എന്റെ രക്ഷകനായ ദൈവത്തിൽ ആനന്ദിക്കുന്നു.",
       "quiz": {
         "question": "The Magnificat begins with which words?",
-        "question_ml": "മഗ്നിഫിക്കാത്ത് ഏത് വചനങ്ങളോടെ ആരംഭിക്കുന്നു?",
+        "question_ml": "മാഗ്നിഫിക്കാത്ത് ഏത് വചനങ്ങളോടെ ആരംഭിക്കുന്നു?",
         "options": ["Blessed are you among women", "My soul magnifies the Lord", "Hail, full of grace", "Do whatever he tells you"],
         "options_ml": ["സ്ത്രീകളിൽ നീ അനുഗ്രഹിക്കപ്പെട്ടവൾ", "എന്റെ ആത്മാവ് കർത്താവിനെ മഹത്ത്വപ്പെടുത്തുന്നു", "കൃപ നിറഞ്ഞവളേ, ആശംസ", "അവൻ പറയുന്നതെല്ലാം ചെയ്യുക"],
         "correct_index": 1
       },
       "text_quiz": {
-        "question": "What is the Latin name for the Evening Prayer of the Church, during which the Magnificat is prayed daily?",
-        "question_ml": "ദിനേന മഗ്നിഫിക്കാത്ത് ചൊല്ലുന്ന സഭയുടെ സന്ധ്യ പ്രാർഥനയുടെ ലാറ്റിൻ നാമം എന്താണ്?",
-        "accepted_answers": ["vespers", "വെസ്പേർസ്"]
+        "question": "Which woman praised Mary in the Gospel of Luke besides the angel Gabriel?",
+        "question_ml": "ഗബ്രിയേൽ ദൂതനെ കൂടാതെ, ലൂക്കായുടെ സുവിശേഷത്തിൽ മറിയത്തെ സ്തുതിച്ച സ്ത്രീ ആര്?",
+        "accepted_answers": ["elizabeth", "എലിസബത്ത്", "എലിസഭത്ത്", "എലിസബെത്ത്"]
       }
     },
     {
